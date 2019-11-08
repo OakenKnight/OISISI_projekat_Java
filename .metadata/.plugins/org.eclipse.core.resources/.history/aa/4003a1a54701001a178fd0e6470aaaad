@@ -1,0 +1,15 @@
+package com.aleksandarignjatijevic.mainframe;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame{
+	public MainFrame() {
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		
+		
+	}
+}

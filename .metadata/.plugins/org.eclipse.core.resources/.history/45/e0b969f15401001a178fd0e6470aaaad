@@ -1,0 +1,56 @@
+package com.aleksandarignjatijevic.mainwindow;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
+public class Toolbar extends JToolBar{
+	
+	public Toolbar(){
+		
+		super(JToolBar.HORIZONTAL);
+		setFloatable(false);
+		
+		JButton btnNewEntity= new JButton();
+		btnNewEntity.setToolTipText("Make new...");
+		btnNewEntity.setIcon(new ImageIcon("images/user.png"));
+		add(btnNewEntity);
+		
+		addSeparator();
+		
+		JButton btnEditEntity= new JButton();
+		btnEditEntity.setToolTipText("Edit...");
+		btnEditEntity.setIcon(new ImageIcon("images/pencil.png"));
+		add(btnEditEntity);
+		
+		addSeparator();
+
+		JButton btnDeleteEntity= new JButton();
+		btnDeleteEntity.setToolTipText("Edit...");
+		btnDeleteEntity.setIcon(new ImageIcon("images/bin.png"));
+		add(btnDeleteEntity);
+		
+		addSeparator();
+
+		
+		JTextField searchEntityTextField=new JTextField(50);
+		//Dimension dim= new Dimension(30,20);
+		searchEntityTextField.setPreferredSize(new Dimension(100,45));
+		searchEntityTextField.setMaximumSize(searchEntityTextField.getPreferredSize());
+		add(Box.createHorizontalGlue());
+
+		add(searchEntityTextField);
+		
+		
+		JButton btnSearchEntity= new JButton();
+		btnSearchEntity.setToolTipText("Edit...");
+		btnSearchEntity.setIcon(new ImageIcon("images/search.png"));
+		add(btnSearchEntity);
+		
+	}
+}

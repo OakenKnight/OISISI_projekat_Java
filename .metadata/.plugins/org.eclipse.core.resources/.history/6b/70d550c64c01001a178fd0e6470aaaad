@@ -1,0 +1,27 @@
+package com.aleksandarignjatijevic.mainwindow;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JToolBar;
+
+public class Toolbar extends JToolBar{
+	
+	public Toolbar(){
+		
+		super(JToolBar.HORIZONTAL);
+		setFloatable(false);
+		
+		JButton btnNewEntity= new JButton();
+		btnNewEntity.setToolTipText("Make new...");
+		btnNewEntity.setIcon(new ImageIcon("images/man.png"));
+		add(btnNewEntity);
+		
+		addSeparator();
+		
+		JButton btnEditEntity= new JButton();
+		btnEditEntity.setToolTipText("Edit...");
+		btnEditEntity.setIcon(new ImageIcon("images/pencil.png"));
+		add(btnEditEntity);
+		
+	}
+}

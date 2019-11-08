@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/hal9000/Desktop/JTableMVC"/>
+		<item value="/home/hal9000/OISISI_projekat_Java-master"/>
+		<item value="/home/hal9000/Desktop/Dogadjaji"/>
+		<item value="/home/hal9000/Desktop/LayoutManagers"/>
+		<item value="/home/hal9000/Desktop/SwingKomponente"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+	</section>
+</section>

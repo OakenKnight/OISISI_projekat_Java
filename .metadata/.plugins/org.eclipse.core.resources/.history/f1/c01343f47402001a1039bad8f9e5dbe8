@@ -1,0 +1,13 @@
+package controller;
+
+
+public class EntityController {
+	private static EntityController instance = null;
+	
+	public static EntityController getInstance() {
+		if (instance == null) {
+			instance = new EntityController();
+		}
+		return instance;
+	}
+}
