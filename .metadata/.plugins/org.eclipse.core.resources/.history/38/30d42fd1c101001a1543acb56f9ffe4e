@@ -1,5 +1,0 @@
-package com.aleksandarignjatijevic.listeners.window;
-
-public class WindowListener implements WindowListeners{
-
-}
