@@ -13,6 +13,7 @@ import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import controller.WindowListeners;
 
@@ -57,9 +58,29 @@ public class MainFrame extends JFrame{
 		panel.add(Box.createHorizontalStrut(1120),FlowLayout.LEFT);
 		panel.add(labela,FlowLayout.LEFT);
 		
+		//napravljeni paneli na koje treba dodavati tabele
+		JPanel studentPanel=new JPanel();
+		JPanel profPanel=new JPanel();
+		JPanel subjPanel=new JPanel();
+		//tabbedPane sa tabovima
+		JTabbedPane tabs=new JTabbedPane();
+		
+		//neke random labele cisto da nesto postoji
+		JLabel studLabel=new JLabel("nesto1");
+		JLabel profLabel=new JLabel("nesto2");
+		JLabel subjLabel=new JLabel("nesto3");
+		//dodate labele na panele
+		studentPanel.add(studLabel);
+		profPanel.add(profLabel);
+		subjPanel.add(subjLabel);
+		//dodati paneli
+		tabs.add("Studenti",studentPanel);
+		tabs.add("Profesori",profPanel);
+		tabs.add("Predmeti",subjPanel);
 		
 		add(panel,BorderLayout.SOUTH);
 		
+		add(tabs);
 		
 		
 		
