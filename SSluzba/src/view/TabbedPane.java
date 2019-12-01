@@ -13,6 +13,8 @@ public class TabbedPane extends JTabbedPane{
 		JPanel profPanel=new JPanel();
 		JPanel subjPanel=new JPanel();
 		
+		PredmetiPanel predmetiP=new PredmetiPanel();
+		
 		JLabel studLabel=new JLabel("nesto1");
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
@@ -21,14 +23,11 @@ public class TabbedPane extends JTabbedPane{
 		//dodate labele na panele
 		studentPanel.add(studLabel);
 		profPanel.add(profLabel);
-		
-		
-		subjPanel.add(subjLabel);
 		//BazaPredmeta bp=new BazaPredmeta();
 		//dodati paneli
 		add("Studenti",studentPanel);
 		add("Profesori",profPanel);
-		add("Predmeti",subjPanel);
+		add("Predmeti",predmetiP);
 		
 	}
 }

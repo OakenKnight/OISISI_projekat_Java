@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class addProfFrame {
-	public addProfFrame() {
+public class AddProfFrame {
+	public AddProfFrame() {
 		JFrame unosProf=new JFrame();
 		JPanel unosPanel=new JPanel();
 		
