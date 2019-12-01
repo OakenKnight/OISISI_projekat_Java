@@ -5,8 +5,10 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,11 +29,11 @@ public class EntityController {
 	public void addEntity() {
 		//TODO: preraditi metodu da dodaje entitete
 		JFrame unosPredmeta = new JFrame();
-		GridBagLayout gb = new GridBagLayout();
+		//GridBagLayout gb = new GridBagLayout();
 		//GridLayout experimentLayout = new GridLayout(0,2);
 
-		JPanel unosPanel=new JPanel(gb);
-		
+		JPanel unosPanel=new JPanel();
+		unosPanel.setLayout(new GridBagLayout());
 		unosPredmeta.setTitle("Dodavanje predmeta");
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();
@@ -48,37 +50,59 @@ public class EntityController {
 		JLabel npL=new JLabel("Naziv predmeta");
 		JTextField npTF = new JTextField(30);
 		JLabel semestarL=new JLabel("Semestar");
+		String[] semestri= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
+		JComboBox semestarCB=new JComboBox(semestri);
 		//JTextField spTF = new JTextField(10);
 		JLabel godinaL=new JLabel("Godina");
 		//JTextField spTF = new JTextField(10);
 		JLabel profL=new JLabel("Profesor");
-		//JTextField spTF = new JTextField(10);
-		//JLabel spL=new JLabel("Sifra predmeta");
-		//JTextField spTF = new JTextField(10);
-		//unosPredmeta.getContentPane().setLayout(new FlowLayout());
-		GridBagConstraints c=new GridBagConstraints();
-		c.gridx=0;
-		c.gridy=0;
-		c.gridwidth=1;
-		c.gridheight=1;
-		c.insets.top=5;
-		c.insets.bottom=5;
-		c.insets.left=5;
-		c.insets.right=5;
-		unosPanel.add(spL,c);
-		c.gridx=1;
-		c.gridy=0;
-		c.gridwidth=4;
-		c.gridheight=1;
-		unosPanel.add(spTF,c);
 		
-		//unosPredmeta.getContentPane().setLayout(new FlowLayout());
+		GridBagConstraints gbcLblSifraPredmeta= new GridBagConstraints();
+		gbcLblSifraPredmeta.gridx = 0;
+		gbcLblSifraPredmeta.gridy = 0;
+		gbcLblSifraPredmeta.insets = new Insets(20, 0, 0, 0);
+		unosPanel.add(spL, gbcLblSifraPredmeta);
+		
+		GridBagConstraints gbcTxtSifraPredmeta = new GridBagConstraints();
+		gbcTxtSifraPredmeta.gridx = 1;
+		gbcTxtSifraPredmeta.gridy = 0;
+		gbcTxtSifraPredmeta.weightx = 100;
+		gbcTxtSifraPredmeta.fill = GridBagConstraints.HORIZONTAL;
+		gbcTxtSifraPredmeta.insets = new Insets(20, 20, 0, 20);
+		unosPanel.add(spTF, gbcTxtSifraPredmeta);
+			
+		//unosPanel.add(spTF);
+		
+		GridBagConstraints gbcLNazivPredmeta = new GridBagConstraints();
+		gbcLNazivPredmeta.gridx = 0;
+		gbcLNazivPredmeta.gridy = 1;
+		gbcLNazivPredmeta.insets = new Insets(20, 0, 0, 0);
+		unosPanel.add(npL, gbcLNazivPredmeta);
 
-		unosPanel.add(npL);
-		unosPanel.add(npTF);
-		unosPanel.add(semestarL);
-		unosPanel.add(godinaL);
-		unosPanel.add(profL);
+		
+		GridBagConstraints gbcTxtNazivPredmeta = new GridBagConstraints();
+		gbcTxtNazivPredmeta.gridx = 1;
+		gbcTxtNazivPredmeta.gridy = 1;
+		gbcTxtNazivPredmeta.weightx = 100;
+		gbcTxtNazivPredmeta.fill = GridBagConstraints.HORIZONTAL;
+		gbcTxtNazivPredmeta.insets = new Insets(20, 20, 0, 20);
+		unosPanel.add(npTF, gbcTxtNazivPredmeta);
+		
+		GridBagConstraints gbLblSemestar= new GridBagConstraints();
+		gbLblSemestar.gridx = 0;
+		gbLblSemestar.gridy = 2;
+		gbLblSemestar.insets = new Insets(20, 0, 0, 0);
+		unosPanel.add(semestarL, gbLblSemestar);
+		
+		GridBagConstraints gbCBSemestar= new GridBagConstraints();
+		gbCBSemestar.gridx = 1;
+		gbCBSemestar.gridy = 2;
+		gbCBSemestar.insets = new Insets(20, 0, 0, 0);
+		unosPanel.add(semestarCB, gbCBSemestar);
+		
+		
+		//unosPanel.add(godinaL);
+		//unosPanel.add(profL);
  		unosPredmeta.add(unosPanel);
 		unosPredmeta.setVisible(true);
 	}
