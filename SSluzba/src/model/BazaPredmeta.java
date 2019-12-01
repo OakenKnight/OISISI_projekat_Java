@@ -74,7 +74,7 @@ public class BazaPredmeta {
 	public void addPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
 		this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor));
 	}
-	//public void editPredmet()
+
 	public void deletePredmet(String sifra) {
 		for (Predmet p : predmeti) {
 			if(p.getSifra_predmeta().equals(sifra)) {

@@ -59,28 +59,12 @@ public class MainFrame extends JFrame{
 		panel.add(Box.createHorizontalStrut(1120),FlowLayout.LEFT);
 		panel.add(labela,FlowLayout.LEFT);
 		
-		//napravljeni paneli na koje treba dodavati tabele
-		JPanel studentPanel=new JPanel();
-		JPanel profPanel=new JPanel();
-		JPanel subjPanel=new JPanel();
-		//tabbedPane sa tabovima
-		JTabbedPane tabs=new JTabbedPane();
 		
-		//neke random labele cisto da nesto postoji
-		JLabel studLabel=new JLabel("nesto1");
-		JLabel profLabel=new JLabel("nesto2");
-		JLabel subjLabel=new JLabel("nesto3");
-		JTable predmeti=new PredmetiJTable();
-		//dodate labele na panele
-		studentPanel.add(studLabel);
-		profPanel.add(profLabel);
-		subjPanel.add(predmeti);
-		//dodati paneli
-		tabs.add("Studenti",studentPanel);
-		tabs.add("Profesori",profPanel);
-		tabs.add("Predmeti",subjPanel);
 		
 		add(panel,BorderLayout.SOUTH);
+		
+		
+		TabbedPane tabs=new TabbedPane();
 		
 		add(tabs);
 		

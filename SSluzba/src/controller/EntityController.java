@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 
 import model.BazaPredmeta;
 import view.AddSubjFrame;
+import view.addProfFrame;
 
 
 public class EntityController {
@@ -38,7 +39,7 @@ public class EntityController {
 		//TODO: ovo je samo neka ideja za taj iskacuci meni za predmete
 		//ako ce biti odabran predmet onda cu praviti addSubjFrame;
 		AddSubjFrame asf=new AddSubjFrame();
-		
+		addProfFrame apf=new addProfFrame();
 	}
 	public void editEntity() {
 		//TODO: preraditi metodu da menja entitete
