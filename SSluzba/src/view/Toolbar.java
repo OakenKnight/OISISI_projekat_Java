@@ -11,8 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import controller.AddProfToSubjListener;
 import controller.AddStudListener;
+import controller.AddStudentToSubjListener;
 import controller.EntityController;
+import controller.RemoveProfListener;
 
 public class Toolbar extends JToolBar{
 	
@@ -65,7 +68,9 @@ public class Toolbar extends JToolBar{
 		btnDeleteEntity.setToolTipText("Edit...");
 		btnDeleteEntity.setIcon(new ImageIcon("images/bin1.png"));
 		add(btnDeleteEntity);
-		btnDeleteEntity.addActionListener(new ActionListener() {
+		btnDeleteEntity.addMouseListener(new RemoveProfListener());
+
+		/*btnDeleteEntity.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -74,22 +79,24 @@ public class Toolbar extends JToolBar{
 
 			}
 		});
-		
+		*/
 		//addSeparator();
 		
 		JButton btnNewStudentToSubject= new JButton();
 		btnNewStudentToSubject.setToolTipText("Make new...");
 		btnNewStudentToSubject.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewStudentToSubject);
-		//if(stanje==3) {
 		btnNewStudentToSubject.setVisible(true);
+		//?????????????????????????????????????????????
+		//zasto fakin copy paste ne radi????????????
+		//btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
 		
 		JButton btnNewProfToSubject= new JButton();
 		btnNewProfToSubject.setToolTipText("Make new...");
 		btnNewProfToSubject.setIcon(new ImageIcon("images/add-user-1.png"));
 		add(btnNewProfToSubject);
 		btnNewProfToSubject.setVisible(true);
-		
+		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 		
 		JTextField searchEntityTextField=new JTextField(50);
 		//Dimension dim= new Dimension(30,20);
