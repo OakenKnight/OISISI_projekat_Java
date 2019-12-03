@@ -18,9 +18,6 @@ import javax.swing.JTable;
 
 import controller.WindowListeners;
 
-
-
-
 public class MainFrame extends JFrame{
 	public MainFrame() {
 		Toolkit kit=Toolkit.getDefaultToolkit();
@@ -64,12 +61,9 @@ public class MainFrame extends JFrame{
 		add(panel,BorderLayout.SOUTH);
 		
 		
-		TabbedPane tabs=new TabbedPane();
-		
+		TabbedPane tabs=new TabbedPane();	
 		add(tabs);
-		
-		
-		
+				
 		
 
 	}

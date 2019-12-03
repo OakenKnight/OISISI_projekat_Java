@@ -25,6 +25,7 @@ public class Toolbar extends JToolBar{
 		btnNewEntity.setToolTipText("Make new...");
 		btnNewEntity.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewEntity);
+		//btnNewEntity.setVisible(false);
 		btnNewEntity.addActionListener(new ActionListener() {
 			
 			@Override
@@ -66,7 +67,20 @@ public class Toolbar extends JToolBar{
 		});
 		
 		//addSeparator();
-
+		
+		JButton btnNewStudentToSubject= new JButton();
+		btnNewStudentToSubject.setToolTipText("Make new...");
+		btnNewStudentToSubject.setIcon(new ImageIcon("images/user1.png"));
+		add(btnNewStudentToSubject);
+		//if(stanje==3) {
+		btnNewStudentToSubject.setVisible(true);
+		
+		JButton btnNewProfToSubject= new JButton();
+		btnNewProfToSubject.setToolTipText("Make new...");
+		btnNewProfToSubject.setIcon(new ImageIcon("images/add-user-1.png"));
+		add(btnNewProfToSubject);
+		btnNewProfToSubject.setVisible(true);
+		
 		
 		JTextField searchEntityTextField=new JTextField(50);
 		//Dimension dim= new Dimension(30,20);
