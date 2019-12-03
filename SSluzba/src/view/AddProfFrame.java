@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,28 +13,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AddProfFrame {
+public class AddProfFrame extends JDialog{
 	public AddProfFrame() {
-		JFrame unosProf=new JFrame();
-		JPanel unosPanel=new JPanel();
 		
-		unosPanel.setLayout(new GridBagLayout());
-		unosProf.setTitle("Dodavanje profesora");
+	    setLocation(800, 300);
+		setTitle("Dodavanje studenta");
+				
+		JPanel donjiPanel = new JPanel(new FlowLayout());
+		donjiPanel.setBackground(Color.DARK_GRAY);
+		donjiPanel.setPreferredSize(new Dimension(100,23));
 		
-		Toolkit kit=Toolkit.getDefaultToolkit();
-		Dimension screenSize=kit.getScreenSize();
-		int screenHeight=screenSize.height;
-		int screenWidth=screenSize.width;
-		
-		unosProf.setSize(2*screenWidth/7,3*screenHeight/6);
-		unosProf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		unosProf.setLocationRelativeTo(null);
-		
+		/*
 		JLabel imeL=new JLabel("Ime: *");
 		JTextField imeTF=new JTextField(30);
 		
@@ -86,124 +84,14 @@ public class AddProfFrame {
 				
 			}
 		}
-		);	
-			
-			GridBagConstraints gbcLblIme= new GridBagConstraints();
-			gbcLblIme.gridx = 0;
-			gbcLblIme.gridy = 0;
-			gbcLblIme.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(imeL, gbcLblIme);
-			
-			GridBagConstraints gbcTxtIme = new GridBagConstraints();
-			gbcTxtIme.gridx = 1;
-			gbcTxtIme.gridy = 0;
-			//gbcTxtIme.weightx = 100;
-			gbcTxtIme.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtIme.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(imeTF, gbcTxtIme);
-			
-			GridBagConstraints gbcLblPrz= new GridBagConstraints();
-			gbcLblPrz.gridx = 0;
-			gbcLblPrz.gridy = 1;
-			gbcLblPrz.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(prezimeL, gbcLblPrz);
-			
-			GridBagConstraints gbcTxtPrz = new GridBagConstraints();
-			gbcTxtPrz.gridx = 1;
-			gbcTxtPrz.gridy = 1;
-			//gbcTxtPrz.weightx = 100;
-			gbcTxtPrz.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtPrz.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(prezimeTF, gbcTxtPrz);
-			
-			GridBagConstraints gbcLblDatum= new GridBagConstraints();
-			gbcLblDatum.gridx = 0;
-			gbcLblDatum.gridy = 2;
-			gbcLblDatum.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(datumL, gbcLblDatum);
-			
-			GridBagConstraints gbcTxtDatum = new GridBagConstraints();
-			gbcTxtDatum.gridx = 1;
-			gbcTxtDatum.gridy = 2;
-			//gbcTxtDatum.weightx = 100;
-			gbcTxtDatum.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtDatum.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(datumTF, gbcTxtDatum);
-			
-			GridBagConstraints gbcLblTelefon= new GridBagConstraints();
-			gbcLblTelefon.gridx = 0;
-			gbcLblTelefon.gridy = 3;
-			gbcLblTelefon.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(telefonL, gbcLblTelefon);
-			
-			GridBagConstraints gbcTxtTelefon = new GridBagConstraints();
-			gbcTxtTelefon.gridx = 1;
-			gbcTxtTelefon.gridy = 3;
-			//gbcTxtDatum.weightx = 100;
-			gbcTxtTelefon.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtTelefon.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(telefonTF, gbcTxtTelefon);
-			
-			GridBagConstraints gbcLblEmail= new GridBagConstraints();
-			gbcLblEmail.gridx = 0;
-			gbcLblEmail.gridy = 4;
-			gbcLblEmail.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(emailL, gbcLblEmail);
-			
-			GridBagConstraints gbcTxtEmail = new GridBagConstraints();
-			gbcTxtEmail.gridx = 1;
-	 		gbcTxtEmail.gridy = 4;
-			//gbcTxtDatum.weightx = 100;
-			gbcTxtEmail.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtEmail.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(emailTF, gbcTxtEmail);
-			
-			
+		);	*/
+		
+		//this.add(obrazac,BorderLayout.CENTER);
+		
+		this.add(donjiPanel,BorderLayout.SOUTH);
 
-			GridBagConstraints gbcLblAdresaKanc= new GridBagConstraints();
-			gbcLblAdresaKanc.gridx = 0;
-			gbcLblAdresaKanc.gridy = 5;
-			gbcLblAdresaKanc.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(kancelarijaL, gbcLblAdresaKanc);
+		setSize(400, 400);
+		setVisible(true);
 			
-			GridBagConstraints gbcTxtAdresaKanc = new GridBagConstraints();
-			gbcTxtAdresaKanc.gridx = 1;
-			gbcTxtAdresaKanc.gridy = 5;
-			//gbcTxtDatum.weightx = 100;
-			gbcTxtAdresaKanc.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtAdresaKanc.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(kancelarijaTF, gbcTxtAdresaKanc);
-			
-			/*
-			GridBagConstraints gbcLblBlk= new GridBagConstraints();
-			gbcLblBlk.gridx = 0;
-			gbcLblBlk.gridy = 6;
-			gbcLblBlk.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(blkL, gbcLblBlk);
-			
-			GridBagConstraints gbcTxtBlk = new GridBagConstraints();
-			gbcTxtBlk.gridx = 1;
-			gbcTxtBlk.gridy = 6;
-			gbcTxtBlk.fill = GridBagConstraints.HORIZONTAL;
-			gbcTxtBlk.insets = new Insets(20, 20, 0, 20);
-			unosPanel.add(blkTF, gbcTxtBlk);
-			
-			GridBagConstraints gbLblTitula= new GridBagConstraints();
-			gbLblTitula.gridx = 0;
-			gbLblTitula.gridy = 7;
-			gbLblTitula.anchor=GridBagConstraints.WEST;
-			gbLblTitula.insets = new Insets(20, 10, 0, 0);
-			unosPanel.add(titulaL, gbLblTitula);
-			
-			GridBagConstraints gbCBTitula= new GridBagConstraints();
-			gbCBTitula.gridx = 1;
-			gbCBTitula.gridy = 7;
-			gbCBTitula.insets = new Insets(20, 0, 0, 0);
-			unosPanel.add(tituleCB, gbCBTitula);
-			
-			*/
-			unosProf.add(unosPanel);
-
-		unosProf.setVisible(true);
 	}
 }

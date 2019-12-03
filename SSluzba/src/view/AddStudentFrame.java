@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -28,14 +29,7 @@ public class AddStudentFrame extends JDialog{
 	public AddStudentFrame(){
 	   // setUndecorated(true);
 	    setLocation(800, 300);
-		JPanel gornjiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		gornjiPanel.setBackground(Color.DARK_GRAY);
-		gornjiPanel.setSize(new Dimension(100,100));
-		
-		JLabel labelaNaslova = new JLabel("Dodaj studenta");
-		labelaNaslova.setForeground(Color.WHITE);
-		labelaNaslova.setPreferredSize(new Dimension(130,15));
-		gornjiPanel.add(labelaNaslova);
+		setTitle("Dodavanje studenta");
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout());
@@ -122,6 +116,22 @@ public class AddStudentFrame extends JDialog{
 
 			}
 		});
+		
+		potvrda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || 
+						telefonPolje.getText().equals("") || indexPolje.getText().equals("")  ) {
+					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
+					
+				}else {
+					setVisible(false);
+					dispose();
+				}
+				
+			}
+		});
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 
@@ -139,7 +149,7 @@ public class AddStudentFrame extends JDialog{
 		obrazac.add(odustanakPotvrda);
 		obrazac.add(Box.createGlue());
 		
-		this.add(gornjiPanel,BorderLayout.NORTH);
+		
 		
 		this.add(obrazac,BorderLayout.CENTER);
 		
