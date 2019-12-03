@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -8,11 +9,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class PredmetiPanel extends JPanel{
-	private JTable tabelaPredmeti;
-	
-	public PredmetiPanel(){
+	 JTable tabelaPredmeti = new JTable(new AbstractTableModelPredmeti());
+
+	public PredmetiPanel() { 
+		
 		
 		prikaziTabeluPredmeta();
+		
+		
+	}
+	private void JTinit() {
+		
 		
 		
 	}

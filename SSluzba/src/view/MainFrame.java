@@ -65,8 +65,7 @@ public class MainFrame extends JFrame{
 		
 		add(panel,BorderLayout.SOUTH);
 		
-		
-		TabbedPane tabs=new TabbedPane();	
+		TabbedPane tabs=new TabbedPane();
 		add(tabs);
 				
 		
