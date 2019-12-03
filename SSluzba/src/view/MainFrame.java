@@ -20,6 +20,11 @@ import controller.WindowListeners;
 
 
 public class MainFrame extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8456560429229699542L;
+
 	public MainFrame() {
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();

@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -8,12 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 public class Menu extends JMenuBar{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2401343171737574518L;
+
 	public Menu() {
 		//Pravljenje  File menija i pravljenje i dodavanje itema
 		JMenu file = new JMenu("File");

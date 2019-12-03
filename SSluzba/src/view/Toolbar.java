@@ -1,7 +1,6 @@
 package view;
 
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +11,16 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import controller.AddStudListener;
 import controller.EntityController;
 
 public class Toolbar extends JToolBar{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6204353317907193077L;
+
 	public Toolbar(){
 		
 		super(JToolBar.HORIZONTAL);
@@ -25,6 +30,7 @@ public class Toolbar extends JToolBar{
 		btnNewEntity.setToolTipText("Make new...");
 		btnNewEntity.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewEntity);
+		btnNewEntity.addMouseListener(new AddStudListener());
 		btnNewEntity.addActionListener(new ActionListener() {
 			
 			@Override
