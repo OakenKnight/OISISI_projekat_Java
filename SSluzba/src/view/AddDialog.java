@@ -24,7 +24,7 @@ public class AddDialog extends JDialog{
 	private static final long serialVersionUID = 6074145523826069140L;
 	
 	public AddDialog(){
-	    setUndecorated(true);
+	    //setUndecorated(true);
 	    setLocation(800, 300);
 		JPanel gornjiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		gornjiPanel.setBackground(Color.DARK_GRAY);

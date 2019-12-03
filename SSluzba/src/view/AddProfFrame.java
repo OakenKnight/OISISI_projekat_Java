@@ -152,7 +152,7 @@ public class AddProfFrame {
 			
 			GridBagConstraints gbcTxtEmail = new GridBagConstraints();
 			gbcTxtEmail.gridx = 1;
-			gbcTxtEmail.gridy = 4;
+	 		gbcTxtEmail.gridy = 4;
 			//gbcTxtDatum.weightx = 100;
 			gbcTxtEmail.fill = GridBagConstraints.HORIZONTAL;
 			gbcTxtEmail.insets = new Insets(20, 20, 0, 20);
