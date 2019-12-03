@@ -16,15 +16,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class AddDialog extends JDialog{
+public class AddStudentFrame extends JDialog{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6074145523826069140L;
 	
-	public AddDialog(){
-	    setUndecorated(true);
+	public AddStudentFrame(){
+	   // setUndecorated(true);
 	    setLocation(800, 300);
 		JPanel gornjiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		gornjiPanel.setBackground(Color.DARK_GRAY);

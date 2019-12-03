@@ -3,13 +3,13 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.AddDialog;
+import view.AddStudentFrame;
 
 public class AddStudListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		AddDialog diag = new AddDialog();
+		AddStudentFrame diag = new AddStudentFrame();
 		diag.setVisible(true);
 	}
 
