@@ -13,6 +13,8 @@ import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 import controller.WindowListeners;
 
@@ -63,7 +65,13 @@ public class MainFrame extends JFrame{
 		panel.add(labela,FlowLayout.LEFT);
 		
 		
+		
 		add(panel,BorderLayout.SOUTH);
+		
+		
+		TabbedPane tabs=new TabbedPane();
+		
+		add(tabs);
 		
 		
 		

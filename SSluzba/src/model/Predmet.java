@@ -1,22 +1,22 @@
 package model;
 
 public class Predmet {
-	private int sifra_predmeta;
+	private String sifra_predmeta;
 	private String naziv;
-	private int semestar;
-	private int godina;
-	private Profesor predavac;
+	private String semestar;
+	private String godina;
+	private String predavac; //treba da bude private Profesor profesor al nmg to jos pa nek za sad bude String
 	//private ArrayList<Student> studenti;
-	
-	public Predmet(int sifra_predmeta, String naziv, int semestar, int godina, Profesor predavac) {
+	/*
+	public Predmet(String string, String naziv, String string2, String string3, String string4) {
 		super();
-		this.sifra_predmeta = sifra_predmeta;
+		this.sifra_predmeta = string;
 		this.naziv = naziv;
-		this.semestar = semestar;
-		this.godina = godina;
-		this.predavac = predavac;
+		this.semestar = string2;
+		this.godina = string3;
+		this.predavac = string4;
 	}
-	
+	*/
 	public Predmet(Predmet p) {
 		super();
 		sifra_predmeta = p.sifra_predmeta;
@@ -26,11 +26,21 @@ public class Predmet {
 		predavac = p.predavac;
 	}
 
-	public int getSifra_predmeta() {
+	public Predmet(String string, String naziv2, String string2, String string3, String string4) {
+
+		super();
+		this.sifra_predmeta = string;
+		this.naziv = naziv2;
+		this.semestar = string2;
+		this.godina = string3;
+		this.predavac = string4;
+	}
+
+	public String getSifra_predmeta() {
 		return sifra_predmeta;
 	}
 
-	public void setSifra_predmeta(int sifra_predmeta) {
+	public void setSifra_predmeta(String sifra_predmeta) {
 		this.sifra_predmeta = sifra_predmeta;
 	}
 
@@ -42,27 +52,27 @@ public class Predmet {
 		this.naziv = naziv;
 	}
 
-	public int getSemestar() {
+	public String getSemestar() {
 		return semestar;
 	}
 
-	public void setSemestar(int semestar) {
+	public void setSemestar(String semestar) {
 		this.semestar = semestar;
 	}
 
-	public int getGodina() {
+	public String getGodina() {
 		return godina;
 	}
 
-	public void setGodina(int godina) {
+	public void setGodina(String godina) {
 		this.godina = godina;
 	}
 
-	public Profesor getPredavac() {
+	public String getPredavac() {
 		return predavac;
 	}
 
-	public void setPredavac(Profesor predavac) {
+	public void setPredavac(String predavac) {
 		this.predavac = predavac;
 	}
 
