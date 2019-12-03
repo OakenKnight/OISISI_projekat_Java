@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,12 +15,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class AddSubjFrame extends JFrame{
 	public AddSubjFrame() {
+		
+
 		JFrame unosPredmeta=new JFrame();
+		
 		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
 	
@@ -30,6 +37,12 @@ public class AddSubjFrame extends JFrame{
 		unosPredmeta.setSize(2*screenWidth/7,3*screenHeight/10);
 		unosPredmeta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		unosPredmeta.setLocationRelativeTo(null);
+		
+		
+		
+		JPanel donjiPanel = new JPanel(new FlowLayout());
+		donjiPanel.setBackground(Color.DARK_GRAY);
+		donjiPanel.setPreferredSize(new Dimension(100,23));
 		
 		
 		JLabel spL=new JLabel("Sifra predmeta: *");
@@ -60,8 +73,12 @@ public class AddSubjFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO dodaj predmet i ugasi taj window
-				unosPredmeta.setVisible(false);
+				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
+				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);
+				}else {
+					unosPredmeta.setVisible(false);
 				unosPredmeta.dispose();
+				}
 				
 			}
 		});
@@ -162,8 +179,9 @@ public class AddSubjFrame extends JFrame{
 		gbBtnCancel.insets = new Insets(20, 10, 0, 0);
 		unosPanel.add(cancelBtn,gbBtnCancel);
 
-			unosPredmeta.add(unosPanel);
 		
+			unosPredmeta.add(unosPanel,BorderLayout.CENTER);
+			unosPredmeta.add(donjiPanel,BorderLayout.SOUTH);
 		
 		//unosPredmeta.add(Box.createGlue());
 		unosPredmeta.setVisible(true);
