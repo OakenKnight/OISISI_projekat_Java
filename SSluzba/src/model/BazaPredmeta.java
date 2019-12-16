@@ -25,6 +25,7 @@ public class BazaPredmeta {
 		this.kolone.add("Godina studija");
 		this.kolone.add("Predmetni profesor");
 		//this.kolone.add("Spisak studenata");
+		initPredmete();
 	}
 	
 	private void initPredmete() {

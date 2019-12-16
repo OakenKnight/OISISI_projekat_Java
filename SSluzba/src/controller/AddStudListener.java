@@ -4,13 +4,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import view.AddStudentFrame;
+import view.TabbedPane;
 
 public class AddStudListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		AddStudentFrame diag = new AddStudentFrame();
-		diag.setVisible(true);
+		if(TabbedPane.getInstance().getStanje()==0) {
+			AddStudentFrame diag = new AddStudentFrame();
+			diag.setVisible(true);
+		}
 	}
 
 	

@@ -32,10 +32,10 @@ public class AddStudentToSubjListener implements MouseListener{
 				donjiPanel.setBackground(Color.DARK_GRAY);
 				donjiPanel.setPreferredSize(new Dimension(100,23));
 				
-				dodajStudentaL.add(dodajStudentaPanel,BorderLayout.CENTER);
-				dodajStudentaL.add(donjiPanel,BorderLayout.SOUTH);
+				dodajStudenta.add(dodajStudentaPanel,BorderLayout.CENTER);
+				dodajStudenta.add(donjiPanel,BorderLayout.SOUTH);
 				
-				dodajStudentaL.setVisible(true);		
+				dodajStudenta.setVisible(true);		
 	}
 
 	@Override

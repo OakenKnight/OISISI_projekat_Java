@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
@@ -63,10 +64,11 @@ public class MainFrame extends JFrame{
 		
 		
 		
-		add(panel,BorderLayout.SOUTH);
+	//	add(panel,BorderLayout.SOUTH);
 		
 		TabbedPane tabs=new TabbedPane();
-		add(tabs);
+		
+		add(tabs, BorderLayout.CENTER);
 				
 		
 
