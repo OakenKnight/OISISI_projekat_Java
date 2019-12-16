@@ -38,17 +38,25 @@ public class TabbedPane extends JTabbedPane{
 		
 		JTable tabelaProfesori=new ProfesoriJTable();
 		JScrollPane skrolProfesori=new JScrollPane(tabelaProfesori);
+
+		JTable tabelaStudenti=new StudentiJTable();
+		JScrollPane skrolStudenti=new JScrollPane(tabelaStudenti);
 		
 		JLabel studLabel=new JLabel("nesto1");
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
 		
-		studentPanel.add(studLabel);
 		
-		addTab("Studenti",studentPanel);
+		
+		addTab("Studenti",skrolStudenti);
 		add("Profesori",skrolProfesori);
 		add("Predmeti",skrolPredmeti);
+		
+		tabelaStudenti.setAutoCreateRowSorter(true);
 		tabelaProfesori.setAutoCreateRowSorter(true);
+		tabelaPredmeti.setAutoCreateRowSorter(true);
+
+		
 		ChangeListener changeListener = new ChangeListener() {
 			  public void stateChanged(ChangeEvent changeEvent) {
 			    JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();

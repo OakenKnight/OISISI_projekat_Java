@@ -6,6 +6,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -117,6 +124,8 @@ public class AddStudentFrame extends JFrame{
 			}
 		});
 		
+		
+		
 		potvrda.addActionListener(new ActionListener() {
 			
 			@Override
@@ -126,6 +135,33 @@ public class AddStudentFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 					
 				}else {
+					
+					BufferedWriter out  = null;
+					try {
+						out = new BufferedWriter( new FileWriter("datoteke/Studenti.txt",true));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					try {
+						out.write("\n");
+						out.write(imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|");
+
+					} catch (IOException e) {
+						
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}finally {
+						if(out != null)
+							try {
+								out.close();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+					}
+					
 					setVisible(false);
 					dispose();
 				}
