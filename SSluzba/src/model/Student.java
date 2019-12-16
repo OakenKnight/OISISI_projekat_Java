@@ -1,4 +1,4 @@
-package studsluzba;
+package model;
 
 enum Status {
 	S , B, N;
