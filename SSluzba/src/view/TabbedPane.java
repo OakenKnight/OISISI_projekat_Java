@@ -1,7 +1,10 @@
 package view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
@@ -10,28 +13,34 @@ import javax.swing.event.ChangeListener;
 import model.BazaPredmeta;
 
 public class TabbedPane extends JTabbedPane{
-	private  static int stanje;
+	public static int stanje;
+	private static TabbedPane instance = null;
+
+	public static TabbedPane getInstance() {
+		if (instance == null) {
+			instance = new TabbedPane();
+		}
+		return instance;
+	}
 	public TabbedPane() {
-		stanje=1;
 		JPanel studentPanel=new JPanel();
 		JPanel profPanel=new JPanel();
 		JPanel subjPanel=new JPanel();
 		
-		PredmetiPanel predmetiP=new PredmetiPanel();
+		JTable tabelaPredmeti=new PredmetiJTable();
+		JScrollPane skrolPredmeti=new JScrollPane(tabelaPredmeti);
+		
 		
 		JLabel studLabel=new JLabel("nesto1");
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
 		
-		//JTable predmeti=new PredmetiJTable();
-		//dodate labele na panele
 		studentPanel.add(studLabel);
 		profPanel.add(profLabel);
-		//BazaPredmeta bp=new BazaPredmeta();
-		//dodati paneli
-		add("Studenti",studentPanel);
+		
+		addTab("Studenti",studentPanel);
 		add("Profesori",profPanel);
-		add("Predmeti",predmetiP);
+		add("Predmeti",skrolPredmeti);
 		
 		ChangeListener changeListener = new ChangeListener() {
 			  public void stateChanged(ChangeEvent changeEvent) {

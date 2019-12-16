@@ -81,23 +81,32 @@ public class Toolbar extends JToolBar{
 		});
 		*/
 		//addSeparator();
-		
 		JButton btnNewStudentToSubject= new JButton();
 		btnNewStudentToSubject.setToolTipText("Make new...");
 		btnNewStudentToSubject.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewStudentToSubject);
-		btnNewStudentToSubject.setVisible(true);
-		//?????????????????????????????????????????????
-		//zasto fakin copy paste ne radi????????????
-		//btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
+		btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
+
 		
 		JButton btnNewProfToSubject= new JButton();
 		btnNewProfToSubject.setToolTipText("Make new...");
 		btnNewProfToSubject.setIcon(new ImageIcon("images/add-user-1.png"));
 		add(btnNewProfToSubject);
-		btnNewProfToSubject.setVisible(true);
 		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
+
+		if(TabbedPane.getInstance().getStanje()==2) {
 		
+		btnNewStudentToSubject.setVisible(true);		
+		
+		btnNewProfToSubject.setVisible(true);
+		}else {
+			
+			btnNewStudentToSubject.setVisible(false);
+
+			btnNewProfToSubject.setVisible(false);
+
+			
+		}
 		JTextField searchEntityTextField=new JTextField(50);
 		//Dimension dim= new Dimension(30,20);
 		searchEntityTextField.setPreferredSize(new Dimension(90,25));
