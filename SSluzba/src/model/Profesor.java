@@ -6,18 +6,18 @@ import java.util.ArrayList;
 public class Profesor {
 	private String ime;
 	private String prezime;
-	private SimpleDateFormat datum;
+	private String datum;
 	private String adresa_stanovanja;
-	private int kontakt_telefon;
+	private String kontakt_telefon;
 	private String email_adresa;
 	private String adresa_kancelarije;
-	private int BLK;
+	private String BLK;
 	private String titula;
 	private String zvanje;
-	ArrayList<Predmet> predmeti = new ArrayList<Predmet>(); // Create an ArrayList object
+	//ArrayList<Predmet> predmeti = new ArrayList<Predmet>(); // Create an ArrayList object
 	//dodaj listu predmeta na kojima je profesor;
-	public Profesor(String ime, String prezime, SimpleDateFormat datum, String adresa_stanovanja, int kontakt_telefon,
-			String email_adresa, String adresa_kancelarije, int BLK, String titula, String zvanje,ArrayList<Predmet> predmeti1) {
+	public Profesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,
+			String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -29,7 +29,7 @@ public class Profesor {
 		this.BLK = BLK;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		this.predmeti=predmeti1;
+		//this.predmeti=predmeti1;
 	}
 	
 	public Profesor(Profesor p) {
@@ -44,7 +44,7 @@ public class Profesor {
 		BLK = p.BLK;
 		titula = p.titula;
 		zvanje = p.zvanje;
-		predmeti=p.predmeti;
+		//predmeti=p.predmeti;
 	}
 
 	public String getIme() {
@@ -63,11 +63,11 @@ public class Profesor {
 		this.prezime = prezime;
 	}
 
-	public SimpleDateFormat getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(SimpleDateFormat datum) {
+	public void setDatum(String datum) {
 		this.datum = datum;
 	}
 
@@ -79,11 +79,11 @@ public class Profesor {
 		this.adresa_stanovanja = adresa_stanovanja;
 	}
 
-	public int getKontakt_telefon() {
+	public String getKontakt_telefon() {
 		return kontakt_telefon;
 	}
 
-	public void setKontakt_telefon(int kontakt_telefon) {
+	public void setKontakt_telefon(String kontakt_telefon) {
 		this.kontakt_telefon = kontakt_telefon;
 	}
 
@@ -103,11 +103,11 @@ public class Profesor {
 		this.adresa_kancelarije = adresa_kancelarije;
 	}
 
-	public int getBLK() {
+	public String getBLK() {
 		return BLK;
 	}
 
-	public void setBLK(int bLK) {
+	public void setBLK(String bLK) {
 		BLK = bLK;
 	}
 
@@ -126,7 +126,7 @@ public class Profesor {
 	public void setZvanje(String zvanje) {
 		this.zvanje = zvanje;
 	}
-	
+	/*
 	public ArrayList<Predmet> getPredmeti() {
 		return predmeti;
 	}
@@ -134,13 +134,13 @@ public class Profesor {
 	public void setPredmeti(ArrayList<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
-
+	*/
 	@Override
 	public String toString() {
 		return "Profesor [ime=" + ime + ", prezime=" + prezime + ", datum=" + datum + ", adresa_stanovanja="
 				+ adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon + ", email_adresa=" + email_adresa
 				+ ", adresa_kancelarije=" + adresa_kancelarije + ", BLK=" + BLK + ", titula=" + titula + ", zvanje="
-				+ zvanje + ", predmeti=" + predmeti + "]";
+				+ zvanje + "]";
 	}
 	
 	

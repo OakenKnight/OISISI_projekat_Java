@@ -14,6 +14,12 @@ import model.BazaPredmeta;
 
 public class TabbedPane extends JTabbedPane{
 	public static int stanje;
+	
+	
+	public static JTable tabelaPredmeti;
+	public static JScrollPane skrolPredmeti;
+	
+	
 	private static TabbedPane instance = null;
 
 	public static TabbedPane getInstance() {
@@ -30,18 +36,19 @@ public class TabbedPane extends JTabbedPane{
 		JTable tabelaPredmeti=new PredmetiJTable();
 		JScrollPane skrolPredmeti=new JScrollPane(tabelaPredmeti);
 		
+		JTable tabelaProfesori=new ProfesoriJTable();
+		JScrollPane skrolProfesori=new JScrollPane(tabelaProfesori);
 		
 		JLabel studLabel=new JLabel("nesto1");
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
 		
 		studentPanel.add(studLabel);
-		profPanel.add(profLabel);
 		
 		addTab("Studenti",studentPanel);
-		add("Profesori",profPanel);
+		add("Profesori",skrolProfesori);
 		add("Predmeti",skrolPredmeti);
-		
+		tabelaProfesori.setAutoCreateRowSorter(true);
 		ChangeListener changeListener = new ChangeListener() {
 			  public void stateChanged(ChangeEvent changeEvent) {
 			    JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
@@ -53,5 +60,15 @@ public class TabbedPane extends JTabbedPane{
 	}
 	public static int getStanje() {
 		return stanje;
+	}
+	
+	public void azurirajPredmeti() {
+		// TODO Auto-generated method stub
+		//?????????
+		
+		//AbstractTableModelPredmeti model=(AbstractTableModelPredmeti) tabelaPredmeti.getModel();
+		
+		//model.fireTableDataChanged();
+		//tabelaPredmeti.revalidate();
 	}
 }

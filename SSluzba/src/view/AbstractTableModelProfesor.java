@@ -2,29 +2,29 @@ package view;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.BazaPredmeta;
 import model.BazaProfesori;
 
-public class AbstractTableModelPredmeti extends AbstractTableModel{
+public class AbstractTableModelProfesor extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return BazaPredmeta.getInstanceBazaPredmeta().getColumnCnt();
+		return BazaProfesori.getInstance().getColumnCount();
 	}
 
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return BazaPredmeta.getInstanceBazaPredmeta().getPredmeti().size();
+		return BazaProfesori.getInstance().getProfesori().size();
 	}
 
 	@Override
 	public Object getValueAt(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		return BazaPredmeta.getInstanceBazaPredmeta().getValAt(arg0, arg1);
+		return BazaProfesori.getInstance().getValAt(arg0, arg1);
 	}
+	
 	public String getColumnName(int column) {
-		return BazaPredmeta.getInstanceBazaPredmeta().getColumnName(column);
+		return BazaProfesori.getInstance().getColumnName(column);
 	}
 }

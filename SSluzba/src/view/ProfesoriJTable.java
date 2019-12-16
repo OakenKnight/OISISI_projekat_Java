@@ -6,22 +6,28 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
-//TODO: treba da se implementira renderer tabele
-public class PredmetiJTable extends JTable{
-	private static PredmetiJTable instance = null;
 
-	public static PredmetiJTable getInstance() {
+//TODO: treba da se implementira renderer tabele
+public class ProfesoriJTable extends JTable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private static ProfesoriJTable instance = null;
+
+	public static ProfesoriJTable getInstance() {
 		if (instance == null) {
-			instance = new PredmetiJTable();
+			instance = new ProfesoriJTable();
 		}
 		return instance;
 	}
-	
-	public PredmetiJTable() {
+	public ProfesoriJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelPredmeti());
+		this.setModel(new AbstractTableModelProfesor());
 	}
 		
 		

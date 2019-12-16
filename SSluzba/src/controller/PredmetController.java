@@ -2,6 +2,11 @@ package controller;
 
 import javax.swing.JFrame;
 
+import model.BazaPredmeta;
+import view.AbstractTableModelPredmeti;
+import view.PredmetiJTable;
+import view.TabbedPane;
+
 public class PredmetController {
 private static PredmetController instance = null;
 	
@@ -13,11 +18,13 @@ private static PredmetController instance = null;
 	}
 	private PredmetController() {}
 
-	public void addPredmet() {
+	public void addPredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
 		//TODO: preraditi metodu da dodaje entitete
-		JFrame unosPredmeta = new JFrame();
+		BazaPredmeta.getInstanceBazaPredmeta().addPredmet(sifra, naziv, semestar, godina, profesor);
 		
-		unosPredmeta.setVisible(true);
+		TabbedPane.getInstance().azurirajPredmeti();
+		
+		//ne uradi nista, ali ne pukne sad???????
 	}
 	public void editPredmet() {
 		//TODO: preraditi metodu da menja entitete

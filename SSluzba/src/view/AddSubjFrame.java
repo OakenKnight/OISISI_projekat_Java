@@ -11,15 +11,24 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.PredmetController;
+
 public class AddSubjFrame extends JFrame{
+	public static JTextField spTF;
+	public static JTextField npTF;
+	public static String semestar;
+	public static String godina;
+	public static JTextField profesorTF;
 	public AddSubjFrame() {
 		
 
@@ -46,25 +55,26 @@ public class AddSubjFrame extends JFrame{
 		
 		
 		JLabel spL=new JLabel("Sifra predmeta: *");
-		JTextField spTF = new JTextField(10);
+		spTF = new JTextField(10);
 		spTF.setName("txtSifra");
 		//spTF.addFocusListener(focusListener1);
 		
 		JLabel npL=new JLabel("Naziv predmeta: *");
-		JTextField npTF = new JTextField(30);
+		npTF = new JTextField(30);
 		npTF.setName("txtNaziv");
 		//npTF.addFocusListener(focusListener2);
 	
 		JLabel semestarL=new JLabel("Semestar: *");
 		String[] semestri= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
 		JComboBox semestarCB=new JComboBox(semestri);
-	
+		semestar=(String)semestarCB.getSelectedItem();
 		JLabel godinaL=new JLabel("Godina: *");
 		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 		JComboBox godineCB=new JComboBox(godine);
+		godina=(String)godineCB.getSelectedItem();
 		
 		JLabel profesorL=new JLabel("Profesor: *");
-		JTextField profesorTF=new JTextField(30);
+		profesorTF=new JTextField(30);
 		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
@@ -76,8 +86,12 @@ public class AddSubjFrame extends JFrame{
 				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
 				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);
 				}else {
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+					
 					unosPredmeta.setVisible(false);
-				unosPredmeta.dispose();
+					
+					
+					//unosPredmeta.dispose();
 				}
 				
 			}
