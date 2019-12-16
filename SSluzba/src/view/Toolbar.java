@@ -94,11 +94,14 @@ public class Toolbar extends JToolBar{
 		add(btnNewProfToSubject);
 		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 
+		
+		
 		if(TabbedPane.getInstance().getStanje()==2) {
 		
 		btnNewStudentToSubject.setVisible(true);		
 		
 		btnNewProfToSubject.setVisible(true);
+		
 		}else {
 			
 			btnNewStudentToSubject.setVisible(false);
