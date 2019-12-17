@@ -13,11 +13,15 @@ import javax.swing.event.ChangeListener;
 import model.BazaPredmeta;
 
 public class TabbedPane extends JTabbedPane{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8657108270475531153L;
+	
 	public static int stanje;
-	
-	
-	public static JTable tabelaPredmeti;
-	public static JScrollPane skrolPredmeti;
+	private static PredmetiJTable tabelaPredmeti;
+	private static ProfesoriJTable tabelaProfesori;
+	private static StudentiJTable tabelaStudenti;
 	
 	
 	private static TabbedPane instance = null;
@@ -33,13 +37,13 @@ public class TabbedPane extends JTabbedPane{
 		JPanel profPanel=new JPanel();
 		JPanel subjPanel=new JPanel();
 		
-		JTable tabelaPredmeti=new PredmetiJTable();
+		tabelaPredmeti=new PredmetiJTable();
 		JScrollPane skrolPredmeti=new JScrollPane(tabelaPredmeti);
 		
-		JTable tabelaProfesori=new ProfesoriJTable();
+		tabelaProfesori=new ProfesoriJTable();
 		JScrollPane skrolProfesori=new JScrollPane(tabelaProfesori);
 
-		JTable tabelaStudenti=new StudentiJTable();
+		tabelaStudenti=new StudentiJTable();
 		JScrollPane skrolStudenti=new JScrollPane(tabelaStudenti);
 		
 		JLabel studLabel=new JLabel("nesto1");
@@ -61,7 +65,7 @@ public class TabbedPane extends JTabbedPane{
 			  public void stateChanged(ChangeEvent changeEvent) {
 			    JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
 			    stanje = sourceTabbedPane.getSelectedIndex();
-			    System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(stanje));
+			    //System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(stanje));
 			  }
 			};
 			addChangeListener(changeListener);
@@ -69,14 +73,23 @@ public class TabbedPane extends JTabbedPane{
 	public static int getStanje() {
 		return stanje;
 	}
-	
+	public void azurirajStudentiO() {
+		AbstractTableModelStudenti model=(AbstractTableModelStudenti)tabelaStudenti.getModel();
+		model.fireTableDataChanged();
+	}
+	public void azurirajProfesori() {
+		AbstractTableModelProfesor model=(AbstractTableModelProfesor) tabelaProfesori.getModel();
+		model.fireTableDataChanged();
+
+
+	}
 	public void azurirajPredmeti() {
 		// TODO Auto-generated method stub
 		//?????????
 		
-		//AbstractTableModelPredmeti model=(AbstractTableModelPredmeti) tabelaPredmeti.getModel();
+		AbstractTableModelPredmeti model=(AbstractTableModelPredmeti) tabelaPredmeti.getModel();
 		
-		//model.fireTableDataChanged();
+		model.fireTableDataChanged();
 		//tabelaPredmeti.revalidate();
 	}
 }

@@ -24,7 +24,6 @@ private static PredmetController instance = null;
 		
 		TabbedPane.getInstance().azurirajPredmeti();
 		
-		//ne uradi nista, ali ne pukne sad???????
 	}
 	public void editPredmet() {
 		//TODO: preraditi metodu da menja entitete

@@ -118,9 +118,9 @@ public class BazaStudenata {
 		case 8:
 			return Integer.toString(student.getTrenutnaGodina());
 		case 9:
-			if(student.getStatus() == Status.B)
+			if(student.getStatus() == StatusStudent.B)
 				return "Budzet";
-			else if (student.getStatus() == Status.S)
+			else if (student.getStatus() == StatusStudent.S)
 				return "Samofinansiranje";
 			else
 				return "Nepoznato";
@@ -131,7 +131,7 @@ public class BazaStudenata {
 		}
 	}
 	
-	public void dodajStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,Status status,double prosecnaO) {
+	public void dodajStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		this.studenti.add(new Student(ime,prezime,datumR,adresaS,kontaktT,email,brI,datumU,trenutnaG,status,prosecnaO));
 	}
 
@@ -144,7 +144,7 @@ public class BazaStudenata {
 		}
 	}
 
-	public void izmeniStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,Status status,double prosecnaO) {
+	public void izmeniStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		for (Student i : studenti) {
 			if (i.getBrIndex().equals(brI)) {
 				i.setIme(ime);

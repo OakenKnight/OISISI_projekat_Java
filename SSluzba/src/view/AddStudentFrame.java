@@ -24,15 +24,29 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.StudentiController;
+import model.StatusStudent;
+
 public class AddStudentFrame extends JFrame{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6074145523826069140L;
+	private static JTextField imePolje;
+	private static JTextField prezimePolje;
+	private static JTextField datumRodjenjaPolje;
+	private static JTextField datumUpisaPolje;
+	private static JTextField emailPolje;
+	private static JTextField adresaPolje ;
+	private static JTextField telefonPolje;
+	private static JTextField indexPolje;
+	private static JTextField prosekPolje;
+
+	private int god;
+	private String finansiranje;
+	private StatusStudent stats;
 	
-
-
 	public AddStudentFrame(){
 	   // setUndecorated(true);
 	    setLocation(800, 300);
@@ -45,7 +59,7 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel imeStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel imeLabela = new JLabel("Ime* ");
-		JTextField imePolje = new JTextField();
+		imePolje = new JTextField();
 		imePolje.setPreferredSize(new Dimension(200,25));
 		
 		imeStudenta.add(imeLabela);
@@ -53,7 +67,7 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel prezimeStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel prezimeLabela = new JLabel("Prezime* ");
-		JTextField prezimePolje = new JTextField();
+		prezimePolje = new JTextField();
 		prezimePolje.setPreferredSize(new Dimension(200,25));
 		
 		prezimeStudenta.add(prezimeLabela);
@@ -61,16 +75,17 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel datumRodjenjaStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel datumRodjenjaLabela = new JLabel("Datum rodjenja* ");
-		JTextField datumRodjenjaPolje = new JTextField();
+		datumRodjenjaPolje = new JTextField();
 		datumRodjenjaPolje.setPreferredSize(new Dimension(200,25));
 		
 		datumRodjenjaStudenta.add(datumRodjenjaLabela);
 		datumRodjenjaStudenta.add(datumRodjenjaPolje);
 		
 		
+		
 		JPanel adresaStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel adresaLabela = new JLabel("Adresa stanovanja* ");
-		JTextField adresaPolje = new JTextField();
+		adresaPolje= new JTextField();
 		adresaPolje.setPreferredSize(new Dimension(200,25));
 		
 		adresaStudenta.add(adresaLabela);
@@ -78,7 +93,7 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel telefonStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel telefonLabela = new JLabel("Broj telefona* ");
-		JTextField telefonPolje = new JTextField();
+		telefonPolje = new JTextField();
 		telefonPolje.setPreferredSize(new Dimension(200,25));
 		
 		telefonStudenta.add(telefonLabela);
@@ -86,16 +101,51 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel indexStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel indexLabela = new JLabel("Broj indeksa* ");
-		JTextField indexPolje = new JTextField();
+		indexPolje = new JTextField();
 		indexPolje.setPreferredSize(new Dimension(200,25));
 		
 		indexStudenta.add(indexLabela);
 		indexStudenta.add(indexPolje);
 		
+		JPanel emailStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel emailLabela = new JLabel("Email* ");
+		emailPolje = new JTextField();
+		emailPolje.setPreferredSize(new Dimension(200,25));
+		
+		emailStudenta.add(emailLabela);
+		emailStudenta.add(emailPolje);
+		
+		JPanel datumUpisaStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel datumUpisaStudentaLabela = new JLabel("Datum upisa* ");
+		datumUpisaPolje = new JTextField();
+		datumUpisaPolje.setPreferredSize(new Dimension(200,25));
+		
+		datumUpisaStudenta.add(datumUpisaStudentaLabela);
+		datumUpisaStudenta.add(datumUpisaPolje);
+		
+		
+		JPanel prosekStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel prosekLabela = new JLabel("Prosek* ");
+		prosekPolje = new JTextField();
+		prosekPolje.setPreferredSize(new Dimension(200,25));
+		
+		prosekStudenta.add(prosekLabela);
+		prosekStudenta.add(prosekPolje);
+		
 		JPanel trenutnaGodStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel trenutnaGodLabela = new JLabel("Trenutna godina studija* ");
 		String [] lista = {"I (prva)","II (druga)","III (treca)","IV (druga)"};
 		JComboBox<Object> godine = new JComboBox<Object>(lista);
+		String godina=godine.getSelectedItem().toString();
+		if(godina.equals("I (prva)")) {
+			god=1;
+		}else if(godina.equals("II (druga)")){
+			god=2;
+		}else if(godina.equals("III (treca)")){
+			god=3;
+		}else {
+			god=4;
+		}
 		trenutnaGodStudenta.add(trenutnaGodLabela);
 		trenutnaGodStudenta.add(godine);
 		
@@ -106,10 +156,17 @@ public class AddStudentFrame extends JFrame{
 		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
 		
 		ButtonGroup nacinFinansiranja = new ButtonGroup();
+		
 		nacinFinansiranja.add(budzet);
 		nacinFinansiranja.add(samofinansiranje);
 		prvoDugem.add(budzet);
 		drugoDugme.add(samofinansiranje);
+		
+		if(budzet.isSelected()==true) {
+			stats=StatusStudent.B;
+		}else {
+			stats=StatusStudent.S;
+		}
 		
 		JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton odustanak = new JButton("Odustanak");
@@ -162,24 +219,31 @@ public class AddStudentFrame extends JFrame{
 							}
 					}
 					
+					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
+			
 					setVisible(false);
 					dispose();
 				}
 				
 			}
 		});
+		
+		
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 
 		Box obrazac = Box.createVerticalBox();
-		obrazac.add(Box.createVerticalStrut(10));
+		obrazac.add(Box.createVerticalStrut(14));
 		obrazac.add(imeStudenta);
 		obrazac.add(prezimeStudenta);
 		obrazac.add(datumRodjenjaStudenta);
 		obrazac.add(adresaStudenta);
 		obrazac.add(telefonStudenta);
+		obrazac.add(datumUpisaStudenta);
+		obrazac.add(emailStudenta);
 		obrazac.add(indexStudenta);
 		obrazac.add(trenutnaGodStudenta);
+		obrazac.add(prosekStudenta);
 		obrazac.add(prvoDugem);
 		obrazac.add(drugoDugme);
 		obrazac.add(odustanakPotvrda);
@@ -191,7 +255,7 @@ public class AddStudentFrame extends JFrame{
 		
 		this.add(donjiPanel,BorderLayout.SOUTH);
 
-		setSize(400, 400);
+		setSize(400, 600);
 		setVisible(true);
 		
 	}

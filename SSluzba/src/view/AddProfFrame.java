@@ -16,10 +16,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfesorController;
+
 public class AddProfFrame extends JFrame{
 	/**
 	 * 
 	 */
+	public static JTextField imeTF;
+	public static JTextField prezimeTF;
+	public static JTextField datumTF;
+	public static JTextField telefonTF;
+	public static JTextField adresaTF;
+	public static JTextField kancelarijaTF;
+	public static JTextField blkTF;
+	public static JTextField emailTF;
+	public static String titula;
+	public static String zvanje;
+
 	private static final long serialVersionUID = 8592866674972968760L;
 
 	public AddProfFrame() {
@@ -33,7 +46,7 @@ public class AddProfFrame extends JFrame{
 		
 		JPanel imeP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel imeL=new JLabel("Ime: *");
-		JTextField imeTF=new JTextField();
+		imeTF=new JTextField();
 		imeTF.setPreferredSize(new Dimension(200,25));
 		
 		imeP.add(imeL);
@@ -42,7 +55,7 @@ public class AddProfFrame extends JFrame{
 		
 		JPanel prezimeP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel prezimeL=new JLabel("Prezime: *");
-		JTextField prezimeTF=new JTextField();
+		prezimeTF=new JTextField();
 		prezimeTF.setPreferredSize(new Dimension(200,25));
 		
 		prezimeP.add(prezimeL);
@@ -50,7 +63,7 @@ public class AddProfFrame extends JFrame{
 		
 		JPanel datumP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel datumL=new JLabel("Datum rodjenja: *");
-		JTextField datumTF=new JTextField();
+		 datumTF=new JTextField();
 		datumTF.setPreferredSize(new Dimension(200,25));
 		
 		datumP.add(datumL);
@@ -58,32 +71,34 @@ public class AddProfFrame extends JFrame{
 		
 		JPanel telefonP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel telefonL=new JLabel("Kontakt telefon: *");
-		JTextField telefonTF=new JTextField();
+		 telefonTF=new JTextField();
 		telefonTF.setPreferredSize(new Dimension(200,25));
 		
 		telefonP.add(telefonL);
 		telefonP.add(telefonTF);
 		
-		JPanel adresaP = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel adresaL= new JLabel("Adresa stanovanja* ");
-		JTextField adresaTF = new JTextField();
-		adresaTF.setPreferredSize(new Dimension(200,25));
-		
-		adresaP.add(adresaL);
-		adresaP.add(adresaTF);
-		
 		JPanel emailP = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel emailL=new JLabel("E-mail adresa: *");
-		JTextField emailTF=new JTextField();
+		JLabel emailL=new JLabel("Email: *");
+		 emailTF=new JTextField();
 		emailTF.setPreferredSize(new Dimension(200,25));
 		
 		emailP.add(emailL);
 		emailP.add(emailTF);
 		
 		
+		JPanel adresaP = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel adresaL= new JLabel("Adresa stanovanja* ");
+		 adresaTF = new JTextField();
+		adresaTF.setPreferredSize(new Dimension(200,25));
+		
+		adresaP.add(adresaL);
+		adresaP.add(adresaTF);
+
+		
+		
 		JPanel kancelarijaP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel kancelarijaL=new JLabel("Adresa kancelarije: *");
-		JTextField kancelarijaTF=new JTextField();
+		 kancelarijaTF=new JTextField();
 		kancelarijaTF.setPreferredSize(new Dimension(200,25));
 		
 		kancelarijaP.add(kancelarijaL);
@@ -91,7 +106,7 @@ public class AddProfFrame extends JFrame{
 		
 		JPanel blkP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel blkL=new JLabel("Broj licne karte: *");
-		JTextField  blkTF=new JTextField();
+		  blkTF=new JTextField();
 		blkTF.setPreferredSize(new Dimension(200,25));
 		
 		blkP.add(blkL);
@@ -101,7 +116,7 @@ public class AddProfFrame extends JFrame{
 		JLabel titulaL=new JLabel("Titula: *");
 		String[] titule= {"BSc","MSc","PhD"};
 		JComboBox<Object> tituleCB=new JComboBox<Object>(titule);
-				
+		 titula=(String)tituleCB.getSelectedItem();
 		titulaP.add(titulaL);
 		titulaP.add(tituleCB);
 		
@@ -109,7 +124,8 @@ public class AddProfFrame extends JFrame{
 		JLabel zvanjeL=new JLabel("Zvanje: *");
 		String[] zvanja= {"Saradnik u nastavi","Asistent","Docent","Vanredni profesor","Redovni profesor"};
 		JComboBox<Object> zvanjeCB=new JComboBox<Object>(zvanja);
-		
+		 zvanje=(String)zvanjeCB.getSelectedItem();
+
 		
 		zvanjeP.add(zvanjeL);
 		zvanjeP.add(zvanjeCB);
@@ -136,8 +152,11 @@ public class AddProfFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 					
 				}else {
+					
+					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
+					
 					setVisible(false);
-					dispose();
+					//dispose();
 				}
 				
 			}

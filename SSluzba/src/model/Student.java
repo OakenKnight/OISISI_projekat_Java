@@ -1,8 +1,5 @@
 package model;
 
-enum Status {
-	S , B, N;
-}
 
 public class Student {
 	private String ime;
@@ -14,7 +11,7 @@ public class Student {
 	private String brIndex;
 	private String datumUpisa;
 	private int trenutnaGodina;
-	private Status status;
+	private StatusStudent status;
 	private double prosecnaOcena;
 	//private ArrayList<Predmet> predmeti;
 	
@@ -28,11 +25,11 @@ public class Student {
 		this.brIndex = "Nepoznato";
 		this.datumUpisa = "Nepoznato";
 		this.trenutnaGodina = -1;
-		this.status = Status.N;
+		this.status = StatusStudent.N;
 		this.prosecnaOcena = 0.0;
 		// this.predmeti = new ArrayList<Predmeti> ;
 	}
-	public Student(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,Status status,double prosecnaO) {
+	public Student(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.datumRodjenja = datumR;
@@ -67,9 +64,9 @@ public class Student {
 	@Override
 	public String toString() {
 		String st = "";
-		if(this.status == Status.S){
+		if(this.status == StatusStudent.S){
 			st = "Samofinansiranje";
-		}else if(this.status == Status.B) {
+		}else if(this.status == StatusStudent.B) {
 			st = "Budzet";
 		}else {
 			st = "Nepoznato";
@@ -213,10 +210,10 @@ public class Student {
 	public void setTrenutnaGodina(int trenutnaGodina) {
 		this.trenutnaGodina = trenutnaGodina;
 	}
-	public Status getStatus() {
+	public StatusStudent getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(StatusStudent status) {
 		this.status = status;
 	}
 	public double getProsecnaOcena() {
