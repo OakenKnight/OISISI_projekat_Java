@@ -10,6 +10,9 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,14 +24,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.FocusPredmeti;
 import controller.PredmetController;
 
 public class AddSubjFrame extends JFrame{
 	public static JTextField spTF;
 	public static JTextField npTF;
 	public static String semestar;
-	public static String godina;
 	public static JTextField profesorTF;
+	private static int brojac;
 	public AddSubjFrame() {
 		
 
@@ -53,40 +57,90 @@ public class AddSubjFrame extends JFrame{
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		
+		FocusPredmeti fokus=new FocusPredmeti();
+
+		
 		
 		JLabel spL=new JLabel("Sifra predmeta: *");
 		spTF = new JTextField(10);
-		spTF.setName("txtSifra");
-		//spTF.addFocusListener(focusListener1);
+		spTF.setName("txt");
+		//spTF.addFocusListener(focusListener1);		
+		spTF.addFocusListener(fokus);
+
 		
 		JLabel npL=new JLabel("Naziv predmeta: *");
 		npTF = new JTextField(30);
-		npTF.setName("txtNaziv");
+		npTF.setName("txt");
+		npTF.addFocusListener(fokus);
+
 		//npTF.addFocusListener(focusListener2);
 	
+		
 		JLabel semestarL=new JLabel("Semestar: *");
 		String[] semestri= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
 		JComboBox semestarCB=new JComboBox(semestri);
 		semestar=(String)semestarCB.getSelectedItem();
+		
+		
 		JLabel godinaL=new JLabel("Godina: *");
 		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 		JComboBox godineCB=new JComboBox(godine);
-		godina=(String)godineCB.getSelectedItem();
+		String godina=(String)godineCB.getSelectedItem();
+		String god=godina + " godina";
+		
 		
 		JLabel profesorL=new JLabel("Profesor: *");
 		profesorTF=new JTextField(30);
+		profesorTF.setName("txt");
+		profesorTF.addFocusListener(fokus);
 		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
 		okBtn.addActionListener(new ActionListener() {
-			
+		String sifraReg="[a-zA-Z0-9]";
+		String regex1="[a-zA-Z ]+[0-9]";
+		String regex2="[a-zA-Z ]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO dodaj predmet i ugasi taj window
 				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
-				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);
+				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
+				}else if(spTF.getText().matches(sifraReg)) {
+					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);
+					
+				} else if(npTF.getText().matches(regex1)==false) {
+					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime predmeta","",JOptionPane.ERROR_MESSAGE);
+				}else if(profesorTF.getText().matches(regex2)==false){
+					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+					BufferedWriter out  = null;
+					try {
+						out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt",true));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					try {
+						out.write("\n");
+						out.write(spTF.getText()+"|"+npTF.getText()+"|"+profesorTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText()+"|");
+
+					} catch (IOException e) {
+						
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}finally {
+						if(out != null)
+							try {
+								out.close();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+					}
+					
+					
+					
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,god,profesorTF.getText());
 					
 					unosPredmeta.setVisible(false);
 					
