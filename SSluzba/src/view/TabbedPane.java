@@ -32,7 +32,7 @@ public class TabbedPane extends JTabbedPane{
 		}
 		return instance;
 	}
-	public TabbedPane() {
+	private TabbedPane() {
 		JPanel studentPanel=new JPanel();
 		JPanel profPanel=new JPanel();
 		JPanel subjPanel=new JPanel();
@@ -50,9 +50,9 @@ public class TabbedPane extends JTabbedPane{
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
 		
+		System.out.println(this.getSelectedIndex());
 		
-		
-		addTab("Studenti",skrolStudenti);
+		add("Studenti",skrolStudenti);
 		add("Profesori",skrolProfesori);
 		add("Predmeti",skrolPredmeti);
 		
@@ -60,16 +60,9 @@ public class TabbedPane extends JTabbedPane{
 		tabelaProfesori.setAutoCreateRowSorter(true);
 		tabelaPredmeti.setAutoCreateRowSorter(true);
 		
-		ChangeListener changeListener = new ChangeListener() {
-			  public void stateChanged(ChangeEvent changeEvent) {
-			    JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-			    stanje = sourceTabbedPane.getSelectedIndex();
-			    //System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(stanje));
-			  }
-			};
-			addChangeListener(changeListener);
+		
 	}
-	public static int getStanje() {
+	public int getStanje() {
 		return stanje;
 	}
 	public void azurirajStudentiO() {

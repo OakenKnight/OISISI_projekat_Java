@@ -29,7 +29,16 @@ public class Toolbar extends JToolBar{
 	 */
 	private static final long serialVersionUID = -6204353317907193077L;
 
-	public Toolbar(){
+	private static Toolbar instance = null;
+	private JButton btnNewStudentToSubject;
+	private JButton btnNewProfToSubject;
+	public static Toolbar getInstance() {
+		if (instance == null) {
+			instance = new Toolbar();
+		}
+		return instance;
+	}
+	private Toolbar(){
 		
 		super(JToolBar.HORIZONTAL);
 		setFloatable(false);
@@ -88,12 +97,12 @@ public class Toolbar extends JToolBar{
 		});
 		*/
 		//addSeparator();
-		JButton btnNewStudentToSubject= new JButton();
+		btnNewStudentToSubject= new JButton();
 		btnNewStudentToSubject.setToolTipText("Make new...");
 		btnNewStudentToSubject.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewStudentToSubject);
 
-		btnNewStudentToSubject.setVisible(true);
+		btnNewStudentToSubject.setVisible(false);
 		//?????????????????????????????????????????????
 		//zasto fakin copy paste ne radi????????????
 	//	btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
@@ -102,30 +111,18 @@ public class Toolbar extends JToolBar{
 
 
 		
-		JButton btnNewProfToSubject= new JButton();
+		btnNewProfToSubject= new JButton();
 		btnNewProfToSubject.setToolTipText("Make new...");
 		btnNewProfToSubject.setIcon(new ImageIcon("images/add-user-1.png"));
 		add(btnNewProfToSubject);
-		btnNewProfToSubject.setVisible(true);
+		
+		btnNewProfToSubject.setVisible(false);
 	//	btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 
 		
 		
-		if(TabbedPane.getInstance().getStanje()==2) {
 		
-		btnNewStudentToSubject.setVisible(true);		
-		
-		btnNewProfToSubject.setVisible(true);
-		
-		}else {
-			
-			btnNewStudentToSubject.setVisible(false);
-
-			btnNewProfToSubject.setVisible(false);
-
-			
-		}
 		JTextField searchEntityTextField=new JTextField(50);
 		//Dimension dim= new Dimension(30,20);
 		searchEntityTextField.setPreferredSize(new Dimension(90,25));
@@ -150,5 +147,11 @@ public class Toolbar extends JToolBar{
 			}
 		});
 		
+	}
+	public void setBtnNewStudentToSubject(boolean b) {
+		this.btnNewStudentToSubject.setVisible(b);
+	}
+	public void setBtnNewProfToSubject(boolean b) {
+		this.btnNewProfToSubject.setVisible(b);
 	}
 }

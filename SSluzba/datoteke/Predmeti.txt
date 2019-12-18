@@ -1,7 +1,6 @@
 E201RA|Matematicka Analiza 1|I|Prva godina|Nebojsa Ralevic
 E202RA|Arhitektura racunara|II|Prva godina|Miroslav Hajdukovic
 E203RA|Objektno Programiranje|III|Druga godina|Aleksandar Kupusinac
-11|Analiza 1|Miroslav Hajdukovic|I (Prvi)|Prva|Miroslav Hajdukovic|
-123|Operativni Sistemi|Hajduk|I (Prvi)|Prva|Hajduk|
-SAUIG51254|Operativni Sistemi 1|Hajducina|I (Prvi)|Prva|Hajducina|
-o8712g4|Hajdukovogovno|Ajduk|I (Prvi)|Prva|Ajduk|
+E211RA|Analiza 1|I|Prva godina|Miroslav Hajdukovic
+E2123RA|Operativni Sistemi|I|Prva godina|Hajduk
+SAUIG51254|Operativni Sistemi 1|I|Prva godina|Hajducina

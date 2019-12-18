@@ -38,9 +38,9 @@ public class EntityController {
 
 	public void addEntity() {
 		//TODO: ovo je samo neka ideja za taj iskacuci meni za predmete
-		if(TabbedPane.getInstance().getStanje()==1) {
+		if(TabbedPane.getInstance().getSelectedIndex()==1) {
 			AddProfFrame apf=new AddProfFrame();
-		}else if(TabbedPane.getInstance().getStanje()==2) {
+		}else if(TabbedPane.getInstance().getSelectedIndex()==2) {
 			AddSubjFrame asf=new AddSubjFrame();
 		}
 		
