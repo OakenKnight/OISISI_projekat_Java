@@ -98,20 +98,20 @@ public class AddSubjFrame extends JFrame{
 		okBtn.setToolTipText("Potvrdi");
 		okBtn.addActionListener(new ActionListener() {
 		String sifraReg="[a-zA-Z0-9]";
-		String regex1="[a-zA-Z ]+[0-9]";
+		String regex1="[a-zA-Z ]*[0-9]*";
 		String regex2="[a-zA-Z ]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
 				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
 				}else if(spTF.getText().matches(sifraReg)) {
-					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);
-					
+					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
 					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime predmeta","",JOptionPane.ERROR_MESSAGE);
 				}else if(profesorTF.getText().matches(regex2)==false){
 					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
+					
 					BufferedWriter out  = null;
 					try {
 						out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt",true));

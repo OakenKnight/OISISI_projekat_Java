@@ -147,6 +147,7 @@ public class AddProfFrame extends JFrame{
 		String[] titule= {"BSc","MSc","PhD"};
 		JComboBox<Object> tituleCB=new JComboBox<Object>(titule);
 		titula=(String)tituleCB.getSelectedItem();
+		
 		titulaP.add(titulaL);
 		titulaP.add(tituleCB);
 		
@@ -213,7 +214,7 @@ public class AddProfFrame extends JFrame{
 					
 					try {
 						out.write("\n");
-						out.write(imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+telefonTF.getText()+"|"+emailTF.getText()+"|"+kancelarijaTF.getText()+"|");
+						out.write(imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+telefonTF.getText()+"|"+emailTF.getText()+"|"+kancelarijaTF.getText()+"|"+blkTF.getText()+"|"+titula+"|"+zvanje);
 
 					} catch (IOException e) {
 						
