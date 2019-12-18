@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.FocusStudenti;
 import controller.StudentiController;
 import model.StatusStudent;
 
@@ -57,10 +58,14 @@ public class AddStudentFrame extends JFrame{
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		
+		FocusStudenti fokus=new FocusStudenti();
+		
 		JPanel imeStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel imeLabela = new JLabel("Ime* ");
 		imePolje = new JTextField();
 		imePolje.setPreferredSize(new Dimension(200,25));
+		imePolje.setName("txt");
+		imePolje.addFocusListener(fokus);
 		
 		imeStudenta.add(imeLabela);
 		imeStudenta.add(imePolje);
@@ -69,6 +74,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel prezimeLabela = new JLabel("Prezime* ");
 		prezimePolje = new JTextField();
 		prezimePolje.setPreferredSize(new Dimension(200,25));
+		prezimePolje.setName("txt");
+		prezimePolje.addFocusListener(fokus);
 		
 		prezimeStudenta.add(prezimeLabela);
 		prezimeStudenta.add(prezimePolje);
@@ -77,6 +84,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel datumRodjenjaLabela = new JLabel("Datum rodjenja* ");
 		datumRodjenjaPolje = new JTextField();
 		datumRodjenjaPolje.setPreferredSize(new Dimension(200,25));
+		datumRodjenjaPolje.setName("txt");
+		datumRodjenjaPolje.addFocusListener(fokus);
 		
 		datumRodjenjaStudenta.add(datumRodjenjaLabela);
 		datumRodjenjaStudenta.add(datumRodjenjaPolje);
@@ -87,6 +96,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel adresaLabela = new JLabel("Adresa stanovanja* ");
 		adresaPolje= new JTextField();
 		adresaPolje.setPreferredSize(new Dimension(200,25));
+		adresaPolje.setName("txt");
+		adresaPolje.addFocusListener(fokus);
 		
 		adresaStudenta.add(adresaLabela);
 		adresaStudenta.add(adresaPolje);
@@ -95,6 +106,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel telefonLabela = new JLabel("Broj telefona* ");
 		telefonPolje = new JTextField();
 		telefonPolje.setPreferredSize(new Dimension(200,25));
+		telefonPolje.setName("txt");
+		telefonPolje.addFocusListener(fokus);
 		
 		telefonStudenta.add(telefonLabela);
 		telefonStudenta.add(telefonPolje);
@@ -103,6 +116,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel indexLabela = new JLabel("Broj indeksa* ");
 		indexPolje = new JTextField();
 		indexPolje.setPreferredSize(new Dimension(200,25));
+		indexPolje.setName("txt");
+		indexPolje.addFocusListener(fokus);
 		
 		indexStudenta.add(indexLabela);
 		indexStudenta.add(indexPolje);
@@ -111,6 +126,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel emailLabela = new JLabel("Email* ");
 		emailPolje = new JTextField();
 		emailPolje.setPreferredSize(new Dimension(200,25));
+		emailPolje.setName("txt");
+		emailPolje.addFocusListener(fokus);
 		
 		emailStudenta.add(emailLabela);
 		emailStudenta.add(emailPolje);
@@ -119,6 +136,8 @@ public class AddStudentFrame extends JFrame{
 		JLabel datumUpisaStudentaLabela = new JLabel("Datum upisa* ");
 		datumUpisaPolje = new JTextField();
 		datumUpisaPolje.setPreferredSize(new Dimension(200,25));
+		datumUpisaPolje.setName("txt");
+		datumUpisaPolje.addFocusListener(fokus);
 		
 		datumUpisaStudenta.add(datumUpisaStudentaLabela);
 		datumUpisaStudenta.add(datumUpisaPolje);
@@ -128,6 +147,9 @@ public class AddStudentFrame extends JFrame{
 		JLabel prosekLabela = new JLabel("Prosek* ");
 		prosekPolje = new JTextField();
 		prosekPolje.setPreferredSize(new Dimension(200,25));
+		prosekPolje.setName("txt");
+		prosekPolje.addFocusListener(fokus);
+		
 		
 		prosekStudenta.add(prosekLabela);
 		prosekStudenta.add(prosekPolje);
@@ -184,13 +206,36 @@ public class AddStudentFrame extends JFrame{
 		
 		
 		potvrda.addActionListener(new ActionListener() {
-			
+			String imeReg="[A-Z][a-z]+";
+			String adresaReg="[a-zA-Z ]*[0-9][a-z]*";
+			String telReg="[0-9]+";
+			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
+			String idxReg="[a-z]+[0-9]+/[0-9]+";
+			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || 
-						telefonPolje.getText().equals("") || indexPolje.getText().equals("")  ) {
+						telefonPolje.getText().equals("") || indexPolje.getText().equals("") || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 					
+				}else if(!imePolje.getText().trim().matches(imeReg)){
+					JOptionPane.showMessageDialog(null, "Ime nije uneseno kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!prezimePolje.getText().trim().matches(imeReg)){
+					JOptionPane.showMessageDialog(null, "Prezime nije uneseno kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!proveriDatum(datumRodjenjaPolje.getText())){
+					JOptionPane.showMessageDialog(null, "Datum rodjenja nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!adresaPolje.getText().trim().matches(adresaReg)) {
+					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!telefonPolje.getText().matches(telReg)) {
+					JOptionPane.showMessageDialog(null, "Telefon nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!emailPolje.getText().matches(emailReg)) {
+					JOptionPane.showMessageDialog(null, "Email nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!indexPolje.getText().matches(idxReg)) {
+					JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!proveriDatum(datumUpisaPolje.getText())){
+					JOptionPane.showMessageDialog(null, "Datum upisa nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!proveriProsek(prosekPolje.getText())){
+					JOptionPane.showMessageDialog(null, "Prosek nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					
 					BufferedWriter out  = null;
@@ -226,6 +271,66 @@ public class AddStudentFrame extends JFrame{
 				}
 				
 			}
+			/*
+			 * ne radi mi ovaj proveriProsek pa cu staviti da vraca true
+			*/
+			private boolean proveriProsek(String text) {
+				// TODO Auto-generated method stub
+				String prosekReg="[0-9][0-9].[0-9][0-9]";
+				if(text.matches(prosekReg)) {
+					if(text.isEmpty()==false) {
+						Double ocena=Double.parseDouble(text);
+						if(ocena>10.0 || ocena<6.0) {
+							return false;
+						}else
+							return true;
+					}else {
+						return false;
+					}
+				}
+				
+				return true;
+				
+			}
+			
+			private boolean proveriDatum(String text) {
+				// TODO Auto-generated method stub
+				if(!text.isEmpty()) {
+					
+
+					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.$";
+					
+					if(!text.matches(regexdatum)) {
+						return false;
+					}else {
+						String[] datumi=text.split("\\.");
+						int dan=Integer.parseInt(datumi[0]);
+						int mesec=Integer.parseInt(datumi[1]);
+
+						if(dan<1) {
+							return false;
+						}else if(mesec>12) {
+							return false;
+						}else if(mesec<1) {
+							return false;
+						}else if(mesec==2) {
+							if(dan>29 ) {
+								return false;
+							}
+						}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
+							if(dan>31) {
+								return false;
+							}
+						}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
+							if(dan>30) {
+								return false;
+							}
+						}
+						return true;
+						}
+					}
+				return false;
+				}
 		});
 		
 		
