@@ -23,8 +23,9 @@ private static StudentiController instance = null;
 		TabbedPane.getInstance().azurirajStudentiO();
 		//unosStudenata.setVisible(true);
 	}
-	public void editStudent() {
-		//TODO: preraditi metodu da menja entitete
+	public void editStudent(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
+		BazaStudenata.getInstance().izmeniStudenta(ime, prezime, datumR, adresaS, kontaktT, email, brI, datumU, trenutnaG, status, prosecnaO);
+		TabbedPane.getInstance().azurirajStudentiO();
 	}
 	public void removeStudent() {
 		//TODO: preraditi metodu da brise entitete

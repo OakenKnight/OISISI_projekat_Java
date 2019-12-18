@@ -44,7 +44,7 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-	/*	String sledeci = null;
+		String sledeci = null;
 		String [] kolone = null;
 		BufferedReader in = null;
 		try {
@@ -56,21 +56,21 @@ public class BazaStudenata {
 		try {
 			while((sledeci = in.readLine()) != null) {
 				kolone = sledeci.split("\\|");
-				Status s;
+				StatusStudent s;
 
-				if(kolone[9].equals("Status.B"))
-					s = Status.B;
-				else if (kolone[9].equals("Status.S"))
-					s = Status.S;
+				if(kolone[9].equals("B"))
+					s = StatusStudent.B;
+				else if (kolone[9].equals("S"))
+					s = StatusStudent.S;
 				else
-					s = Status.N;
+					s = StatusStudent.N;
 				studenti.add(new Student(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4],kolone[5],kolone[6],kolone[7],Integer.parseInt(kolone[8]),s,Double.parseDouble(kolone[10])));
 			}
 			in.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
 

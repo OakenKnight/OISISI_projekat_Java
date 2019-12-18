@@ -4,14 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.InputStreamReader;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -25,13 +28,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import controller.StudentiController;
+import model.BazaStudenata;
 import model.StatusStudent;
+import model.Student;
 
-public class AddStudentFrame extends JFrame{
-
-	/**
-	 * 
-	 */
+public class EditStudFrame extends JFrame{
 	private static final long serialVersionUID = 6074145523826069140L;
 	private static JTextField imePolje;
 	private static JTextField prezimePolje;
@@ -42,15 +43,18 @@ public class AddStudentFrame extends JFrame{
 	private static JTextField telefonPolje;
 	private static JTextField indexPolje;
 	private static JTextField prosekPolje;
+	private static String studentPreIzmene;
 
 	private int god;
-	private String finansiranje;
 	private StatusStudent stats;
 	
-	public AddStudentFrame(){
+	public EditStudFrame() {
+		// IZMENA NE FUNKCIONISE BAS UVEK NA NIVOU DATOTEKE - veze nemam sta je, nekad hoce nekad nece
+		// RUCNO UNETI STUDENTI SE NE MOGU MENJATI NA NIVOU DATOTEKE 
+		  
 	   // setUndecorated(true);
 	    setLocation(800, 300);
-		setTitle("Dodavanje studenta");
+		setTitle("Izmena studenta");
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout());
@@ -80,8 +84,6 @@ public class AddStudentFrame extends JFrame{
 		
 		datumRodjenjaStudenta.add(datumRodjenjaLabela);
 		datumRodjenjaStudenta.add(datumRodjenjaPolje);
-		
-		
 		
 		JPanel adresaStudenta = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel adresaLabela = new JLabel("Adresa stanovanja* ");
@@ -143,7 +145,7 @@ public class AddStudentFrame extends JFrame{
 		
 		JPanel prvoDugem = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel drugoDugme = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JRadioButton budzet = new JRadioButton("Budzet",true);
+		JRadioButton budzet = new JRadioButton("Budzet");
 		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
 		
 		ButtonGroup nacinFinansiranja = new ButtonGroup();
@@ -179,6 +181,7 @@ public class AddStudentFrame extends JFrame{
 					
 				}else {
 					
+					
 					if(budzet.isSelected()) {
 						stats=StatusStudent.B;
 					}else {
@@ -196,16 +199,41 @@ public class AddStudentFrame extends JFrame{
 						god=4;
 					}
 					
+					String sledeci;
+					String sve = "";
+					BufferedReader in = null;
+					try {
+						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Studenti.txt")));
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						while((sledeci = in.readLine()) != null) {
+							sledeci.trim();
+							if(sledeci.equals(studentPreIzmene)) {
+								sve += imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText()+"\n";
+								continue;
+							}
+							sve += sledeci+"\n";
+						}
+						in.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
 					BufferedWriter out  = null;
 					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Studenti.txt",true));
+						out = new BufferedWriter( new FileWriter("datoteke/Studenti.txt"));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
 					try {
-						out.write(imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText()+"\n");
+						out.write(sve);
 
 					} catch (IOException e) {
 						
@@ -220,17 +248,59 @@ public class AddStudentFrame extends JFrame{
 								e.printStackTrace();
 							}
 					}
-					
-					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
-			
+					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
 					setVisible(false);
 					dispose();
 				}
 				
+
+				
 			}
 		});
+		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
+		imePolje.setText(st.getIme());
+		prezimePolje.setText(st.getPrezime());
+		datumRodjenjaPolje.setText(st.getDatumRodjenja());
+		adresaPolje.setText(st.getAdresaStanovanja());
+		telefonPolje.setText(st.getKontaktTel());
+		emailPolje.setText(st.getEmail());
+		indexPolje.setText(st.getBrIndex());
+		datumUpisaPolje.setText(st.getDatumUpisa());
+		prosekPolje.setText(String.valueOf(st.getProsecnaOcena()));
+		if(st.getTrenutnaGodina() == 1)
+			godine.setSelectedItem("I (prva)");
+		else if(st.getTrenutnaGodina() == 2)
+			godine.setSelectedItem("II (druga)");
+		else if(st.getTrenutnaGodina() == 3)
+			godine.setSelectedItem("III (treca)");
+		else
+			godine.setSelectedItem("IV (cetvrta)");
 		
 		
+		if(st.getStatus() == StatusStudent.B)
+			budzet.setSelected(true);
+		else
+			samofinansiranje.setSelected(true);
+		
+		if(budzet.isSelected()) {
+			stats=StatusStudent.B;
+		}else {
+			stats=StatusStudent.S;
+		}
+		
+		String godina = godine.getSelectedItem().toString();
+		if(godina.equals("I (prva)")) {
+			god=1;
+		}else if(godina.equals("II (druga)")){
+			god=2;
+		}else if(godina.equals("III (treca)")){
+			god=3;
+		}else {
+			god=4;
+		}
+		
+		studentPreIzmene = imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText();
+
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 
@@ -261,6 +331,4 @@ public class AddStudentFrame extends JFrame{
 		setVisible(true);
 		
 	}
-	
-	
 }

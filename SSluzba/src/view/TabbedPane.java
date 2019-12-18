@@ -59,7 +59,6 @@ public class TabbedPane extends JTabbedPane{
 		tabelaStudenti.setAutoCreateRowSorter(true);
 		tabelaProfesori.setAutoCreateRowSorter(true);
 		tabelaPredmeti.setAutoCreateRowSorter(true);
-
 		
 		ChangeListener changeListener = new ChangeListener() {
 			  public void stateChanged(ChangeEvent changeEvent) {
@@ -91,5 +90,9 @@ public class TabbedPane extends JTabbedPane{
 		
 		model.fireTableDataChanged();
 		//tabelaPredmeti.revalidate();
+	}
+	public StudentiJTable getTabelatudenti() {
+		return tabelaStudenti;
+		
 	}
 }
