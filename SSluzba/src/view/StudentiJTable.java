@@ -29,7 +29,7 @@ public class StudentiJTable extends JTable{
 		return instance;
 	}
 	
-	public  StudentiJTable() {
+	private  StudentiJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

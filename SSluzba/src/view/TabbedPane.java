@@ -32,27 +32,27 @@ public class TabbedPane extends JTabbedPane{
 		}
 		return instance;
 	}
-	public TabbedPane() {
+	private TabbedPane() {
 		JPanel studentPanel=new JPanel();
 		JPanel profPanel=new JPanel();
 		JPanel subjPanel=new JPanel();
 		
-		tabelaPredmeti=new PredmetiJTable();
+		tabelaPredmeti=PredmetiJTable.getInstance();
 		JScrollPane skrolPredmeti=new JScrollPane(tabelaPredmeti);
 		
-		tabelaProfesori=new ProfesoriJTable();
+		tabelaProfesori=ProfesoriJTable.getInstance();
 		JScrollPane skrolProfesori=new JScrollPane(tabelaProfesori);
 
-		tabelaStudenti=new StudentiJTable();
+		tabelaStudenti=StudentiJTable.getInstance();
 		JScrollPane skrolStudenti=new JScrollPane(tabelaStudenti);
 		
 		JLabel studLabel=new JLabel("nesto1");
 		JLabel profLabel=new JLabel("nesto2");
 		JLabel subjLabel=new JLabel("nesto3");
 		
+		System.out.println(this.getSelectedIndex());
 		
-		
-		addTab("Studenti",skrolStudenti);
+		add("Studenti",skrolStudenti);
 		add("Profesori",skrolProfesori);
 		add("Predmeti",skrolPredmeti);
 		
@@ -60,16 +60,9 @@ public class TabbedPane extends JTabbedPane{
 		tabelaProfesori.setAutoCreateRowSorter(true);
 		tabelaPredmeti.setAutoCreateRowSorter(true);
 		
-		ChangeListener changeListener = new ChangeListener() {
-			  public void stateChanged(ChangeEvent changeEvent) {
-			    JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-			    stanje = sourceTabbedPane.getSelectedIndex();
-			    //System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(stanje));
-			  }
-			};
-			addChangeListener(changeListener);
+		
 	}
-	public static int getStanje() {
+	public int getStanje() {
 		return stanje;
 	}
 	public void azurirajStudentiO() {

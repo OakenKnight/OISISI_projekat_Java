@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.JFrame;
 
+import model.BazaProfesori;
 import model.BazaStudenata;
 import model.StatusStudent;
 import model.Student;

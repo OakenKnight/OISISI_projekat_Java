@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import controller.WindowListeners;
 
@@ -43,7 +45,7 @@ public class MainFrame extends JFrame{
 		Menu menu = new Menu();
 		this.setJMenuBar(menu);
 		
-		Toolbar toolbar=new Toolbar();
+		Toolbar toolbar=Toolbar.getInstance();
 		add(toolbar,BorderLayout.NORTH);
 		
 		//Pravljenje STATUS BARA
@@ -67,11 +69,26 @@ public class MainFrame extends JFrame{
 		
 	//	add(panel,BorderLayout.SOUTH);
 		
-		TabbedPane tabs=new TabbedPane();
-		
+		//TabbedPane tabs=new TabbedPane();
+		TabbedPane tabs = TabbedPane.getInstance();
 		add(tabs, BorderLayout.CENTER);
 				
-		
+		TabbedPane.getInstance().addChangeListener(new ChangeListener() {
+			
+			 public void stateChanged(ChangeEvent changeEvent) {
+				    //JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
+				    int state = TabbedPane.getInstance().getSelectedIndex();
+				    System.out.println(state);
+				    if(state==2) {
+				    	Toolbar.getInstance().setBtnNewStudentToSubject(true);
+				    	Toolbar.getInstance().setBtnNewProfToSubject(true);
+				    }else {
+				    	
+				    	Toolbar.getInstance().setBtnNewStudentToSubject(false);
+				    	Toolbar.getInstance().setBtnNewProfToSubject(false);
+				    }
+			 }
+		});
 
 	}
 	

@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -29,10 +34,31 @@ public class BazaPredmeta {
 	}
 	
 	private void initPredmete() {
+		
+		
+		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("E201RA","Matematicka Analiza 1","I", "Prva godina","dr. Nebojsa Ralevic"));
-		predmeti.add(new Predmet("E202RA","Arhitektura racunara", "II", "Prva godina", "dr. Miroslav Hajdukovic"));
-		predmeti.add(new Predmet("E203RA","Objektno Programiranje", "III", "Druga godina","dr. Aleksandar Kupusinac"));
+		
+		
+		String sledeci=null;
+		String[] kolone=null;
+		BufferedReader in=null;
+		
+		try {
+			in=new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Predmeti.txt")));
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			while((sledeci=in.readLine())!=null) {
+				kolone=sledeci.split("\\|");
+				predmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
+			}
+			in.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public ArrayList<Predmet> getPredmeti(){
@@ -84,8 +110,16 @@ public class BazaPredmeta {
 			}
 		}
 	}
-
+	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
+		for(Predmet p:predmeti) {
+			if(p.getSifra_predmeta().equals(sifra)) {
+				p.setSifra_predmeta(sifra);
+				p.setNaziv(naziv);
+				p.setSemestar(semestar);
+				p.setGodina(godina);
+				p.setPredavac(profesor);
+			}
+		}
+	}
 	
-	
-	//TODO: uraditi editPredmet
 }

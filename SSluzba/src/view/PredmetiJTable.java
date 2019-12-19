@@ -9,6 +9,7 @@ import javax.swing.table.TableCellRenderer;
 //TODO: treba da se implementira renderer tabele
 public class PredmetiJTable extends JTable{
 	private static PredmetiJTable instance = null;
+	public static int selektovanRed;
 
 	public static PredmetiJTable getInstance() {
 		if (instance == null) {
@@ -16,8 +17,10 @@ public class PredmetiJTable extends JTable{
 		}
 		return instance;
 	}
+
+
 	
-	public PredmetiJTable() {
+	private PredmetiJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -29,6 +32,7 @@ public class PredmetiJTable extends JTable{
 		public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 			Component c = super.prepareRenderer(renderer, row, column);
 			// selektovani red ce imati drugaciju boju od ostalih
+			selektovanRed = this.getSelectedRow();
 			if (isRowSelected(row)) {
 				c.setBackground(Color.LIGHT_GRAY);
 			} else {

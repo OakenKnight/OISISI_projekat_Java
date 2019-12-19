@@ -6,9 +6,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -21,8 +25,10 @@ import javax.swing.JTextField;
 
 import controller.FocusProfesori;
 import controller.ProfesorController;
+import model.BazaProfesori;
+import model.Profesor;
 
-public class AddProfFrame extends JFrame{
+public class EditProfFrame extends JFrame{
 	/**
 	 * 
 	 */
@@ -36,10 +42,11 @@ public class AddProfFrame extends JFrame{
 	public static JTextField emailTF;
 	public static String titula;
 	public static String zvanje;
+	private static String ProfPreIzmene;
 
 	private static final long serialVersionUID = 8592866674972968760L;
 
-	public AddProfFrame() {
+	public EditProfFrame() {
 		
 	    setLocation(800, 300);
 		setTitle("Dodavanje profesora");
@@ -179,7 +186,7 @@ public class AddProfFrame extends JFrame{
 			String adresaReg="[a-zA-Z ]*[0-9][a-z]*";
 			String telReg="[0-9]+";
 			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String kancReg="[0-9]+[a-zA-Z]+";
+			String kancReg="[0-9]+[a-zA-Z]*";
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -204,17 +211,42 @@ public class AddProfFrame extends JFrame{
 				}else if(!blkTF.getText().matches(blkReg)){
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					BufferedWriter out  = null;
+					
+					String sledeci;
+					String sve="";
+					
+					BufferedReader in=null;
+					
 					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt",true));
+						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						while((sledeci = in.readLine()) != null) {
+							sledeci.trim();
+							if(sledeci.equals(ProfPreIzmene)) {
+								sve += imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+ telefonTF.getText()+"|"+ emailTF.getText()+"|"+ kancelarijaTF.getText()+"|"+ blkTF.getText()+"|"+ titula+"|"+ zvanje+"\n";
+								continue;
+							}
+							sve += sledeci+"\n";
+						}
+						in.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					BufferedWriter out = null;
+					try {
+						out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt"));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
 					try {
-						out.write("\n");
-						out.write(imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+telefonTF.getText()+"|"+emailTF.getText()+"|"+kancelarijaTF.getText()+"|"+blkTF.getText()+"|"+titula+"|"+zvanje);
+						out.write(sve);
 
 					} catch (IOException e) {
 						
@@ -229,10 +261,10 @@ public class AddProfFrame extends JFrame{
 								e.printStackTrace();
 							}
 					}
-					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
+					ProfesorController.getInstance().editProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);
-					//dispose();
+					dispose();
 				}
 				
 			}
@@ -275,6 +307,19 @@ public class AddProfFrame extends JFrame{
 				return false;
 				}
 		});
+		Profesor prof=new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().selektovanRed));
+		imeTF.setText(prof.getIme());
+		prezimeTF.setText(prof.getPrezime());
+		datumTF.setText(prof.getDatum());
+		adresaTF.setText(prof.getAdresa_stanovanja());
+		telefonTF.setText(prof.getKontakt_telefon());
+		emailTF.setText(prof.getEmail_adresa());
+		kancelarijaTF.setText(prof.getAdresa_kancelarije());
+		blkTF.setText(prof.getBLK());
+		titula=prof.getTitula();
+		zvanje=prof.getZvanje();
+		ProfPreIzmene = imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+ telefonTF.getText()+"|"+ emailTF.getText()+"|"+ kancelarijaTF.getText()+"|"+ blkTF.getText()+"|"+ titula+"|"+ zvanje;
+
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 

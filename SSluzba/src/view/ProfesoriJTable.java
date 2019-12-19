@@ -23,7 +23,11 @@ public class ProfesoriJTable extends JTable{
 		}
 		return instance;
 	}
-	public ProfesoriJTable() {
+
+
+	public static int  selektovanRed;
+;
+	private ProfesoriJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -34,7 +38,7 @@ public class ProfesoriJTable extends JTable{
 		@Override
 		public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 			Component c = super.prepareRenderer(renderer, row, column);
-			// selektovani red ce imati drugaciju boju od ostalih
+			selektovanRed = this.getSelectedRow();
 			if (isRowSelected(row)) {
 				c.setBackground(Color.LIGHT_GRAY);
 			} else {
