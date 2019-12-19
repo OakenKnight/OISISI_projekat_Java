@@ -49,7 +49,7 @@ public class EditStudFrame extends JFrame{
 	private StatusStudent stats;
 	
 	public EditStudFrame() {
-		// IZMENA NE FUNKCIONISE BAS UVEK NA NIVOU DATOTEKE - veze nemam sta je, nekad hoce nekad nece
+		
 		// RUCNO UNETI STUDENTI SE NE MOGU MENJATI NA NIVOU DATOTEKE 
 		  
 	   // setUndecorated(true);
@@ -213,7 +213,7 @@ public class EditStudFrame extends JFrame{
 						while((sledeci = in.readLine()) != null) {
 							sledeci.trim();
 							if(sledeci.equals(studentPreIzmene)) {
-								sve += imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText()+"\n";
+								sve += imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim()+"\n";
 								continue;
 							}
 							sve += sledeci+"\n";
@@ -301,8 +301,7 @@ public class EditStudFrame extends JFrame{
 			god=4;
 		}
 		
-		studentPreIzmene = imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText();
-
+		studentPreIzmene = imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim();
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 

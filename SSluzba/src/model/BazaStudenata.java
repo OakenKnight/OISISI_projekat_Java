@@ -55,6 +55,9 @@ public class BazaStudenata {
 		}
 		try {
 			while((sledeci = in.readLine()) != null) {
+				if(sledeci.equals("")) {
+					continue;
+				}
 				kolone = sledeci.split("\\|");
 				StatusStudent s;
 

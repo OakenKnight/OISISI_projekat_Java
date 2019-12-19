@@ -51,6 +51,9 @@ public class BazaPredmeta {
 		}
 		try {
 			while((sledeci=in.readLine())!=null) {
+				if(sledeci.equals("")) {
+					continue;
+				}
 				kolone=sledeci.split("\\|");
 				predmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
 			}

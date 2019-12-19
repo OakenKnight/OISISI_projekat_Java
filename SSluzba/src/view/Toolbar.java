@@ -4,17 +4,24 @@ package view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import controller.AddProfToSubjListener;
 import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
+
+import controller.DeleteStudentMouseListener;
+
 import controller.EditProfListener;
+
 import controller.EditStudListener;
 import controller.EditSubjListener;
 //import controller.AddProfToSubjListener;
@@ -24,6 +31,8 @@ import controller.AddStudentToSubjListener;
 import controller.EntityController;
 import controller.RemoveProfListener;
 import controller.RemoveSubjListener;
+import controller.StudentiController;
+import model.BazaStudenata;
 //import controller.RemoveProfListener;
 
 public class Toolbar extends JToolBar{
@@ -82,6 +91,9 @@ public class Toolbar extends JToolBar{
 		add(btnDeleteEntity);
 		btnDeleteEntity.addMouseListener(new RemoveSubjListener());
 		btnDeleteEntity.addMouseListener(new RemoveProfListener());
+		
+		btnDeleteEntity.addMouseListener(new DeleteStudentMouseListener());
+	//	btnDeleteEntity.addMouseListener(new RemoveProfListener());
 
 		/*btnDeleteEntity.addActionListener(new ActionListener() {
 			

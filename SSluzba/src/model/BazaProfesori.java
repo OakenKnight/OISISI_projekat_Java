@@ -54,6 +54,9 @@ public class BazaProfesori {
 		}
 		try {
 			while((sledeci = in.readLine()) != null) {
+				if(sledeci.equals("")) {
+					continue;
+				}
 				kolone = sledeci.split("\\|");
 				profesori.add(new Profesor(kolone[0],kolone[1],kolone[2],kolone[3], kolone[4], kolone[5], kolone[6], kolone[7],kolone[8],kolone[9]));
 			}
