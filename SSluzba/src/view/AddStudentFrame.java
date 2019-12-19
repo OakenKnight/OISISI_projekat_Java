@@ -202,7 +202,6 @@ public class AddStudentFrame extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || 
 
-						telefonPolje.getText().equals("") || indexPolje.getText().equals("")  || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("") ) {
 
 						telefonPolje.getText().equals("") || indexPolje.getText().equals("") || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("")) {
 
@@ -254,7 +253,8 @@ public class AddStudentFrame extends JFrame{
 					}
 					
 					try {
-						out.write(imePolje.getText()+"|"+prezimePolje.getText()+"|"+datumRodjenjaPolje.getText()+"|"+adresaPolje.getText()+"|"+telefonPolje.getText()+"|"+emailPolje.getText()+"|"+indexPolje.getText()+"|"+datumUpisaPolje.getText()+"|"+god+"|"+stats+"|"+prosekPolje.getText()+"\n");
+						out.write(imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim());
+						out.write("\n");
 
 					} catch (IOException e) {
 						
@@ -280,7 +280,7 @@ public class AddStudentFrame extends JFrame{
 			/*
 			 * ne radi mi ovaj proveriProsek pa cu staviti da vraca true
 			*/
-			private boolean proveriProsek(String text) {
+			private boolean proveriProsek( String text ) {
 				// TODO Auto-generated method stub
 				String prosekReg="[0-9][0-9].[0-9][0-9]";
 				if(text.matches(prosekReg)) {

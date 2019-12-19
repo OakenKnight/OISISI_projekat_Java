@@ -1,10 +1,9 @@
 Radovan|Zupunski|13.08.1998.|Slobodana Bajica 17|066005790|rzupunski@gmail.com|RA20/2017|Jul 201700000|3|B|9.41
-Pera|Peric|10.11.1997.| Bajica 17|066034390|aaaaaaa@gmail.com|RA34/2016|Jul 2016|4|S|9.00
+Pera|Peric|10.11.1997.|Bajica 17|066034390|aaaaaaa@gmail.com|RA34/2016|Jul 2016|4|S|9.00
 Radovan|Zupunski|13.08.1998.|Slobodana Bajica 17|066005790|rzupunski@gmail.com|RA25/2017|Jul 2017|1|B|9.41
-Mika|Mikic|23.04.1999.|Gde god|4356789|bbbbbbb@gmail.com|RA100/2018|Jul 2018|2|B|1000
 Radovan|Zupunski|23425|sfdghj|345678|ccccccccc@gmail.com|RA89/2017|34567mk76|1|B|9.20
-Radovan|Zupunski|13.08.1998.|Slobodana|00000000|rzupunski@gmail.com|RA205/2017|Jul 2017|1|B|9.41
-Mica|Micic|4567|irhguh|09090990|nnnnnnn@gmail.com|PSI100/2017|3037|1|B|10.00
-Radovan|Zupunski|13.08.1998.|Slobodana|066005790|rzupunski@gmail.com|RA2|Jul 2017|1|B|9.41
-
-
+Radovan|Zupunski|13.08.1998.|Slobodana|111111|rzupunski@gmail.com|RA205/2017|Jul 2017|1|B|9.41
+Radovan|Zupunski|45|Slobodana|066005790|rzupunski@gmail.com|RA2|Jul 2017|1|B|9.41
+Pera|Peric|10.11.1997.|Bajica 17|066034390|aaaaaaa@gmail.com|RA3/2016|Jul 2016|3|S|7.6
+Mart|Mark|23.04.2005.|Mariceva 5|787878|dfhuehufh@gmail.com|ra88/2018|22.06.2017.|2|B|7.8
+Alex|Neskovic|14.11.1994.|Beograd Dom 4|3456789|aleksica@gmail.com|ra100/2012|10.07.2012.|4|B|10.0

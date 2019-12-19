@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import model.BazaStudenata;
 import model.StatusStudent;
+import model.Student;
 import view.TabbedPane;
 
 public class StudentiController {
@@ -27,8 +28,13 @@ private static StudentiController instance = null;
 		BazaStudenata.getInstance().izmeniStudenta(ime, prezime, datumR, adresaS, kontaktT, email, brI, datumU, trenutnaG, status, prosecnaO);
 		TabbedPane.getInstance().azurirajStudentiO();
 	}
-	public void removeStudent() {
-		//TODO: preraditi metodu da brise entitete
+	public void removeStudent(int rowSelectedIndex) {
+		System.out.println(rowSelectedIndex);
+		Student std = BazaStudenata.getInstance().getRow(rowSelectedIndex);
+		BazaStudenata.getInstance().izbrisiStudenta(std.getBrIndex());
+		TabbedPane.getInstance().azurirajStudentiO();
+
+		
 	}
 	public void searchEntity() {
 		//TODO: preraditi metodu da trazi entitete
