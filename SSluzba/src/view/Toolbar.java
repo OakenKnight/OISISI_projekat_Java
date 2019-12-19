@@ -22,6 +22,8 @@ import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
 //import controller.AddStudentToSubjListener;
 import controller.EntityController;
+import controller.RemoveProfListener;
+import controller.RemoveSubjListener;
 //import controller.RemoveProfListener;
 
 public class Toolbar extends JToolBar{
@@ -71,24 +73,15 @@ public class Toolbar extends JToolBar{
 		btnEditEntity.addMouseListener(new EditStudListener());
 		btnEditEntity.addMouseListener(new EditProfListener());
 		btnEditEntity.addMouseListener(new EditSubjListener());
-
-		btnEditEntity.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//EntityController.getInstance().editEntity();
-				
-			}
-		});
 		
 		//addSeparator();
 
 		JButton btnDeleteEntity= new JButton();
-		btnDeleteEntity.setToolTipText("Edit...");
+		btnDeleteEntity.setToolTipText("Delete...");
 		btnDeleteEntity.setIcon(new ImageIcon("images/bin1.png"));
 		add(btnDeleteEntity);
-	//	btnDeleteEntity.addMouseListener(new RemoveProfListener());
+		btnDeleteEntity.addMouseListener(new RemoveSubjListener());
+		btnDeleteEntity.addMouseListener(new RemoveProfListener());
 
 		/*btnDeleteEntity.addActionListener(new ActionListener() {
 			

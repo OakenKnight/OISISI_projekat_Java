@@ -32,8 +32,10 @@ private static ProfesorController instance = null;
 		BazaProfesori.getInstance().izmeniProfesora(ime, prezime, datum, adresa_stanovanja, kontakt_telefon, email_adresa, adresa_kancelarije, BLK, titula, zvanje);
 		TabbedPane.getInstance().azurirajProfesori();
 	}
-	public void removeProfesor() {
+	public void removeProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		//TODO: preraditi metodu da brise entitete
+		BazaProfesori.getInstance().izbrisiProfesora(BLK);
+		TabbedPane.getInstance().azurirajProfesori();
 	}
 	public void searchProfesor() {
 		//TODO: preraditi metodu da trazi entitete

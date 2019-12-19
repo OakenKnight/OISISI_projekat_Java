@@ -34,30 +34,30 @@ import model.Predmet;
 import model.Profesor;
 
 public class EditSubjFrame extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5868601545868734820L;
 	public static JTextField spTF;
 	public static JTextField npTF;
 	public static String semestar;
 	public static JTextField profesorTF;
 	public static String godina;
-	private static int brojac;
 	private static String subjPreIzmene;
 	public EditSubjFrame() {
-		
-
-		JFrame unosPredmeta=new JFrame();
-		
+				
 		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
 	
-		unosPredmeta.setTitle("Dodavanje predmeta");
+		setTitle("Dodavanje predmeta");
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();
 		int screenHeight=screenSize.height;
 		int screenWidth=screenSize.width;
 		
-		unosPredmeta.setSize(2*screenWidth/7,3*screenHeight/10);
-		unosPredmeta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		unosPredmeta.setLocationRelativeTo(null);
+		setSize(2*screenWidth/7,3*screenHeight/10);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
 		
 		
@@ -176,10 +176,10 @@ public class EditSubjFrame extends JFrame{
 					
 					PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
 					
-					unosPredmeta.setVisible(false);
+					setVisible(false);
 					
 					
-					unosPredmeta.dispose();
+					dispose();
 				}
 				
 			}
@@ -200,8 +200,8 @@ public class EditSubjFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO ugasi taj window
-				unosPredmeta.setVisible(false);
-				unosPredmeta.dispose();
+				setVisible(false);
+				dispose();
 				
 			}
 		});
@@ -291,10 +291,10 @@ public class EditSubjFrame extends JFrame{
 		unosPanel.add(cancelBtn,gbBtnCancel);
 
 		
-			unosPredmeta.add(unosPanel,BorderLayout.CENTER);
-			unosPredmeta.add(donjiPanel,BorderLayout.SOUTH);
+			add(unosPanel,BorderLayout.CENTER);
+			add(donjiPanel,BorderLayout.SOUTH);
 		
 		//unosPredmeta.add(Box.createGlue());
-		unosPredmeta.setVisible(true);
+		setVisible(true);
 	}
 }

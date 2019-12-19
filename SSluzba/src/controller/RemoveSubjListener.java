@@ -12,32 +12,28 @@ import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
 
-import model.BazaProfesori;
-import model.Profesor;
-import view.ProfesoriJTable;
+import model.BazaPredmeta;
+import model.Predmet;
+import view.PredmetiJTable;
 import view.TabbedPane;
 
-public class RemoveProfListener implements MouseListener{
+public class RemoveSubjListener implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		if(TabbedPane.getInstance().getSelectedIndex()==1) {
-			int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
+		if(TabbedPane.getInstance().getSelectedIndex()==2) {
+			/*RemoveSubjectFrame rm=new RemoveSubjectFrame();
+			rm.setVisible(true);
+			*/
+			int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje predmeta?",JOptionPane.YES_NO_OPTION);
 			if(option==JOptionPane.YES_OPTION) {
-				Profesor prof =new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().selektovanRed));
-				
-				String ime=prof.getIme();
-				String prezime=prof.getPrezime();
-				String datum=prof.getDatum();
-				String adresa=prof.getAdresa_stanovanja();
-				String telefon=prof.getKontakt_telefon();
-				String email=prof.getEmail_adresa();
-				String kancelarija=prof.getAdresa_kancelarije();
-				String blk=prof.getBLK();
-				String titula=prof.getTitula();
-				String zvanje=prof.getZvanje();
-				String profPreIzmene =ime+"|"+prezime+"|"+datum+"|"+adresa+"|"+ telefon+"|"+ email+"|"+ kancelarija+"|"+ blk+"|"+ titula+"|"+ zvanje;
+				Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+				String sifra=sub.getSifra_predmeta();
+				String naziv=sub.getNaziv();
+				String semestar=sub.getSemestar();
+				String godina=sub.getGodina();
+				String profesor=sub.getPredavac();
+				String subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
 				
 				String sledeci;
 				String sve="";
@@ -45,7 +41,7 @@ public class RemoveProfListener implements MouseListener{
 				BufferedReader in=null;
 				
 				try {
-					in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
+					in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Predmeti.txt")));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -53,7 +49,7 @@ public class RemoveProfListener implements MouseListener{
 				try {
 					while((sledeci = in.readLine()) != null) {
 						sledeci.trim();
-						if(sledeci.equals(profPreIzmene)) {
+						if(sledeci.equals(subjPreIzmene)) {
 							continue;
 						}
 						sve += sledeci+"\n";
@@ -63,14 +59,13 @@ public class RemoveProfListener implements MouseListener{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				BufferedWriter out = null;
+				BufferedWriter out  = null;
 				try {
-					out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt"));
+					out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 				try {
 					out.write(sve);
 
@@ -87,12 +82,11 @@ public class RemoveProfListener implements MouseListener{
 							e.printStackTrace();
 						}
 				}
-				ProfesorController.getInstance().removeProfesor(ime, prezime, datum, adresa, telefon, email, kancelarija, blk, titula, zvanje);
 				
+				PredmetController.getInstance().removePredmet(sifra,naziv,semestar,godina,profesor);
 			}
 		}
-	}		
-	
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

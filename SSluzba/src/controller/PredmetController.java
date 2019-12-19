@@ -30,8 +30,10 @@ private static PredmetController instance = null;
 		BazaPredmeta.getInstanceBazaPredmeta().editPredmet(sifra, naziv, semestar, godina, profesor);		
 		TabbedPane.getInstance().azurirajPredmeti();
 	}
-	public void removePredmet() {
+	public void removePredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
 		//TODO: preraditi metodu da brise entitete
+		BazaPredmeta.getInstanceBazaPredmeta().deletePredmet(sifra);		
+		TabbedPane.getInstance().azurirajPredmeti();
 	}
 	public void searchEntity() {
 		//TODO: preraditi metodu da trazi entitete
