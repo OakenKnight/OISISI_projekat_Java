@@ -14,7 +14,9 @@ import javax.swing.JToolBar;
 import controller.AddProfToSubjListener;
 import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
+import controller.EditProfListener;
 import controller.EditStudListener;
+import controller.EditSubjListener;
 //import controller.AddProfToSubjListener;
 import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
@@ -67,13 +69,15 @@ public class Toolbar extends JToolBar{
 		btnEditEntity.setIcon(new ImageIcon("images/pencil1.png"));
 		add(btnEditEntity);
 		btnEditEntity.addMouseListener(new EditStudListener());
-		
+		btnEditEntity.addMouseListener(new EditProfListener());
+		btnEditEntity.addMouseListener(new EditSubjListener());
+
 		btnEditEntity.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				EntityController.getInstance().editEntity();
+				//EntityController.getInstance().editEntity();
 				
 			}
 		});

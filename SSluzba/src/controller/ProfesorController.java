@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import model.BazaPredmeta;
 import model.BazaProfesori;
+import model.BazaStudenata;
 import view.AbstractTableModelPredmeti;
 import view.PredmetiJTable;
 import view.TabbedPane;
@@ -26,8 +27,10 @@ private static ProfesorController instance = null;
 		
 		//ne uradi nista, ali ne pukne sad???????
 	}
-	public void editProfesor() {
+	public void editProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		//TODO: preraditi metodu da menja entitete
+		BazaProfesori.getInstance().izmeniProfesora(ime, prezime, datum, adresa_stanovanja, kontakt_telefon, email_adresa, adresa_kancelarije, BLK, titula, zvanje);
+		TabbedPane.getInstance().azurirajProfesori();
 	}
 	public void removeProfesor() {
 		//TODO: preraditi metodu da brise entitete

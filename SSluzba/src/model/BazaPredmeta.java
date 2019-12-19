@@ -110,8 +110,16 @@ public class BazaPredmeta {
 			}
 		}
 	}
-
+	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
+		for(Predmet p:predmeti) {
+			if(p.getSifra_predmeta().equals(sifra)) {
+				p.setSifra_predmeta(sifra);
+				p.setNaziv(naziv);
+				p.setSemestar(semestar);
+				p.setGodina(godina);
+				p.setPredavac(profesor);
+			}
+		}
+	}
 	
-	
-	//TODO: uraditi editPredmet
 }

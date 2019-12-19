@@ -1,4 +1,7 @@
-Milan|Vidakovic|19.12.1990.|Seljackih buna 3|021666669|vidak@gmail.com|toranj 69|123456789|MsC|Vanredni profesor
-Mika|Mikic|12.12.1992.|Branimira Cosica 2|02141087264|mikic@gmail.com|toranj 666|101011110|PhD|Redovni profesor
+Milan|Vidakovic|19.12.1990.|Seljackih buna 3|021666669|vidak@gmail.com|69420toranj|121212123|MsC|Vanredni profesor
+Mika|Mikic|12.12.1992.|Branimira Cosica 2|02141087264|mikic@gmail.com|666toranj|101011110|PhD|Redovni profesor
 Pera|Peric|12.12.1986.|Slobodana Jovanovica 2|021546789|peric@gmail.com|420L|123345567|PhD|Docent
-Miroslav|Hajdukovic|13.02.1990.|Hajduk Veljkova 2c|021345678|ajduk@gmail.com|69x|123456789|BSc|Saradnik u nastavi
+Miroslav|Hajdukovic|13.02.1990.|Hajduk Veljkova 2c|021345678|ajduk@gmail.com|699|123456789|BSc|Saradnik u nastavi
+Milan|Vidakovic|19.12.1990.|Seljackih buna 3|021666669|vidak@gmail.com|123a|121212125|MsC|Vanredni profesor
+Mika|Mikic|12.12.1992.|Branimira Cosica 2|02141087264|mikic@gmail.com|666s|101011112|PhD|Redovni profesor
+Pera|Peric|12.12.1986.|Slobodana Jovanovica 2|021546789|peric@gmail.com|420L|121212567|PhD|Docent

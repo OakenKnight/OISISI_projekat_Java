@@ -202,6 +202,7 @@ public class EditStudFrame extends JFrame{
 					String sledeci;
 					String sve = "";
 					BufferedReader in = null;
+					
 					try {
 						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Studenti.txt")));
 					} catch (FileNotFoundException e) {
@@ -249,6 +250,7 @@ public class EditStudFrame extends JFrame{
 							}
 					}
 					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
+					
 					setVisible(false);
 					dispose();
 				}

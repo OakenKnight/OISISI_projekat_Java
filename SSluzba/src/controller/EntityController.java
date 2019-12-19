@@ -20,6 +20,8 @@ import javax.swing.JTextField;
 
 import model.BazaPredmeta;
 import view.AddSubjFrame;
+import view.EditProfFrame;
+import view.EditSubjFrame;
 import view.TabbedPane;
 import view.AddProfFrame;
 
@@ -43,7 +45,6 @@ public class EntityController {
 		}else if(TabbedPane.getInstance().getSelectedIndex()==2) {
 			AddSubjFrame asf=new AddSubjFrame();
 		}
-		
 	}
 	public void editEntity() {
 		//TODO: preraditi metodu da menja entitete

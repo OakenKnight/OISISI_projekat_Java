@@ -137,7 +137,7 @@ public class BazaProfesori {
 		}
 	}
 
-	public void izmeniStudenta(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void izmeniProfesora(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		for (Profesor i : profesori) {
 			if (i.getBLK().equals(BLK)) {
 				i.setIme(ime);
