@@ -1,22 +1,22 @@
-package controller;
+package controller.listeners.edit;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.EditProfFrame;
-import view.EditSubjFrame;
+
+import view.EditStudFrame;
 import view.TabbedPane;
 
-public class EditSubjListener implements MouseListener {
-
+public class EditStudListener implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		if(TabbedPane.getInstance().getSelectedIndex()==2) {
-			EditSubjFrame diag = new EditSubjFrame();
+		if(TabbedPane.getInstance().getSelectedIndex()==0) {
+			EditStudFrame diag = new EditStudFrame();
 			diag.setVisible(true);
 		}
 	}
+
+	
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -41,5 +41,4 @@ public class EditSubjListener implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }

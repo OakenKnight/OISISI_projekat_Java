@@ -1,4 +1,4 @@
-package controller;
+package controller.listeners.add;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

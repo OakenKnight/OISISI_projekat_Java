@@ -1,4 +1,4 @@
-package controller;
+package controller.listeners.remove;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.PredmetController;
 import model.BazaPredmeta;
 import model.Predmet;
 import view.PredmetiJTable;

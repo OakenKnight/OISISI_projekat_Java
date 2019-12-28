@@ -1,18 +1,17 @@
-package controller;
+package controller.listeners.add;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.AddProfFrame;
 import view.AddStudentFrame;
 import view.TabbedPane;
 
-public class AddProfListener implements MouseListener {
+public class AddStudListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(TabbedPane.getInstance().getSelectedIndex()==1) {
-			AddProfFrame diag = new AddProfFrame();
+		if(TabbedPane.getInstance().getSelectedIndex()==0) {
+			AddStudentFrame diag = new AddStudentFrame();
 			diag.setVisible(true);
 		}
 	}

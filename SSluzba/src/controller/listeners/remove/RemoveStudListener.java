@@ -1,4 +1,4 @@
-package controller;
+package controller.listeners.remove;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,12 +12,13 @@ import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
 
+import controller.StudentiController;
 import model.BazaStudenata;
 import model.Student;
 import view.StudentiJTable;
 import view.TabbedPane;
 
-public class DeleteStudentMouseListener extends MouseAdapter{
+public class RemoveStudListener extends MouseAdapter{
 
 	
 	@Override

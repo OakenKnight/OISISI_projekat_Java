@@ -14,24 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import controller.AddProfToSubjListener;
-import controller.AddStudListener;
-import controller.AddStudentToSubjListener;
-import controller.AddSubjListener;
-import controller.DeleteStudentMouseListener;
-
-import controller.EditProfListener;
-
-import controller.EditStudListener;
-import controller.EditSubjListener;
-//import controller.AddProfToSubjListener;
-import controller.AddStudListener;
-import controller.AddStudentToSubjListener;
-//import controller.AddStudentToSubjListener;
-import controller.AddProfListener;
 import controller.RemoveProfListener;
-import controller.RemoveSubjListener;
 import controller.StudentiController;
+import controller.listeners.add.AddProfListener;
+import controller.listeners.add.AddProfToSubjListener;
+import controller.listeners.add.AddStudListener;
+import controller.listeners.add.AddStudentToSubjListener;
+import controller.listeners.add.AddSubjListener;
+import controller.listeners.edit.EditProfListener;
+import controller.listeners.edit.EditStudListener;
+import controller.listeners.edit.EditSubjListener;
+import controller.listeners.remove.RemoveStudListener;
+import controller.listeners.remove.RemoveSubjListener;
 import model.BazaStudenata;
 //import controller.RemoveProfListener;
 
@@ -83,7 +77,7 @@ public class Toolbar extends JToolBar{
 		add(btnDeleteEntity);
 		btnDeleteEntity.addMouseListener(new RemoveSubjListener());
 		btnDeleteEntity.addMouseListener(new RemoveProfListener());
-		btnDeleteEntity.addMouseListener(new DeleteStudentMouseListener());
+		btnDeleteEntity.addMouseListener(new RemoveStudListener());
 	//	btnDeleteEntity.addMouseListener(new RemoveProfListener());
 
 		/*btnDeleteEntity.addActionListener(new ActionListener() {

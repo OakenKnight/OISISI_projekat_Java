@@ -1,4 +1,4 @@
-package controller;
+package controller.listeners.remove;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
 
+import controller.PredmetController;
 import model.BazaPredmeta;
 import model.Predmet;
 import view.PredmetiJTable;
