@@ -39,5 +39,6 @@ private static ProfesorController instance = null;
 	}
 	public void searchProfesor() {
 		//TODO: preraditi metodu da trazi entitete
+		
 	}
 }

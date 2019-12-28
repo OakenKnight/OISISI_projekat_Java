@@ -179,7 +179,7 @@ public class AddProfFrame extends JFrame{
 			String adresaReg="[a-zA-Z ]*[0-9][a-z]*";
 			String telReg="[0-9]+";
 			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String kancReg="[0-9]+[a-zA-Z]+";
+			String kancReg="[0-9a-zA-z ]*";
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

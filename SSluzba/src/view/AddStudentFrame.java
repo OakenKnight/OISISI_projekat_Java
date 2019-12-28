@@ -196,7 +196,7 @@ public class AddStudentFrame extends JFrame{
 			String adresaReg="[a-zA-Z ]*[0-9]+[a-z]*";
 			String telReg="[0-9]+";
 			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String idxReg="[a-z]+[0-9]+/[0-9]+";
+			String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

@@ -38,7 +38,7 @@ public class BazaPredmeta {
 		
 		
 		this.predmeti = new ArrayList<Predmet>();
-		
+
 		
 		String sledeci=null;
 		String[] kolone=null;
@@ -56,6 +56,8 @@ public class BazaPredmeta {
 				}
 				kolone=sledeci.split("\\|");
 				predmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
+		//		sviPredmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
+
 			}
 			in.close();
 		}catch(IOException e) {

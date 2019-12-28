@@ -46,9 +46,6 @@ public class TabbedPane extends JTabbedPane{
 		tabelaStudenti=StudentiJTable.getInstance();
 		JScrollPane skrolStudenti=new JScrollPane(tabelaStudenti);
 		
-		JLabel studLabel=new JLabel("nesto1");
-		JLabel profLabel=new JLabel("nesto2");
-		JLabel subjLabel=new JLabel("nesto3");
 		
 		System.out.println(this.getSelectedIndex());
 		

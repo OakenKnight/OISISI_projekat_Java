@@ -17,7 +17,7 @@ import javax.swing.JToolBar;
 import controller.AddProfToSubjListener;
 import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
-
+import controller.AddSubjListener;
 import controller.DeleteStudentMouseListener;
 
 import controller.EditProfListener;
@@ -28,7 +28,7 @@ import controller.EditSubjListener;
 import controller.AddStudListener;
 import controller.AddStudentToSubjListener;
 //import controller.AddStudentToSubjListener;
-import controller.EntityController;
+import controller.AddProfListener;
 import controller.RemoveProfListener;
 import controller.RemoveSubjListener;
 import controller.StudentiController;
@@ -45,6 +45,7 @@ public class Toolbar extends JToolBar{
 	private static Toolbar instance = null;
 	private JButton btnNewStudentToSubject;
 	private JButton btnNewProfToSubject;
+	private JTextField search;
 	public static Toolbar getInstance() {
 		if (instance == null) {
 			instance = new Toolbar();
@@ -62,18 +63,9 @@ public class Toolbar extends JToolBar{
 		add(btnNewEntity);
 
 		btnNewEntity.addMouseListener(new AddStudListener());
-
-		//btnNewEntity.setVisible(false);
-
-		btnNewEntity.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				EntityController.getInstance().addEntity();
-
-			}
-		});
+		btnNewEntity.addMouseListener(new AddProfListener());
+		btnNewEntity.addMouseListener(new AddSubjListener());
+		
 		
 		JButton btnEditEntity= new JButton();
 		btnEditEntity.setToolTipText("Edit...");
@@ -91,7 +83,6 @@ public class Toolbar extends JToolBar{
 		add(btnDeleteEntity);
 		btnDeleteEntity.addMouseListener(new RemoveSubjListener());
 		btnDeleteEntity.addMouseListener(new RemoveProfListener());
-		
 		btnDeleteEntity.addMouseListener(new DeleteStudentMouseListener());
 	//	btnDeleteEntity.addMouseListener(new RemoveProfListener());
 
@@ -132,29 +123,29 @@ public class Toolbar extends JToolBar{
 		
 		
 		
-		JTextField searchEntityTextField=new JTextField(50);
+		search=new JTextField(50);
 		//Dimension dim= new Dimension(30,20);
-		searchEntityTextField.setPreferredSize(new Dimension(90,25));
-		searchEntityTextField.setMaximumSize(searchEntityTextField.getPreferredSize());
-		searchEntityTextField.setToolTipText("Enter name...");
+		
+		//ovo bas ne radi kako treba
+		if(TabbedPane.getInstance().getSelectedIndex()==0)
+			search.setToolTipText("ime:______|prezime:______|indeks:_______");
+		else if(TabbedPane.getInstance().getSelectedIndex()==1)
+			search.setToolTipText("ime:______|prezime:______|brojLicneKarte:_______");
+		else
+			search.setToolTipText("sifra:______|naziv:______");
+		
+		search.setPreferredSize(new Dimension(90,25));
+		search.setMaximumSize(search.getPreferredSize());
 		add(Box.createHorizontalGlue());
-		add(searchEntityTextField);
+		add(search);
 		
 		//addSeparator();
 
 		JButton btnSearchEntity= new JButton();
-		btnSearchEntity.setToolTipText("Edit...");
+		btnSearchEntity.setToolTipText("Search...");
 		btnSearchEntity.setIcon(new ImageIcon("images/search1.png"));
 		add(btnSearchEntity);
-		btnSearchEntity.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				EntityController.getInstance().searchEntity();
-
-			}
-		});
+		
 		
 	}
 	public void setBtnNewStudentToSubject(boolean b) {
@@ -162,5 +153,14 @@ public class Toolbar extends JToolBar{
 	}
 	public void setBtnNewProfToSubject(boolean b) {
 		this.btnNewProfToSubject.setVisible(b);
+	}
+	public void setTooltipForSearchStud() {
+		this.search.setToolTipText("ime:______|prezime:______|indeks:_______");
+	}
+	public void setTooltipForSearchProf() {
+		this.search.setToolTipText("ime:______|prezime:______|blk:_______");
+	}
+	public void setTooltipForSearchSubj() {
+		this.search.setToolTipText("sifra:______|naziv:______");
 	}
 }

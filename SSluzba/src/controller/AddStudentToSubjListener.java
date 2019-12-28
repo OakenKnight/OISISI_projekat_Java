@@ -12,11 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import view.AddStudToSubjectFrame;
+
 public class AddStudentToSubjListener implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+			
+				AddStudToSubjectFrame ad=new AddStudToSubjectFrame();
+				ad.setVisible(true);
+		/*
 				JFrame dodajStudenta=new JFrame();
 				dodajStudenta.setLocation(800, 300);
 				dodajStudenta.setSize(500, 100);
@@ -35,7 +41,8 @@ public class AddStudentToSubjListener implements MouseListener{
 				dodajStudenta.add(dodajStudentaPanel,BorderLayout.CENTER);
 				dodajStudenta.add(donjiPanel,BorderLayout.SOUTH);
 				
-				dodajStudenta.setVisible(true);		
+				dodajStudenta.setVisible(true);	
+		*/	
 	}
 
 	@Override
