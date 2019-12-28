@@ -43,7 +43,7 @@ public class AddStudentFrame extends JFrame{
 	private static JTextField telefonPolje;
 	private static JTextField indexPolje;
 	private static JTextField prosekPolje;
-
+	private static String godina;
 	private int god;
 	private String finansiranje;
 	private StatusStudent stats;
@@ -232,7 +232,7 @@ public class AddStudentFrame extends JFrame{
 						stats=StatusStudent.S;
 					}
 					
-					String godina = godine.getSelectedItem().toString();
+					godina = godine.getSelectedItem().toString();
 					if(godina.equals("I (prva)")) {
 						god=1;
 					}else if(godina.equals("II (druga)")){
@@ -241,32 +241,6 @@ public class AddStudentFrame extends JFrame{
 						god=3;
 					}else {
 						god=4;
-					}
-					
-					BufferedWriter out  = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Studenti.txt",true));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					try {
-						out.write(imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim());
-						out.write("\n");
-
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
 					}
 					
 					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
@@ -285,17 +259,16 @@ public class AddStudentFrame extends JFrame{
 				if(text.matches(prosekReg)) {
 					if(text.isEmpty()==false) {
 						Double ocena=Double.parseDouble(text);
-						if(ocena>10.0 || ocena<6.0) {
+						if(ocena<=10.0) {
+							if(ocena>=6.0) {
+								return true;
+							}
+						}else {
 							return false;
-						}else
-							return true;
-					}else {
-						return false;
+						}
 					}
 				}
-				
-				return true;
-				
+				return false;
 			}
 			
 			private boolean proveriDatum(String text) {

@@ -204,31 +204,8 @@ public class AddProfFrame extends JFrame{
 				}else if(!blkTF.getText().matches(blkReg)){
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					BufferedWriter out  = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt",true));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					
-					try {
-						out.write("\n");
-						out.write(imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+telefonTF.getText()+"|"+emailTF.getText()+"|"+kancelarijaTF.getText()+"|"+blkTF.getText()+"|"+titula+"|"+zvanje);
-
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
+					
 					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);

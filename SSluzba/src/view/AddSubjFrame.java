@@ -24,15 +24,17 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.DataController;
 import controller.FocusPredmeti;
 import controller.PredmetController;
 
 public class AddSubjFrame extends JFrame{
-	public static JTextField spTF;
-	public static JTextField npTF;
-	public static String semestar;
-	public static JTextField profesorTF;
+	private static JTextField spTF;
+	private static JTextField npTF;
+	private static String semestar;
+	private static JTextField profesorTF;
 	private static int brojac;
+	private static String godina;
 	public AddSubjFrame() {
 		
 
@@ -77,16 +79,13 @@ public class AddSubjFrame extends JFrame{
 	
 		
 		JLabel semestarL=new JLabel("Semestar: *");
-		String[] semestri= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
+		String[] semestri= {"Letnji","Zimski"};
 		JComboBox semestarCB=new JComboBox(semestri);
-		semestar=(String)semestarCB.getSelectedItem();
 		
 		
 		JLabel godinaL=new JLabel("Godina: *");
 		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 		JComboBox godineCB=new JComboBox(godine);
-		String godina=(String)godineCB.getSelectedItem();
-		String god=godina + " godina";
 		
 		
 		JLabel profesorL=new JLabel("Profesor: *");
@@ -107,11 +106,11 @@ public class AddSubjFrame extends JFrame{
 				}else if(spTF.getText().matches(sifraReg)) {
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
-					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime predmeta","",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Nije uneto dobar naziv predmeta","",JOptionPane.ERROR_MESSAGE);
 				}else if(profesorTF.getText().matches(regex2)==false){
 					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					
+					/*
 					BufferedWriter out  = null;
 					try {
 						out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt",true));
@@ -122,7 +121,7 @@ public class AddSubjFrame extends JFrame{
 					
 					try {
 						out.write("\n");
-						out.write(spTF.getText()+"|"+npTF.getText()+"|"+profesorTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText()+"|");
+						out.write(spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText()+"|");
 
 					} catch (IOException e) {
 						
@@ -137,10 +136,12 @@ public class AddSubjFrame extends JFrame{
 								e.printStackTrace();
 							}
 					}
+					*/
 					
-					
-					
-					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,god,profesorTF.getText());
+					semestar=(String)semestarCB.getSelectedItem();
+					godina=(String)godineCB.getSelectedItem()+" godina";
+
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
 					
 					unosPredmeta.setVisible(false);
 					

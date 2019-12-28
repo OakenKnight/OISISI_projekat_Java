@@ -49,7 +49,7 @@ public class EditSubjFrame extends JFrame{
 		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
 	
-		setTitle("Dodavanje predmeta");
+		setTitle("Izmena predmeta");
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();
 		int screenHeight=screenSize.height;
@@ -85,15 +85,13 @@ public class EditSubjFrame extends JFrame{
 	
 		
 		JLabel semestarL=new JLabel("Semestar: *");
-		String[] semestri= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
+		String[] semestri= {"Letnji","Zimski"};
 		JComboBox semestarCB=new JComboBox(semestri);
-		semestar=(String)semestarCB.getSelectedItem();
 		
 		
 		JLabel godinaL=new JLabel("Godina: *");
 		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 		JComboBox godineCB=new JComboBox(godine);
-		godina=(String)godineCB.getSelectedItem();
 		//String god=godina + " godina";
 		
 		
@@ -102,6 +100,18 @@ public class EditSubjFrame extends JFrame{
 		profesorTF.setName("txt");
 		profesorTF.addFocusListener(fokus);
 		
+		
+		
+		Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+		spTF.setText(sub.getSifra_predmeta());
+		npTF.setText(sub.getNaziv());
+		semestar=sub.getSemestar();
+		godina=sub.getGodina()+" godina";
+		profesorTF.setText(sub.getPredavac());
+		subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
+		
+		
+		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
 		okBtn.addActionListener(new ActionListener() {
@@ -109,6 +119,11 @@ public class EditSubjFrame extends JFrame{
 		String sifraReg="[a-zA-Z0-9]";
 		String regex1="[a-zA-Z ]*[0-9]*";
 		String regex2="[a-zA-Z ]+";
+		
+		
+		
+		
+		
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
@@ -116,66 +131,15 @@ public class EditSubjFrame extends JFrame{
 				}else if(spTF.getText().matches(sifraReg)) {
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
-					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime predmeta","",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Nije unet dobro naziv predmeta","",JOptionPane.ERROR_MESSAGE);
 				}else if(profesorTF.getText().matches(regex2)==false){
 					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					String sledeci;
-					String sve="";
 					
-					BufferedReader in=null;
-					
-					try {
-						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Predmeti.txt")));
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						while((sledeci = in.readLine()) != null) {
-							sledeci.trim();
-							if(sledeci.equals(subjPreIzmene)) {
-								sve += spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+ godina +"|"+ profesorTF.getText()+"\n";
-								continue;
-							}
-							sve += sledeci+"\n";
-						}
-						in.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
-					
-					BufferedWriter out  = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt"));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						out.write(sve);
-
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
-					
-					
+					semestar=(String)semestarCB.getSelectedItem();
+					godina=(String)godineCB.getSelectedItem()+" godina";
 					
 					PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
-					
 					setVisible(false);
 					
 					
@@ -184,13 +148,7 @@ public class EditSubjFrame extends JFrame{
 				
 			}
 		});
-		Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
-		spTF.setText(sub.getSifra_predmeta());
-		npTF.setText(sub.getNaziv());
-		semestar=sub.getSemestar();
-		godina=sub.getGodina();
-		profesorTF.setText(sub.getPredavac());
-		subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
+	
 		
 		
 		JButton cancelBtn=new JButton("Cancel");

@@ -19,7 +19,9 @@ public class BazaStudenata {
 		return instance;
 	}
 
-	private List<Student> studenti;
+	private ArrayList<Student> studenti;
+	private ArrayList<Student> sviStudenti;
+
 	private List<String> kolone;
 
 	private BazaStudenata() {
@@ -44,6 +46,8 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
+		this.sviStudenti = new ArrayList<Student>();
+
 		String sledeci = null;
 		String [] kolone = null;
 		BufferedReader in = null;
@@ -61,13 +65,15 @@ public class BazaStudenata {
 				kolone = sledeci.split("\\|");
 				StatusStudent s;
 
-				if(kolone[9].equals("B"))
+				if(kolone[9].trim().equals("B"))
 					s = StatusStudent.B;
 				else if (kolone[9].equals("S"))
 					s = StatusStudent.S;
 				else
 					s = StatusStudent.N;
-				studenti.add(new Student(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4],kolone[5],kolone[6],kolone[7],Integer.parseInt(kolone[8]),s,Double.parseDouble(kolone[10])));
+				studenti.add(new Student(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),kolone[7].trim(),Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
+				sviStudenti.add(new Student(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),kolone[7].trim(),Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
+
 			}
 			in.close();
 		} catch (IOException e) {
@@ -77,11 +83,14 @@ public class BazaStudenata {
 		
 	}
 
-	public List<Student> getStudenti() {
+	public ArrayList<Student> getStudenti() {
 		return studenti;
 	}
 
-	public void setStudenti(List<Student> studenti) {
+	public ArrayList<Student> getSviStudenti() {
+		return sviStudenti;
+	}
+	public void setStudenti(ArrayList<Student> studenti) {
 		this.studenti = studenti;
 	}
 
@@ -136,6 +145,8 @@ public class BazaStudenata {
 	
 	public void dodajStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		this.studenti.add(new Student(ime,prezime,datumR,adresaS,kontaktT,email,brI,datumU,trenutnaG,status,prosecnaO));
+		this.sviStudenti.add(new Student(ime,prezime,datumR,adresaS,kontaktT,email,brI,datumU,trenutnaG,status,prosecnaO));
+
 	}
 
 	public void izbrisiStudenta( String indx) {
@@ -144,6 +155,17 @@ public class BazaStudenata {
 				studenti.remove(i);
 				break;
 			}
+		}
+		try {
+			for (Student i : sviStudenti) {
+				if (i.getBrIndex().equals(indx)) {
+					sviStudenti.remove(i);
+					break;
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -163,5 +185,25 @@ public class BazaStudenata {
 				i.setTrenutnaGodina(trenutnaG);
 			}
 		}
+		try {
+			for (Student i : sviStudenti) {
+				if (i.getBrIndex().equals(brI)) {
+					i.setIme(ime);
+					i.setPrezime(prezime);
+					i.setAdresaStanovanja(adresaS);
+					i.setBrIndex(brI);
+					i.setDatumRodjenja(datumR);
+					i.setDatumUpisa(datumU);
+					i.setEmail(email);
+					i.setKontaktTel(kontaktT);
+					i.setProsecnaOcena(prosecnaO);
+					i.setStatus(status);
+					i.setTrenutnaGodina(trenutnaG);
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 }

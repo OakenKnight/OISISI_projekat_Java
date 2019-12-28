@@ -53,6 +53,7 @@ public class EditStudFrame extends JFrame{
 		// RUCNO UNETI STUDENTI SE NE MOGU MENJATI NA NIVOU DATOTEKE 
 		  
 	   // setUndecorated(true);
+		try {
 	    setLocation(800, 300);
 		setTitle("Izmena studenta");
 		
@@ -156,6 +157,50 @@ public class EditStudFrame extends JFrame{
 		drugoDugme.add(samofinansiranje);
 		
 		
+			Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
+			imePolje.setText(st.getIme());
+			prezimePolje.setText(st.getPrezime());
+			datumRodjenjaPolje.setText(st.getDatumRodjenja());
+			adresaPolje.setText(st.getAdresaStanovanja());
+			telefonPolje.setText(st.getKontaktTel());
+			emailPolje.setText(st.getEmail());
+			indexPolje.setText(st.getBrIndex());
+			datumUpisaPolje.setText(st.getDatumUpisa());
+			prosekPolje.setText(String.valueOf(st.getProsecnaOcena()));
+			if(st.getTrenutnaGodina() == 1)
+				godine.setSelectedItem("I (prva)");
+			else if(st.getTrenutnaGodina() == 2)
+				godine.setSelectedItem("II (druga)");
+			else if(st.getTrenutnaGodina() == 3)
+				godine.setSelectedItem("III (treca)");
+			else
+				godine.setSelectedItem("IV (cetvrta)");
+			
+			
+			if(st.getStatus() == StatusStudent.B)
+				budzet.setSelected(true);
+			else
+				samofinansiranje.setSelected(true);
+			
+			if(budzet.isSelected()) {
+				stats=StatusStudent.B;
+			}else {
+				stats=StatusStudent.S;
+			}
+			
+			String godina = godine.getSelectedItem().toString();
+			if(godina.equals("I (prva)")) {
+				god=1;
+			}else if(godina.equals("II (druga)")){
+				god=2;
+			}else if(godina.equals("III (treca)")){
+				god=3;
+			}else {
+				god=4;
+			}
+			
+			studentPreIzmene = imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim();
+		
 		
 		JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton odustanak = new JButton("Odustanak");
@@ -199,56 +244,6 @@ public class EditStudFrame extends JFrame{
 						god=4;
 					}
 					
-					String sledeci;
-					String sve = "";
-					BufferedReader in = null;
-					
-					try {
-						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Studenti.txt")));
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						while((sledeci = in.readLine()) != null) {
-							sledeci.trim();
-							if(sledeci.equals(studentPreIzmene)) {
-								sve += imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim()+"\n";
-								continue;
-							}
-							sve += sledeci+"\n";
-						}
-						in.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
-					BufferedWriter out  = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Studenti.txt"));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					try {
-						out.write(sve);
-
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
 					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
 					
 					setVisible(false);
@@ -259,49 +254,7 @@ public class EditStudFrame extends JFrame{
 				
 			}
 		});
-		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
-		imePolje.setText(st.getIme());
-		prezimePolje.setText(st.getPrezime());
-		datumRodjenjaPolje.setText(st.getDatumRodjenja());
-		adresaPolje.setText(st.getAdresaStanovanja());
-		telefonPolje.setText(st.getKontaktTel());
-		emailPolje.setText(st.getEmail());
-		indexPolje.setText(st.getBrIndex());
-		datumUpisaPolje.setText(st.getDatumUpisa());
-		prosekPolje.setText(String.valueOf(st.getProsecnaOcena()));
-		if(st.getTrenutnaGodina() == 1)
-			godine.setSelectedItem("I (prva)");
-		else if(st.getTrenutnaGodina() == 2)
-			godine.setSelectedItem("II (druga)");
-		else if(st.getTrenutnaGodina() == 3)
-			godine.setSelectedItem("III (treca)");
-		else
-			godine.setSelectedItem("IV (cetvrta)");
 		
-		
-		if(st.getStatus() == StatusStudent.B)
-			budzet.setSelected(true);
-		else
-			samofinansiranje.setSelected(true);
-		
-		if(budzet.isSelected()) {
-			stats=StatusStudent.B;
-		}else {
-			stats=StatusStudent.S;
-		}
-		
-		String godina = godine.getSelectedItem().toString();
-		if(godina.equals("I (prva)")) {
-			god=1;
-		}else if(godina.equals("II (druga)")){
-			god=2;
-		}else if(godina.equals("III (treca)")){
-			god=3;
-		}else {
-			god=4;
-		}
-		
-		studentPreIzmene = imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim();
 		odustanakPotvrda.add(odustanak);
 		odustanakPotvrda.add(potvrda);
 
@@ -330,6 +283,10 @@ public class EditStudFrame extends JFrame{
 
 		setSize(400, 600);
 		setVisible(true);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+		}
 		
 	}
 }

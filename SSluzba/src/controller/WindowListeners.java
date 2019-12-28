@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+import model.BazaPredmeta;
+import model.BazaProfesori;
+import model.BazaStudenata;
+
 public class WindowListeners implements WindowListener {
 
 	@Override
@@ -30,6 +34,9 @@ public class WindowListeners implements WindowListener {
 			frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		}else {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			DataController.getInstance().saveDataSubj(BazaPredmeta.getInstanceBazaPredmeta().getSviPredmeti());
+			DataController.getInstance().saveDataProf(BazaProfesori.getInstance().getSviProfesori());
+			DataController.getInstance().saveDataStud(BazaStudenata.getInstance().getSviStudenti());
 		}
 	}
 

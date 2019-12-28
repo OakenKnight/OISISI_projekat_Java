@@ -55,7 +55,7 @@ public class TabbedPane extends JTabbedPane{
 		
 		tabelaStudenti.setAutoCreateRowSorter(true);
 		tabelaProfesori.setAutoCreateRowSorter(true);
-		tabelaPredmeti.setAutoCreateRowSorter(true);
+		//tabelaPredmeti.setAutoCreateRowSorter(true);
 		
 		
 	}
@@ -73,9 +73,6 @@ public class TabbedPane extends JTabbedPane{
 
 	}
 	public void azurirajPredmeti() {
-		// TODO Auto-generated method stub
-		//?????????
-		
 		AbstractTableModelPredmeti model=(AbstractTableModelPredmeti) tabelaPredmeti.getModel();
 		
 		model.fireTableDataChanged();

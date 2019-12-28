@@ -1,4 +1,7 @@
-package controller.listeners.remove;
+//deluje mi kao useless frejm nzm zasto smo ga napravili uopste
+
+
+/*package controller.listeners.remove;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,13 +27,9 @@ import model.Predmet;
 import view.PredmetiJTable;
 
 public class RemoveSubjectFrame extends JFrame {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -2296351424625686775L;
-	/**
-	 * 
-	 */
+
 	private  String sifra;
 	private  String naziv;
 	private  String semestar;
@@ -143,3 +142,4 @@ public class RemoveSubjectFrame extends JFrame {
 		setVisible(true);
 	}
 }
+*/

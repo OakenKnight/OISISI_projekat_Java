@@ -19,7 +19,9 @@ public class BazaProfesori {
 		return instance;
 	}
 
-	private List<Profesor> profesori;
+	private ArrayList<Profesor> profesori;
+	private ArrayList<Profesor> sviProfesori;
+
 	private List<String> kolone;
 
 	private BazaProfesori() {
@@ -42,7 +44,8 @@ public class BazaProfesori {
 	private void initProfesor() {
 		
 		this.profesori = new ArrayList<Profesor>();
-		
+		this.sviProfesori = new ArrayList<Profesor>();
+
 		String sledeci = null;
 		String [] kolone = null;
 		BufferedReader in = null;
@@ -58,7 +61,9 @@ public class BazaProfesori {
 					continue;
 				}
 				kolone = sledeci.split("\\|");
-				profesori.add(new Profesor(kolone[0],kolone[1],kolone[2],kolone[3], kolone[4], kolone[5], kolone[6], kolone[7],kolone[8],kolone[9]));
+				profesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+				sviProfesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+
 			}
 			in.close();
 		} catch (IOException e) {
@@ -77,11 +82,13 @@ public class BazaProfesori {
 
 	}
 
-	public List<Profesor> getProfesori() {
+	public ArrayList<Profesor> getProfesori() {
 		return profesori;
 	}
-
-	public void setProfesori(List<Profesor> profesori) {
+	public ArrayList<Profesor> getSviProfesori() {
+		return sviProfesori;
+	}
+	public void setProfesori(ArrayList<Profesor> profesori) {
 		this.profesori = profesori;
 	}
 
@@ -129,6 +136,8 @@ public class BazaProfesori {
 	public void dodajProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		
 		this.profesori.add(new Profesor(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa,adresa_kancelarije,BLK,titula,zvanje));
+		this.sviProfesori.add(new Profesor(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa,adresa_kancelarije,BLK,titula,zvanje));
+
 	}
 
 	public void izbrisiProfesora(String BLK) {
@@ -137,6 +146,17 @@ public class BazaProfesori {
 				profesori.remove(i);
 				break;
 			}
+		}
+		try {	
+			for (Profesor i : sviProfesori) {
+				if (i.getBLK().equals(BLK)) {
+					sviProfesori.remove(i);
+					break;
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -155,5 +175,25 @@ public class BazaProfesori {
 				i.setZvanje(zvanje);
 			}
 		}
+		try {
+			for (Profesor i : sviProfesori) {
+				if (i.getBLK().equals(BLK)) {
+					i.setIme(ime);
+					i.setPrezime(prezime);
+					i.setDatum(datum);
+					i.setAdresa_stanovanja(adresa_stanovanja);
+					i.setKontakt_telefon(kontakt_telefon);
+					i.setEmail_adresa(email_adresa);
+					i.setAdresa_kancelarije(adresa_kancelarije) ;
+					i.setBLK(BLK);
+					i.setTitula(titula);
+					i.setZvanje(zvanje);
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 	}
+
 }

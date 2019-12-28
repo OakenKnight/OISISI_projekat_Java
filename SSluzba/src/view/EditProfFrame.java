@@ -153,7 +153,6 @@ public class EditProfFrame extends JFrame{
 		JLabel titulaL=new JLabel("Titula: *");
 		String[] titule= {"BSc","MSc","PhD"};
 		JComboBox<Object> tituleCB=new JComboBox<Object>(titule);
-		titula=(String)tituleCB.getSelectedItem();
 		
 		titulaP.add(titulaL);
 		titulaP.add(tituleCB);
@@ -162,8 +161,7 @@ public class EditProfFrame extends JFrame{
 		JLabel zvanjeL=new JLabel("Zvanje: *");
 		String[] zvanja= {"Saradnik u nastavi","Asistent","Docent","Vanredni profesor","Redovni profesor"};
 		JComboBox<Object> zvanjeCB=new JComboBox<Object>(zvanja);
-		zvanje=(String)zvanjeCB.getSelectedItem();
-
+		
 		
 		zvanjeP.add(zvanjeL);
 		zvanjeP.add(zvanjeCB);
@@ -212,55 +210,9 @@ public class EditProfFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					
-					String sledeci;
-					String sve="";
-					
-					BufferedReader in=null;
-					
-					try {
-						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						while((sledeci = in.readLine()) != null) {
-							sledeci.trim();
-							if(sledeci.equals(ProfPreIzmene)) {
-								sve += imeTF.getText()+"|"+prezimeTF.getText()+"|"+datumTF.getText()+"|"+adresaTF.getText()+"|"+ telefonTF.getText()+"|"+ emailTF.getText()+"|"+ kancelarijaTF.getText()+"|"+ blkTF.getText()+"|"+ titula+"|"+ zvanje+"\n";
-								continue;
-							}
-							sve += sledeci+"\n";
-						}
-						in.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					BufferedWriter out = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt"));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					try {
-						out.write(sve);
+					titula=(String)tituleCB.getSelectedItem();
+					zvanje=(String)zvanjeCB.getSelectedItem();
 
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
 					ProfesorController.getInstance().editProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);

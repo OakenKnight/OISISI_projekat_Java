@@ -1,4 +1,7 @@
-E202RA | Arhitektura racunara kod hajducine| II | Prva godina | Miroslav Hajdukovic
-E203RA | Objektno Programiranje | III | Druga godina | Aleksandar Kupusinac
-E20RAS | Matematicka Analiza 69| I | Prva godina | Nebojsa Ralevic
-E201RA | Matematicka Analiza 1 | I | Prva godina | Nebojsa Ralevic
+E202RA|Arhitektura racunara kod hajducine|Zimski|Cetvrta|Miroslav Hajdukovic|
+E203RA|Objektno Programiranje|Zimski|Druga godina|Aleksandar Kupusinac|
+E201RA|Matematicka Analiza 3|Letnji|Prva godina|Nebojsa Ralevic|
+E205RA|Matematicka Analiza 2|Zimski|Druga godina|Mila Stojakovic|
+E206EE|Elektronika 1|Zimski|Treca godina|Pero Erceg|
+E123EE|Osnove banderologije|Zimski|Prva godina|Zoka Bosanac|
+E124EE|Banderologija 2|Zimski|Druga|Pero Bandero|

@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import controller.RemoveProfListener;
 import controller.StudentiController;
 import controller.listeners.add.AddProfListener;
 import controller.listeners.add.AddProfToSubjListener;
@@ -24,6 +23,7 @@ import controller.listeners.add.AddSubjListener;
 import controller.listeners.edit.EditProfListener;
 import controller.listeners.edit.EditStudListener;
 import controller.listeners.edit.EditSubjListener;
+import controller.listeners.remove.RemoveProfListener;
 import controller.listeners.remove.RemoveStudListener;
 import controller.listeners.remove.RemoveSubjListener;
 import model.BazaStudenata;

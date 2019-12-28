@@ -1,4 +1,4 @@
-package controller;
+package controller.listeners.remove;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
 
+import controller.ProfesorController;
 import model.BazaProfesori;
 import model.Profesor;
 import view.ProfesoriJTable;
@@ -37,56 +38,7 @@ public class RemoveProfListener implements MouseListener{
 				String blk=prof.getBLK();
 				String titula=prof.getTitula();
 				String zvanje=prof.getZvanje();
-				String profPreIzmene =ime+"|"+prezime+"|"+datum+"|"+adresa+"|"+ telefon+"|"+ email+"|"+ kancelarija+"|"+ blk+"|"+ titula+"|"+ zvanje;
 				
-				String sledeci;
-				String sve="";
-				
-				BufferedReader in=null;
-				
-				try {
-					in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					while((sledeci = in.readLine()) != null) {
-						sledeci.trim();
-						if(sledeci.equals(profPreIzmene)) {
-							continue;
-						}
-						sve += sledeci+"\n";
-					}
-					in.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				BufferedWriter out = null;
-				try {
-					out = new BufferedWriter( new FileWriter("datoteke/Profesori.txt"));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				try {
-					out.write(sve);
-
-				} catch (IOException e) {
-					
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally {
-					if(out != null)
-						try {
-							out.close();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				}
 				ProfesorController.getInstance().removeProfesor(ime, prezime, datum, adresa, telefon, email, kancelarija, blk, titula, zvanje);
 				
 			}

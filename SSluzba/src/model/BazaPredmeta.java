@@ -5,12 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class BazaPredmeta {
 	
-	private static BazaPredmeta instance=null;
+	public static BazaPredmeta instance=null;
 	//ako ne postoji instanca baze predmeta napravi je
 	public static BazaPredmeta getInstanceBazaPredmeta() {
 		if(instance==null) {
@@ -20,6 +21,7 @@ public class BazaPredmeta {
 		return instance;
 	}
 	private ArrayList<Predmet> predmeti;
+	private ArrayList<Predmet> sviPredmeti;
 	private ArrayList<String> kolone;
 	
 	private BazaPredmeta() {
@@ -38,7 +40,7 @@ public class BazaPredmeta {
 		
 		
 		this.predmeti = new ArrayList<Predmet>();
-
+		this.sviPredmeti=new ArrayList<Predmet>();
 		
 		String sledeci=null;
 		String[] kolone=null;
@@ -55,8 +57,8 @@ public class BazaPredmeta {
 					continue;
 				}
 				kolone=sledeci.split("\\|");
-				predmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
-		//		sviPredmeti.add(new Predmet(kolone[0],kolone[1],kolone[2],kolone[3],kolone[4]));
+				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
+				sviPredmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
 
 			}
 			in.close();
@@ -65,7 +67,9 @@ public class BazaPredmeta {
 		}
 		
 	}
-	
+	public ArrayList<Predmet> getSviPredmeti(){
+		return sviPredmeti;
+	}
 	public ArrayList<Predmet> getPredmeti(){
 		return predmeti;
 	}
@@ -105,15 +109,30 @@ public class BazaPredmeta {
 	
 	public void addPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
 		this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor));
+		this.sviPredmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor));
+
 	}
 
 	public void deletePredmet(String sifra) {
 		for (Predmet p : predmeti) {
 			if(p.getSifra_predmeta().equals(sifra)) {
 				predmeti.remove(p);
+				
+				
 				break;
 			}
 		}
+		try {
+			for (Predmet p : sviPredmeti) {
+				if(p.getSifra_predmeta().equals(sifra)) {
+					sviPredmeti.remove(p);		
+					break;
+				}
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}	
 	}
 	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
 		for(Predmet p:predmeti) {
@@ -123,7 +142,21 @@ public class BazaPredmeta {
 				p.setSemestar(semestar);
 				p.setGodina(godina);
 				p.setPredavac(profesor);
+				
 			}
+		}
+		try {
+			for(Predmet p:sviPredmeti) {
+				if(p.getSifra_predmeta().equals(sifra)) {
+					p.setSifra_predmeta(sifra);
+					p.setNaziv(naziv);
+					p.setSemestar(semestar);
+					p.setGodina(godina);
+					p.setPredavac(profesor);	
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

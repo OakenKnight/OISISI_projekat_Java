@@ -34,8 +34,8 @@ public class RemoveSubjListener implements MouseListener{
 				String semestar=sub.getSemestar();
 				String godina=sub.getGodina();
 				String profesor=sub.getPredavac();
-				String subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
-				
+				//String subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
+				/*
 				String sledeci;
 				String sve="";
 				
@@ -83,7 +83,7 @@ public class RemoveSubjListener implements MouseListener{
 							e.printStackTrace();
 						}
 				}
-				
+				*/
 				PredmetController.getInstance().removePredmet(sifra,naziv,semestar,godina,profesor);
 			}
 		}
