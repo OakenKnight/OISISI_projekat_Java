@@ -255,7 +255,7 @@ public class AddStudentFrame extends JFrame{
 			*/
 			private boolean proveriProsek( String text ) {
 				// TODO Auto-generated method stub
-				String prosekReg="[0-9][0-9].[0-9][0-9]";
+				String prosekReg="[0-9]*[0-9][.][0-9][0-9]";
 				if(text.matches(prosekReg)) {
 					if(text.isEmpty()==false) {
 						Double ocena=Double.parseDouble(text);

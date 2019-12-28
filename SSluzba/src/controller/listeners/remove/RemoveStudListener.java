@@ -24,12 +24,17 @@ public class RemoveStudListener extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if(TabbedPane.getInstance().getSelectedIndex() == 0) {
-			int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje studenta?",JOptionPane.YES_NO_OPTION);
-			if(option == JOptionPane.YES_OPTION) {
+			try {
+				int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje studenta?",JOptionPane.YES_NO_OPTION);
+				if(option == JOptionPane.YES_OPTION) {
 				
-				StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().selektovanRed);
+					StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().selektovanRed);
+
+				
+				}
+			}catch (Exception e) {
+				System.out.println(e.getMessage());	
 			}
-			
 		}
 		
 	}		

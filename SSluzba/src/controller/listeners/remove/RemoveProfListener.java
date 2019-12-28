@@ -24,6 +24,7 @@ public class RemoveProfListener implements MouseListener{
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		if(TabbedPane.getInstance().getSelectedIndex()==1) {
+			try {
 			int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
 			if(option==JOptionPane.YES_OPTION) {
 				Profesor prof =new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().selektovanRed));
@@ -41,6 +42,10 @@ public class RemoveProfListener implements MouseListener{
 				
 				ProfesorController.getInstance().removeProfesor(ime, prezime, datum, adresa, telefon, email, kancelarija, blk, titula, zvanje);
 				
+				}
+			}catch (Exception e) {
+
+			System.out.println(e.getMessage());
 			}
 		}
 	}		

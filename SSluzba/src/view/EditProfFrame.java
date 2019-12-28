@@ -47,7 +47,7 @@ public class EditProfFrame extends JFrame{
 	private static final long serialVersionUID = 8592866674972968760L;
 
 	public EditProfFrame() {
-		
+		try {
 	    setLocation(800, 300);
 		setTitle("Dodavanje profesora");
 				
@@ -297,6 +297,9 @@ public class EditProfFrame extends JFrame{
 
 		setSize(400, 400);
 		setVisible(true);
-			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 	}
 }

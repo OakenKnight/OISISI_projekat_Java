@@ -26,14 +26,16 @@ public class RemoveSubjListener implements MouseListener{
 			/*RemoveSubjectFrame rm=new RemoveSubjectFrame();
 			rm.setVisible(true);
 			*/
-			int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje predmeta?",JOptionPane.YES_NO_OPTION);
-			if(option==JOptionPane.YES_OPTION) {
-				Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
-				String sifra=sub.getSifra_predmeta();
-				String naziv=sub.getNaziv();
-				String semestar=sub.getSemestar();
-				String godina=sub.getGodina();
-				String profesor=sub.getPredavac();
+			
+			try {
+				int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje predmeta?",JOptionPane.YES_NO_OPTION);
+				if(option==JOptionPane.YES_OPTION) {
+					Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+					String sifra=sub.getSifra_predmeta();
+					String naziv=sub.getNaziv();
+					String semestar=sub.getSemestar();
+					String godina=sub.getGodina();
+					String profesor=sub.getPredavac();
 				//String subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
 				/*
 				String sledeci;
@@ -85,6 +87,11 @@ public class RemoveSubjListener implements MouseListener{
 				}
 				*/
 				PredmetController.getInstance().removePredmet(sifra,naziv,semestar,godina,profesor);
+				
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
 			}
 		}
 	}

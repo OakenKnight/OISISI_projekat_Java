@@ -45,7 +45,7 @@ public class EditSubjFrame extends JFrame{
 	public static String godina;
 	private static String subjPreIzmene;
 	public EditSubjFrame() {
-				
+		try {	
 		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
 	
@@ -254,5 +254,8 @@ public class EditSubjFrame extends JFrame{
 		
 		//unosPredmeta.add(Box.createGlue());
 		setVisible(true);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
