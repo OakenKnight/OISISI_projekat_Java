@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.BazaPredmeta;
@@ -67,7 +68,7 @@ public class DataController {
 		}
 		try {
 			for (Profesor profesor : sviProfesori) {
-				out.write(profesor.getIme()+"|"+profesor.getPrezime()+"|"+profesor.getDatum()+"|"+profesor.getAdresa_stanovanja()+"|"+ profesor.getKontakt_telefon()+"|"+ profesor.getEmail_adresa()+"|"+ profesor.getAdresa_kancelarije()+"|"+ profesor.getBLK()+"|"+ profesor.getTitula()+"|"+ profesor.getZvanje()+"|");
+				out.write(profesor.getIme()+"|"+profesor.getPrezime()+"|"+profesor.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+profesor.getAdresaStanovanja()+"|"+ profesor.getKontaktTel()+"|"+ profesor.getEmail()+"|"+ profesor.getAdresa_kancelarije()+"|"+ profesor.getBLK()+"|"+ profesor.getTitula()+"|"+ profesor.getZvanje()+"|");
 				out.write("\n");
 			}		
 		} catch (IOException e) {
@@ -96,7 +97,7 @@ public class DataController {
 		}
 		try {
 			for (Student student : sviStudenti) {
-				out.write(student.getIme()+"|"+student.getPrezime()+"|"+student.getDatumRodjenja()+"|"+student.getAdresaStanovanja()+"|"+ student.getKontaktTel()+"|"+ student.getEmail()+"|"+ student.getBrIndex()+"|"+ student.getDatumUpisa()+"|"+ student.getTrenutnaGodina()+"|"+ student.getStatus()+"|"+student.getProsecnaOcena()+"|");
+				out.write(student.getIme()+"|"+student.getPrezime()+"|"+student.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+student.getAdresaStanovanja()+"|"+ student.getKontaktTel()+"|"+ student.getEmail()+"|"+ student.getBrIndex()+"|"+ student.getDatumUpisa().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+ student.getTrenutnaGodina()+"|"+ student.getStatus()+"|"+student.getProsecnaOcena()+"|");
 				out.write("\n");
 			}		
 		} catch (IOException e) {

@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,8 @@ public class BazaStudenata {
 
 		String sledeci = null;
 		String [] kolone = null;
+		String [] datum1 = null;
+		String [] datum2 = null;
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Studenti.txt")));
@@ -71,9 +75,13 @@ public class BazaStudenata {
 					s = StatusStudent.S;
 				else
 					s = StatusStudent.N;
-				studenti.add(new Student(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),kolone[7].trim(),Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
-				sviStudenti.add(new Student(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),kolone[7].trim(),Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
-
+				datum1 = kolone[2].split("\\.");
+				datum2 = kolone[7].split("\\.");
+				LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
+				LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
+				studenti.add(new Student(kolone[0].trim(),kolone[1].trim(),lc1,kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),lc2,Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
+				sviStudenti.add(new Student(kolone[0].trim(),kolone[1].trim(),lc1,kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),lc2,Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
+				
 			}
 			in.close();
 		} catch (IOException e) {
@@ -118,7 +126,7 @@ public class BazaStudenata {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return student.getDatumRodjenja();
+			return student.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 4:
 			return student.getAdresaStanovanja();
 		case 5:
@@ -126,7 +134,7 @@ public class BazaStudenata {
 		case 6:
 			return student.getEmail();
 		case 7:
-			return student.getDatumUpisa();
+			return student.getDatumUpisa().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 8:
 			return Integer.toString(student.getTrenutnaGodina());
 		case 9:
@@ -143,7 +151,7 @@ public class BazaStudenata {
 		}
 	}
 	
-	public void dodajStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
+	public void dodajStudenta(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		this.studenti.add(new Student(ime,prezime,datumR,adresaS,kontaktT,email,brI,datumU,trenutnaG,status,prosecnaO));
 		this.sviStudenti.add(new Student(ime,prezime,datumR,adresaS,kontaktT,email,brI,datumU,trenutnaG,status,prosecnaO));
 
@@ -169,7 +177,7 @@ public class BazaStudenata {
 		}
 	}
 
-	public void izmeniStudenta(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
+	public void izmeniStudenta(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		for (Student i : studenti) {
 			if (i.getBrIndex().equals(brI)) {
 				i.setIme(ime);

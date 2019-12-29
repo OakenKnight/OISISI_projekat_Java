@@ -59,15 +59,15 @@ public class MainFrame extends JFrame{
 		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss"); //Pravljenje formata za vreme
 		JLabel time = new JLabel(LocalTime.now().format(timeFormat));
 		time.setPreferredSize(new Dimension(65,20));
+	    Clock c = new Clock(time);
+
 		//Dodavanje komponenti u status bar
 		panel.add(date,FlowLayout.LEFT);
 		panel.add(time,FlowLayout.LEFT);
 		panel.add(Box.createHorizontalStrut(1120),FlowLayout.LEFT);
 		panel.add(labela,FlowLayout.LEFT);
-		
-		
-		
-	//	add(panel,BorderLayout.SOUTH);
+		//Clock c = new Clock(time);
+		add(panel,BorderLayout.SOUTH);
 		
 		//TabbedPane tabs=new TabbedPane();
 		TabbedPane tabs = TabbedPane.getInstance();

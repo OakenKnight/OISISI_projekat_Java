@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.time.LocalDate;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -242,8 +243,11 @@ public class AddStudentFrame extends JFrame{
 					}else {
 						god=4;
 					}
-					
-					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
+					String [] datum1 = datumRodjenjaPolje.getText().split("\\.");
+					String [] datum2 = datumUpisaPolje.getText().split("\\.");
+					LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
+					LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
+					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(),lc1, adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(),lc2,god, stats, Double.parseDouble(prosekPolje.getText()));
 			
 					setVisible(false);
 					dispose();
