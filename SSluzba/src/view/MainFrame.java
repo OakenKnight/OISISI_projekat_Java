@@ -89,7 +89,7 @@ public class MainFrame extends JFrame{
 				    	
 				    	if(TabbedPane.getInstance().getSelectedIndex()==1) {
 					    	Toolbar.getInstance().setTooltipForSearchProf();
-				    	}else if(TabbedPane.getInstance().getSelectedIndex()==2) {
+				    	}else if(TabbedPane.getInstance().getSelectedIndex()==0) {
 					    	Toolbar.getInstance().setTooltipForSearchStud();
 
 				    	}

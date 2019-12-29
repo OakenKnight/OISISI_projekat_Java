@@ -26,6 +26,9 @@ import controller.listeners.edit.EditSubjListener;
 import controller.listeners.remove.RemoveProfListener;
 import controller.listeners.remove.RemoveStudListener;
 import controller.listeners.remove.RemoveSubjListener;
+import controller.listeners.reset.ResetSearchListener;
+import controller.listeners.search.SearchProfesorListener;
+import controller.listeners.search.SearchSubjectListener;
 import model.BazaStudenata;
 //import controller.RemoveProfListener;
 
@@ -121,12 +124,7 @@ public class Toolbar extends JToolBar{
 		//Dimension dim= new Dimension(30,20);
 		
 		//ovo bas ne radi kako treba
-		if(TabbedPane.getInstance().getSelectedIndex()==0)
-			search.setToolTipText("ime:______|prezime:______|indeks:_______");
-		else if(TabbedPane.getInstance().getSelectedIndex()==1)
-			search.setToolTipText("ime:______|prezime:______|brojLicneKarte:_______");
-		else
-			search.setToolTipText("sifra:______|naziv:______");
+		
 		
 		search.setPreferredSize(new Dimension(90,25));
 		search.setMaximumSize(search.getPreferredSize());
@@ -139,8 +137,22 @@ public class Toolbar extends JToolBar{
 		btnSearchEntity.setToolTipText("Search...");
 		btnSearchEntity.setIcon(new ImageIcon("images/search1.png"));
 		add(btnSearchEntity);
+		btnSearchEntity.addMouseListener(new SearchSubjectListener());
+		btnSearchEntity.addMouseListener(new SearchProfesorListener());
 		
 		
+		JButton btnResetSearch=new JButton();
+		btnResetSearch.setToolTipText("Reset search...");
+		//nzm zasto al kad skinem ikonicu koja je 24pixela on me zeza i stavi nista, msm stavi prazak kvadratic, probao sam 3 vrste razlicite i ne radi :(
+		//kad online resizeujem onda mi malo gadno izgleda :( al radi posao
+		btnResetSearch.setIcon(new ImageIcon("images/Webp.net-resizeimage.png"));
+		add(btnResetSearch);
+		btnResetSearch.addMouseListener(new ResetSearchListener());
+		
+		
+	}
+	public String getSearchText() {
+		return search.getText();
 	}
 	public void setBtnNewStudentToSubject(boolean b) {
 		this.btnNewStudentToSubject.setVisible(b);
@@ -148,13 +160,15 @@ public class Toolbar extends JToolBar{
 	public void setBtnNewProfToSubject(boolean b) {
 		this.btnNewProfToSubject.setVisible(b);
 	}
+
 	public void setTooltipForSearchStud() {
-		this.search.setToolTipText("ime:______|prezime:______|indeks:_______");
+		this.search.setToolTipText("ime:__|prezime:__|datumR:__|adresa:__|brTel:__|mail:__|indeks:__|datumU:__|godina:__|status:__|prosek:__|");
 	}
+
 	public void setTooltipForSearchProf() {
-		this.search.setToolTipText("ime:______|prezime:______|blk:_______");
+		this.search.setToolTipText("ime:__|prezime:__|godinaR:__|adresa:__|brTel:__|mail:__|kanc:__|blk:__|titula:__|zvanje:__|");
 	}
 	public void setTooltipForSearchSubj() {
-		this.search.setToolTipText("sifra:______|naziv:______");
+		this.search.setToolTipText("sifra:______|naziv:______|semestar:__|godina:__|prof:___|");
 	}
 }

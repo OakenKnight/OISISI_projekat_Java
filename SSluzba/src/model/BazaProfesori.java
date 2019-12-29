@@ -6,7 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class BazaProfesori {
@@ -195,5 +198,120 @@ public class BazaProfesori {
 			System.out.println(e.getMessage());
 		}
 	}
+	//Milan|Petrovic|19.12.1990.|Seljackih buna 3|021666669|
+	//vidak@gmail.com|69420toranj|121212123|MsC|Vanredni profesor|
 
+	public HashMap<String, String> spremiString(String uneseno){
+		
+		String[] parovi=uneseno.split("\\|");
+		String[] podeljeni;
+	
+		
+		String ime="ime";
+		String prezime="prezime";
+		String godinaR="godinaR";
+		String adresa="adresa";
+		String brTel="brTel";
+		String mail="mail";
+		String kanc="kanc";
+		String blk="blk";
+		String titula="titula";
+		String zvanje="zvanje";
+		
+		HashMap<String,String> mapa= new HashMap<String,String>();
+		
+		for(int i=0;i<parovi.length;i++) {
+			podeljeni=parovi[i].split("\\:");
+			if(podeljeni[0].equals(ime)) {
+				mapa.put(ime, podeljeni[1]);
+			}else if(podeljeni[0].equals(prezime)) {
+				mapa.put(prezime, podeljeni[1]);
+			}else if(podeljeni[0].equals(godinaR)) {
+				mapa.put(godinaR, podeljeni[1]);
+			}else if(podeljeni[0].equals(adresa)) {
+				mapa.put(adresa, podeljeni[1]);
+			}else if(podeljeni[0].equals(brTel)) {
+				mapa.put(brTel, podeljeni[1]);
+			}else if(podeljeni[0].equals(mail)) {
+				mapa.put(mail, podeljeni[1]);
+			}else if(podeljeni[0].equals(kanc)) {
+				mapa.put(kanc, podeljeni[1]);
+			}else if(podeljeni[0].equals(blk)) {
+				mapa.put(blk, podeljeni[1]);
+			}else if(podeljeni[0].equals(titula)) {
+				mapa.put(titula, podeljeni[1]);
+			}else if(podeljeni[0].equals(zvanje)) {
+				mapa.put(zvanje, podeljeni[1]);
+			}
+		}
+		
+		return mapa;
+	}
+	
+	public void searchProfesori(String uneseno) {
+		if(uneseno.equals("")) {
+			this.profesori=this.sviProfesori;
+		}else {
+			
+			HashMap<String, String> mapa=spremiString(uneseno);
+			Set<String> kljucevi=mapa.keySet();
+			Set<Profesor> set=new HashSet<Profesor>();
+			for(String key:kljucevi) {
+				for(Profesor p:sviProfesori) {
+					if(key.equals("ime")) {
+						if(p.getIme().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("prezime")) {
+						if(p.getPrezime().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("godinaR")) {
+						if(p.getDatum().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("adresa")) {
+						if(p.getAdresa_stanovanja().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("brTel")) {
+						if(p.getKontakt_telefon().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("mail")) {
+						if(p.getEmail_adresa().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("kanc")) {
+						if(p.getAdresa_kancelarije().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("blk")) {
+						if(p.getBLK().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("titula")) {
+						if(p.getTitula().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("zvanje")) {
+						if(p.getZvanje().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}
+				}
+				
+				
+			}
+			ArrayList<Profesor> novaLista=new ArrayList<Profesor>(set);
+
+			this.profesori=novaLista;	
+			
+		}
+				
+	}
+	public void resetSearchProfesori() {
+		this.profesori=this.sviProfesori;
+	}
+	
 }

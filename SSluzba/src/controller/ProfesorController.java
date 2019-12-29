@@ -37,4 +37,14 @@ private static ProfesorController instance = null;
 		//TODO: preraditi metodu da trazi entitete
 		
 	}
+	public void searchEntity(String uneseno) {
+		// TODO Auto-generated method stub
+		BazaProfesori.getInstance().searchProfesori(uneseno);
+		TabbedPane.getInstance().azurirajProfesori();
+	}
+	public void resetSearch() {
+		// TODO Auto-generated method stub
+		BazaProfesori.getInstance().resetSearchProfesori();
+		TabbedPane.getInstance().azurirajProfesori();
+	}
 }

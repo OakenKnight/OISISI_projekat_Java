@@ -1,8 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import model.BazaPredmeta;
+import model.Student;
 import view.AbstractTableModelPredmeti;
 import view.PredmetiJTable;
 import view.TabbedPane;
@@ -32,6 +35,14 @@ private static PredmetController instance = null;
 		BazaPredmeta.getInstanceBazaPredmeta().deletePredmet(sifra);		
 		TabbedPane.getInstance().azurirajPredmeti();
 	}
-	public void searchEntity() {
+	public void searchEntity(String uneseno) {
+		BazaPredmeta.getInstanceBazaPredmeta().searchPredmet(uneseno);
+		
+		TabbedPane.getInstance().azurirajPredmeti();
+	}
+	public void resetSearch() {
+		// TODO Auto-generated method stub
+		BazaPredmeta.getInstanceBazaPredmeta().resetSearchPredmet();
+		TabbedPane.getInstance().azurirajPredmeti();
 	}
 }

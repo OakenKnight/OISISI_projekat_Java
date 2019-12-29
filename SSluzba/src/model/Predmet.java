@@ -1,12 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Predmet {
 	private String sifra_predmeta;
 	private String naziv;
 	private String semestar;
 	private String godina;
 	private String predavac; //treba da bude private Profesor profesor al nmg to jos pa nek za sad bude String
-	//private ArrayList<Student> studenti;
+	
 	/*
 	public Predmet(String string, String naziv, String string2, String string3, String string4) {
 		super();
@@ -16,7 +18,7 @@ public class Predmet {
 		this.godina = string3;
 		this.predavac = string4;
 	}
-	*/
+	
 	public Predmet(Predmet p) {
 		super();
 		sifra_predmeta = p.sifra_predmeta;
@@ -35,7 +37,27 @@ public class Predmet {
 		this.godina = string3;
 		this.predavac = string4;
 	}
+	*/
 
+	public Predmet(String sifra_predmeta, String naziv, String semestar, String godina, String predavac) {
+		super();
+		this.sifra_predmeta = sifra_predmeta;
+		this.naziv = naziv;
+		this.semestar = semestar;
+		this.godina = godina;
+		this.predavac = predavac;
+	}
+	
+	public Predmet(Predmet p) {
+		super();
+		this.sifra_predmeta = p.sifra_predmeta;
+		this.naziv = p.naziv;
+		this.semestar = p.semestar;
+		this.godina = p.godina;
+		this.predavac = p.predavac;
+	}
+	
+	
 	public String getSifra_predmeta() {
 		return sifra_predmeta;
 	}
@@ -75,6 +97,7 @@ public class Predmet {
 	public void setPredavac(String predavac) {
 		this.predavac = predavac;
 	}
+
 
 	@Override
 	public String toString() {

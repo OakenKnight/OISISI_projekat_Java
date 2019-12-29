@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class BazaPredmeta {
@@ -22,6 +25,7 @@ public class BazaPredmeta {
 	}
 	private ArrayList<Predmet> predmeti;
 	private ArrayList<Predmet> sviPredmeti;
+	private ArrayList<Student> studenti;
 	private ArrayList<String> kolone;
 	
 	private BazaPredmeta() {
@@ -56,10 +60,20 @@ public class BazaPredmeta {
 				if(sledeci.equals("")) {
 					continue;
 				}
+				
 				kolone=sledeci.split("\\|");
+				
+				
 				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
 				sviPredmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
-
+				
+				/*
+				String[] indeksi=kolone[5].split("\\,");
+				
+				for(int i=0;i<indeksi.length;i++) {
+					System.out.println(indeksi[i]);
+				}
+				*/
 			}
 			in.close();
 		}catch(IOException e) {
@@ -102,7 +116,7 @@ public class BazaPredmeta {
 			return predmet.getGodina();
 		case 4:
 			return predmet.getPredavac();
-		default:
+			default:
 			return null;
 		}
 	}
@@ -159,5 +173,83 @@ public class BazaPredmeta {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+	public HashMap<String, String> spremiString(String uneseno){
+		
+		String[] parovi=uneseno.split("\\|");
+		String[] podeljeni;
+		String[][] nzm;
+		
+		String sifra="sifra";
+		String naziv="naziv";
+		String semestar="semestar";
+		String godina="godina";
+		String prof="prof";
+		
+		HashMap<String,String> mapa= new HashMap<String,String>();
+		
+		for(int i=0;i<parovi.length;i++) {
+			podeljeni=parovi[i].split("\\:");
+			if(podeljeni[0].equals(sifra)) {
+				mapa.put(sifra, podeljeni[1]);
+			}else if(podeljeni[0].equals(naziv)) {
+				mapa.put(naziv, podeljeni[1]);
+			}else if(podeljeni[0].equals(semestar)) {
+				mapa.put(semestar, podeljeni[1]);
+			}else if(podeljeni[0].equals(godina)) {
+				mapa.put(godina, podeljeni[1]);
+			}else if(podeljeni[0].equals(prof)) {
+				mapa.put(prof, podeljeni[1]);
+			}
+		}
+		
+		return mapa;
+	}
+	public void searchPredmet(String uneseno) {
+		if(uneseno.equals("")) {
+			this.predmeti=this.sviPredmeti;
+		}else {
+			
+			HashMap<String, String> mapa=spremiString(uneseno);
+			Set<String> kljucevi=mapa.keySet();
+			Set<Predmet> set=new HashSet<Predmet>();
+			for(String key:kljucevi) {
+				for(Predmet p:sviPredmeti) {
+					if(key.equals("sifra")) {
+						if(p.getSifra_predmeta().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("naziv")) {
+						if(p.getNaziv().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("semestar")) {
+						if(p.getSemestar().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("godina")) {
+						if(p.getGodina().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}else if(key.equals("prof")) {
+						if(p.getPredavac().equals(mapa.get(key))) {
+							set.add(p);
+						}
+					}
+				}
+				
+				
+			}
+			ArrayList<Predmet> novaLista=new ArrayList<Predmet>(set);
+
+			this.predmeti=novaLista;	
+			
+		}
+		
+		
+	}
+
+	public void resetSearchPredmet() {
+		// TODO Auto-generated method stub
+		this.predmeti=this.sviPredmeti;
+	}
 }
