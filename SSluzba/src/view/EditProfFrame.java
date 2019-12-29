@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -197,7 +199,7 @@ public class EditProfFrame extends JFrame{
 				}else if(!prezimeTF.getText().trim().matches(imeReg)){
 					JOptionPane.showMessageDialog(null, "Prezime nije uneseno kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!proveriDatum(datumTF.getText())){
-					JOptionPane.showMessageDialog(null, "Datum nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum nije unesen kako treba! (dd.MM.yyyy)","",JOptionPane.ERROR_MESSAGE);
 				}else if(!adresaTF.getText().trim().matches(adresaReg)) {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!telefonTF.getText().matches(telReg)) {
@@ -212,8 +214,10 @@ public class EditProfFrame extends JFrame{
 					
 					titula=(String)tituleCB.getSelectedItem();
 					zvanje=(String)zvanjeCB.getSelectedItem();
-
-					ProfesorController.getInstance().editProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
+					
+					String [] datum = datumTF.getText().split("\\.");
+					LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
+					ProfesorController.getInstance().editProfesor(imeTF.getText(), prezimeTF.getText(), lc, adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);
 					dispose();
@@ -225,7 +229,7 @@ public class EditProfFrame extends JFrame{
 				if(!text.isEmpty()) {
 					
 
-					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.$";
+					String regexdatum="^\\d{2,2}\\.\\d{2,2}\\.\\d{4}$";
 					
 					if(!text.matches(regexdatum)) {
 						return false;
@@ -262,10 +266,10 @@ public class EditProfFrame extends JFrame{
 		Profesor prof=new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().selektovanRed));
 		imeTF.setText(prof.getIme());
 		prezimeTF.setText(prof.getPrezime());
-		datumTF.setText(prof.getDatum());
-		adresaTF.setText(prof.getAdresa_stanovanja());
-		telefonTF.setText(prof.getKontakt_telefon());
-		emailTF.setText(prof.getEmail_adresa());
+		datumTF.setText(prof.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+		adresaTF.setText(prof.getAdresaStanovanja());
+		telefonTF.setText(prof.getKontaktTel());
+		emailTF.setText(prof.getEmail());
 		kancelarijaTF.setText(prof.getAdresa_kancelarije());
 		blkTF.setText(prof.getBLK());
 		titula=prof.getTitula();

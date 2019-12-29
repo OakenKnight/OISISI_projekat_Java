@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+
 import javax.swing.JFrame;
 
 import model.BazaPredmeta;
@@ -20,16 +22,16 @@ private static ProfesorController instance = null;
 	}
 	private ProfesorController() {}
 
-	public void addProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void addProfesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		BazaProfesori.getInstance().dodajProfesor(ime, prezime, datum, adresa_stanovanja, kontakt_telefon, email_adresa, adresa_kancelarije, BLK, titula, zvanje);
 		TabbedPane.getInstance().azurirajProfesori();
 		
 	}
-	public void editProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void editProfesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		BazaProfesori.getInstance().izmeniProfesora(ime, prezime, datum, adresa_stanovanja, kontakt_telefon, email_adresa, adresa_kancelarije, BLK, titula, zvanje);
 		TabbedPane.getInstance().azurirajProfesori();
 	}
-	public void removeProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void removeProfesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		BazaProfesori.getInstance().izbrisiProfesora(BLK);
 		TabbedPane.getInstance().azurirajProfesori();
 	}

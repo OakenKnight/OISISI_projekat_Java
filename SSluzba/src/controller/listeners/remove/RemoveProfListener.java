@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
@@ -31,10 +32,10 @@ public class RemoveProfListener implements MouseListener{
 				
 				String ime=prof.getIme();
 				String prezime=prof.getPrezime();
-				String datum=prof.getDatum();
-				String adresa=prof.getAdresa_stanovanja();
-				String telefon=prof.getKontakt_telefon();
-				String email=prof.getEmail_adresa();
+				LocalDate datum=prof.getDatumRodjenja();
+				String adresa=prof.getAdresaStanovanja();
+				String telefon=prof.getKontaktTel();
+				String email=prof.getEmail();
 				String kancelarija=prof.getAdresa_kancelarije();
 				String blk=prof.getBLK();
 				String titula=prof.getTitula();

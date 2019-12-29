@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -205,8 +206,9 @@ public class AddProfFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					
-					
-					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), datumTF.getText(), adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
+					String [] datum = datumTF.getText().split("\\.");
+					LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
+					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), lc, adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);
 					//dispose();

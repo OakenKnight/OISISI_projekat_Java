@@ -1,41 +1,27 @@
 package model;
 
+import java.time.LocalDate;
 
-public class Student {
-	private String ime;
-	private String prezime;
-	private String datumRodjenja;
-	private String adresaStanovanja;
-	private String kontaktTel;
-	private String email;
+public class Student extends Osoba{
+
 	private String brIndex;
-	private String datumUpisa;
+	private LocalDate datumUpisa;
 	private int trenutnaGodina;
 	private StatusStudent status;
 	private double prosecnaOcena;
 	//private ArrayList<Predmet> predmeti;
 	
 	public Student() {
-		this.ime = "Nepoznato";
-		this.prezime = "Nepoznato";
-		this.datumRodjenja = "Nepoznato";
-		this.adresaStanovanja = "Nepoznato";
-		this.kontaktTel = "Nepoznato";
-		this.email = "Nepoznato";
+		super("Nepoznato","Nepoznato",LocalDate.now(),"Nepoznato","Nepoznato","Nepoznato");
 		this.brIndex = "Nepoznato";
-		this.datumUpisa = "Nepoznato";
+		this.datumUpisa = LocalDate.now();
 		this.trenutnaGodina = -1;
 		this.status = StatusStudent.N;
 		this.prosecnaOcena = 0.0;
 		// this.predmeti = new ArrayList<Predmeti> ;
 	}
-	public Student(String ime,String prezime,String datumR,String adresaS,String kontaktT,String email,String brI,String datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
-		this.ime = ime;
-		this.prezime = prezime;
-		this.datumRodjenja = datumR;
-		this.adresaStanovanja = adresaS;
-		this.kontaktTel = kontaktT;
-		this.email = email;
+	public Student(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
+		super(ime,prezime,datumR,adresaS,kontaktT,email);
 		this.brIndex = brI;
 		this.datumUpisa = datumU;
 		this.trenutnaGodina = trenutnaG;
@@ -45,12 +31,7 @@ public class Student {
 		
 	}
 	public Student(Student s) {
-		this.ime = s.ime;
-		this.prezime = s.prezime;
-		this.datumRodjenja = s.datumRodjenja;
-		this.adresaStanovanja = s.adresaStanovanja;
-		this.kontaktTel = s.kontaktTel;
-		this.email = s.email;
+		super(s.getIme(),s.getPrezime(),s.getDatumRodjenja(),s.getAdresaStanovanja(),s.getKontaktTel(),s.getEmail());
 		this.brIndex = s.brIndex;
 		this.datumUpisa = s.datumUpisa;
 		this.trenutnaGodina = s.trenutnaGodina;
@@ -156,52 +137,17 @@ public class Student {
 		return true;
 	}
 	
-	public String getIme() {
-		return ime;
-	}
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-	public String getPrezime() {
-		return prezime;
-	}
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
-	}
-	public String getDatumRodjenja() {
-		return datumRodjenja;
-	}
-	public void setDatumRodjenja(String datumRodjenja) {
-		this.datumRodjenja = datumRodjenja;
-	}
-	public String getAdresaStanovanja() {
-		return adresaStanovanja;
-	}
-	public void setAdresaStanovanja(String adresaStanovanja) {
-		this.adresaStanovanja = adresaStanovanja;
-	}
-	public String getKontaktTel() {
-		return kontaktTel;
-	}
-	public void setKontaktTel(String kontaktTel) {
-		this.kontaktTel = kontaktTel;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getBrIndex() {
 		return brIndex;
 	}
 	public void setBrIndex(String brIndex) {
 		this.brIndex = brIndex;
 	}
-	public String getDatumUpisa() {
+	public LocalDate getDatumUpisa() {
 		return datumUpisa;
 	}
-	public void setDatumUpisa(String datumUpisa) {
+	public void setDatumUpisa(LocalDate datumUpisa) {
 		this.datumUpisa = datumUpisa;
 	}
 	public int getTrenutnaGodina() {

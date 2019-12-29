@@ -1,30 +1,20 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Profesor {
-	private String ime;
-	private String prezime;
-	private String datum;
-	private String adresa_stanovanja;
-	private String kontakt_telefon;
-	private String email_adresa;
+public class Profesor extends Osoba{
+
 	private String adresa_kancelarije;
 	private String BLK;
 	private String titula;
 	private String zvanje;
 	//ArrayList<Predmet> predmeti = new ArrayList<Predmet>(); // Create an ArrayList object
 	//dodaj listu predmeta na kojima je profesor;
-	public Profesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,
+	public Profesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,
 			String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
-		super();
-		this.ime = ime;
-		this.prezime = prezime;
-		this.datum = datum;
-		this.adresa_stanovanja = adresa_stanovanja;
-		this.kontakt_telefon = kontakt_telefon;
-		this.email_adresa = email_adresa;
+		super(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa);
 		this.adresa_kancelarije = adresa_kancelarije;
 		this.BLK = BLK;
 		this.titula = titula;
@@ -33,13 +23,7 @@ public class Profesor {
 	}
 	
 	public Profesor(Profesor p) {
-		super();
-		ime = p.ime;
-		prezime = p.prezime;
-		datum = p.datum;
-		adresa_stanovanja = p.adresa_stanovanja;
-		kontakt_telefon = p.kontakt_telefon;
-		email_adresa = p.email_adresa;
+		super(p.getIme(),p.getPrezime(),p.getDatumRodjenja(),p.getAdresaStanovanja(),p.getKontaktTel(),p.getEmail());
 		adresa_kancelarije = p.adresa_kancelarije;
 		BLK = p.BLK;
 		titula = p.titula;
@@ -47,53 +31,7 @@ public class Profesor {
 		//predmeti=p.predmeti;
 	}
 
-	public String getIme() {
-		return ime;
-	}
-
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-
-	public String getPrezime() {
-		return prezime;
-	}
-
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
-	}
-
-	public String getDatum() {
-		return datum;
-	}
-
-	public void setDatum(String datum) {
-		this.datum = datum;
-	}
-
-	public String getAdresa_stanovanja() {
-		return adresa_stanovanja;
-	}
-
-	public void setAdresa_stanovanja(String adresa_stanovanja) {
-		this.adresa_stanovanja = adresa_stanovanja;
-	}
-
-	public String getKontakt_telefon() {
-		return kontakt_telefon;
-	}
-
-	public void setKontakt_telefon(String kontakt_telefon) {
-		this.kontakt_telefon = kontakt_telefon;
-	}
-
-	public String getEmail_adresa() {
-		return email_adresa;
-	}
-
-	public void setEmail_adresa(String email_adresa) {
-		this.email_adresa = email_adresa;
-	}
+	
 
 	public String getAdresa_kancelarije() {
 		return adresa_kancelarije;
@@ -137,8 +75,8 @@ public class Profesor {
 	*/
 	@Override
 	public String toString() {
-		return "Profesor [ime=" + ime + ", prezime=" + prezime + ", datum=" + datum + ", adresa_stanovanja="
-				+ adresa_stanovanja + ", kontakt_telefon=" + kontakt_telefon + ", email_adresa=" + email_adresa
+		return "Profesor [ime=" + ime + ", prezime=" + prezime + ", datum=" + datumRodjenja + ", adresa_stanovanja="
+				+ adresaStanovanja + ", kontakt_telefon=" + kontaktTel+ ", email_adresa=" + email
 				+ ", adresa_kancelarije=" + adresa_kancelarije + ", BLK=" + BLK + ", titula=" + titula + ", zvanje="
 				+ zvanje + "]";
 	}

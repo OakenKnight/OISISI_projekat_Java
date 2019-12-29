@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,7 @@ public class BazaProfesori {
 
 		String sledeci = null;
 		String [] kolone = null;
+		String [] datum = null;
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
@@ -61,9 +64,11 @@ public class BazaProfesori {
 					continue;
 				}
 				kolone = sledeci.split("\\|");
-				profesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
-				sviProfesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
-
+				datum = kolone[2].split("\\.");
+				LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
+				profesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+				sviProfesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+				
 			}
 			in.close();
 		} catch (IOException e) {
@@ -113,13 +118,13 @@ public class BazaProfesori {
 		case 1:
 			return profesori.getPrezime();
 		case 2:
-			return profesori.getDatum();
+			return profesori.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 3:
-			return profesori.getAdresa_stanovanja();
+			return profesori.getAdresaStanovanja();
 		case 4:
-			return profesori.getKontakt_telefon();
+			return profesori.getKontaktTel();
 		case 5:
-			return profesori.getEmail_adresa();
+			return profesori.getEmail();
 		case 6:
 			return profesori.getAdresa_kancelarije();
 		case 7:
@@ -133,7 +138,7 @@ public class BazaProfesori {
 			return null;
 		}
 	}
-	public void dodajProfesor(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void dodajProfesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		
 		this.profesori.add(new Profesor(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa,adresa_kancelarije,BLK,titula,zvanje));
 		this.sviProfesori.add(new Profesor(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa,adresa_kancelarije,BLK,titula,zvanje));
@@ -160,15 +165,15 @@ public class BazaProfesori {
 		}
 	}
 
-	public void izmeniProfesora(String ime, String prezime, String datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
+	public void izmeniProfesora(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		for (Profesor i : profesori) {
 			if (i.getBLK().equals(BLK)) {
 				i.setIme(ime);
 				i.setPrezime(prezime);
-				i.setDatum(datum);
-				i.setAdresa_stanovanja(adresa_stanovanja);
-				i.setKontakt_telefon(kontakt_telefon);
-				i.setEmail_adresa(email_adresa);
+				i.setDatumRodjenja(datum);
+				i.setAdresaStanovanja(adresa_stanovanja);
+				i.setKontaktTel(kontakt_telefon);
+				i.setEmail(email_adresa);
 				i.setAdresa_kancelarije(adresa_kancelarije) ;
 				i.setBLK(BLK);
 				i.setTitula(titula);
@@ -180,10 +185,10 @@ public class BazaProfesori {
 				if (i.getBLK().equals(BLK)) {
 					i.setIme(ime);
 					i.setPrezime(prezime);
-					i.setDatum(datum);
-					i.setAdresa_stanovanja(adresa_stanovanja);
-					i.setKontakt_telefon(kontakt_telefon);
-					i.setEmail_adresa(email_adresa);
+					i.setDatumRodjenja(datum);
+					i.setAdresaStanovanja(adresa_stanovanja);
+					i.setKontaktTel(kontakt_telefon);
+					i.setEmail(email_adresa);
 					i.setAdresa_kancelarije(adresa_kancelarije) ;
 					i.setBLK(BLK);
 					i.setTitula(titula);

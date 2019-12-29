@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -160,12 +162,12 @@ public class EditStudFrame extends JFrame{
 			Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
 			imePolje.setText(st.getIme());
 			prezimePolje.setText(st.getPrezime());
-			datumRodjenjaPolje.setText(st.getDatumRodjenja());
+			datumRodjenjaPolje.setText(st.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
 			adresaPolje.setText(st.getAdresaStanovanja());
 			telefonPolje.setText(st.getKontaktTel());
 			emailPolje.setText(st.getEmail());
 			indexPolje.setText(st.getBrIndex());
-			datumUpisaPolje.setText(st.getDatumUpisa());
+			datumUpisaPolje.setText(st.getDatumUpisa().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
 			prosekPolje.setText(String.valueOf(st.getProsecnaOcena()));
 			if(st.getTrenutnaGodina() == 1)
 				godine.setSelectedItem("I (prva)");
@@ -234,7 +236,7 @@ public class EditStudFrame extends JFrame{
 				}else if(!prezimePolje.getText().trim().matches(imeReg)){
 					JOptionPane.showMessageDialog(null, "Prezime nije uneseno kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!proveriDatum(datumRodjenjaPolje.getText())){
-					JOptionPane.showMessageDialog(null, "Datum rodjenja nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum rodjenja nije unesen kako treba! (dd.MM.yyyy)","",JOptionPane.ERROR_MESSAGE);
 				}else if(!adresaPolje.getText().trim().matches(adresaReg)) {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!telefonPolje.getText().matches(telReg)) {
@@ -244,7 +246,7 @@ public class EditStudFrame extends JFrame{
 				}else if(!indexPolje.getText().matches(idxReg)) {
 					JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!proveriDatum(datumUpisaPolje.getText())){
-					JOptionPane.showMessageDialog(null, "Datum upisa nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum upisa nije unesen kako treba! (dd.MM.yyyy)","",JOptionPane.ERROR_MESSAGE);
 				}else if(!proveriProsek(prosekPolje.getText())){
 					JOptionPane.showMessageDialog(null, "Prosek nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
@@ -267,7 +269,12 @@ public class EditStudFrame extends JFrame{
 						god=4;
 					}
 					
-					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), datumRodjenjaPolje.getText(), adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), datumUpisaPolje.getText(),god, stats, Double.parseDouble(prosekPolje.getText()));
+					String [] datum1 = datumRodjenjaPolje.getText().split("\\.");
+					String [] datum2 = datumUpisaPolje.getText().split("\\.");
+					LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
+					LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
+					
+					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), lc1, adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), lc2,god, stats, Double.parseDouble(prosekPolje.getText()));
 					
 					setVisible(false);
 					dispose();
@@ -299,7 +306,7 @@ public class EditStudFrame extends JFrame{
 				if(!text.isEmpty()) {
 					
 
-					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.$";
+					String regexdatum="^\\d{2,2}\\.\\d{2,2}\\.\\d{4}$";
 					
 					if(!text.matches(regexdatum)) {
 						return false;

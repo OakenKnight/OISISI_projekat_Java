@@ -64,10 +64,8 @@ public class MainFrame extends JFrame{
 		panel.add(time,FlowLayout.LEFT);
 		panel.add(Box.createHorizontalStrut(1120),FlowLayout.LEFT);
 		panel.add(labela,FlowLayout.LEFT);
-		
-		
-		
-	//	add(panel,BorderLayout.SOUTH);
+		Clock c = new Clock(time);
+	    add(panel,BorderLayout.SOUTH);
 		
 		//TabbedPane tabs=new TabbedPane();
 		TabbedPane tabs = TabbedPane.getInstance();
