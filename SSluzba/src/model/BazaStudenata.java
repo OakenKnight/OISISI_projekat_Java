@@ -340,4 +340,12 @@ public class BazaStudenata {
 	public void resetSearchStudenti() {
 		this.studenti=this.sviStudenti;
 	}
+	public Student nadjiStudenta(String ind) {
+		for(Student s : studenti) {
+			if(s.getBrIndex().equals(ind)) {
+				return s;
+			}
+		}
+		return null;
+	}
 }

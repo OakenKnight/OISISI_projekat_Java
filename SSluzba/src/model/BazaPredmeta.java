@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,9 +65,15 @@ public class BazaPredmeta {
 				kolone=sledeci.split("\\|");
 			    String[] indeksi = kolone[5].split("\\#");
 				
-				ArrayList<String> stud = new ArrayList<String>();
+				ArrayList<Student> stud = new ArrayList<Student>();
+				Student s;
 				for(String st : indeksi) {
-					stud.add(st);
+					s = BazaStudenata.getInstance().nadjiStudenta(st);
+					if(s == null) {
+						stud.add(new Student("nepoznato","nepoznato",LocalDate.now(),"nepoznato","nepoznato","nepoznato",st,LocalDate.now(),-1,StatusStudent.N,0.00));
+						continue;
+					}
+					stud.add(s);
 				}
 				
 				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));

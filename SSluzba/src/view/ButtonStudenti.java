@@ -3,11 +3,13 @@ package view;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -28,18 +30,7 @@ public class ButtonStudenti extends AbstractCellEditor implements TableCellEdito
 
 		this.renderB = new JButton("Prikazi");
 		this.editB = new JButton("Prikazi");
-		
-		editB.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				//PrikazStudenataUPredmetu p = new PrikazStudenataUPredmetu();
-				
-				fireEditingStopped();//p.setVisible(true);
-				System.out.println("radi bokte");
-				
-			}
-		});
+
 		this.isEditorActive = false;
 	}
 	
@@ -53,7 +44,6 @@ public class ButtonStudenti extends AbstractCellEditor implements TableCellEdito
 	public Component getTableCellRendererComponent(JTable arg0, Object arg1, boolean arg2, boolean arg3, int arg4,
 			int arg5) {
 		return new StudentTablePanel(this.renderB);
-
 	}
 
 
@@ -64,9 +54,10 @@ public class ButtonStudenti extends AbstractCellEditor implements TableCellEdito
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		PrikazStudenataUPredmetu p = new PrikazStudenataUPredmetu();
-		
-		p.setVisible(true);	
+		if(PredmetiJTable.getInstance().getSelectedColumn() == 5) {
+			PrikazStudenataUPredmetu p = new PrikazStudenataUPredmetu();
+			p.setVisible(true);
+		}
 	}
 
 	@Override
@@ -83,19 +74,13 @@ public class ButtonStudenti extends AbstractCellEditor implements TableCellEdito
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		if (table.isEditing() && table.getCellEditor() == this) {
-			this.isEditorActive = true;
-		}
+		
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		if (isEditorActive && table.isEditing()) {
-			table.getCellEditor().stopCellEditing();
-		}
-		isEditorActive = false;
-		
+	
 	}
 
 }

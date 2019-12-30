@@ -24,10 +24,9 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		
 		Predmet st = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
 		StringBuilder svi = new StringBuilder("");
-		for(String temp : st.getBrIndeksaStudenata()) {
-			svi.append(temp+"\n");
+		for(Student temp : st.getBrIndeksaStudenata()) {
+			svi.append(temp.getBrIndex()+"\n");
 		}
-		System.out.println(svi.toString());
 		tx.setText(svi.toString());
 		p.add(tx);
 		

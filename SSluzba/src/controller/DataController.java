@@ -40,8 +40,8 @@ public class DataController {
 			for (Predmet predmet : sviPredmeti) {
 				StringBuilder s = new StringBuilder("");
 				s.append(predmet.getSifra_predmeta()+"|"+predmet.getNaziv()+"|"+predmet.getSemestar()+"|"+predmet.getGodina()+"|"+predmet.getPredavac()+"|");	
-				for(String st : predmet.getBrIndeksaStudenata()) {
-					s.append(st + "#");
+				for(Student st : predmet.getBrIndeksaStudenata()) {
+					s.append(st.getBrIndex() + "#");
 				}
 				s.deleteCharAt(s.length()-1);
 				
