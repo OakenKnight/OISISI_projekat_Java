@@ -225,7 +225,7 @@ public class BazaStudenata {
 		
 		String ime = "ime";
 		String prezime = "prezime";
-		String godinaR = "godinaR";
+		String datumR = "datumR";
 		String adresa = "adresa";
 		String brTel = "brTel";
 		String mail = "mail";
@@ -244,8 +244,8 @@ public class BazaStudenata {
 				mapa.put(ime, podeljeni[1]);
 			}else if(podeljeni[0].equals(prezime)) {
 				mapa.put(prezime, podeljeni[1]);
-			}else if(podeljeni[0].equals(godinaR)) {
-				mapa.put(godinaR, podeljeni[1]);
+			}else if(podeljeni[0].equals(datumR)) {
+				mapa.put(datumR, podeljeni[1]);
 			}else if(podeljeni[0].equals(adresa)) {
 				mapa.put(adresa, podeljeni[1]);
 			}else if(podeljeni[0].equals(brTel)) {
@@ -275,7 +275,9 @@ public class BazaStudenata {
 			
 			HashMap<String, String> mapa = spremiString(uneseno);
 			Set<String> kljucevi = mapa.keySet();
+			
 			Set<Student> set = new HashSet<Student>();
+			
 			for(String key:kljucevi) {
 				for(Student s : sviStudenti) {
 					if(key.equals("ime")) {
@@ -286,7 +288,7 @@ public class BazaStudenata {
 						if(s.getPrezime().equals(mapa.get(key))) {
 							set.add(s);
 						}
-					}else if(key.equals("godinaR")) {
+					}else if(key.equals("datumR")) {
 						if(s.getDatumRodjenja().equals(mapa.get(key))) {
 							set.add(s);
 						}

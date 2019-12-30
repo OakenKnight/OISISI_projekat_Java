@@ -21,6 +21,7 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		setTitle("Dodavanje studenta");
 		JPanel p = new JPanel();
 		JTextArea tx =  new JTextArea();
+		
 		Predmet st = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
 		StringBuilder svi = new StringBuilder("");
 		for(String temp : st.getBrIndeksaStudenata()) {
@@ -29,6 +30,7 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		System.out.println(svi.toString());
 		tx.setText(svi.toString());
 		p.add(tx);
+		
 		add(p,BorderLayout.CENTER);
 		
 		setSize(400, 600);
