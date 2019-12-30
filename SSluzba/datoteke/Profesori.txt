@@ -2,4 +2,4 @@ Miroslav|Hajdukovic|13.02.1990|Hajduk Veljkova 2c|021345678|ajduk@gmail.com|699|
 Zoka|Bosanac|22.06.1975|Alekse Santica 6|0213456457|bosnijak@gmail.com|masinski 12|908573452|PhD|Vanredni profesor|E206EE
 Pero|Bandero|22.03.1975|Lasla Gala 2|021343456|bandera@gmail.com|masinski 22|908676455|MsC|Vanredni profesor|E124EE#E123EE
 Aleksandar|Kupusinac|12.02.1977|Futoski put 42|02141245|kupus@gmail.com|jugodrvo 42|908673452|PhD|Docent|E203RA#E207RA
-Nebojsa|Ralevic|12.05.1970|Rubinova 4|02169420|ralerubin@gmail.com|612 kula|666666666|PhD|Vanredni profesor|E201RA#E201Mh
+Nebojsa|Ralevic|12.05.1970|Rubinova 4|02169420|ralerubin@gmail.com|612 kula|666666666|PhD|Vanredni profesor|E201RA#E201Mh#E203Mh

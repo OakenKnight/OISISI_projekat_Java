@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -27,6 +28,7 @@ import javax.swing.JTextField;
 import controller.DataController;
 import controller.FocusPredmeti;
 import controller.PredmetController;
+import model.Student;
 
 public class AddSubjFrame extends JFrame{
 	private static JTextField spTF;
@@ -140,8 +142,11 @@ public class AddSubjFrame extends JFrame{
 					
 					semestar=(String)semestarCB.getSelectedItem();
 					godina=(String)godineCB.getSelectedItem()+" godina";
+					ArrayList<Student> stud = new ArrayList<Student>();
+					Student st = new Student();
+					stud.add(st);
 
-					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stud);
 					
 					unosPredmeta.setVisible(false);
 					

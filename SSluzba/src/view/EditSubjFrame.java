@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,6 +33,7 @@ import model.BazaPredmeta;
 import model.BazaProfesori;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 
 public class EditSubjFrame extends JFrame{
 	/**
@@ -44,6 +46,7 @@ public class EditSubjFrame extends JFrame{
 	public static JTextField profesorTF;
 	public static String godina;
 	private static String subjPreIzmene;
+	private static ArrayList<Student> stNaPredmetu;
 	
 	public EditSubjFrame() {
 		try {	
@@ -76,26 +79,21 @@ public class EditSubjFrame extends JFrame{
 			//spTF.addFocusListener(focusListener1);		
 			spTF.addFocusListener(fokus);
 	
-			
 			JLabel npL=new JLabel("Naziv predmeta: *");
 			npTF = new JTextField(30);
 			npTF.setName("txt");
 			npTF.addFocusListener(fokus);
-	
-			//npTF.addFocusListener(focusListener2);
 		
-			
 			JLabel semestarL=new JLabel("Semestar: *");
 			String[] semestri= {"Letnji","Zimski"};
 			JComboBox semestarCB=new JComboBox(semestri);
-			
-			
+		
+		
 			JLabel godinaL=new JLabel("Godina: *");
 			String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 			JComboBox godineCB=new JComboBox(godine);
-			//String god=godina + " godina";
-			
-			
+		
+		
 			JLabel profesorL=new JLabel("Profesor: *");
 			profesorTF=new JTextField(30);
 			profesorTF.setName("txt");
@@ -109,13 +107,15 @@ public class EditSubjFrame extends JFrame{
 			semestar=sub.getSemestar();
 			godina=sub.getGodina()+" godina";
 			profesorTF.setText(sub.getPredavac());
+			stNaPredmetu = sub.getBrIndeksaStudenata();
 			subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
 			
-			
-			
+		
+		
 			JButton okBtn=new JButton("Ok");
 			okBtn.setToolTipText("Potvrdi");
 			okBtn.addActionListener(new ActionListener() {
+
 				
 			String sifraReg="[a-zA-Z0-9]";
 			String regex1="[a-zA-Z ]*[0-9]*";
@@ -140,12 +140,13 @@ public class EditSubjFrame extends JFrame{
 						semestar=(String)semestarCB.getSelectedItem();
 						godina=(String)godineCB.getSelectedItem()+" godina";
 						
-						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
 						setVisible(false);
-						
-						
+							
+							
 						dispose();
 					}
+
 					
 				}
 			});
@@ -258,5 +259,7 @@ public class EditSubjFrame extends JFrame{
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+			
 	}
 }
+

@@ -20,7 +20,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.BazaPredmeta;
+import model.BazaStudenata;
 import model.Predmet;
+import model.Student;
 
 public class AddStudToSubjectFrame extends JFrame{
 	private static String idx;
@@ -67,46 +69,49 @@ public class AddStudToSubjectFrame extends JFrame{
 			}
 		});
 		potvrda.addActionListener(new ActionListener() {
-			String idxReg="[a-z]+[0-9]+/[0-9]+";
+			String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				boolean moze = false;
+				String s = indeks.getText();
+				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+					if(s.equals(stud.getBrIndex())){
+						moze = true;
+					}
+				}
 				if(indeks.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 
 				}else if(!indeks.getText().matches(idxReg)) {
 						JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!moze){
+					JOptionPane.showMessageDialog(null, "Student sa unetim indeksom nije u evidenciji!","",JOptionPane.ERROR_MESSAGE);
 				}else {
-
-					String sledeci;
-					String sve="";
 					
-					BufferedReader in=null;
-					
-					try {
-						in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Predmeti.txt")));
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						while((sledeci = in.readLine()) != null) {
-							sledeci.trim();
-							if(sledeci.equals(subjPreIzmene)) {
-								subjPreIzmene+="|"+ indeks + ",";
-								sve+=subjPreIzmene;
-								continue;
-							}
-							sve += sledeci+"\n";
+					Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed );
+					Student zaUnos = null;
+					for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+						if(s.equals(stud.getBrIndex())) {
+							zaUnos = new Student(stud);
 						}
-						in.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
+					for(Predmet pred : BazaPredmeta.getInstanceBazaPredmeta().getPredmeti()) {
+						if(p.getSifra_predmeta().equals(pred.getSifra_predmeta())) {
+							pred.getBrIndeksaStudenata().add(zaUnos);
+						}
+					}
+					
+					
+					setVisible(false);
+					dispose();
+					
 				}
-				setVisible(false);
+				
+				
+				
+					
 			}
 			
 			

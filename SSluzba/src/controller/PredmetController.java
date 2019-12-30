@@ -24,14 +24,14 @@ private static PredmetController instance = null;
 	}
 	private PredmetController() {}
 
-	public void addPredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
-		BazaPredmeta.getInstanceBazaPredmeta().addPredmet(sifra, naziv, semestar, godina, profesor);
+	public void addPredmet(String sifra,String naziv,String semestar,String godina,String profesor,ArrayList<Student> s) {
+		BazaPredmeta.getInstanceBazaPredmeta().addPredmet(sifra, naziv, semestar, godina, profesor,s);
 		
 		TabbedPane.getInstance().azurirajPredmeti();
 		
 	}
-	public void editPredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
-		BazaPredmeta.getInstanceBazaPredmeta().editPredmet(sifra, naziv, semestar, godina, profesor);		
+	public void editPredmet(String sifra,String naziv,String semestar,String godina,String profesor,ArrayList<Student> s) {
+		BazaPredmeta.getInstanceBazaPredmeta().editPredmet(sifra, naziv, semestar, godina, profesor,s);		
 		TabbedPane.getInstance().azurirajPredmeti();
 	}
 	public void removePredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
