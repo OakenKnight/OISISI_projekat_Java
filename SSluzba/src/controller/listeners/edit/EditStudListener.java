@@ -12,7 +12,6 @@ public class EditStudListener implements MouseListener{
 	public void mouseClicked(MouseEvent arg0) {
 		if(TabbedPane.getInstance().getSelectedIndex()==0) {
 			EditStudFrame diag = new EditStudFrame();
-			diag.setVisible(true);
 		}
 	}
 

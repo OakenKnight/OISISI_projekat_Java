@@ -14,7 +14,6 @@ public class EditSubjListener implements MouseListener {
 		// TODO Auto-generated method stub
 		if(TabbedPane.getInstance().getSelectedIndex()==2) {
 			EditSubjFrame diag = new EditSubjFrame();
-			diag.setVisible(true);
 		}
 	}
 

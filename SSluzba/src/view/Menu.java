@@ -15,6 +15,9 @@ import javax.swing.KeyStroke;
 import controller.PredmetController;
 import controller.ProfesorController;
 import controller.StudentiController;
+import controller.listeners.edit.EditProfListener;
+import controller.listeners.edit.EditStudListener;
+import controller.listeners.edit.EditSubjListener;
 import model.BazaPredmeta;
 import model.BazaProfesori;
 import model.Predmet;
@@ -82,15 +85,22 @@ public class Menu extends JMenuBar{
 				
 			}
 		});
-		
+		/*
+		editItem.addMouseListener(new EditProfListener());
+		editItem.addMouseListener(new EditSubjListener());
+		editItem.addMouseListener(new EditStudListener());
+		*/
 		editItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(TabbedPane.getInstance().getSelectedIndex() == 0) {
+				if(TabbedPane.getInstance().getSelectedIndex() == -1) {
+					
+				}else if(TabbedPane.getInstance().getSelectedIndex() == 0) {
 					EditStudFrame diag = new EditStudFrame();
 					diag.setVisible(true);
 				}else if(TabbedPane.getInstance().getSelectedIndex() == 1) {
+					
 					EditProfFrame diag = new EditProfFrame();
 					diag.setVisible(true);
 				}else if(TabbedPane.getInstance().getSelectedIndex() == 2) {

@@ -13,8 +13,7 @@ public class EditProfListener implements MouseListener{
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		if(TabbedPane.getInstance().getSelectedIndex()==1) {
-			EditProfFrame diag = new EditProfFrame();
-			diag.setVisible(true);
+				EditProfFrame diag = new EditProfFrame();			
 		}
 	}
 
