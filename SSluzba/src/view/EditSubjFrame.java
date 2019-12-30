@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,6 +33,7 @@ import model.BazaPredmeta;
 import model.BazaProfesori;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 
 public class EditSubjFrame extends JFrame{
 	/**
@@ -44,6 +46,7 @@ public class EditSubjFrame extends JFrame{
 	public static JTextField profesorTF;
 	public static String godina;
 	private static String subjPreIzmene;
+	private static ArrayList<Student> stNaPredmetu;
 	public EditSubjFrame() {
 		try {	
 		JPanel unosPanel=new JPanel();
@@ -108,6 +111,7 @@ public class EditSubjFrame extends JFrame{
 		semestar=sub.getSemestar();
 		godina=sub.getGodina()+" godina";
 		profesorTF.setText(sub.getPredavac());
+		stNaPredmetu = sub.getBrIndeksaStudenata();
 		subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
 		
 		
@@ -139,7 +143,7 @@ public class EditSubjFrame extends JFrame{
 					semestar=(String)semestarCB.getSelectedItem();
 					godina=(String)godineCB.getSelectedItem()+" godina";
 					
-					PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+					PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
 					setVisible(false);
 					
 					

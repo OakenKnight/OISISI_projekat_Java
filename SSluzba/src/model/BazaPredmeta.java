@@ -126,9 +126,9 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void addPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
-		this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor));
-		this.sviPredmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor));
+	public void addPredmet(String sifra, String naziv, String semestar, String godina, String profesor,ArrayList<Student> s) {
+		this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,s));
+		this.sviPredmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,s));
 
 	}
 
@@ -153,7 +153,7 @@ public class BazaPredmeta {
 			System.out.println(e.getMessage());
 		}	
 	}
-	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor) {
+	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor,ArrayList<Student> s) {
 		for(Predmet p:predmeti) {
 			if(p.getSifra_predmeta().equals(sifra)) {
 				p.setSifra_predmeta(sifra);
@@ -161,6 +161,7 @@ public class BazaPredmeta {
 				p.setSemestar(semestar);
 				p.setGodina(godina);
 				p.setPredavac(profesor);
+				p.setBrIndeksaStudenata(s);
 				
 			}
 		}
@@ -171,7 +172,8 @@ public class BazaPredmeta {
 					p.setNaziv(naziv);
 					p.setSemestar(semestar);
 					p.setGodina(godina);
-					p.setPredavac(profesor);	
+					p.setPredavac(profesor);
+					p.setBrIndeksaStudenata(s);
 				}
 			}
 		}catch(Exception e) {
