@@ -9,7 +9,7 @@ public class Predmet {
 	private String semestar;
 	private String godina;
 	private String predavac; //treba da bude private Profesor profesor al nmg to jos pa nek za sad bude String
-	private ArrayList<String> brIndeksaStudenata;
+	private ArrayList<Student> brIndeksaStudenata;
 	
 	/*
 	public Predmet(String string, String naziv, String string2, String string3, String string4) {
@@ -48,9 +48,9 @@ public class Predmet {
 		this.semestar = semestar;
 		this.godina = godina;
 		this.predavac = predavac;
-		this.brIndeksaStudenata = new ArrayList<String>();
+		this.brIndeksaStudenata = new ArrayList<Student>();
 	}
-	public Predmet(String sifra_predmeta, String naziv, String semestar, String godina, String predavac,ArrayList<String> studenti) {
+	public Predmet(String sifra_predmeta, String naziv, String semestar, String godina, String predavac,ArrayList<Student> studenti) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;
 		this.naziv = naziv;
@@ -71,11 +71,11 @@ public class Predmet {
 	}
 	
 	
-	public ArrayList<String> getBrIndeksaStudenata() {
+	public ArrayList<Student> getBrIndeksaStudenata() {
 		return brIndeksaStudenata;
 	}
 
-	public void setBrIndeksaStudenata(ArrayList<String> brIndeksaStudenata) {
+	public void setBrIndeksaStudenata(ArrayList<Student> brIndeksaStudenata) {
 		this.brIndeksaStudenata = brIndeksaStudenata;
 	}
 
