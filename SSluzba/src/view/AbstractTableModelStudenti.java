@@ -28,11 +28,7 @@ public class AbstractTableModelStudenti extends AbstractTableModel{
 	}
 
 
-	// da bismo mogli prikazati dugme
-	/*@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		
-	}*/
+
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {

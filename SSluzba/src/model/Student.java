@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Student extends Osoba{
 
@@ -9,7 +10,6 @@ public class Student extends Osoba{
 	private int trenutnaGodina;
 	private StatusStudent status;
 	private double prosecnaOcena;
-	//private ArrayList<Predmet> predmeti;
 	
 	public Student() {
 		super("Nepoznato","Nepoznato",LocalDate.now(),"Nepoznato","Nepoznato","Nepoznato");
@@ -18,7 +18,6 @@ public class Student extends Osoba{
 		this.trenutnaGodina = -1;
 		this.status = StatusStudent.N;
 		this.prosecnaOcena = 0.0;
-		// this.predmeti = new ArrayList<Predmeti> ;
 	}
 	public Student(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		super(ime,prezime,datumR,adresaS,kontaktT,email);
@@ -27,18 +26,18 @@ public class Student extends Osoba{
 		this.trenutnaGodina = trenutnaG;
 		this.status = status;
 		this.prosecnaOcena = prosecnaO;
-		//this.predmeti = predmeti;
 		
 	}
 	public Student(Student s) {
 		super(s.getIme(),s.getPrezime(),s.getDatumRodjenja(),s.getAdresaStanovanja(),s.getKontaktTel(),s.getEmail());
-		this.brIndex = s.brIndex;
-		this.datumUpisa = s.datumUpisa;
-		this.trenutnaGodina = s.trenutnaGodina;
-		this.status = s.status;
-		this.prosecnaOcena = s.prosecnaOcena;
-		//this.predmeti = s.predmeti;
+		this.brIndex = s.getBrIndex();
+		this.datumUpisa = s.getDatumUpisa();
+		this.trenutnaGodina = s.getTrenutnaGodina();
+		this.status = s.getStatus();
+		this.prosecnaOcena = s.getProsecnaOcena();
+
 	}
+	
 	
 	
 	

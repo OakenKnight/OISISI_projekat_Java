@@ -35,7 +35,7 @@ public class BazaPredmeta {
 		this.kolone.add("Semestar");
 		this.kolone.add("Godina studija");
 		this.kolone.add("Predmetni profesor");
-		//this.kolone.add("Spisak studenata");
+		this.kolone.add("Spisak studenata");
 		initPredmete();
 	}
 	
@@ -62,18 +62,16 @@ public class BazaPredmeta {
 				}
 				
 				kolone=sledeci.split("\\|");
+			    String[] indeksi = kolone[5].split("\\#");
 				
-				
-				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
-				sviPredmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim()));
-				
-				/*
-				String[] indeksi=kolone[5].split("\\,");
-				
-				for(int i=0;i<indeksi.length;i++) {
-					System.out.println(indeksi[i]);
+				ArrayList<String> stud = new ArrayList<String>();
+				for(String st : indeksi) {
+					stud.add(st);
 				}
-				*/
+				
+				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));
+				sviPredmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));
+
 			}
 			in.close();
 		}catch(IOException e) {
@@ -93,7 +91,7 @@ public class BazaPredmeta {
 	}
 	
 	public int getColumnCnt() {
-		return 5;
+		return 6;
 	}
 	
 	public String getColumnName(int index) {

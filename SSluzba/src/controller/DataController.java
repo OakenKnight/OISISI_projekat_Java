@@ -38,7 +38,14 @@ public class DataController {
 		}
 		try {
 			for (Predmet predmet : sviPredmeti) {
-				out.write(predmet.getSifra_predmeta()+"|"+predmet.getNaziv()+"|"+predmet.getSemestar()+"|"+predmet.getGodina()+"|"+predmet.getPredavac()+"|");	
+				StringBuilder s = new StringBuilder("");
+				s.append(predmet.getSifra_predmeta()+"|"+predmet.getNaziv()+"|"+predmet.getSemestar()+"|"+predmet.getGodina()+"|"+predmet.getPredavac()+"|");	
+				for(String st : predmet.getBrIndeksaStudenata()) {
+					s.append(st + "#");
+				}
+				s.deleteCharAt(s.length()-1);
+				
+				out.write(s.toString());
 				out.write("\n");
 			}		
 		} catch (IOException e) {

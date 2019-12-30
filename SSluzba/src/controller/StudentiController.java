@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -39,7 +40,13 @@ private static StudentiController instance = null;
 
 		
 	}
-	public void searchEntity() {
-		//TODO: preraditi metodu da trazi entitete
+	public void searchEntity(String unos) {
+		BazaStudenata.getInstance().searchStudenti(unos);
+		TabbedPane.getInstance().azurirajStudentiO();
+	}
+	public void resetSearch() {
+		// TODO Auto-generated method stub
+		BazaStudenata.getInstance().resetSearchStudenti();
+		TabbedPane.getInstance().azurirajStudentiO();
 	}
 }

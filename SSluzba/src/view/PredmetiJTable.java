@@ -31,6 +31,7 @@ public class PredmetiJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelPredmeti());
+		new ButtonStudenti(this,5);
 		tabela=this;
 		model=this.getModel();
 		sort();
