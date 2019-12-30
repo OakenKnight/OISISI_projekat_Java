@@ -53,8 +53,8 @@ public class TabbedPane extends JTabbedPane{
 		add("Profesori",skrolProfesori);
 		add("Predmeti",skrolPredmeti);
 		
-		tabelaStudenti.setAutoCreateRowSorter(true);
-		tabelaProfesori.setAutoCreateRowSorter(true);
+		//tabelaStudenti.setAutoCreateRowSorter(true);
+		//tabelaProfesori.setAutoCreateRowSorter(true);
 		//tabelaPredmeti.setAutoCreateRowSorter(true);
 		
 		
@@ -62,7 +62,7 @@ public class TabbedPane extends JTabbedPane{
 	public int getStanje() {
 		return stanje;
 	}
-	public void azurirajStudentiO() {
+	public void azurirajStudenti() {
 		AbstractTableModelStudenti model=(AbstractTableModelStudenti)tabelaStudenti.getModel();
 		model.fireTableDataChanged();
 	}

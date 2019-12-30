@@ -31,11 +31,17 @@ public class PrikazStudenataUPredmetu extends JFrame{
 	
 	public PrikazStudenataUPredmetu() {
 		setLocation(800, 300);
+
 		setTitle("Spisak studenta");
 		JPanel donjiPanel = new JPanel(new FlowLayout());
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		DefaultListModel<String> tx = new DefaultListModel<String>();
+
+		setTitle("Dodavanje studenta");
+		JPanel p = new JPanel();
+		
+
 		Predmet st = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
 		int i = 0;
 		for(Student temp : st.getBrIndeksaStudenata()) {
@@ -84,6 +90,9 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		
 		nazadBrisanje.add(btnObrisi);
 		nazadBrisanje.add(btnNazad);
+
+		
+		add(p,BorderLayout.CENTER);
 		
 		Box struktura = Box.createVerticalBox();
 		struktura.add(nazadBrisanje);

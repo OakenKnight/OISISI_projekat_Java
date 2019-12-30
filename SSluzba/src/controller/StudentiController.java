@@ -25,28 +25,28 @@ private static StudentiController instance = null;
 	public void addStudent(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {//TODO: preraditi metodu da dodaje entitete
 		//JFrame unosStudenata = new JFrame();
 		BazaStudenata.getInstance().dodajStudenta(ime, prezime, datumR, adresaS, kontaktT, email, brI, datumU, trenutnaG, status, prosecnaO);
-		TabbedPane.getInstance().azurirajStudentiO();
+		TabbedPane.getInstance().azurirajStudenti();
 		//unosStudenata.setVisible(true);
 	}
 	public void editStudent(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		BazaStudenata.getInstance().izmeniStudenta(ime, prezime, datumR, adresaS, kontaktT, email, brI, datumU, trenutnaG, status, prosecnaO);
-		TabbedPane.getInstance().azurirajStudentiO();
+		TabbedPane.getInstance().azurirajStudenti();
 	}
 	public void removeStudent(int rowSelectedIndex) {
 		System.out.println(rowSelectedIndex);
 		Student std = BazaStudenata.getInstance().getRow(rowSelectedIndex);
 		BazaStudenata.getInstance().izbrisiStudenta(std.getBrIndex());
-		TabbedPane.getInstance().azurirajStudentiO();
+		TabbedPane.getInstance().azurirajStudenti();
 
 		
 	}
 	public void searchEntity(String unos) {
 		BazaStudenata.getInstance().searchStudenti(unos);
-		TabbedPane.getInstance().azurirajStudentiO();
+		TabbedPane.getInstance().azurirajStudenti();
 	}
 	public void resetSearch() {
 		// TODO Auto-generated method stub
 		BazaStudenata.getInstance().resetSearchStudenti();
-		TabbedPane.getInstance().azurirajStudentiO();
+		TabbedPane.getInstance().azurirajStudenti();
 	}
 }

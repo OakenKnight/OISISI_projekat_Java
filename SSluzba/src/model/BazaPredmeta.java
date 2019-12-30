@@ -184,7 +184,6 @@ public class BazaPredmeta {
 		
 		String[] parovi=uneseno.split("\\|");
 		String[] podeljeni;
-		String[][] nzm;
 		
 		String sifra="sifra";
 		String naziv="naziv";
