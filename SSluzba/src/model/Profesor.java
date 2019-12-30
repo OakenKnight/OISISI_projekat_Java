@@ -10,8 +10,17 @@ public class Profesor extends Osoba{
 	private String BLK;
 	private String titula;
 	private String zvanje;
-	//ArrayList<Predmet> predmeti = new ArrayList<Predmet>(); // Create an ArrayList object
+	ArrayList<Predmet> predmeti; // Create an ArrayList object
 	//dodaj listu predmeta na kojima je profesor;
+	public Profesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,
+			String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje,ArrayList<Predmet> predmeti) {
+		super(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa);
+		this.adresa_kancelarije = adresa_kancelarije;
+		this.BLK = BLK;
+		this.titula = titula;
+		this.zvanje = zvanje;
+		this.predmeti=predmeti;
+	}
 	public Profesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,
 			String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		super(ime,prezime,datum,adresa_stanovanja,kontakt_telefon,email_adresa);
@@ -19,20 +28,22 @@ public class Profesor extends Osoba{
 		this.BLK = BLK;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		//this.predmeti=predmeti1;
 	}
-	
 	public Profesor(Profesor p) {
 		super(p.getIme(),p.getPrezime(),p.getDatumRodjenja(),p.getAdresaStanovanja(),p.getKontaktTel(),p.getEmail());
 		adresa_kancelarije = p.adresa_kancelarije;
 		BLK = p.BLK;
 		titula = p.titula;
 		zvanje = p.zvanje;
-		//predmeti=p.predmeti;
+		this.predmeti=p.predmeti;
 	}
 
-	
-
+	public ArrayList<Predmet> getPredmeti(){
+		return predmeti;
+	}
+	public void setPredmeti(ArrayList<Predmet> predmeti) {
+		this.predmeti=predmeti;
+	}
 	public String getAdresa_kancelarije() {
 		return adresa_kancelarije;
 	}
@@ -78,11 +89,11 @@ public class Profesor extends Osoba{
 		return "Profesor [ime=" + ime + ", prezime=" + prezime + ", datum=" + datumRodjenja + ", adresa_stanovanja="
 				+ adresaStanovanja + ", kontakt_telefon=" + kontaktTel+ ", email_adresa=" + email
 				+ ", adresa_kancelarije=" + adresa_kancelarije + ", BLK=" + BLK + ", titula=" + titula + ", zvanje="
-				+ zvanje + "]";
+				+ zvanje + ","+predmeti+"]";
 	}
 	
 	
-		
+	
 	
 	
 	

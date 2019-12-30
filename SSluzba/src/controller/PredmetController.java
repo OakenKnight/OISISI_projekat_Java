@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import model.BazaPredmeta;
+import model.BazaProfesori;
+import model.Predmet;
+import model.Profesor;
 import model.Student;
 import view.AbstractTableModelPredmeti;
 import view.PredmetiJTable;
@@ -44,5 +47,10 @@ private static PredmetController instance = null;
 		// TODO Auto-generated method stub
 		BazaPredmeta.getInstanceBazaPredmeta().resetSearchPredmet();
 		TabbedPane.getInstance().azurirajPredmeti();
+	}
+	public void changeProf(String stariProf, String noviProf, Predmet p) {
+		BazaPredmeta.getInstanceBazaPredmeta().izmeniProfesora(stariProf,noviProf,p);
+		TabbedPane.getInstance().azurirajPredmeti();
+		
 	}
 }

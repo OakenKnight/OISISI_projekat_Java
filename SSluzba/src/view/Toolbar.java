@@ -28,6 +28,7 @@ import controller.listeners.remove.RemoveStudListener;
 import controller.listeners.remove.RemoveSubjListener;
 import controller.listeners.reset.ResetSearchListener;
 import controller.listeners.search.SearchProfesorListener;
+import controller.listeners.search.SearchStudentListener;
 import controller.listeners.search.SearchSubjectListener;
 import model.BazaStudenata;
 //import controller.RemoveProfListener;
@@ -72,7 +73,6 @@ public class Toolbar extends JToolBar{
 		btnEditEntity.addMouseListener(new EditProfListener());
 		btnEditEntity.addMouseListener(new EditSubjListener());
 		
-		//addSeparator();
 
 		JButton btnDeleteEntity= new JButton();
 		btnDeleteEntity.setToolTipText("Delete...");
@@ -81,29 +81,14 @@ public class Toolbar extends JToolBar{
 		btnDeleteEntity.addMouseListener(new RemoveSubjListener());
 		btnDeleteEntity.addMouseListener(new RemoveProfListener());
 		btnDeleteEntity.addMouseListener(new RemoveStudListener());
-	//	btnDeleteEntity.addMouseListener(new RemoveProfListener());
 
-		/*btnDeleteEntity.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				EntityController.getInstance().removeEntity();
-
-			}
-		});
-		*/
-		//addSeparator();
 		btnNewStudentToSubject= new JButton();
 		btnNewStudentToSubject.setToolTipText("Make new...");
 		btnNewStudentToSubject.setIcon(new ImageIcon("images/user1.png"));
 		add(btnNewStudentToSubject);
 
 		btnNewStudentToSubject.setVisible(false);
-		//?????????????????????????????????????????????
-		//zasto fakin copy paste ne radi????????????
-	//	btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
-
+	
 		btnNewStudentToSubject.addMouseListener(new AddStudentToSubjListener());
 
 
@@ -114,16 +99,13 @@ public class Toolbar extends JToolBar{
 		add(btnNewProfToSubject);
 		
 		btnNewProfToSubject.setVisible(false);
-	//	btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
 
 		
 		
 		
 		search=new JTextField(50);
-		//Dimension dim= new Dimension(30,20);
 		
-		//ovo bas ne radi kako treba
 		
 		
 		search.setPreferredSize(new Dimension(90,25));
@@ -131,7 +113,6 @@ public class Toolbar extends JToolBar{
 		add(Box.createHorizontalGlue());
 		add(search);
 		
-		//addSeparator();
 
 		JButton btnSearchEntity= new JButton();
 		btnSearchEntity.setToolTipText("Search...");
@@ -139,12 +120,10 @@ public class Toolbar extends JToolBar{
 		add(btnSearchEntity);
 		btnSearchEntity.addMouseListener(new SearchSubjectListener());
 		btnSearchEntity.addMouseListener(new SearchProfesorListener());
-		
+		btnSearchEntity.addMouseListener(new SearchStudentListener());
 		
 		JButton btnResetSearch=new JButton();
 		btnResetSearch.setToolTipText("Reset search...");
-		//nzm zasto al kad skinem ikonicu koja je 24pixela on me zeza i stavi nista, msm stavi prazak kvadratic, probao sam 3 vrste razlicite i ne radi :(
-		//kad online resizeujem onda mi malo gadno izgleda :( al radi posao
 		btnResetSearch.setIcon(new ImageIcon("images/Webp.net-resizeimage.png"));
 		add(btnResetSearch);
 		btnResetSearch.addMouseListener(new ResetSearchListener());

@@ -1,8 +1,10 @@
 E202RA|Arhitektura racunara|Letnji|Prva godina|Miroslav Hajdukovic|RA20/2017#ra11/2017
+E206EE|Elektronika 1|Zimski|Treca godina|Zoka Bosanac|RA20/2017#ra11/2017
+E123EE|Osnove banderologije|Zimski|Prva godina|Pero Bandero|RA20/2017#ra11/2017
+E124EE|Banderologija 2|Zimski|Druga|Pero Bandero|RA20/2017#ra11/2017#RA34/2016
 E203RA|Objektno Programiranje|Zimski|Druga godina|Aleksandar Kupusinac|RA20/2017#ra11/2017
-E201RA|Matematicka Analiza 3|Letnji|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
-E205RA|Matematicka Analiza 2|Zimski|Druga godina|Mila Stojakovic|RA20/2017#ra11/2017
-E206EE|Elektronika 1|Zimski|Treca godina|Pero Erceg|RA20/2017#ra11/2017
-E123EE|Osnove banderologije|Zimski|Prva godina|Zoka Bosanac|RA20/2017#ra11/2017
-E124EE|Banderologija 2|Zimski|Druga|Pero Bandero|RA20/2017#ra11/2017
-E207RA|Objektno Programiranje vol2|Zimski|Treca godina|Aleksandar Kupusinac|RA20/2017#ra1/2017
+E207RA|Objektno Programiranje vol2|Zimski|Treca godina|Aleksandar Kupusinac|RA20/2017#ra1/2017#RA34/2016
+E201RA|Matematicka Analiza 1|Letnji|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
+E201Mh|Matematika 1|Zimski|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
+E202Mh|Matematika 2|Letnji|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
+E203Mh|Matematika 3|Letnji|Druga godina|Zoka Bosanac|RA20/2017#ra11/2017

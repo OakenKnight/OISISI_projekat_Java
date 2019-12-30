@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 
 public class BazaPredmeta {
 	
@@ -121,7 +123,7 @@ public class BazaPredmeta {
 			return predmet.getGodina();
 		case 4:
 			return predmet.getPredavac();
-			default:
+		default:
 			return null;
 		}
 	}
@@ -255,5 +257,124 @@ public class BazaPredmeta {
 	public void resetSearchPredmet() {
 		// TODO Auto-generated method stub
 		this.predmeti=this.sviPredmeti;
+	}
+	//metoda koja stavlja broj licne karte u text field
+	public String returnBlkFromPredavac(Predmet p) {
+		String blk="";
+		
+		Profesor profesor=BazaProfesori.getInstance().getProfHavingSubj(p);
+		if(profesor==null) {
+			return null;
+		}else {
+			blk=profesor.getBLK();
+			return blk;
+		}
+		
+	}
+	//metoda koja za datog predavaca nalazi predmet
+	public Predmet nadjiPredmet(String pred) {
+		// TODO Auto-generated method stub
+		for (Predmet predmet : sviPredmeti) {
+			if(predmet.getSifra_predmeta().equals(pred)) {
+				return predmet;
+			}
+		}
+		return null;
+	}
+	
+	public void putProfToSubj(String blk, Predmet p) {
+		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
+		if(profa==null){
+			//JOptionPane.showMessageDialog(null, "Nepostojeci broj licne karte je unesen","",JOptionPane.ERROR_MESSAGE);
+		}else {
+			ArrayList<Predmet> predmeti=profa.getPredmeti();
+			predmeti.add(p);
+		}
+	}
+	
+	public void deleteProfFromSubj(String blk, Predmet p) {
+		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
+		if(profa==null){
+			//JOptionPane.showMessageDialog(null, "Nepostojeci broj licne karte je unesen","",JOptionPane.ERROR_MESSAGE);
+		}else {
+			ArrayList<Predmet> predmeti=profa.getPredmeti();
+			int idx=-1;
+			int i=0;
+			for (Predmet predmet : predmeti) {
+				if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					idx=i;
+					continue;
+				}
+				i++;
+			}
+			System.out.println(i);
+			predmeti.remove(idx);
+		}
+	}
+	
+	public void izmeniListuZaPrikaz(String blkNovi,Predmet p) {
+		for(Predmet predmet:sviPredmeti) {
+			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blkNovi);
+				predmet.setPredavac(profa.getIme()+" "+profa.getPrezime());
+				continue;
+			}
+		}
+		for(Predmet predmet1:predmeti) {
+			if(predmet1.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blkNovi);
+				predmet1.setPredavac(profa.getIme()+" "+profa.getPrezime());
+				continue;
+			}
+		}
+	}
+	
+	public void izmeniProfesora(String stariProf, String noviProf, Predmet p) {
+		try {
+			deleteProfFromSubj(stariProf,p);
+			putProfToSubj(noviProf, p);
+			izmeniListuZaPrikaz(noviProf, p);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Nemoguce uraditi izmenu profesora! Pogresan broj licne karte profesora unesen!","",JOptionPane.ERROR_MESSAGE);
+
+		}	
+	}
+
+	public void obrisiProfesoraSaPredmeta(String bLK) {
+		// TODO Auto-generated method stub
+		Profesor profesor=BazaProfesori.getInstance().getProfHavingBlk(bLK);
+		ArrayList<Predmet> predmetiProfesorovi=profesor.getPredmeti();
+	
+		for (Predmet p : sviPredmeti) {
+			for(Predmet p1:predmetiProfesorovi) {
+				if(p1.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					p.setPredavac("");
+				}
+			}
+		}
+		
+		for (Predmet p : predmeti) {
+			for(Predmet p1:predmetiProfesorovi) {
+				if(p1.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				
+					p.setPredavac("");
+				}
+			}
+		}
+		
+	}
+	public void izmeniListuZaPrikazPosleBrisanja(String blk) {
+		Profesor p=BazaProfesori.getInstance().getProfHavingBlk(blk);
+		ArrayList<Predmet> predmeti=p.getPredmeti();
+		
+		for(Predmet predmet:sviPredmeti) {
+			if(predmet.getSifra_predmeta().equals(predmet.getSifra_predmeta())) {
+				Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
+				predmet.setPredavac(profa.getIme()+" "+profa.getPrezime());
+				continue;
+			}
+		}
 	}
 }
