@@ -74,21 +74,42 @@ public class AddStudToSubjectFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				boolean moze = false;
+				boolean imaUEvidenciji = false;
+				boolean odgovarajucaGodina = false;
+				Predmet proveraGodine = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+				int g =-1;
+				if(proveraGodine.getGodina().equals("Prva godina"))
+					g = 1;
+				else if(proveraGodine.equals("Druga godina"))
+					g = 2;
+				else if(proveraGodine.equals("Treca godina"))
+					g = 3;
+				else
+					g = 4;
+				
+				System.out.println(proveraGodine.getGodina());
 				String s = indeks.getText();
 				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
 					if(s.equals(stud.getBrIndex())){
-						moze = true;
+						imaUEvidenciji = true;
+						
+						if(stud.getTrenutnaGodina() == g) {
+							odgovarajucaGodina = true;
+						}
 					}
 				}
+				
+				
 				if(indeks.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 
 				}else if(!indeks.getText().matches(idxReg)) {
 						JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
-				}else if(!moze){
+				}else if(!imaUEvidenciji){
 					JOptionPane.showMessageDialog(null, "Student sa unetim indeksom nije u evidenciji!","",JOptionPane.ERROR_MESSAGE);
-				}else {
+				}else if(!odgovarajucaGodina){
+					JOptionPane.showMessageDialog(null, "Student sa unetim indeksom ne slusa oznaceni predmet!","",JOptionPane.ERROR_MESSAGE);
+				}else{
 					
 					Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed );
 					Student zaUnos = null;
