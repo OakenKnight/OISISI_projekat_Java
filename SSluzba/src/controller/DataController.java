@@ -75,7 +75,13 @@ public class DataController {
 		}
 		try {
 			for (Profesor profesor : sviProfesori) {
-				out.write(profesor.getIme()+"|"+profesor.getPrezime()+"|"+profesor.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+profesor.getAdresaStanovanja()+"|"+ profesor.getKontaktTel()+"|"+ profesor.getEmail()+"|"+ profesor.getAdresa_kancelarije()+"|"+ profesor.getBLK()+"|"+ profesor.getTitula()+"|"+ profesor.getZvanje()+"|");
+				StringBuilder s=new StringBuilder("");
+				s.append(profesor.getIme()+"|"+profesor.getPrezime()+"|"+profesor.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+profesor.getAdresaStanovanja()+"|"+ profesor.getKontaktTel()+"|"+ profesor.getEmail()+"|"+ profesor.getAdresa_kancelarije()+"|"+ profesor.getBLK()+"|"+ profesor.getTitula()+"|"+ profesor.getZvanje()+"|");
+				for(Predmet st : profesor.getPredmeti()) {
+					s.append(st.getSifra_predmeta() + "#");
+				}
+				s.deleteCharAt(s.length()-1);
+				out.write(s.toString());
 				out.write("\n");
 			}		
 		} catch (IOException e) {

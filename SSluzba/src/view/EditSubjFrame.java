@@ -79,80 +79,21 @@ public class EditSubjFrame extends JFrame{
 			//spTF.addFocusListener(focusListener1);		
 			spTF.addFocusListener(fokus);
 	
-
-		
-		JLabel semestarL=new JLabel("Semestar: *");
-		String[] semestri= {"Letnji","Zimski"};
-		JComboBox semestarCB=new JComboBox(semestri);
-		
-		
-		JLabel godinaL=new JLabel("Godina: *");
-		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
-		JComboBox godineCB=new JComboBox(godine);
-		//String god=godina + " godina";
-		
-		
-		JLabel profesorL=new JLabel("Profesor: *");
-		profesorTF=new JTextField(30);
-		profesorTF.setName("txt");
-		profesorTF.addFocusListener(fokus);
-		
-		
-		
-		Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
-		spTF.setText(sub.getSifra_predmeta());
-		npTF.setText(sub.getNaziv());
-		semestar=sub.getSemestar();
-		godina=sub.getGodina()+" godina";
-		profesorTF.setText(sub.getPredavac());
-		stNaPredmetu = sub.getBrIndeksaStudenata();
-		subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
-		
-		
-		
-		JButton okBtn=new JButton("Ok");
-		okBtn.setToolTipText("Potvrdi");
-		okBtn.addActionListener(new ActionListener() {
-
-
-			
 			JLabel npL=new JLabel("Naziv predmeta: *");
 			npTF = new JTextField(30);
 			npTF.setName("txt");
 			npTF.addFocusListener(fokus);
-	
-			//npTF.addFocusListener(focusListener2);
 		
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
-				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
-				}else if(spTF.getText().matches(sifraReg)) {
-					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
-				} else if(npTF.getText().matches(regex1)==false) {
-					JOptionPane.showMessageDialog(null,"Nije unet dobro naziv predmeta","",JOptionPane.ERROR_MESSAGE);
-				}else if(profesorTF.getText().matches(regex2)==false){
-					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
-				}else {
-					
-					semestar=(String)semestarCB.getSelectedItem();
-					godina=(String)godineCB.getSelectedItem()+" godina";
-					
-					PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
-					setVisible(false);
-					
-			
 			JLabel semestarL=new JLabel("Semestar: *");
 			String[] semestri= {"Letnji","Zimski"};
 			JComboBox semestarCB=new JComboBox(semestri);
-			
-			
+		
+		
 			JLabel godinaL=new JLabel("Godina: *");
 			String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 			JComboBox godineCB=new JComboBox(godine);
-			//String god=godina + " godina";
-			
-			
+		
+		
 			JLabel profesorL=new JLabel("Profesor: *");
 			profesorTF=new JTextField(30);
 			profesorTF.setName("txt");
@@ -166,13 +107,15 @@ public class EditSubjFrame extends JFrame{
 			semestar=sub.getSemestar();
 			godina=sub.getGodina()+" godina";
 			profesorTF.setText(sub.getPredavac());
+			stNaPredmetu = sub.getBrIndeksaStudenata();
 			subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
 			
-			
-			
+		
+		
 			JButton okBtn=new JButton("Ok");
 			okBtn.setToolTipText("Potvrdi");
 			okBtn.addActionListener(new ActionListener() {
+
 				
 			String sifraReg="[a-zA-Z0-9]";
 			String regex1="[a-zA-Z ]*[0-9]*";
@@ -197,10 +140,10 @@ public class EditSubjFrame extends JFrame{
 						semestar=(String)semestarCB.getSelectedItem();
 						godina=(String)godineCB.getSelectedItem()+" godina";
 						
-						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText());
+						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
 						setVisible(false);
-						
-						
+							
+							
 						dispose();
 					}
 
@@ -316,5 +259,7 @@ public class EditSubjFrame extends JFrame{
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+			
 	}
 }
+

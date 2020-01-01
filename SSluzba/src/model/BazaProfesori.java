@@ -26,12 +26,10 @@ public class BazaProfesori {
 
 	private ArrayList<Profesor> profesori;
 	private ArrayList<Profesor> sviProfesori;
-
 	private List<String> kolone;
 
 	private BazaProfesori() {
 	
-		initProfesor();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("IME");
@@ -44,6 +42,10 @@ public class BazaProfesori {
 		this.kolone.add("BLK");
 		this.kolone.add("TITULA");
 		this.kolone.add("ZVANJE");
+
+		
+		initProfesor();
+
 	}
 
 	private void initProfesor() {
@@ -55,6 +57,7 @@ public class BazaProfesori {
 		String [] kolone = null;
 		String [] datum = null;
 		BufferedReader in = null;
+		
 		try {
 			in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Profesori.txt")));
 		} catch (FileNotFoundException e) {
@@ -66,12 +69,28 @@ public class BazaProfesori {
 				if(sledeci.equals("")) {
 					continue;
 				}
+				
 				kolone = sledeci.split("\\|");
 				datum = kolone[2].split("\\.");
-				LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
-				profesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
-				sviProfesori.add(new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+
+				String[] predmetiSifre=kolone[10].split("\\#");
+				ArrayList<Predmet> predmeti=new ArrayList<Predmet>();
+				Predmet p;
+				for(String pred:predmetiSifre) {
+					p=BazaPredmeta.getInstanceBazaPredmeta().nadjiPredmet(pred);
+					if(p==null) {
+						predmeti.add(new Predmet(pred,"nepoznato","nepoznato","nepoznato",kolone[0].trim()+" "+kolone[1].trim()));
+						continue;
+					}
+					predmeti.add(p);
+				}
 				
+				LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
+				Profesor profa=new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim());
+				profa.setPredmeti(predmeti);
+				profesori.add(profa); //new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));
+				sviProfesori.add(profa); //new Profesor(kolone[0].trim(),kolone[1].trim(),lc,kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(),kolone[8].trim(),kolone[9].trim()));	
+				//System.out.println(predmeti);
 			}
 			in.close();
 		} catch (IOException e) {
@@ -203,8 +222,7 @@ public class BazaProfesori {
 			System.out.println(e.getMessage());
 		}
 	}
-	//Milan|Petrovic|19.12.1990.|Seljackih buna 3|021666669|
-	//vidak@gmail.com|69420toranj|121212123|MsC|Vanredni profesor|
+
 
 	public HashMap<String, String> spremiString(String uneseno){
 		
@@ -318,5 +336,29 @@ public class BazaProfesori {
 	public void resetSearchProfesori() {
 		this.profesori=this.sviProfesori;
 	}
-	
+	public Profesor getProfHavingBlk(String blk) {
+		for (Profesor p : sviProfesori) {
+			if(p.getBLK().equals(blk)) {
+				return p;
+			}
+		}
+		return null;
+	}
+	/*
+	public ArrayList<Predmet> getProfsSubject(Profesor p){
+		return p.getPredmeti();
+	}
+	*/
+	public Profesor getProfHavingSubj(Predmet p) {
+		for (Profesor pr : sviProfesori) {
+			ArrayList<Predmet> profesoroviPredmeti = pr.getPredmeti();
+			for (Predmet predmet : profesoroviPredmeti) {
+				if(p.getSifra_predmeta().equals(predmet.getSifra_predmeta()))
+					return pr;
+			}
+		}
+		
+		return null;
+		
+	}
 }

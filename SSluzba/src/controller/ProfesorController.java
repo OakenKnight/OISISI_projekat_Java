@@ -33,6 +33,7 @@ private static ProfesorController instance = null;
 	}
 	public void removeProfesor(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		BazaProfesori.getInstance().izbrisiProfesora(BLK);
+		//BazaPredmeta.getInstanceBazaPredmeta().obrisiProfesoraSaPredmeta(BLK);
 		TabbedPane.getInstance().azurirajProfesori();
 	}
 	public void searchProfesor() {
