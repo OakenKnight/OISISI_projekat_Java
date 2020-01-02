@@ -97,16 +97,6 @@ public class BazaProfesori {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		//profesori.add(new Student( "Mika", "Mikic", "13.08.1998","Novi Sad","32145453","sfdfewf@gmail.com","RA20/2017","10.07.2017",3,Status.B,9.41));
-		//profesori.add(new Student( "Zika", "Zikic", "23.04.1997","Sremaska mitrovica","67467453","aaaaaa@gmail.com","RA120/2016","13.07.2016",4,Status.S,9.00));
-		//profesori.add(new Student( "Pera", "Peric", "12.10.1999","Kovilovo","98765424","bbbbbbb@gmail.com","RA1/2018","08.07.2018",2,Status.B,9.50));
-		//profesori.add(new Profesor("Miroslav","Hajdukovic", "12-March-1901"	 ,"Na marsu","021666420","ajduk@gmail.com","420","696642","PhD","redovan profesor"));
-		//profesori.add(new Profesor("Miroslav2","Hajdukovic1", "13-March-1901"	 ,"Na marsu","021666420","ajduk@gmail.com","420","696642","PhD","redovan profesor"));
-		//profesori.add(new Profesor("Miroslav2","Hajdukovic1", "13-December-1901"	 ,"Na marsu","021666420","ajduk@gmail.com","420","696642","PhD","redovan profesor"));
-
 	}
 
 	public ArrayList<Profesor> getProfesori() {
@@ -171,13 +161,16 @@ public class BazaProfesori {
 		for (Profesor i : profesori) {
 			if (i.getBLK().equals(BLK)) {
 				profesori.remove(i);
+				deleteProfFromSubj(i);
 				break;
 			}
 		}
+		
 		try {	
 			for (Profesor i : sviProfesori) {
 				if (i.getBLK().equals(BLK)) {
 					sviProfesori.remove(i);
+					deleteProfFromSubj(i);
 					break;
 				}
 			}
@@ -186,7 +179,12 @@ public class BazaProfesori {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	public void deleteProfFromSubj(Profesor p) {
+		ArrayList<Predmet> predmeti=p.getPredmeti();
+		for (Predmet predmet : predmeti) {
+			BazaPredmeta.getInstanceBazaPredmeta().setProfUnknown(predmet);
+		}
+	}
 	public void izmeniProfesora(String ime, String prezime, LocalDate datum, String adresa_stanovanja, String kontakt_telefon,String email_adresa, String adresa_kancelarije, String BLK, String titula, String zvanje) {
 		for (Profesor i : profesori) {
 			if (i.getBLK().equals(BLK)) {
@@ -337,11 +335,14 @@ public class BazaProfesori {
 		this.profesori=this.sviProfesori;
 	}
 	public Profesor getProfHavingBlk(String blk) {
+	
+			
 		for (Profesor p : sviProfesori) {
 			if(p.getBLK().equals(blk)) {
 				return p;
 			}
 		}
+		System.out.println("AAAAAAAAAAAAAAAA KURVOOOOOOOOO");
 		return null;
 	}
 	/*

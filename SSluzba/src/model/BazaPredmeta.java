@@ -88,6 +88,7 @@ public class BazaPredmeta {
 		}
 		
 	}
+	
 	public ArrayList<Predmet> getSviPredmeti(){
 		return sviPredmeti;
 	}
@@ -143,6 +144,9 @@ public class BazaPredmeta {
 				break;
 			}
 		}
+		
+		deleteSubjFromProf(sifra);
+
 		try {
 			for (Predmet p : sviPredmeti) {
 				if(p.getSifra_predmeta().equals(sifra)) {
@@ -150,10 +154,43 @@ public class BazaPredmeta {
 					break;
 				}
 			}
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}	
+		
+		//potrebno sad obrisati predmet sa profesora :D
+		
+		
+	}
+	public void deleteSubjFromProf(String sifra) {
+		ArrayList<Profesor> profesori=BazaProfesori.getInstance().getProfesori();
+		for (Profesor profesor : profesori) {
+			ArrayList<Predmet> predmeti=profesor.getPredmeti();
+			int i=0;
+			int idx=-1;
+			for (Predmet predmet : predmeti) {
+				if(predmet.getSifra_predmeta().equals(sifra)) {
+					idx=i;
+					predmeti.remove(idx);
+					break;
+				}
+				i++;
+			}
+		}
+	}
+	public void setProfUnknown(Predmet p) {
+		for (Predmet predmet : predmeti) {
+			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				predmet.setPredavac("");
+			}
+		}
+		for (Predmet predmet : sviPredmeti) {
+			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				predmet.setPredavac("");
+			}
+		}
 	}
 	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor,ArrayList<Student> s) {
 		for(Predmet p:predmeti) {
@@ -287,17 +324,24 @@ public class BazaPredmeta {
 	public void putProfToSubj(String blk, Predmet p) {
 		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		if(profa==null){
-			//JOptionPane.showMessageDialog(null, "Nepostojeci broj licne karte je unesen","",JOptionPane.ERROR_MESSAGE);
+			System.out.println("AAAAAAAAAAAAAAAA KURVOOOOOOOOO");
 		}else {
 			ArrayList<Predmet> predmeti=profa.getPredmeti();
+			//syso ovo ne radi ovde msm kao ga doda, al ustv ne doda
+			//nmp
+			
 			predmeti.add(p);
+			
+			for (Predmet predmet : predmeti) {
+				System.out.println(predmet.getNaziv());
+			}
+			
 		}
 	}
 	
 	public void deleteProfFromSubj(String blk, Predmet p) {
 		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		if(profa==null){
-			//JOptionPane.showMessageDialog(null, "Nepostojeci broj licne karte je unesen","",JOptionPane.ERROR_MESSAGE);
 		}else {
 			ArrayList<Predmet> predmeti=profa.getPredmeti();
 			int idx=-1;
@@ -334,12 +378,27 @@ public class BazaPredmeta {
 	public void izmeniProfesora(String stariProf, String noviProf, Predmet p) {
 		try {
 			deleteProfFromSubj(stariProf,p);
+			}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Nemoguce uraditi izmenu profesora! Pogresan broj licne karte profesora unesen!","",JOptionPane.ERROR_MESSAGE);
+
+		}	
+		try {
 			putProfToSubj(noviProf, p);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Hvatam gresku stavljanja","",JOptionPane.ERROR_MESSAGE);
+
+		}	
+		try {
+			
 			izmeniListuZaPrikaz(noviProf, p);
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Nemoguce uraditi izmenu profesora! Pogresan broj licne karte profesora unesen!","",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Hvatam gresku izmene lsite za prikaz!","",JOptionPane.ERROR_MESSAGE);
 
 		}	
 	}

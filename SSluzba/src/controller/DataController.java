@@ -77,8 +77,15 @@ public class DataController {
 			for (Profesor profesor : sviProfesori) {
 				StringBuilder s=new StringBuilder("");
 				s.append(profesor.getIme()+"|"+profesor.getPrezime()+"|"+profesor.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))+"|"+profesor.getAdresaStanovanja()+"|"+ profesor.getKontaktTel()+"|"+ profesor.getEmail()+"|"+ profesor.getAdresa_kancelarije()+"|"+ profesor.getBLK()+"|"+ profesor.getTitula()+"|"+ profesor.getZvanje()+"|");
+				
 				for(Predmet st : profesor.getPredmeti()) {
-					s.append(st.getSifra_predmeta() + "#");
+					//System.out.println(st.getSifra_predmeta());
+					//ovde puca kad se upisuje nzm zasto
+					try{
+						s.append(st.getSifra_predmeta() + "#");
+					}catch(Exception e) {
+						System.out.println(e.getMessage());
+					}
 				}
 				s.deleteCharAt(s.length()-1);
 				out.write(s.toString());

@@ -37,9 +37,6 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		DefaultListModel<String> tx = new DefaultListModel<String>();
-
-		setTitle("Dodavanje studenta");
-		JPanel p = new JPanel();
 		
 
 		Predmet st = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
@@ -79,8 +76,16 @@ public class PrikazStudenataUPredmetu extends JFrame{
 				}else {
 					int option = JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje studenta sa predmeta",JOptionPane.YES_NO_OPTION);
 					if(option == JOptionPane.YES_OPTION) {
-						//Treba implementirati
-						System.out.println("dobro");
+						
+						for(Student stud :  BazaStudenata.getInstance().getStudenti()) {
+							if(stud.getBrIndex().equals(lista.getSelectedValue())) {
+								Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed);
+								p.getBrIndeksaStudenata().remove(stud);
+								tx.removeElement(stud.getBrIndex());
+								
+							}
+						}
+						
 					}
 					
 				}
@@ -92,7 +97,7 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		nazadBrisanje.add(btnNazad);
 
 		
-		add(p,BorderLayout.CENTER);
+
 		
 		Box struktura = Box.createVerticalBox();
 		struktura.add(nazadBrisanje);

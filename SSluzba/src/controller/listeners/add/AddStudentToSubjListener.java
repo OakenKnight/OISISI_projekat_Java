@@ -21,7 +21,7 @@ public class AddStudentToSubjListener implements MouseListener{
 		// TODO Auto-generated method stub
 			
 				AddStudToSubjectFrame ad=new AddStudToSubjectFrame();
-				ad.setVisible(true);
+//				/ad.setVisible(true);
 		/*
 				JFrame dodajStudenta=new JFrame();
 				dodajStudenta.setLocation(800, 300);

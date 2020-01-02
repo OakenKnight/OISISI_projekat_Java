@@ -35,11 +35,9 @@ private static ProfesorController instance = null;
 		BazaProfesori.getInstance().izbrisiProfesora(BLK);
 		//BazaPredmeta.getInstanceBazaPredmeta().obrisiProfesoraSaPredmeta(BLK);
 		TabbedPane.getInstance().azurirajProfesori();
+		TabbedPane.getInstance().azurirajPredmeti();
 	}
-	public void searchProfesor() {
-		//TODO: preraditi metodu da trazi entitete
-		
-	}
+	
 	public void searchEntity(String uneseno) {
 		// TODO Auto-generated method stub
 		BazaProfesori.getInstance().searchProfesori(uneseno);

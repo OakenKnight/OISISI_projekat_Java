@@ -28,105 +28,131 @@ public class AddStudToSubjectFrame extends JFrame{
 	private static String idx;
 	private static String subjPreIzmene;
 	public AddStudToSubjectFrame() {
-		
-		setLocation(800, 400);
-		setSize(500, 200);
-		setTitle("Dodavanje studenta na predmet");
-		
-		JPanel dodajStudentaPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JPanel dugmici=new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel dodajStudentaL=new JLabel("Unesite broj indeksa studenta");
-		JTextField indeks=new JTextField(20);
-		
-		dodajStudentaPanel.add(dodajStudentaL);
-		dodajStudentaPanel.add(indeks);
-		
-		JPanel donjiPanel = new JPanel(new FlowLayout());
-		donjiPanel.setBackground(Color.DARK_GRAY);
-		donjiPanel.setPreferredSize(new Dimension(100,23));
-		
-		JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JButton odustanak = new JButton("Odustanak");
-		JButton potvrda = new JButton("Potvrda");
-		
-		dugmici.add(odustanak);
-		dugmici.add(potvrda);
-		Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
-		String sifra=sub.getSifra_predmeta();
-		String naziv=sub.getNaziv();
-		String semestar=sub.getSemestar();
-		String godina=sub.getGodina();
-		String profesor=sub.getPredavac();
-		 subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
-		
-		odustanak.addActionListener(new ActionListener() {
+		try {
+			setLocation(800, 400);
+			setSize(500, 200);
+			setTitle("Dodavanje studenta na predmet");
 			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				dispose();
-
-			}
-		});
-		potvrda.addActionListener(new ActionListener() {
-			String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				boolean moze = false;
-				String s = indeks.getText();
-				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
-					if(s.equals(stud.getBrIndex())){
-						moze = true;
-					}
-				}
-				if(indeks.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
-
-				}else if(!indeks.getText().matches(idxReg)) {
-						JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
-				}else if(!moze){
-					JOptionPane.showMessageDialog(null, "Student sa unetim indeksom nije u evidenciji!","",JOptionPane.ERROR_MESSAGE);
-				}else {
-					
-					Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed );
-					Student zaUnos = null;
-					for(Student stud : BazaStudenata.getInstance().getStudenti()) {
-						if(s.equals(stud.getBrIndex())) {
-							zaUnos = new Student(stud);
-						}
-					}
-					for(Predmet pred : BazaPredmeta.getInstanceBazaPredmeta().getPredmeti()) {
-						if(p.getSifra_predmeta().equals(pred.getSifra_predmeta())) {
-							pred.getBrIndeksaStudenata().add(zaUnos);
-						}
-					}
-					
-					
+			JPanel dodajStudentaPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
+			JPanel dugmici=new JPanel(new FlowLayout(FlowLayout.LEFT));
+			JLabel dodajStudentaL=new JLabel("Unesite broj indeksa studenta");
+			JTextField indeks=new JTextField(20);
+			
+			dodajStudentaPanel.add(dodajStudentaL);
+			dodajStudentaPanel.add(indeks);
+			
+			JPanel donjiPanel = new JPanel(new FlowLayout());
+			donjiPanel.setBackground(Color.DARK_GRAY);
+			donjiPanel.setPreferredSize(new Dimension(100,23));
+			
+			JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+			JButton odustanak = new JButton("Odustanak");
+			JButton potvrda = new JButton("Potvrda");
+			
+			dugmici.add(odustanak);
+			dugmici.add(potvrda);
+			Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+			String sifra=sub.getSifra_predmeta();
+			String naziv=sub.getNaziv();
+			String semestar=sub.getSemestar();
+			String godina=sub.getGodina();
+			String profesor=sub.getPredavac();
+			 subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
+			
+			odustanak.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
 					setVisible(false);
 					dispose();
+	
+				}
+			});
+			potvrda.addActionListener(new ActionListener() {
+				String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
+	
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					boolean imaUEvidenciji = false;
+					boolean odgovarajucaGodina = false;
+					Predmet proveraGodine = new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+					int g =-1;
+					if(proveraGodine.getGodina().equals("Prva godina"))
+						g = 1;
+					else if(proveraGodine.equals("Druga godina"))
+						g = 2;
+					else if(proveraGodine.equals("Treca godina"))
+						g = 3;
+					else
+						g = 4;
 					
+					System.out.println(proveraGodine.getGodina());
+					String s = indeks.getText();
+					for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+						if(s.equals(stud.getBrIndex())){
+							imaUEvidenciji = true;
+							
+							if(stud.getTrenutnaGodina() == g) {
+								odgovarajucaGodina = true;
+							}
+						}
+					}
+					
+					
+					if(indeks.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
+	
+					}else if(!indeks.getText().matches(idxReg)) {
+							JOptionPane.showMessageDialog(null, "Indeks nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+					}else if(!imaUEvidenciji){
+						JOptionPane.showMessageDialog(null, "Student sa unetim indeksom nije u evidenciji!","",JOptionPane.ERROR_MESSAGE);
+					}else if(!odgovarajucaGodina){
+						JOptionPane.showMessageDialog(null, "Student sa unetim indeksom ne slusa oznaceni predmet!","",JOptionPane.ERROR_MESSAGE);
+					}else{
+						
+						Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed );
+						Student zaUnos = null;
+						for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+							if(s.equals(stud.getBrIndex())) {
+								zaUnos = new Student(stud);
+							}
+						}
+						for(Predmet pred : BazaPredmeta.getInstanceBazaPredmeta().getPredmeti()) {
+							if(p.getSifra_predmeta().equals(pred.getSifra_predmeta())) {
+								pred.getBrIndeksaStudenata().add(zaUnos);
+							}
+						}
+						
+						
+						setVisible(false);
+						dispose();
+						
+					}
+					
+					
+					
+						
 				}
 				
 				
-				
-					
-			}
+			});
 			
 			
-		});
-		
-		
-		
-		add(dodajStudentaPanel,BorderLayout.NORTH);
-		//add(donjiPanel,BorderLayout.SOUTH);
-		add(dugmici,BorderLayout.CENTER);
-		add(donjiPanel,BorderLayout.SOUTH);
+			
+			add(dodajStudentaPanel,BorderLayout.NORTH);
+			//add(donjiPanel,BorderLayout.SOUTH);
+			add(dugmici,BorderLayout.CENTER);
+			add(donjiPanel,BorderLayout.SOUTH);
+	
+			//idx=indeks.getText();
+			
+			
+			setVisible(true);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Niste selektovali predmet na koji zelite da dodate studenta!","",JOptionPane.ERROR_MESSAGE);
 
-		//idx=indeks.getText();
-		
-		
-		setVisible(true);	
+		}
 	}
 }

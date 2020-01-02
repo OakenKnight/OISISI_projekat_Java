@@ -90,10 +90,10 @@ public class AddSubjFrame extends JFrame{
 		JComboBox godineCB=new JComboBox(godine);
 		
 		
-		JLabel profesorL=new JLabel("Profesor: *");
+		JLabel profesorL=new JLabel("Profesor: ");
 		profesorTF=new JTextField(30);
 		profesorTF.setName("txt");
-		profesorTF.addFocusListener(fokus);
+		//profesorTF.addFocusListener(fokus);
 		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
@@ -103,7 +103,7 @@ public class AddSubjFrame extends JFrame{
 		String regex2="[a-zA-Z ]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
+				if(spTF.getText().equals("") || npTF.getText().equals("")) {
 				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
 				}else if(spTF.getText().matches(sifraReg)) {
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
