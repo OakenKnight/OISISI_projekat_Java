@@ -108,6 +108,7 @@ public class EditStudFrame extends JFrame{
 		JLabel indexLabela = new JLabel("Broj indeksa* ");
 		indexPolje = new JTextField();
 		indexPolje.setPreferredSize(new Dimension(200,25));
+		indexPolje.setEnabled(false);
 		
 		indexStudenta.add(indexLabela);
 		indexStudenta.add(indexPolje);

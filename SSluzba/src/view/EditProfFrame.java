@@ -150,7 +150,7 @@ public class EditProfFrame extends JFrame{
 		
 		blkP.add(blkL);
 		blkP.add(blkTF);
-		
+		blkTF.setEditable(false);
 		JPanel titulaP = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel titulaL=new JLabel("Titula: *");
 		String[] titule= {"BSc","MSc","PhD"};

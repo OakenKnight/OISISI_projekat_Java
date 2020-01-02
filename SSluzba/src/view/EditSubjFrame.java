@@ -76,9 +76,9 @@ public class EditSubjFrame extends JFrame{
 			JLabel spL=new JLabel("Sifra predmeta: *");
 			spTF = new JTextField(10);
 			spTF.setName("txt");
-			//spTF.addFocusListener(focusListener1);		
+			spTF.setEditable(false);		
 			spTF.addFocusListener(fokus);
-	
+
 			JLabel npL=new JLabel("Naziv predmeta: *");
 			npTF = new JTextField(30);
 			npTF.setName("txt");
@@ -127,7 +127,7 @@ public class EditSubjFrame extends JFrame{
 			
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if(spTF.getText().equals("") || npTF.getText().equals("") || profesorTF.getText().equals("")) {
+					if(spTF.getText().equals("") || npTF.getText().equals("")) {
 					  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
 					}else if(spTF.getText().matches(sifraReg)) {
 						JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
