@@ -147,7 +147,6 @@ public class AddProfFrame extends JFrame{
 		JLabel titulaL=new JLabel("Titula: *");
 		String[] titule= {"BSc","MSc","PhD"};
 		JComboBox<Object> tituleCB=new JComboBox<Object>(titule);
-		titula=(String)tituleCB.getSelectedItem();
 		
 		titulaP.add(titulaL);
 		titulaP.add(tituleCB);
@@ -156,7 +155,6 @@ public class AddProfFrame extends JFrame{
 		JLabel zvanjeL=new JLabel("Zvanje: *");
 		String[] zvanja= {"Saradnik u nastavi","Asistent","Docent","Vanredni profesor","Redovni profesor"};
 		JComboBox<Object> zvanjeCB=new JComboBox<Object>(zvanja);
-		zvanje=(String)zvanjeCB.getSelectedItem();
 
 		
 		zvanjeP.add(zvanjeL);
@@ -208,6 +206,9 @@ public class AddProfFrame extends JFrame{
 					
 					String [] datum = datumTF.getText().split("\\.");
 					LocalDate lc = LocalDate.of(Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), Integer.parseInt(datum[0]));
+					titula=(String)tituleCB.getSelectedItem();
+					zvanje=(String)zvanjeCB.getSelectedItem();
+
 					ProfesorController.getInstance().addProfesor(imeTF.getText(), prezimeTF.getText(), lc, adresaTF.getText(), telefonTF.getText(), emailTF.getText(), kancelarijaTF.getText(), blkTF.getText(), titula, zvanje);
 					
 					setVisible(false);

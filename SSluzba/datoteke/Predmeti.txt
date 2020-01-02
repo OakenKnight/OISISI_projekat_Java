@@ -8,4 +8,6 @@ E201RA|Matematicka Analiza 1|Letnji|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2
 E201Mh|Matematika 1|Zimski|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
 E202Mh|Matematika 2|Letnji|Prva godina|Nebojsa Ralevic|RA20/2017#ra11/2017
 E203Mh|Matematika 3|Letnji|Druga godina|Nebojsa Ralevic|RA20/2017#ra11/2017
-E678RA|Operativni sistemi|Letnji|Treca godina|Miroslav Hajdukovic|Nepoznato
+E678RA|Operativni sistemi|Letnji|Treca godina|Rade Doroslovacki|Nepoznato
+E904RA|Baza Podataka 1|Zimski|Treca godina|Nikola Obrenovic|Nepoznato
+E905RA|Baze Podataka 2|Zimski|Cetvrta godina|Nikola Obrenovic|Nepoznato

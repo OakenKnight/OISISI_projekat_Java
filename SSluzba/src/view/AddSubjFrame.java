@@ -97,6 +97,7 @@ public class AddSubjFrame extends JFrame{
 		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
+		
 		okBtn.addActionListener(new ActionListener() {
 		String sifraReg="[a-zA-Z0-9]";
 		String regex1="[a-zA-Z ]*[0-9]*";
@@ -109,44 +110,19 @@ public class AddSubjFrame extends JFrame{
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
 					JOptionPane.showMessageDialog(null,"Nije uneto dobar naziv predmeta","",JOptionPane.ERROR_MESSAGE);
-				}else if(profesorTF.getText().matches(regex2)==false){
-					JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					/*
-					BufferedWriter out  = null;
-					try {
-						out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt",true));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					try {
-						out.write("\n");
-						out.write(spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText()+"|");
-
-					} catch (IOException e) {
-						
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						if(out != null)
-							try {
-								out.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
-					*/
-					
-					semestar=(String)semestarCB.getSelectedItem();
+										semestar=(String)semestarCB.getSelectedItem();
 					godina=(String)godineCB.getSelectedItem()+" godina";
 					ArrayList<Student> stud = new ArrayList<Student>();
 					Student st = new Student();
 					stud.add(st);
-
-					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stud);
+					String predavac;
+					if(profesorTF.getText().isEmpty()) {
+						predavac="";
+					}else {
+						predavac=profesorTF.getText();
+					}
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stud);
 					
 					unosPredmeta.setVisible(false);
 					

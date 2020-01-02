@@ -28,6 +28,7 @@ public class Profesor extends Osoba{
 		this.BLK = BLK;
 		this.titula = titula;
 		this.zvanje = zvanje;
+		this.predmeti=new ArrayList<Predmet>();
 	}
 	public Profesor(Profesor p) {
 		super(p.getIme(),p.getPrezime(),p.getDatumRodjenja(),p.getAdresaStanovanja(),p.getKontaktTel(),p.getEmail());
