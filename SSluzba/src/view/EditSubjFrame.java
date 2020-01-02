@@ -40,11 +40,11 @@ public class EditSubjFrame extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 5868601545868734820L;
-	public static JTextField spTF;
-	public static JTextField npTF;
-	public static String semestar;
-	public static JTextField profesorTF;
-	public static String godina;
+	private static JTextField spTF;
+	private static JTextField npTF;
+	private static String semestar;
+	private static JTextField profesorTF;
+	private static String godina;
 	private static String subjPreIzmene;
 	private static ArrayList<Student> stNaPredmetu;
 	
@@ -94,21 +94,22 @@ public class EditSubjFrame extends JFrame{
 			JComboBox godineCB=new JComboBox(godine);
 		
 		
-			JLabel profesorL=new JLabel("Profesor: *");
+			JLabel profesorL=new JLabel("Profesor(BLK): ");
 			profesorTF=new JTextField(30);
 			profesorTF.setName("txt");
 			profesorTF.addFocusListener(fokus);
 			
 			
-			
 			Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+			String prof=BazaProfesori.getInstance().getProfHavingSubj(sub).getBLK();
+
 			spTF.setText(sub.getSifra_predmeta());
 			npTF.setText(sub.getNaziv());
 			semestar=sub.getSemestar();
 			godina=sub.getGodina()+" godina";
-			profesorTF.setText(sub.getPredavac());
+			profesorTF.setText(prof);
 			stNaPredmetu = sub.getBrIndeksaStudenata();
-			subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+profesorTF.getText();
+			subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+prof;
 			
 		
 		
@@ -120,7 +121,7 @@ public class EditSubjFrame extends JFrame{
 			String sifraReg="[a-zA-Z0-9]";
 			String regex1="[a-zA-Z ]*[0-9]*";
 			String regex2="[a-zA-Z ]+";
-			
+			String blkReg="[0-9]+";
 			
 			
 			
@@ -133,13 +134,24 @@ public class EditSubjFrame extends JFrame{
 						JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 					} else if(npTF.getText().matches(regex1)==false) {
 						JOptionPane.showMessageDialog(null,"Nije unet dobro naziv predmeta","",JOptionPane.ERROR_MESSAGE);
-					}else if(profesorTF.getText().matches(regex2)==false){
-						JOptionPane.showMessageDialog(null,"Nije uneto dobro ime profesora","",JOptionPane.ERROR_MESSAGE);
 					}else {
 						
 						semestar=(String)semestarCB.getSelectedItem();
 						godina=(String)godineCB.getSelectedItem()+" godina";
-						
+						String predavac="";
+
+						if(profesorTF.getText().isEmpty()) {
+							predavac="";
+						}else {
+							if(profesorTF.getText().matches(blkReg)) {
+								Profesor p=BazaProfesori.getInstance().getProfHavingBlk(profesorTF.getText());
+								predavac=p.getIme()+" "+p.getPrezime();
+								ArrayList<Predmet>predmeti =p.getPredmeti();
+								predmeti.add(new Predmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stNaPredmetu));
+								p.setPredmeti(predmeti);
+							}
+
+						}
 						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
 						setVisible(false);
 							

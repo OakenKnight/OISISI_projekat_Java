@@ -28,6 +28,9 @@ import javax.swing.JTextField;
 import controller.DataController;
 import controller.FocusPredmeti;
 import controller.PredmetController;
+import model.BazaProfesori;
+import model.Predmet;
+import model.Profesor;
 import model.Student;
 
 public class AddSubjFrame extends JFrame{
@@ -90,7 +93,7 @@ public class AddSubjFrame extends JFrame{
 		JComboBox godineCB=new JComboBox(godine);
 		
 		
-		JLabel profesorL=new JLabel("Profesor: ");
+		JLabel profesorL=new JLabel("Profesor(BLK): ");
 		profesorTF=new JTextField(30);
 		profesorTF.setName("txt");
 		//profesorTF.addFocusListener(fokus);
@@ -102,6 +105,7 @@ public class AddSubjFrame extends JFrame{
 		String sifraReg="[a-zA-Z0-9]";
 		String regex1="[a-zA-Z ]*[0-9]*";
 		String regex2="[a-zA-Z ]+";
+		String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(spTF.getText().equals("") || npTF.getText().equals("")) {
@@ -116,11 +120,18 @@ public class AddSubjFrame extends JFrame{
 					ArrayList<Student> stud = new ArrayList<Student>();
 					Student st = new Student();
 					stud.add(st);
-					String predavac;
+					String predavac="";
 					if(profesorTF.getText().isEmpty()) {
 						predavac="";
 					}else {
-						predavac=profesorTF.getText();
+						if(profesorTF.getText().matches(blkReg)) {
+							Profesor p=BazaProfesori.getInstance().getProfHavingBlk(profesorTF.getText());
+							predavac=p.getIme()+" "+p.getPrezime();
+							ArrayList<Predmet>predmeti =p.getPredmeti();
+							predmeti.add(new Predmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stud));
+							p.setPredmeti(predmeti);
+						}
+
 					}
 					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stud);
 					

@@ -1,7 +1,7 @@
 Radovan|Zupunski|13.08.1998|Slobodana Bajica 17|066005790|rzupunski@gmail.com|RA20/2017|11.05.2018|3|B|9.41|
 Pera|Peric|10.11.1997|Bajica 17|066034390|aaaaaaa@gmail.com|RA34/2016|11.05.2018|4|S|9.0|
-Pera|Peric|10.11.1997|Bajica 17|066034390|aaaaaaa@gmail.com|RA3/2016|11.05.2018|3|S|7.6|
+Pera|Peric|10.11.1997|Bajica 17|066034390|aaaaaaa@gmail.com|RA3/2016|11.05.2018|4|S|7.6|
 Radovan|Zupunski|13.08.1998|Slobodana|00000000|rzupunski@gmail.com|RA205/2017|11.05.2018|1|B|9.41|
-Luka|Slickovic|12.02.1999|Tolstojeva 5|9877767|klickoslepicko@gmail.com|ra16/2017|12.07.2017|3|B|6.1|
-Aleksandar|Gligorijevic|19.08.1990|Misina 100|659515|iibhuh@ihhbouyvugv.com|ee69/2018|12.07.2018|2|S|6.66|
-Aleksandar|Ignjatijevic|19.04.1998|Mise Dimitrijevica 2c|060622333|alexiganjat1998@gmail.com|ra11/2017|07.07.2017|3|B|9.53|
+Luka|Slickovic|12.02.1999|Tolstojeva 5|9877767|klickoslepicko@gmail.com|RA16/2017|12.07.2017|3|B|6.1|
+Aleksandar|Gligorijevic|19.08.1990|Misina 100|659515|iibhuh@ihhbouyvugv.com|EE69/2018|12.07.2018|2|S|6.66|
+Aleksandar|Ignjatijevic|19.04.1998|Mise Dimitrijevica 2c|060622333|alexiganjat1998@gmail.com|RA11/2017|07.07.2017|3|B|9.53|

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import model.BazaPredmeta;
 import model.BazaProfesori;
 import model.BazaStudenata;
+import model.Predmet;
 import view.AbstractTableModelPredmeti;
 import view.PredmetiJTable;
 import view.TabbedPane;
@@ -48,4 +49,5 @@ private static ProfesorController instance = null;
 		BazaProfesori.getInstance().resetSearchProfesori();
 		TabbedPane.getInstance().azurirajProfesori();
 	}
+	
 }
