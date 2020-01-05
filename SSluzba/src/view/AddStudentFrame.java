@@ -206,7 +206,6 @@ public class AddStudentFrame extends JFrame{
 						|| indexPolje.getText().equals("")  || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("") ) {
 
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
-					
 				}else if(!imePolje.getText().trim().matches(imeReg)){
 					JOptionPane.showMessageDialog(null, "Ime nije uneseno kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!prezimePolje.getText().trim().matches(imeReg)){
