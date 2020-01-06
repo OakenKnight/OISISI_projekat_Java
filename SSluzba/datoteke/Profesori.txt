@@ -4,6 +4,6 @@ Aleksandar|Kupusinac|12.02.1977|Futoski put 42|02141245|kupus@gmail.com|jugodrvo
 Nebojsa|Ralevic|12.05.1970|Rubinova 4|02169420|ralerubin@gmail.com|612 kula|666666666|PhD|Vanredni profesor|E201RA#E201Mh#E203Mh#E202Mh#
 Pero|Bandero|24.12.1956|Lasla Gala 17|28471024|banderas@gmail.com|masinski 22|555333222|PhD|Vanredni profesor|E123EE#E124EE#
 Rade|Doroslovacki|12.12.1950|Mordor 2|008759784|sauron@gmail.com|Barad dur|098765432|BSc|Saradnik u nastavi|E678RA#
-Petar|Maric|22.02.1950|Izengardova 2|00792332|saruman@gmail.com|Izengardova kula 2|987654321|PhD|Docent|#
+Petar|Maric|22.02.1950|Izengardova 2|00792332|saruman@gmail.com|Izengardova kula 2|987654321|PhD|Docent|Y235PS#
 Nikola|Obrenovic|12.06.1978|Narodnog fronta 3|1098246234|obrenovic@gmail.com|jug 205|099887765|MSc|Asistent|E905RA#
 Marija|Kukic|06.09.1995|Kapetan Kuke 2|12435324|kukicmarija@gmail.com|jug 69|564564564|MSc|Asistent|E235RA#

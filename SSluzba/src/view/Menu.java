@@ -46,15 +46,39 @@ public class Menu extends JMenuBar{
 		file.add(closeItem);
 		//Pravljenje  Edit menija i pravljenje i dodavanje itema
 		JMenu edit = new JMenu("Edit");
-		JMenuItem editItem = new JMenuItem("Edit");
-		JMenuItem deleteItem = new JMenuItem("Delete");
+		JMenuItem editItem = new JMenuItem("Edit",new ImageIcon("images/menuPencil.png"));
+		editItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		JMenuItem deleteItem = new JMenuItem("Delete",new ImageIcon("images/menuBin.png"));
+		deleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		edit.add(editItem);
 		edit.addSeparator();
 		edit.add(deleteItem);
 		//Pravljenje  Help menija i pravljenje i dodavanje itema
 		JMenu help = new JMenu("Help");
-		JMenuItem helpItem = new JMenuItem("Help");
-		JMenuItem aboutItem = new JMenuItem("About");
+		JMenuItem helpItem = new JMenuItem("Help",new ImageIcon("images/menuQmark.png"));
+		helpItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
+		JMenuItem aboutItem = new JMenuItem("About",new ImageIcon("images/menuAbout.png"));
+		aboutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		helpItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				HelpFrame hp = new HelpFrame();
+				
+			}
+		});
+		
+		aboutItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				AboutFrame af = new AboutFrame();
+			}
+		});
+		
+		
+		
+		
 		help.add(helpItem);
 		help.addSeparator();
 		help.add(aboutItem);

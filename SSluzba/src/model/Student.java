@@ -12,8 +12,8 @@ public class Student extends Osoba{
 	private double prosecnaOcena;
 	
 	public Student() {
-		super("Nepoznato","Nepoznato",LocalDate.now(),"Nepoznato","Nepoznato","Nepoznato");
-		this.brIndex = "Nepoznato";
+		super("nepoznato","nepoznato",LocalDate.now(),"nepoznato","nepoznato","nepoznato");
+		this.brIndex = "nepoznato";
 		this.datumUpisa = LocalDate.now();
 		this.trenutnaGodina = -1;
 		this.status = StatusStudent.N;

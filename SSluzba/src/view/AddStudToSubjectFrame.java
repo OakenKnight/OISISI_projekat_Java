@@ -80,14 +80,13 @@ public class AddStudToSubjectFrame extends JFrame{
 					int g =-1;
 					if(proveraGodine.getGodina().equals("Prva godina"))
 						g = 1;
-					else if(proveraGodine.equals("Druga godina"))
+					else if(proveraGodine.getGodina().equals("Druga godina"))
 						g = 2;
-					else if(proveraGodine.equals("Treca godina"))
+					else if(proveraGodine.getGodina().equals("Treca godina"))
 						g = 3;
 					else
 						g = 4;
 					
-					System.out.println(proveraGodine.getGodina());
 					String s = indeks.getText();
 					for(Student stud : BazaStudenata.getInstance().getStudenti()) {
 						if(s.equals(stud.getBrIndex())){
@@ -112,6 +111,11 @@ public class AddStudToSubjectFrame extends JFrame{
 					}else{
 						
 						Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed );
+						if(p.getBrIndeksaStudenata().size() == 1 ) {
+							if( p.getBrIndeksaStudenata().get(0).getBrIndex().equals("nepoznato") ) {
+								p.getBrIndeksaStudenata().remove(0);
+							}
+						}
 						Student zaUnos = null;
 						for(Student stud : BazaStudenata.getInstance().getStudenti()) {
 							if(s.equals(stud.getBrIndex())) {
