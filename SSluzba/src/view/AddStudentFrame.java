@@ -181,6 +181,7 @@ public class AddStudentFrame extends JFrame{
 		JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton odustanak = new JButton("Odustanak");
 		JButton potvrda = new JButton("Potvrda");
+		//potvrda.setEnabled(false);
 		odustanak.addActionListener(new ActionListener() {
 			
 			@Override
@@ -204,7 +205,7 @@ public class AddStudentFrame extends JFrame{
 		
 				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || telefonPolje.getText().equals("")
 						|| indexPolje.getText().equals("")  || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("") ) {
-
+					
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
 					
 				}else if(!imePolje.getText().trim().matches(imeReg)){
@@ -226,7 +227,7 @@ public class AddStudentFrame extends JFrame{
 				}else if(!proveriProsek(prosekPolje.getText())){
 					JOptionPane.showMessageDialog(null, "Prosek nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					
+					//potvrda.setEnabled(true);
 					if(budzet.isSelected()) {
 						stats=StatusStudent.B;
 					}else {
