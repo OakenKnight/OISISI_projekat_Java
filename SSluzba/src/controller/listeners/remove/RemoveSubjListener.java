@@ -36,56 +36,7 @@ public class RemoveSubjListener implements MouseListener{
 					String semestar=sub.getSemestar();
 					String godina=sub.getGodina();
 					String profesor=sub.getPredavac();
-				//String subjPreIzmene=sifra+"|"+naziv+"|"+semestar+"|"+godina+"|"+profesor;
-				/*
-				String sledeci;
-				String sve="";
 				
-				BufferedReader in=null;
-				
-				try {
-					in = new BufferedReader(new InputStreamReader(new FileInputStream("datoteke/Predmeti.txt")));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					while((sledeci = in.readLine()) != null) {
-						sledeci.trim();
-						if(sledeci.equals(subjPreIzmene)) {
-							continue;
-						}
-						sve += sledeci+"\n";
-					}
-					in.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				BufferedWriter out  = null;
-				try {
-					out = new BufferedWriter( new FileWriter("datoteke/Predmeti.txt"));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					out.write(sve);
-
-				} catch (IOException e) {
-					
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally {
-					if(out != null)
-						try {
-							out.close();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				}
-				*/
 				PredmetController.getInstance().removePredmet(sifra,naziv,semestar,godina,profesor);
 				
 				}

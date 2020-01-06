@@ -30,8 +30,9 @@ public class AboutFrame extends JFrame{
 				+ "su vezane za odabrani entitet. Svaki od tabova raspolaze sa odredjenim akcijama kao sto su dodavanje novog\n"
 				+ "ili brisanje i izmena postojeceg entiteta kao i dodavanje drugih entiteta na spisak izabranog entiteta.\n"
 				+ "Akcije je moguce sprovesti i iz menija biranjem odgovarajucih opcija.\n\n\nAutori:\n"
-				+ "Ignjatijevic Aleksandar\n"
-				+ "...\n\n"
+				+ "Ignjatijevic Aleksandar, student trece godin Fakulteta tehnickih nauka, rodjen je u Novom Sadu 19. aprila 1998. godine. \n"
+				+ "Zavrsio je osnovnu skolu Branko Radicevic u Novom sadu 2013. godine,a potom upisao Gimnaziju Isidora Sekulic u Novom sadu koju je zavrsio 2017. godine.  "
+				+ "\n\n"
 				+ "Zupunski Radovan, student trece godine Fakulteta tehnickih nauka, rodjen je u Sremskoj Mitrovici 13. avgusta 1998. godine.\n"
 				+ "Zavrsio je osnovnu skolu Jovan Jovanovic Zmaj u Martincima 2013. godine i srednju medicinsku skolu Draginja Niksic u\n"
 				+ "Sremskoj Mitrovici 2017. godine.");
