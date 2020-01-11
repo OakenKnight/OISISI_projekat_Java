@@ -85,6 +85,7 @@ public class BazaStudenata {
 				studenti.add(new Student(kolone[0].trim(),kolone[1].trim(),lc1,kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),lc2,Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
 				sviStudenti.add(new Student(kolone[0].trim(),kolone[1].trim(),lc1,kolone[3].trim(),kolone[4].trim(),kolone[5].trim(),kolone[6].trim(),lc2,Integer.parseInt(kolone[8].trim()),s,Double.parseDouble(kolone[10].trim())));
 			}
+			
 			in.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

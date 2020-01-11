@@ -8,13 +8,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStreamReader;import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
 import controller.PredmetController;
 import model.BazaPredmeta;
 import model.Predmet;
+import model.StatusStudent;
+import model.Student;
 import view.PredmetiJTable;
 import view.TabbedPane;
 
@@ -36,8 +38,10 @@ public class RemoveSubjListener implements MouseListener{
 					String semestar=sub.getSemestar();
 					String godina=sub.getGodina();
 					String profesor=sub.getPredavac();
-				
+					
+					
 				PredmetController.getInstance().removePredmet(sifra,naziv,semestar,godina,profesor);
+				
 				
 				}
 			}catch (Exception e) {

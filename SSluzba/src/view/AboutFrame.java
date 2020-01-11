@@ -24,14 +24,15 @@ public class AboutFrame extends JFrame{
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		TextArea uputstvo = new TextArea();
 		//ScrollPane sc = new ScrollPane();
-		uputstvo.setText("Verzija 1.1\nPoslednje izmene: 05.01.2020.\nAutori aplikacije:\nIgnjatijevic Aleksandar i Zupunski Radovan\n"
+		uputstvo.setText("Verzija 1.1\nPoslednje izmene: 05.01.2020.\nAutori aplikacije:\nIgnjatijevic Aleksandar i Zupunski Radovan\n\n"
 				+ "Aplikacija 'Studentska sluzba' namenjena je evidenciji informacija o studentima, profesorima i predmetima. \n"
 				+ "Pocetni interfejs aplikacije raspolaze sa tri taba i izborom nekog od tabova dolazi se do informacija koje\n"
 				+ "su vezane za odabrani entitet. Svaki od tabova raspolaze sa odredjenim akcijama kao sto su dodavanje novog\n"
 				+ "ili brisanje i izmena postojeceg entiteta kao i dodavanje drugih entiteta na spisak izabranog entiteta.\n"
 				+ "Akcije je moguce sprovesti i iz menija biranjem odgovarajucih opcija.\n\n\nAutori:\n"
 				+ "Ignjatijevic Aleksandar, student trece godin Fakulteta tehnickih nauka, rodjen je u Novom Sadu 19. aprila 1998. godine. \n"
-				+ "Zavrsio je osnovnu skolu Branko Radicevic u Novom sadu 2013. godine,a potom upisao Gimnaziju Isidora Sekulic u Novom sadu koju je zavrsio 2017. godine.  "
+				+ "Zavrsio je osnovnu skolu Branko Radicevic u Novom sadu 2013. godine,a potom upisao Gimnaziju Isidora Sekulic u Novom sadu\n"
+				+ "koju je zavrsio 2017. godine. "
 				+ "\n\n"
 				+ "Zupunski Radovan, student trece godine Fakulteta tehnickih nauka, rodjen je u Sremskoj Mitrovici 13. avgusta 1998. godine.\n"
 				+ "Zavrsio je osnovnu skolu Jovan Jovanovic Zmaj u Martincima 2013. godine i srednju medicinsku skolu Draginja Niksic u\n"
@@ -42,7 +43,7 @@ public class AboutFrame extends JFrame{
 		
 		
 		JPanel panelZaDugme = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JButton btn = new JButton("Cancle");
+		JButton btn = new JButton("Cancel");
 		btn.addActionListener(new ActionListener() {
 			
 			@Override

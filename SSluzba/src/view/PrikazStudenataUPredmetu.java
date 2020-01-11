@@ -77,11 +77,17 @@ public class PrikazStudenataUPredmetu extends JFrame{
 					int option = JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje studenta sa predmeta",JOptionPane.YES_NO_OPTION);
 					if(option == JOptionPane.YES_OPTION) {
 						
+						
+						
 						for(Student stud :  BazaStudenata.getInstance().getStudenti()) {
 							if(stud.getBrIndex().equals(lista.getSelectedValue())) {
 								Predmet p = BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed);
+								if(p.getBrIndeksaStudenata().size() == 1) {
+									p.getBrIndeksaStudenata().add(new Student());
+								}
 								p.getBrIndeksaStudenata().remove(stud);
 								tx.removeElement(stud.getBrIndex());
+								tx.addElement("nepoznato");
 								
 							}
 						}

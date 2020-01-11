@@ -10,6 +10,7 @@ public class Student extends Osoba{
 	private int trenutnaGodina;
 	private StatusStudent status;
 	private double prosecnaOcena;
+	private ArrayList<Predmet> predmeti;
 	
 	public Student() {
 		super("nepoznato","nepoznato",LocalDate.now(),"nepoznato","nepoznato","nepoznato");
@@ -18,6 +19,7 @@ public class Student extends Osoba{
 		this.trenutnaGodina = -1;
 		this.status = StatusStudent.N;
 		this.prosecnaOcena = 0.0;
+		this.predmeti = new ArrayList<Predmet>();
 	}
 	public Student(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO) {
 		super(ime,prezime,datumR,adresaS,kontaktT,email);
@@ -26,8 +28,23 @@ public class Student extends Osoba{
 		this.trenutnaGodina = trenutnaG;
 		this.status = status;
 		this.prosecnaOcena = prosecnaO;
+		this.predmeti = new ArrayList<Predmet>();
 		
 	}
+	
+	public Student(String ime,String prezime,LocalDate datumR,String adresaS,String kontaktT,String email,String brI,LocalDate datumU,int trenutnaG,StatusStudent status,double prosecnaO,ArrayList<Predmet> p) {
+		super(ime,prezime,datumR,adresaS,kontaktT,email);
+		this.brIndex = brI;
+		this.datumUpisa = datumU;
+		this.trenutnaGodina = trenutnaG;
+		this.status = status;
+		this.prosecnaOcena = prosecnaO;
+		this.predmeti = p;
+		
+		
+	}
+	
+	
 	public Student(Student s) {
 		super(s.getIme(),s.getPrezime(),s.getDatumRodjenja(),s.getAdresaStanovanja(),s.getKontaktTel(),s.getEmail());
 		this.brIndex = s.getBrIndex();
@@ -35,6 +52,7 @@ public class Student extends Osoba{
 		this.trenutnaGodina = s.getTrenutnaGodina();
 		this.status = s.getStatus();
 		this.prosecnaOcena = s.getProsecnaOcena();
+		this.predmeti = s.getPredmeti();
 
 	}
 	
@@ -55,7 +73,7 @@ public class Student extends Osoba{
 		return "Ime i prezime: "+this.ime+this.prezime+"\nBroj indeksa: "+this.brIndex
 				+"\nDatum rodjenja: "+this.datumRodjenja+"\nEmail: "+this.email+"\nKontakt telefon: "+this.kontaktTel
 				+"\nAdresa stanovanja: "+this.adresaStanovanja+"\nDatum upisa: "+this.datumUpisa+"\nStatus studenta: "+st
-				+"Prosecna ocena studija: "+Math.round(this.prosecnaOcena*100)/100;
+				+"Prosecna ocena studija: "+Math.round(this.prosecnaOcena*100)/100 ;
 	}
 	
 	@Override
@@ -136,6 +154,13 @@ public class Student extends Osoba{
 		return true;
 	}
 	
+	
+	public ArrayList<Predmet> getPredmeti() {
+		return predmeti;
+	}
+	public void setPredmeti(ArrayList<Predmet> predmeti) {
+		this.predmeti = predmeti;
+	}
 	
 	public String getBrIndex() {
 		return brIndex;

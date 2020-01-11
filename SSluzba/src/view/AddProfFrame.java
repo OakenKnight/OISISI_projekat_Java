@@ -22,6 +22,10 @@ import javax.swing.JTextField;
 
 import controller.FocusProfesori;
 import controller.ProfesorController;
+import model.BazaProfesori;
+import model.BazaStudenata;
+import model.Profesor;
+import model.Student;
 
 public class AddProfFrame extends JFrame{
 	/**
@@ -182,6 +186,13 @@ public class AddProfFrame extends JFrame{
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				boolean postoji = false;
+				for(Profesor std : BazaProfesori.getInstance().getProfesori()) {
+					if(std.getBLK().equals(blkTF.getText().trim())) {
+						postoji = true;
+					}
+				}
+				
 				if(imeTF.getText().equals("") || prezimeTF.getText().equals("") || datumTF.getText().equals("") || adresaTF.getText().equals("") || 
 						telefonTF.getText().equals("") || emailTF.getText().equals("") || kancelarijaTF.getText().equals("")  || blkTF.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva obavezna polja!!!","",JOptionPane.ERROR_MESSAGE);
@@ -202,6 +213,8 @@ public class AddProfFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "Kancelarija nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!blkTF.getText().matches(blkReg)){
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if (postoji){
+					JOptionPane.showMessageDialog(null, "Vec postoji profesor sa unetim brojem licne karte!!!","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					
 					String [] datum = datumTF.getText().split("\\.");

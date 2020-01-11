@@ -40,7 +40,7 @@ public class Predmet {
 		this.predavac = string4;
 	}
 	*/
-
+	
 	public Predmet(String sifra_predmeta, String naziv, String semestar, String godina, String predavac) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;

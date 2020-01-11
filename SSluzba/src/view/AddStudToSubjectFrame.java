@@ -120,6 +120,7 @@ public class AddStudToSubjectFrame extends JFrame{
 						for(Student stud : BazaStudenata.getInstance().getStudenti()) {
 							if(s.equals(stud.getBrIndex())) {
 								zaUnos = new Student(stud);
+								stud.getPredmeti().add(p);
 							}
 						}
 						for(Predmet pred : BazaPredmeta.getInstanceBazaPredmeta().getPredmeti()) {
@@ -127,7 +128,6 @@ public class AddStudToSubjectFrame extends JFrame{
 								pred.getBrIndeksaStudenata().add(zaUnos);
 							}
 						}
-						
 						
 						setVisible(false);
 						dispose();

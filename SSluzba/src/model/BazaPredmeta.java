@@ -66,7 +66,7 @@ public class BazaPredmeta {
 				
 				kolone=sledeci.split("\\|");
 			    String[] indeksi = kolone[5].split("\\#");
-				
+			    
 				ArrayList<Student> stud = new ArrayList<Student>();
 				Student s;
 				for(String st : indeksi) {
@@ -76,12 +76,15 @@ public class BazaPredmeta {
 						continue;
 					}
 					stud.add(s);
+					BazaStudenata.getInstance().nadjiStudenta(st).getPredmeti().add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));
+
 				}
 				
 				predmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));
 				sviPredmeti.add(new Predmet(kolone[0].trim(),kolone[1].trim(),kolone[2].trim(),kolone[3].trim(),kolone[4].trim(),stud));
 
 			}
+			
 			in.close();
 		}catch(IOException e) {
 			e.printStackTrace();

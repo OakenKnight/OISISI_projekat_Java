@@ -6,6 +6,8 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
 
+import view.AddStudentFrame;
+
 public class FocusStudenti implements FocusListener{
 
 	@Override
@@ -20,7 +22,7 @@ public class FocusStudenti implements FocusListener{
 		// TODO Auto-generated method stub
 		JTextField txt = (JTextField) arg0.getComponent();
 		//txt.setBackground(Color.GRAY);
-
+		
 		// polje prezime je obavezno za unos:
 		if (txt.getName().equals("txt")) {
 
@@ -30,6 +32,7 @@ public class FocusStudenti implements FocusListener{
 				txt.setForeground(Color.RED);
 			} else {
 				txt.setForeground(Color.BLACK);
+				
 			}
 		}
 	}
