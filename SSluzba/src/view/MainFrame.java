@@ -82,11 +82,13 @@ public class MainFrame extends JFrame{
 				    if(state==2) {
 				    	Toolbar.getInstance().setBtnNewStudentToSubject(true);
 				    	Toolbar.getInstance().setBtnNewProfToSubject(true);
+				    	Toolbar.getInstance().setBtnDeleteProf(true);
 				    	Toolbar.getInstance().setTooltipForSearchSubj();
 				    }else {
 				    	Toolbar.getInstance().setBtnNewStudentToSubject(false);
 				    	Toolbar.getInstance().setBtnNewProfToSubject(false);
-				    	
+				    	Toolbar.getInstance().setBtnDeleteProf(false);
+
 				    	if(TabbedPane.getInstance().getSelectedIndex()==1) {
 					    	Toolbar.getInstance().setTooltipForSearchProf();
 				    	}else if(TabbedPane.getInstance().getSelectedIndex()==0) {

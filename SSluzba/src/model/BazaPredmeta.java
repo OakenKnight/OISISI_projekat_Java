@@ -112,6 +112,7 @@ public class BazaPredmeta {
 	}
 
 	public Predmet getRow(int rowIndex) {
+		
 		return this.predmeti.get(rowIndex);
 	}
 	public String getValAt(int row, int col) {
@@ -195,14 +196,13 @@ public class BazaPredmeta {
 			}
 		}
 	}
-	public void editPredmet(String sifra, String naziv, String semestar, String godina, String profesor,ArrayList<Student> s) {
+	public void editPredmet(String sifra, String naziv, String semestar, String godina ,ArrayList<Student> s) {
 		for(Predmet p:predmeti) {
 			if(p.getSifra_predmeta().equals(sifra)) {
 				p.setSifra_predmeta(sifra);
 				p.setNaziv(naziv);
 				p.setSemestar(semestar);
 				p.setGodina(godina);
-				p.setPredavac(profesor);
 				p.setBrIndeksaStudenata(s);
 				
 			}
@@ -214,7 +214,6 @@ public class BazaPredmeta {
 					p.setNaziv(naziv);
 					p.setSemestar(semestar);
 					p.setGodina(godina);
-					p.setPredavac(profesor);
 					p.setBrIndeksaStudenata(s);
 				}
 			}
@@ -327,7 +326,7 @@ public class BazaPredmeta {
 	public void putProfToSubj(String blk, Predmet p) {
 		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		if(profa==null){
-			System.out.println("AAAAAAAAAAAAAAAA KURVOOOOOOOOO");
+			System.out.println("AAAAAAAAAAAAAAAA ");
 		}else {
 			ArrayList<Predmet> predmeti=profa.getPredmeti();
 			//syso ovo ne radi ovde msm kao ga doda, al ustv ne doda
@@ -345,11 +344,13 @@ public class BazaPredmeta {
 	public void deleteProfFromSubj(String blk, Predmet p) {
 		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		if(profa==null){
+			JOptionPane.showMessageDialog(null, "Predmet nema profesora, nemoguce obrisati profesora!","",JOptionPane.ERROR_MESSAGE);
+ 
 		}else {
-			ArrayList<Predmet> predmeti=profa.getPredmeti();
+			ArrayList<Predmet> predmeti1=profa.getPredmeti();
 			int idx=-1;
 			int i=0;
-			for (Predmet predmet : predmeti) {
+			for (Predmet predmet : predmeti1) {
 				if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
 					idx=i;
 					continue;
@@ -357,10 +358,22 @@ public class BazaPredmeta {
 				i++;
 			}
 			System.out.println(i);
-			predmeti.remove(idx);
+			predmeti1.remove(idx);
+			
+			for (Predmet predmet : predmeti) {
+				if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					predmet.setPredavac("");
+					continue;
+				}
+			}
+			for (Predmet predmet : sviPredmeti) {
+				if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					predmet.setPredavac("");
+					continue;
+				}
+			}
 		}
 	}
-	
 	public void izmeniListuZaPrikaz(String blkNovi,Predmet p) {
 		for(Predmet predmet:sviPredmeti) {
 			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
@@ -406,7 +419,7 @@ public class BazaPredmeta {
 		}	
 	}
 
-	public void obrisiProfesoraSaPredmeta(String bLK) {
+	public void obrisiProfesoraSaSvihPredmeta(String bLK) {
 		// TODO Auto-generated method stub
 		Profesor profesor=BazaProfesori.getInstance().getProfHavingBlk(bLK);
 		ArrayList<Predmet> predmetiProfesorovi=profesor.getPredmeti();
@@ -433,6 +446,13 @@ public class BazaPredmeta {
 		Profesor p=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		ArrayList<Predmet> predmeti=p.getPredmeti();
 		
+		for(Predmet predmet:predmeti) {
+			if(predmet.getSifra_predmeta().equals(predmet.getSifra_predmeta())) {
+				Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
+				predmet.setPredavac(profa.getIme()+" "+profa.getPrezime());
+				continue;
+			}
+		}
 		for(Predmet predmet:sviPredmeti) {
 			if(predmet.getSifra_predmeta().equals(predmet.getSifra_predmeta())) {
 				Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
@@ -440,5 +460,14 @@ public class BazaPredmeta {
 				continue;
 			}
 		}
+	}
+	public boolean daLiPredaje(String blk, Predmet p) {
+		Profesor prof=BazaProfesori.getInstance().getProfHavingBlk(blk);
+		ArrayList<Predmet> predmeti=prof.getPredmeti();
+		for (Predmet predmet : predmeti) {
+			if(p.getSifra_predmeta().equals(predmet.getSifra_predmeta()))
+				return true;
+		}
+		return false;
 	}
 }

@@ -14,7 +14,6 @@ public class AddSubjListener implements MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		if(TabbedPane.getInstance().getSelectedIndex()==2) {
 			AddSubjFrame diag = new AddSubjFrame();
-			diag.setVisible(true);
 		}
 	}
 

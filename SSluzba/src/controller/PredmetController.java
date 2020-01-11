@@ -30,8 +30,8 @@ private static PredmetController instance = null;
 		TabbedPane.getInstance().azurirajPredmeti();
 		
 	}
-	public void editPredmet(String sifra,String naziv,String semestar,String godina,String profesor,ArrayList<Student> s) {
-		BazaPredmeta.getInstanceBazaPredmeta().editPredmet(sifra, naziv, semestar, godina, profesor,s);		
+	public void editPredmet(String sifra,String naziv,String semestar,String godina,ArrayList<Student> s) {
+		BazaPredmeta.getInstanceBazaPredmeta().editPredmet(sifra, naziv, semestar, godina,s);		
 		TabbedPane.getInstance().azurirajPredmeti();
 	}
 	public void removePredmet(String sifra,String naziv,String semestar,String godina,String profesor) {
@@ -40,7 +40,6 @@ private static PredmetController instance = null;
 	}
 	public void searchEntity(String uneseno) {
 		BazaPredmeta.getInstanceBazaPredmeta().searchPredmet(uneseno);
-		
 		TabbedPane.getInstance().azurirajPredmeti();
 	}
 	public void resetSearch() {
@@ -53,4 +52,14 @@ private static PredmetController instance = null;
 		TabbedPane.getInstance().azurirajPredmeti();
 		
 	}
+	
+
+	public void removeProfFromSubj(String blk,Predmet p) {
+		BazaPredmeta.getInstanceBazaPredmeta().deleteProfFromSubj(blk, p);
+		TabbedPane.getInstance().azurirajPredmeti();
+		TabbedPane.getInstance().azurirajProfesori();
+		
+	}
+	
+	
 }

@@ -13,7 +13,6 @@ public class AddProfListener implements MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		if(TabbedPane.getInstance().getSelectedIndex()==1) {
 			AddProfFrame diag = new AddProfFrame();
-			diag.setVisible(true);
 		}
 	}
 

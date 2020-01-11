@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,13 +26,19 @@ import model.BazaStudenata;
 import model.Predmet;
 import model.Student;
 
-public class AddStudToSubjectFrame extends JFrame{
+public class AddStudToSubjectFrame extends JDialog{
 	private static String idx;
 	private static String subjPreIzmene;
 	public AddStudToSubjectFrame() {
 		try {
-			setLocation(800, 400);
-			setSize(500, 200);
+			Toolkit kit=Toolkit.getDefaultToolkit();
+			Dimension screenSize=kit.getScreenSize();
+			int screenHeight=screenSize.height;
+			int screenWidth=screenSize.width;
+			setModal(true);
+			setSize(2*screenWidth/7,3*screenHeight/14);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			setLocationRelativeTo(null);
 			setTitle("Dodavanje studenta na predmet");
 			
 			JPanel dodajStudentaPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));

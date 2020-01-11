@@ -23,6 +23,7 @@ import controller.listeners.add.AddSubjListener;
 import controller.listeners.edit.EditProfListener;
 import controller.listeners.edit.EditStudListener;
 import controller.listeners.edit.EditSubjListener;
+import controller.listeners.remove.RemoveProfFromSubjListener;
 import controller.listeners.remove.RemoveProfListener;
 import controller.listeners.remove.RemoveStudListener;
 import controller.listeners.remove.RemoveSubjListener;
@@ -43,6 +44,7 @@ public class Toolbar extends JToolBar{
 	private static Toolbar instance = null;
 	private JButton btnNewStudentToSubject;
 	private JButton btnNewProfToSubject;
+	private JButton btnDeleteProf;
 	private JTextField search;
 	public static Toolbar getInstance() {
 		if (instance == null) {
@@ -100,9 +102,16 @@ public class Toolbar extends JToolBar{
 		
 		btnNewProfToSubject.setVisible(false);
 		btnNewProfToSubject.addMouseListener(new AddProfToSubjListener());
-
 		
 		
+		
+		btnDeleteProf=new JButton();
+		btnDeleteProf.setToolTipText("Delete proffesor...");
+		btnDeleteProf.setIcon(new ImageIcon("images/delete-user.png"));
+		add(btnDeleteProf);
+		btnDeleteProf.setVisible(false);
+		btnDeleteProf.addMouseListener(new RemoveProfFromSubjListener());
+		//treba da se doda listener
 		
 		search=new JTextField(50);
 		
@@ -124,7 +133,7 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnResetSearch=new JButton();
 		btnResetSearch.setToolTipText("Reset search...");
-		btnResetSearch.setIcon(new ImageIcon("images/Webp.net-resizeimage.png"));
+		btnResetSearch.setIcon(new ImageIcon("images/reset.png"));
 		add(btnResetSearch);
 		btnResetSearch.addMouseListener(new ResetSearchListener());
 		
@@ -139,6 +148,10 @@ public class Toolbar extends JToolBar{
 	public void setBtnNewProfToSubject(boolean b) {
 		this.btnNewProfToSubject.setVisible(b);
 	}
+	public void setBtnDeleteProf(boolean b) {
+		this.btnDeleteProf.setVisible(b);
+	}
+
 
 	public void setTooltipForSearchStud() {
 		this.search.setToolTipText("ime:__|prezime:__|datumR:__|adresa:__|brTel:__|mail:__|indeks:__|datumU:__|godina:__|status:__|prosek:__|");

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,7 +36,7 @@ import model.Predmet;
 import model.Profesor;
 import model.Student;
 
-public class EditSubjFrame extends JFrame{
+public class EditSubjFrame extends JDialog{
 	/**
 	 * 
 	 */
@@ -45,15 +46,18 @@ public class EditSubjFrame extends JFrame{
 	private static String semestar;
 	private static JTextField profesorTF;
 	private static String godina;
+	private static String proff;
 	private static String subjPreIzmene;
 	private static ArrayList<Student> stNaPredmetu;
 	
 	public EditSubjFrame() {
 		try {	
+			setModal(true);
 			JPanel unosPanel=new JPanel();
 			unosPanel.setLayout(new GridBagLayout());
 		
 			setTitle("Izmena predmeta");
+			
 			Toolkit kit=Toolkit.getDefaultToolkit();
 			Dimension screenSize=kit.getScreenSize();
 			int screenHeight=screenSize.height;
@@ -83,7 +87,8 @@ public class EditSubjFrame extends JFrame{
 			npTF = new JTextField(30);
 			npTF.setName("txt");
 			npTF.addFocusListener(fokus);
-		
+			npTF.setToolTipText("npr. Naziv nekog predmeta");
+			
 			JLabel semestarL=new JLabel("Semestar: *");
 			String[] semestri= {"Letnji","Zimski"};
 			JComboBox semestarCB=new JComboBox(semestri);
@@ -93,23 +98,22 @@ public class EditSubjFrame extends JFrame{
 			String[] godine= {"Prva","Druga","Treca","Cetvrta"};
 			JComboBox godineCB=new JComboBox(godine);
 		
-		
+		/*
 			JLabel profesorL=new JLabel("Profesor(BLK): ");
 			profesorTF=new JTextField(30);
 			profesorTF.setName("txt");
-			profesorTF.addFocusListener(fokus);
+			//profesorTF.addFocusListener(fokus);
+			*/
 			
+			Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().getSelektovanRed()));
 			
-			Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
-			String prof=BazaProfesori.getInstance().getProfHavingSubj(sub).getBLK();
+			//String prof=BazaProfesori.getInstance().getProfHavingSubj(sub).getBLK();
 
 			spTF.setText(sub.getSifra_predmeta());
 			npTF.setText(sub.getNaziv());
 			semestar=sub.getSemestar();
 			godina=sub.getGodina()+" godina";
-			profesorTF.setText(prof);
 			stNaPredmetu = sub.getBrIndeksaStudenata();
-			subjPreIzmene=spTF.getText()+"|"+npTF.getText()+"|"+semestar+"|"+godina+"|"+prof;
 			
 		
 		
@@ -117,10 +121,8 @@ public class EditSubjFrame extends JFrame{
 			okBtn.setToolTipText("Potvrdi");
 			okBtn.addActionListener(new ActionListener() {
 
-				
-			String sifraReg="[a-zA-Z0-9]";
-			String regex1="[a-zA-Z ]*[0-9]*";
-			String regex2="[a-zA-Z ]+";
+			String sifraReg="[a-žA-Ž0-9]+";
+			String regex1="[a-žA-Ž ]*[0-9]*";
 			String blkReg="[0-9]+";
 			
 			
@@ -134,25 +136,18 @@ public class EditSubjFrame extends JFrame{
 						JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 					} else if(npTF.getText().matches(regex1)==false) {
 						JOptionPane.showMessageDialog(null,"Nije unet dobro naziv predmeta","",JOptionPane.ERROR_MESSAGE);
+					}else if(!profesorTF.getText().isEmpty()) {
+						if(!profesorTF.getText().matches(blkReg))
+						JOptionPane.showMessageDialog(null,"Nije unet dobro blk profesora","",JOptionPane.ERROR_MESSAGE);
 					}else {
 						
 						semestar=(String)semestarCB.getSelectedItem();
 						godina=(String)godineCB.getSelectedItem()+" godina";
-						String predavac="";
+						
 
-						if(profesorTF.getText().isEmpty()) {
-							predavac="";
-						}else {
-							if(profesorTF.getText().matches(blkReg)) {
-								Profesor p=BazaProfesori.getInstance().getProfHavingBlk(profesorTF.getText());
-								predavac=p.getIme()+" "+p.getPrezime();
-								ArrayList<Predmet>predmeti =p.getPredmeti();
-								predmeti.add(new Predmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stNaPredmetu));
-								p.setPredmeti(predmeti);
-							}
-
-						}
-						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,profesorTF.getText(),stNaPredmetu);
+						
+						System.out.println(proff);
+						PredmetController.getInstance().editPredmet(spTF.getText(),npTF.getText(),semestar,godina,stNaPredmetu);
 						setVisible(false);
 							
 							
@@ -234,7 +229,7 @@ public class EditSubjFrame extends JFrame{
 			gbCBGodina.gridy = 3;
 			gbCBGodina.insets = new Insets(20, 0, 0, 0);
 			unosPanel.add(godineCB, gbCBGodina);
-			
+			/*
 			GridBagConstraints gbLblProfesor= new GridBagConstraints();
 			gbLblProfesor.gridx = 0;
 			gbLblProfesor.gridy = 4;
@@ -247,7 +242,7 @@ public class EditSubjFrame extends JFrame{
 			gbTxtProfesor.gridy = 4;
 			gbTxtProfesor.insets = new Insets(20, 0, 0, 0);
 			unosPanel.add(profesorTF, gbTxtProfesor);
-		
+			*/
 			GridBagConstraints gbBtnOk= new GridBagConstraints();
 			gbBtnOk.gridx = 0;
 			gbBtnOk.gridy = 5;
@@ -269,8 +264,11 @@ public class EditSubjFrame extends JFrame{
 			//unosPredmeta.add(Box.createGlue());
 			setVisible(true);
 		}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Nije selektovan predmet!","",JOptionPane.ERROR_MESSAGE);
+
 			System.out.println(e.getMessage());
 		}
+		
 			
 	}
 }

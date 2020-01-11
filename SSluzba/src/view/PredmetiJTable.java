@@ -45,7 +45,12 @@ public class PredmetiJTable extends JTable{
 			}
 		});
 	}
-		
+		//ovde treba isto da se uradi na ostali,m
+		public int getSelektovanRed() {
+			if(tabela.getSelectedRow()!=-1)
+			return tabela.convertRowIndexToModel(tabela.getSelectedRow());
+			else return -1;
+		}
 		
 		@Override
 		public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {

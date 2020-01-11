@@ -5,13 +5,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -21,12 +24,18 @@ import model.BazaProfesori;
 import model.Predmet;
 import model.Profesor;
 
-public class AddProfToSubjFrame extends JFrame{
+public class AddProfToSubjFrame extends JDialog{
 
 	public AddProfToSubjFrame() {
 		try {
-			setLocation(800, 300);
-			setSize(500, 150);
+			Toolkit kit=Toolkit.getDefaultToolkit();
+			Dimension screenSize=kit.getScreenSize();
+			int screenHeight=screenSize.height;
+			int screenWidth=screenSize.width;
+			setModal(true);
+			setSize(2*screenWidth/7,3*screenHeight/14);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			setLocationRelativeTo(null);
 			setTitle("Dodavanje profesora na predmet");
 			
 			JPanel dodajProfuPanel=new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -64,23 +73,36 @@ public class AddProfToSubjFrame extends JFrame{
 				}
 			});
 			potvrda.addActionListener(new ActionListener() {
+				String blkReg="[0-9]+";
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					//dodati metodu koja dodaje u listu predmeta na profesoru
-					
-					String stariProf=BazaPredmeta.getInstanceBazaPredmeta().returnBlkFromPredavac(predmet);
-					String noviProf=blk.getText();
+					if(!blk.getText().isEmpty()) {
+						if(!blk.getText().matches(blkReg)) {
+							JOptionPane.showMessageDialog(null,"Nije unet dobro blk profesora","",JOptionPane.ERROR_MESSAGE);
+						}else {
+							String stariProf=BazaPredmeta.getInstanceBazaPredmeta().returnBlkFromPredavac(predmet);
+							String noviProf=blk.getText();
 
-					PredmetController.getInstance().changeProf(stariProf,noviProf,predmet);
-					setVisible(false);
+							PredmetController.getInstance().changeProf(stariProf,noviProf,predmet);
+							setVisible(false);
+						}
+						
+
+					}else {
+						JOptionPane.showMessageDialog(null,"Nije uneto nista!","",JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			});
 			
 			
 			setVisible(true);
 		}catch(Exception e) {
+			
+			JOptionPane.showMessageDialog(null, "Nije selektovan predmet!","",JOptionPane.ERROR_MESSAGE);
+
 			System.out.println(e.getMessage());
 		}
 	}

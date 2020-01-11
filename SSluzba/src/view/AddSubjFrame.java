@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -34,7 +35,9 @@ import model.Predmet;
 import model.Profesor;
 import model.Student;
 
-public class AddSubjFrame extends JFrame {
+
+public class AddSubjFrame extends JDialog{
+
 	private static JTextField spTF;
 	private static JTextField npTF;
 	private static String semestar;
@@ -44,21 +47,25 @@ public class AddSubjFrame extends JFrame {
 
 	public AddSubjFrame() {
 
-		JFrame unosPredmeta = new JFrame();
 
-		JPanel unosPanel = new JPanel();
+	
+				
+		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
-
-		unosPredmeta.setTitle("Dodavanje predmeta");
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		int screenHeight = screenSize.height;
-		int screenWidth = screenSize.width;
-
-		unosPredmeta.setSize(2 * screenWidth / 7, 3 * screenHeight / 10);
-		unosPredmeta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		unosPredmeta.setLocationRelativeTo(null);
-
+		
+		setModal(true);
+		setTitle("Dodavanje predmeta");
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		int screenHeight=screenSize.height;
+		int screenWidth=screenSize.width;
+		
+		setSize(2*screenWidth/7,3*screenHeight/10);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+		
+		
 		JPanel donjiPanel = new JPanel(new FlowLayout());
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100, 23));
@@ -68,60 +75,58 @@ public class AddSubjFrame extends JFrame {
 		JLabel spL = new JLabel("Sifra predmeta: *");
 		spTF = new JTextField(10);
 		spTF.setName("txt");
-		// spTF.addFocusListener(focusListener1);
-		spTF.addFocusListener(fokus);
 
-		JLabel npL = new JLabel("Naziv predmeta: *");
+		spTF.addFocusListener(fokus);
+		spTF.setToolTipText("npr. OP956");
+		
+		JLabel npL=new JLabel("Naziv predmeta: *");
+
 		npTF = new JTextField(30);
 		npTF.setName("txt");
 		npTF.addFocusListener(fokus);
+		npTF.setToolTipText("npr. Osnove programiranja");
 
-		// npTF.addFocusListener(focusListener2);
 
-		JLabel semestarL = new JLabel("Semestar: *");
-		String[] semestri = { "Letnji", "Zimski" };
-		JComboBox semestarCB = new JComboBox(semestri);
-
-		JLabel godinaL = new JLabel("Godina: *");
-		String[] godine = { "Prva", "Druga", "Treca", "Cetvrta" };
-		JComboBox godineCB = new JComboBox(godine);
-
-		JLabel profesorL = new JLabel("Profesor(BLK): ");
-		profesorTF = new JTextField(30);
+	
+		
+		JLabel semestarL=new JLabel("Semestar: *");
+		String[] semestri= {"Letnji","Zimski"};
+		JComboBox semestarCB=new JComboBox(semestri);
+		
+		
+		JLabel godinaL=new JLabel("Godina: *");
+		String[] godine= {"Prva","Druga","Treca","Cetvrta"};
+		JComboBox godineCB=new JComboBox(godine);
+		
+		
+		JLabel profesorL=new JLabel("Profesor(BLK): ");
+		profesorTF=new JTextField(30);
 		profesorTF.setName("txt");
-		// profesorTF.addFocusListener(fokus);
+		profesorTF.setToolTipText("npr. 123456789");
+		
+		JButton okBtn=new JButton("Ok");
 
-		JButton okBtn = new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
 
 		okBtn.addActionListener(new ActionListener() {
-			String sifraReg = "[a-zA-Z0-9]";
-			String regex1 = "[a-zA-Z ]*[0-9]*";
-			String regex2 = "[a-zA-Z ]+";
-			String blkReg = "[0-9]+";
 
+			String sifraReg="[a-žA-Ž0-9]+";
+			String regex1="[a-žA-Ž ]*[0-9]*";
+			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				boolean postoji = false;
-				for (Predmet std : BazaPredmeta.getInstanceBazaPredmeta().getPredmeti()) {
-					if (std.getSifra_predmeta().equals(spTF.getText().trim())) {
-						postoji = true;
-					}
-				}
-				if (spTF.getText().equals("") || npTF.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Nisu unesena sva polja", "", JOptionPane.ERROR_MESSAGE);
-				} else if (spTF.getText().matches(sifraReg)) {
-					JOptionPane.showMessageDialog(null, "Nije uneta dobro sifra predmeta", "",
-							JOptionPane.ERROR_MESSAGE);
-				} else if (npTF.getText().matches(regex1) == false) {
-					JOptionPane.showMessageDialog(null, "Nije uneto dobar naziv predmeta", "",
-							JOptionPane.ERROR_MESSAGE);
-				} else if (postoji) {
-					JOptionPane.showMessageDialog(null, "Vec postoji predmet sa unetom sifrom!!!", "",
-							JOptionPane.ERROR_MESSAGE);
-				} else {
-					semestar = (String) semestarCB.getSelectedItem();
-					godina = (String) godineCB.getSelectedItem() + " godina";
+				if(spTF.getText().equals("") || npTF.getText().equals("")) {
+				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
+				}else if(spTF.getText().matches(sifraReg)) {
+					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
+				} else if(npTF.getText().matches(regex1)==false) {
+					JOptionPane.showMessageDialog(null,"Nije uneto dobar naziv predmeta","",JOptionPane.ERROR_MESSAGE);
+				}else if(!profesorTF.getText().isEmpty()) {
+					if(!profesorTF.getText().matches(blkReg))
+					JOptionPane.showMessageDialog(null,"Nije unet dobro blk profesora","",JOptionPane.ERROR_MESSAGE);
+				}else {
+					semestar=(String)semestarCB.getSelectedItem();
+					godina=(String)godineCB.getSelectedItem()+" godina";
 					ArrayList<Student> stud = new ArrayList<Student>();
 					Student st = new Student();
 					stud.add(st);
@@ -138,12 +143,13 @@ public class AddSubjFrame extends JFrame {
 						}
 
 					}
-					PredmetController.getInstance().addPredmet(spTF.getText(), npTF.getText(), semestar, godina,
-							predavac, stud);
 
-					unosPredmeta.setVisible(false);
-
-					// unosPredmeta.dispose();
+					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stud);
+					
+					setVisible(false);
+					
+					
+					//unosPredmeta.dispose();
 				}
 
 			}
@@ -155,9 +161,11 @@ public class AddSubjFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO ugasi taj window
-				unosPredmeta.setVisible(false);
-				unosPredmeta.dispose();
 
+
+				setVisible(false);
+				dispose();
+				
 			}
 		});
 
@@ -245,7 +253,11 @@ public class AddSubjFrame extends JFrame {
 		unosPredmeta.add(unosPanel, BorderLayout.CENTER);
 		unosPredmeta.add(donjiPanel, BorderLayout.SOUTH);
 
-		// unosPredmeta.add(Box.createGlue());
-		unosPredmeta.setVisible(true);
+
+			add(unosPanel,BorderLayout.CENTER);
+			add(donjiPanel,BorderLayout.SOUTH);
+		
+		//unosPredmeta.add(Box.createGlue());
+		setVisible(true);
 	}
 }

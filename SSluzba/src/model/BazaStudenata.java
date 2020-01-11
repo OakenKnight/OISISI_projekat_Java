@@ -119,7 +119,7 @@ public class BazaStudenata {
 	}
 
 	
-	public String getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column) {
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
@@ -129,7 +129,7 @@ public class BazaStudenata {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return student.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+			return student.getDatumRodjenja();//.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 4:
 			return student.getAdresaStanovanja();
 		case 5:
@@ -137,7 +137,7 @@ public class BazaStudenata {
 		case 6:
 			return student.getEmail();
 		case 7:
-			return student.getDatumUpisa().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+			return student.getDatumUpisa();//.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 8:
 			return Integer.toString(student.getTrenutnaGodina());
 		case 9:
@@ -148,7 +148,7 @@ public class BazaStudenata {
 			else
 				return "Nepoznato";
 		case 10:
-			return Double.toString(student.getProsecnaOcena());
+			return student.getProsecnaOcena();
 		default:
 			return null;
 		}
