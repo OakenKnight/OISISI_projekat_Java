@@ -42,7 +42,7 @@ public class AboutFrame extends JFrame{
 		
 		
 		JPanel panelZaDugme = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JButton btn = new JButton("Cancle");
+		JButton btn = new JButton("Cancel");
 		btn.addActionListener(new ActionListener() {
 			
 			@Override

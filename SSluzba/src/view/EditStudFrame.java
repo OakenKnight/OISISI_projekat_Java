@@ -4,17 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -22,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -34,7 +28,7 @@ import model.BazaStudenata;
 import model.StatusStudent;
 import model.Student;
 
-public class EditStudFrame extends JFrame{
+public class EditStudFrame extends JDialog{
 	private static final long serialVersionUID = 6074145523826069140L;
 	private static JTextField imePolje;
 	private static JTextField prezimePolje;
@@ -45,7 +39,6 @@ public class EditStudFrame extends JFrame{
 	private static JTextField telefonPolje;
 	private static JTextField indexPolje;
 	private static JTextField prosekPolje;
-	private static String studentPreIzmene;
 
 	private int god;
 	private StatusStudent stats;
@@ -56,8 +49,16 @@ public class EditStudFrame extends JFrame{
 		  
 	   // setUndecorated(true);
 		try {
-	    setLocation(800, 300);
-		setTitle("Izmena studenta");
+		setModal(true);
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		int screenHeight=screenSize.height;
+		int screenWidth=screenSize.width;
+			
+		setSize(2*screenWidth/9,3*screenHeight/8);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setTitle("Dodavanje studenta");
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout());
@@ -68,7 +69,8 @@ public class EditStudFrame extends JFrame{
 		JLabel imeLabela = new JLabel("Ime* ");
 		imePolje = new JTextField();
 		imePolje.setPreferredSize(new Dimension(200,25));
-		
+		imePolje.setToolTipText("npr. Ivan");
+
 		imeStudenta.add(imeLabela);
 		imeStudenta.add(imePolje);
 		
@@ -76,7 +78,8 @@ public class EditStudFrame extends JFrame{
 		JLabel prezimeLabela = new JLabel("Prezime* ");
 		prezimePolje = new JTextField();
 		prezimePolje.setPreferredSize(new Dimension(200,25));
-		
+		prezimePolje.setToolTipText("npr. Ivanović");
+
 		prezimeStudenta.add(prezimeLabela);
 		prezimeStudenta.add(prezimePolje);
 		
@@ -84,7 +87,8 @@ public class EditStudFrame extends JFrame{
 		JLabel datumRodjenjaLabela = new JLabel("Datum rodjenja* ");
 		datumRodjenjaPolje = new JTextField();
 		datumRodjenjaPolje.setPreferredSize(new Dimension(200,25));
-		
+		datumRodjenjaPolje.setToolTipText("npr. 19.09.1999");
+
 		datumRodjenjaStudenta.add(datumRodjenjaLabela);
 		datumRodjenjaStudenta.add(datumRodjenjaPolje);
 		
@@ -92,7 +96,8 @@ public class EditStudFrame extends JFrame{
 		JLabel adresaLabela = new JLabel("Adresa stanovanja* ");
 		adresaPolje= new JTextField();
 		adresaPolje.setPreferredSize(new Dimension(200,25));
-		
+		adresaPolje.setToolTipText("npr. Karađorđeva 83, Novi Sad");
+
 		adresaStudenta.add(adresaLabela);
 		adresaStudenta.add(adresaPolje);
 		
@@ -100,7 +105,8 @@ public class EditStudFrame extends JFrame{
 		JLabel telefonLabela = new JLabel("Broj telefona* ");
 		telefonPolje = new JTextField();
 		telefonPolje.setPreferredSize(new Dimension(200,25));
-		
+		telefonPolje.setToolTipText("npr. 024/333-559");
+
 		telefonStudenta.add(telefonLabela);
 		telefonStudenta.add(telefonPolje);
 		
@@ -109,7 +115,8 @@ public class EditStudFrame extends JFrame{
 		indexPolje = new JTextField();
 		indexPolje.setPreferredSize(new Dimension(200,25));
 		indexPolje.setEnabled(false);
-		
+		indexPolje.setToolTipText("npr. RA201/2017");
+
 		indexStudenta.add(indexLabela);
 		indexStudenta.add(indexPolje);
 		
@@ -117,7 +124,8 @@ public class EditStudFrame extends JFrame{
 		JLabel emailLabela = new JLabel("Email* ");
 		emailPolje = new JTextField();
 		emailPolje.setPreferredSize(new Dimension(200,25));
-		
+		emailPolje.setToolTipText("npr. ivan.ivanovic@aol.com");
+
 		emailStudenta.add(emailLabela);
 		emailStudenta.add(emailPolje);
 		
@@ -125,7 +133,8 @@ public class EditStudFrame extends JFrame{
 		JLabel datumUpisaStudentaLabela = new JLabel("Datum upisa* ");
 		datumUpisaPolje = new JTextField();
 		datumUpisaPolje.setPreferredSize(new Dimension(200,25));
-		
+		datumUpisaPolje.setToolTipText("npr. 12.07.2017");
+
 		datumUpisaStudenta.add(datumUpisaStudentaLabela);
 		datumUpisaStudenta.add(datumUpisaPolje);
 		
@@ -134,7 +143,8 @@ public class EditStudFrame extends JFrame{
 		JLabel prosekLabela = new JLabel("Prosek* ");
 		prosekPolje = new JTextField();
 		prosekPolje.setPreferredSize(new Dimension(200,25));
-		
+		prosekPolje.setToolTipText("npr. 6.66");
+
 		prosekStudenta.add(prosekLabela);
 		prosekStudenta.add(prosekPolje);
 		
@@ -160,7 +170,7 @@ public class EditStudFrame extends JFrame{
 		drugoDugme.add(samofinansiranje);
 		
 		
-			Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
+			Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelektovanRed()));
 			imePolje.setText(st.getIme());
 			prezimePolje.setText(st.getPrezime());
 			datumRodjenjaPolje.setText(st.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
@@ -202,7 +212,6 @@ public class EditStudFrame extends JFrame{
 				god=4;
 			}
 			
-			studentPreIzmene = imePolje.getText().trim()+"|"+prezimePolje.getText().trim()+"|"+datumRodjenjaPolje.getText().trim()+"|"+adresaPolje.getText().trim()+"|"+telefonPolje.getText().trim()+"|"+emailPolje.getText().trim()+"|"+indexPolje.getText().trim()+"|"+datumUpisaPolje.getText().trim()+"|"+god+"|"+stats+"|"+prosekPolje.getText().trim();
 		
 		
 		JPanel odustanakPotvrda = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -220,12 +229,12 @@ public class EditStudFrame extends JFrame{
 		
 		
 		potvrda.addActionListener(new ActionListener() {
-			String imeReg="[A-Z][a-z]+";
-			String adresaReg="[a-zA-Z ]*[0-9]+[a-z]*";
-			String telReg="[0-9]+";
-			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
-			String blkReg="[0-9]+";
+
+			String imeReg="[a-žA-Ž]+";
+			String adresaReg="[a-žA-Ž0-9 ]*[,][ a-žA-Ž]+";
+			String telReg="[0-9]+/[0-9]+[-][0-9]+";
+			String emailReg="[a-zA-Z0-9.]+@[a-zA-Z]+[.][a-zA-Z]+";
+			String idxReg="[A-Z]+[0-9]+/[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || 
@@ -371,6 +380,9 @@ public class EditStudFrame extends JFrame{
 		setSize(400, 600);
 		setVisible(true);
 		}catch (Exception e) {
+			
+			JOptionPane.showMessageDialog(null, "Nije selektovan student!","",JOptionPane.ERROR_MESSAGE);
+
 			System.out.println(e.getMessage());
 			
 		}

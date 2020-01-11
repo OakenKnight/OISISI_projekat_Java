@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,7 +25,7 @@ import javax.swing.JTextField;
 import controller.FocusProfesori;
 import controller.ProfesorController;
 
-public class AddProfFrame extends JFrame{
+public class AddProfFrame extends JDialog{
 	/**
 	 * 
 	 */
@@ -41,8 +43,16 @@ public class AddProfFrame extends JFrame{
 	private static final long serialVersionUID = 8592866674972968760L;
 
 	public AddProfFrame() {
+
+		setModal(true);
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		int screenHeight=screenSize.height;
+		int screenWidth=screenSize.width;
 		
-	    setLocation(800, 300);
+		setSize(2*screenWidth/9,3*screenHeight/8);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		setTitle("Dodavanje profesora");
 				
 		JPanel donjiPanel = new JPanel(new FlowLayout());
@@ -58,7 +68,7 @@ public class AddProfFrame extends JFrame{
 		imeTF.setName("txt");
 		imeTF.setPreferredSize(new Dimension(200,25));
 		imeTF.addFocusListener(fokus);
-		
+		imeTF.setToolTipText("npr. Nebojša");
 		
 		imeP.add(imeL);
 		imeP.add(imeTF);
@@ -70,7 +80,7 @@ public class AddProfFrame extends JFrame{
 		prezimeTF.setName("txt");
 		prezimeTF.setPreferredSize(new Dimension(200,25));
 		prezimeTF.addFocusListener(fokus);
-		
+		prezimeTF.setToolTipText("npr. Ralević");
 		
 		prezimeP.add(prezimeL);
 		prezimeP.add(prezimeTF);
@@ -81,6 +91,7 @@ public class AddProfFrame extends JFrame{
 		datumTF.setName("txt");
 		datumTF.setPreferredSize(new Dimension(200,25));
 		datumTF.addFocusListener(fokus);
+		datumTF.setToolTipText("npr. 14.12.1983 tj. u formatu dd.MM.yyyy ");
 		
 		
 		datumP.add(datumL);
@@ -92,6 +103,7 @@ public class AddProfFrame extends JFrame{
 		telefonTF.setName("txt");
 		telefonTF.setPreferredSize(new Dimension(200,25));
 		telefonTF.addFocusListener(fokus);
+		telefonTF.setToolTipText("npr. 021/1234-123");
 		
 		telefonP.add(telefonL);
 		telefonP.add(telefonTF);
@@ -102,7 +114,7 @@ public class AddProfFrame extends JFrame{
 		emailTF.setName("txt");
 		emailTF.setPreferredSize(new Dimension(200,25));
 		emailTF.addFocusListener(fokus);
-		
+		emailTF.setToolTipText("npr. nebojsa.ralevic@hotmail.com");
 		
 		emailP.add(emailL);
 		emailP.add(emailTF);
@@ -114,8 +126,8 @@ public class AddProfFrame extends JFrame{
 		adresaTF.setName("txt");
 		adresaTF.setPreferredSize(new Dimension(200,25));
 		adresaTF.addFocusListener(fokus);
-		
-		
+		adresaTF.setToolTipText("npr. Jovana Subotića 33, Novi Sad");
+
 		adresaP.add(adresaL);
 		adresaP.add(adresaTF);
 
@@ -127,7 +139,8 @@ public class AddProfFrame extends JFrame{
 		kancelarijaTF.setName("txt");
 		kancelarijaTF.setPreferredSize(new Dimension(200,25));
 		kancelarijaTF.addFocusListener(fokus);
-		
+		kancelarijaTF.setToolTipText("npr. Dositeja Obradovića 6, Novi Sad, NTP M35");
+
 		
 		kancelarijaP.add(kancelarijaL);
 		kancelarijaP.add(kancelarijaTF);
@@ -138,7 +151,7 @@ public class AddProfFrame extends JFrame{
 		blkTF.setName("txt");
 		blkTF.setPreferredSize(new Dimension(200,25));
 		blkTF.addFocusListener(fokus);
-		
+		blkTF.setToolTipText("npr. 123456789");
 		
 		blkP.add(blkL);
 		blkP.add(blkTF);
@@ -174,11 +187,11 @@ public class AddProfFrame extends JFrame{
 		});
 		//implementiram serijalizaciju
 		potvrda.addActionListener(new ActionListener() {
-			String imeReg="[A-Z][a-z]+";
-			String adresaReg="[a-zA-Z ]*[0-9][a-z]*";
-			String telReg="[0-9]+";
-			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String kancReg="[0-9a-zA-z ]*";
+			String imeReg="[A-Ž][a-ž]+";
+			String adresaReg="[a-žA-Ž0-9 ]*[,][ a-žA-Ž]+";
+			String telReg="[0-9]+/[0-9]+[-][0-9]+";
+			String emailReg="[a-zA-Z0-9.]+@[a-zA-Z]+[.][a-zA-Z]+";
+			String kancReg="[a-žA-Ž0-9, ]+";
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -221,7 +234,7 @@ public class AddProfFrame extends JFrame{
 				if(!text.isEmpty()) {
 					
 
-					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.$";
+					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$";
 					
 					if(!text.matches(regexdatum)) {
 						return false;
@@ -278,7 +291,6 @@ public class AddProfFrame extends JFrame{
 		
 		this.add(donjiPanel,BorderLayout.SOUTH);
 
-		setSize(400, 400);
 		setVisible(true);
 			
 	}

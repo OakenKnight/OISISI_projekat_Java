@@ -4,20 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+
 import java.time.LocalDate;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +26,7 @@ import controller.FocusStudenti;
 import controller.StudentiController;
 import model.StatusStudent;
 
-public class AddStudentFrame extends JFrame{
+public class AddStudentFrame extends JDialog{
 
 	/**
 	 * 
@@ -46,12 +43,19 @@ public class AddStudentFrame extends JFrame{
 	private static JTextField prosekPolje;
 	private static String godina;
 	private int god;
-	private String finansiranje;
 	private StatusStudent stats;
 	
 	public AddStudentFrame(){
 	   // setUndecorated(true);
-	    setLocation(800, 300);
+		setModal(true);
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		int screenHeight=screenSize.height;
+		int screenWidth=screenSize.width;
+		
+		setSize(2*screenWidth/9,3*screenHeight/8);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		setTitle("Dodavanje studenta");
 		
 		
@@ -67,7 +71,7 @@ public class AddStudentFrame extends JFrame{
 		imePolje.setPreferredSize(new Dimension(200,25));
 		imePolje.setName("txt");
 		imePolje.addFocusListener(fokus);
-		
+		imePolje.setToolTipText("npr. Ivan");
 		imeStudenta.add(imeLabela);
 		imeStudenta.add(imePolje);
 		
@@ -77,7 +81,8 @@ public class AddStudentFrame extends JFrame{
 		prezimePolje.setPreferredSize(new Dimension(200,25));
 		prezimePolje.setName("txt");
 		prezimePolje.addFocusListener(fokus);
-		
+		prezimePolje.setToolTipText("npr. Ivanović");
+
 		prezimeStudenta.add(prezimeLabela);
 		prezimeStudenta.add(prezimePolje);
 		
@@ -87,7 +92,8 @@ public class AddStudentFrame extends JFrame{
 		datumRodjenjaPolje.setPreferredSize(new Dimension(200,25));
 		datumRodjenjaPolje.setName("txt");
 		datumRodjenjaPolje.addFocusListener(fokus);
-		
+		datumRodjenjaPolje.setToolTipText("npr. 19.09.1999.");
+
 		datumRodjenjaStudenta.add(datumRodjenjaLabela);
 		datumRodjenjaStudenta.add(datumRodjenjaPolje);
 		
@@ -99,7 +105,8 @@ public class AddStudentFrame extends JFrame{
 		adresaPolje.setPreferredSize(new Dimension(200,25));
 		adresaPolje.setName("txt");
 		adresaPolje.addFocusListener(fokus);
-		
+		adresaPolje.setToolTipText("npr. Karađorđeva 83, Novi Sad");
+
 		adresaStudenta.add(adresaLabela);
 		adresaStudenta.add(adresaPolje);
 		
@@ -109,7 +116,7 @@ public class AddStudentFrame extends JFrame{
 		telefonPolje.setPreferredSize(new Dimension(200,25));
 		telefonPolje.setName("txt");
 		telefonPolje.addFocusListener(fokus);
-		
+		telefonPolje.setToolTipText("npr. 024/333-559");
 		telefonStudenta.add(telefonLabela);
 		telefonStudenta.add(telefonPolje);
 		
@@ -119,7 +126,7 @@ public class AddStudentFrame extends JFrame{
 		indexPolje.setPreferredSize(new Dimension(200,25));
 		indexPolje.setName("txt");
 		indexPolje.addFocusListener(fokus);
-		
+		indexPolje.setToolTipText("npr. RA201/2017");
 		indexStudenta.add(indexLabela);
 		indexStudenta.add(indexPolje);
 		
@@ -129,6 +136,7 @@ public class AddStudentFrame extends JFrame{
 		emailPolje.setPreferredSize(new Dimension(200,25));
 		emailPolje.setName("txt");
 		emailPolje.addFocusListener(fokus);
+		emailPolje.setToolTipText("npr. ivan.ivanovic@aol.com");
 		
 		emailStudenta.add(emailLabela);
 		emailStudenta.add(emailPolje);
@@ -139,7 +147,8 @@ public class AddStudentFrame extends JFrame{
 		datumUpisaPolje.setPreferredSize(new Dimension(200,25));
 		datumUpisaPolje.setName("txt");
 		datumUpisaPolje.addFocusListener(fokus);
-		
+		datumUpisaPolje.setToolTipText("npr. 12.07.2017");
+
 		datumUpisaStudenta.add(datumUpisaStudentaLabela);
 		datumUpisaStudenta.add(datumUpisaPolje);
 		
@@ -150,7 +159,7 @@ public class AddStudentFrame extends JFrame{
 		prosekPolje.setPreferredSize(new Dimension(200,25));
 		prosekPolje.setName("txt");
 		prosekPolje.addFocusListener(fokus);
-		
+		prosekPolje.setToolTipText("npr. 6.66");
 		
 		prosekStudenta.add(prosekLabela);
 		prosekStudenta.add(prosekPolje);
@@ -194,12 +203,11 @@ public class AddStudentFrame extends JFrame{
 		
 		
 		potvrda.addActionListener(new ActionListener() {
-			String imeReg="[A-Z][a-z]+";
-			String adresaReg="[a-zA-Z ]*[0-9]+[a-z]*";
-			String telReg="[0-9]+";
-			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			String idxReg="[a-zA-Z]+[0-9]+/[0-9]+";
-			String blkReg="[0-9]+";
+			String imeReg="[A-Ž][a-ž]+";
+			String adresaReg="[a-žA-Ž0-9 ]*[,][ a-žA-Ž]+";
+			String telReg="[0-9]+/[0-9]+[-][0-9]+";
+			String emailReg="[a-zA-Z0-9.]+@[a-zA-Z]+[.][a-zA-Z]+";
+			String idxReg="[A-Z]+[0-9]+/[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 		
@@ -280,7 +288,7 @@ public class AddStudentFrame extends JFrame{
 				if(!text.isEmpty()) {
 					
 
-					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.$";
+					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$";
 					
 					if(!text.matches(regexdatum)) {
 						return false;

@@ -53,7 +53,14 @@ public class StudentiJTable extends JTable{
 			}
 		});
 	}
-
+	
+	public int getSelektovanRed() {
+		if(tabela.getSelectedRow()!=-1)
+			return tabela.convertRowIndexToModel(tabela.getSelectedRow());
+		else 
+			return -1;
+	}
+	
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		selektovanRed = this.getSelectedRow();

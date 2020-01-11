@@ -1,9 +1,6 @@
-Miroslav|Hajdukovic|13.02.1990|Hajduk Veljkova 2c|021345678|ajduk@gmail.com|699|123456789|PhD|Redovni profesor|E202RA#
-Zoka|Bosanac|22.06.1975|Alekse Santica 6|0213456457|bosnijak@gmail.com|masinski 12|908573452|PhD|Vanredni profesor|E206EE#
-Aleksandar|Kupusinac|12.02.1977|Futoski put 42|02141245|kupus@gmail.com|jugodrvo 42|908673452|PhD|Docent|E203RA#E207RA#
-Nebojsa|Ralevic|12.05.1970|Rubinova 4|02169420|ralerubin@gmail.com|612 kula|666666666|PhD|Vanredni profesor|E201RA#E201Mh#E203Mh#E202Mh#
-Pero|Bandero|24.12.1956|Lasla Gala 17|28471024|banderas@gmail.com|masinski 22|555333222|PhD|Vanredni profesor|E123EE#E124EE#
-Rade|Doroslovacki|12.12.1950|Mordor 2|008759784|sauron@gmail.com|Barad dur|098765432|BSc|Saradnik u nastavi|E678RA#
-Petar|Maric|22.02.1950|Izengardova 2|00792332|saruman@gmail.com|Izengardova kula 2|987654321|PhD|Docent|Y235PS#
-Nikola|Obrenovic|12.06.1978|Narodnog fronta 3|1098246234|obrenovic@gmail.com|jug 205|099887765|MSc|Asistent|E905RA#
-Marija|Kukic|06.09.1995|Kapetan Kuke 2|12435324|kukicmarija@gmail.com|jug 69|564564564|MSc|Asistent|E235RA#
+Aleksa|Petković|15.01.1965|Temerinska 15, Novi Sad|021/334-990|aleksa.petkovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, MI 105|007198721|PhD|Redovni profesor|OP301#
+Jana|Lazarević|25.02.1963|Jovana Cvijića 26, Novi Sad|021/435-891|jana.lazarevic@mailinator.com|Dositeja Obradovića 6, Novi Sad, Nastavni blok 206|008431903|PhD|Redovni profesor|DM881#
+Nađa|Aleksić|23.03.1973|Gundulićeva 75, Novi Sad|021/730-172|nadja.aleksic@mailinator.com|Dositeja Obradovića 6, Novi Sad, NTP 307|005671007|PhD|Vanredni profesor|PP007#
+Đorđe|Spasojević|24.08.1978|Šekspirova 44, Novi Sad|021/514-893|djordje.spasojevic@mailinator.com|Dositeja Obradovića 6, Novi Sad, MI 118|009999331|PhD|Vanredni profesor|#
+Elena|Milenković|08.11.1985|Tolstojeva 52, Novi Sad|021/834-901|elena.milenkovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, Nastavni blok 217|003330976|PhD|Docent|#
+Teodor|Mladenović|14.12.1983|Jovana Subotića 33, Novi Sad|021/441-007|teodor.mladenovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, NTP M35|007441998|PhD|Docent|#

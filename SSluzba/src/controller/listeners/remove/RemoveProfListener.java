@@ -2,13 +2,6 @@ package controller.listeners.remove;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
@@ -28,7 +21,7 @@ public class RemoveProfListener implements MouseListener{
 			try {
 			int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
 			if(option==JOptionPane.YES_OPTION) {
-				Profesor prof =new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().selektovanRed));
+				Profesor prof =new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().getSelektovanRed()));
 				
 				String ime=prof.getIme();
 				String prezime=prof.getPrezime();
@@ -45,6 +38,7 @@ public class RemoveProfListener implements MouseListener{
 				
 				}
 			}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Nije selektovan profesor!","",JOptionPane.ERROR_MESSAGE);
 
 			System.out.println(e.getMessage());
 			}

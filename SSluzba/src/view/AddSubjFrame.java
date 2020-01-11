@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,7 +34,7 @@ import model.Predmet;
 import model.Profesor;
 import model.Student;
 
-public class AddSubjFrame extends JFrame{
+public class AddSubjFrame extends JDialog{
 	private static JTextField spTF;
 	private static JTextField npTF;
 	private static String semestar;
@@ -41,22 +42,20 @@ public class AddSubjFrame extends JFrame{
 	private static int brojac;
 	private static String godina;
 	public AddSubjFrame() {
-		
-
-		JFrame unosPredmeta=new JFrame();
-		
+				
 		JPanel unosPanel=new JPanel();
 		unosPanel.setLayout(new GridBagLayout());
-	
-		unosPredmeta.setTitle("Dodavanje predmeta");
+		
+		setModal(true);
+		setTitle("Dodavanje predmeta");
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();
 		int screenHeight=screenSize.height;
 		int screenWidth=screenSize.width;
 		
-		unosPredmeta.setSize(2*screenWidth/7,3*screenHeight/10);
-		unosPredmeta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		unosPredmeta.setLocationRelativeTo(null);
+		setSize(2*screenWidth/7,3*screenHeight/10);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
 		
 		
@@ -71,16 +70,15 @@ public class AddSubjFrame extends JFrame{
 		JLabel spL=new JLabel("Sifra predmeta: *");
 		spTF = new JTextField(10);
 		spTF.setName("txt");
-		//spTF.addFocusListener(focusListener1);		
 		spTF.addFocusListener(fokus);
-
+		spTF.setToolTipText("npr. OP956");
 		
 		JLabel npL=new JLabel("Naziv predmeta: *");
 		npTF = new JTextField(30);
 		npTF.setName("txt");
 		npTF.addFocusListener(fokus);
+		npTF.setToolTipText("npr. Osnove programiranja");
 
-		//npTF.addFocusListener(focusListener2);
 	
 		
 		JLabel semestarL=new JLabel("Semestar: *");
@@ -96,16 +94,15 @@ public class AddSubjFrame extends JFrame{
 		JLabel profesorL=new JLabel("Profesor(BLK): ");
 		profesorTF=new JTextField(30);
 		profesorTF.setName("txt");
-		//profesorTF.addFocusListener(fokus);
+		profesorTF.setToolTipText("npr. 123456789");
 		
 		JButton okBtn=new JButton("Ok");
 		okBtn.setToolTipText("Potvrdi");
 		
 		okBtn.addActionListener(new ActionListener() {
-		String sifraReg="[a-zA-Z0-9]";
-		String regex1="[a-zA-Z ]*[0-9]*";
-		String regex2="[a-zA-Z ]+";
-		String blkReg="[0-9]+";
+			String sifraReg="[a-žA-Ž0-9]+";
+			String regex1="[a-žA-Ž ]*[0-9]*";
+			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(spTF.getText().equals("") || npTF.getText().equals("")) {
@@ -114,8 +111,11 @@ public class AddSubjFrame extends JFrame{
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
 					JOptionPane.showMessageDialog(null,"Nije uneto dobar naziv predmeta","",JOptionPane.ERROR_MESSAGE);
+				}else if(!profesorTF.getText().isEmpty()) {
+					if(!profesorTF.getText().matches(blkReg))
+					JOptionPane.showMessageDialog(null,"Nije unet dobro blk profesora","",JOptionPane.ERROR_MESSAGE);
 				}else {
-										semestar=(String)semestarCB.getSelectedItem();
+					semestar=(String)semestarCB.getSelectedItem();
 					godina=(String)godineCB.getSelectedItem()+" godina";
 					ArrayList<Student> stud = new ArrayList<Student>();
 					Student st = new Student();
@@ -135,7 +135,7 @@ public class AddSubjFrame extends JFrame{
 					}
 					PredmetController.getInstance().addPredmet(spTF.getText(),npTF.getText(),semestar,godina,predavac,stud);
 					
-					unosPredmeta.setVisible(false);
+					setVisible(false);
 					
 					
 					//unosPredmeta.dispose();
@@ -150,8 +150,8 @@ public class AddSubjFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO ugasi taj window
-				unosPredmeta.setVisible(false);
-				unosPredmeta.dispose();
+				setVisible(false);
+				dispose();
 				
 			}
 		});
@@ -241,10 +241,10 @@ public class AddSubjFrame extends JFrame{
 		unosPanel.add(cancelBtn,gbBtnCancel);
 
 		
-			unosPredmeta.add(unosPanel,BorderLayout.CENTER);
-			unosPredmeta.add(donjiPanel,BorderLayout.SOUTH);
+			add(unosPanel,BorderLayout.CENTER);
+			add(donjiPanel,BorderLayout.SOUTH);
 		
 		//unosPredmeta.add(Box.createGlue());
-		unosPredmeta.setVisible(true);
+		setVisible(true);
 	}
 }

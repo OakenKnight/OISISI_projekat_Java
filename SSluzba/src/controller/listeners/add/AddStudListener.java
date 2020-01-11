@@ -12,7 +12,6 @@ public class AddStudListener implements MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		if(TabbedPane.getInstance().getSelectedIndex()==0) {
 			AddStudentFrame diag = new AddStudentFrame();
-			diag.setVisible(true);
 		}
 	}
 

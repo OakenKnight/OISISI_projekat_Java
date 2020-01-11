@@ -2,14 +2,6 @@ package controller.listeners.remove;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.swing.JOptionPane;
 
 import controller.PredmetController;
@@ -30,7 +22,7 @@ public class RemoveSubjListener implements MouseListener{
 			try {
 				int option=JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Brisanje predmeta?",JOptionPane.YES_NO_OPTION);
 				if(option==JOptionPane.YES_OPTION) {
-					Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().selektovanRed));
+					Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().getSelektovanRed()));
 					String sifra=sub.getSifra_predmeta();
 					String naziv=sub.getNaziv();
 					String semestar=sub.getSemestar();
@@ -42,6 +34,8 @@ public class RemoveSubjListener implements MouseListener{
 				}
 			}catch (Exception e) {
 				// TODO: handle exception
+				JOptionPane.showMessageDialog(null, "Nije selektovan predmet!","",JOptionPane.ERROR_MESSAGE);
+
 				System.out.println(e.getMessage());
 			}
 		}

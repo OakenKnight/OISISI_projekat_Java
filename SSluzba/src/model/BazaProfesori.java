@@ -179,6 +179,35 @@ public class BazaProfesori {
 			System.out.println(e.getMessage());
 		}
 	}
+	public void deleteSubjFromProf(Predmet p, Profesor prof) {
+		ArrayList<Predmet> predmeti = prof.getPredmeti();
+		int idx=-1;
+		int i=0;
+		for (Predmet predmet : predmeti) {
+			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				idx=i;
+				continue;
+			}
+			i++;
+		}
+		predmeti.remove(idx);
+		prof.setPredmeti(predmeti);
+	}
+	public void deleteProfFromCertainSubj(Profesor prof, Predmet pred) {
+		ArrayList<Predmet> predmetiSvi =BazaPredmeta.getInstanceBazaPredmeta().getSviPredmeti();
+		for (Predmet predmet : predmetiSvi) {
+			if(predmet.getSifra_predmeta().equals(pred.getSifra_predmeta()))
+				predmet.setPredavac("");
+		}
+		
+		ArrayList<Predmet> predmeti =BazaPredmeta.getInstanceBazaPredmeta().getPredmeti();
+		for (Predmet predmet : predmeti) {
+			
+		}
+		
+		
+		
+	}
 	public void deleteProfFromSubj(Profesor p) {
 		ArrayList<Predmet> predmeti=p.getPredmeti();
 		for (Predmet predmet : predmeti) {
@@ -275,8 +304,10 @@ public class BazaProfesori {
 		}else {
 			
 			HashMap<String, String> mapa=spremiString(uneseno);
+			
 			Set<String> kljucevi=mapa.keySet();
 			Set<Profesor> set=new HashSet<Profesor>();
+			
 			for(String key:kljucevi) {
 				for(Profesor p:sviProfesori) {
 					if(key.equals("ime")) {
@@ -342,7 +373,6 @@ public class BazaProfesori {
 				return p;
 			}
 		}
-		System.out.println("AAAAAAAAAAAAAAAA KURVOOOOOOOOO");
 		return null;
 	}
 	/*
