@@ -28,13 +28,27 @@ public class AboutFrame extends JFrame{
 				+ "su vezane za odabrani entitet. Svaki od tabova raspolaze sa odredjenim akcijama kao sto su dodavanje novog\n"
 				+ "ili brisanje i izmena postojeceg entiteta kao i dodavanje drugih entiteta na spisak izabranog entiteta.\n"
 				+ "Akcije je moguce sprovesti i iz menija biranjem odgovarajucih opcija.\n\n\nAutori:\n"
-				+ "Ignjatijevic Aleksandar, student trece godin Fakulteta tehnickih nauka, rodjen je u Novom Sadu 19. aprila 1998. godine. \n"
+				+ "Ignjatijevic Aleksandar, student trece godine Fakulteta tehnickih nauka, rodjen je u Novom Sadu 19. aprila 1998. godine. \n"
 				+ "Zavrsio je osnovnu skolu Branko Radicevic u Novom sadu 2013. godine,a potom upisao Gimnaziju Isidora Sekulic u Novom sadu\n"
 				+ "koju je zavrsio 2017. godine. "
 				+ "\n\n"
 				+ "Zupunski Radovan, student trece godine Fakulteta tehnickih nauka, rodjen je u Sremskoj Mitrovici 13. avgusta 1998. godine.\n"
 				+ "Zavrsio je osnovnu skolu Jovan Jovanovic Zmaj u Martincima 2013. godine i srednju medicinsku skolu Draginja Niksic u\n"
-				+ "Sremskoj Mitrovici 2017. godine.");
+				+ "Sremskoj Mitrovici 2017. godine."
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "DISCLAIMER:\n"
+				+ "Kada koristite naše usluge, možda ćete morati da unesete lične podatke. \n"
+				+ "Pružanje ovih informacije je dobrovoljno. Vaši lični podaci će se koristiti samo u\n "
+				+ "skladu sa Srpskim zakonima o zaštiti podataka.\n"
+				+ "Za sve informacije o indikacijama, merama opreza i nezeljenim \n dejstvima prilikom upotrebe"
+				+ " aplikacije, obratite se kreatorima (Radovanu i Aleksandru) \n ili git konsultantu "
+				+ "Jovanu Ivosevicu, koji je 420 puta morao kreatorima da objasnjava kako se desio konflikt\n"
+				+ " i zasto se otvorio Vim i kako ga ugasiti. \n"
+				+ "Uzivajte :)");
 		
 		uputstvo.setEditable(false);
 		

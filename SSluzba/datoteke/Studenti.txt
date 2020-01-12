@@ -1,21 +1,22 @@
-Luka|Jovanović|01.01.2000|Karađorđeva 83, Novi Sad|021/333-555|luka.jovanovic@mailinator.com|RA1/2019|01.07.2019|1|B|0.0|
-Sofija|Petrović|16.05.2000|Miloša Pocerca 55, Šabac|015/343-356|sofija.petrovic@mailinator.com|RA5/2019|11.07.2019|1|B|0.0|
-Stefan|Nikolić|18.03.2000|Knez Mihajlova 16, Beograd|011/9234-857|stefan.nikolic@mailinator.com|RA3/2019|03.07.2019|1|B|0.0|
-Dunja|Ilić|11.11.2000|Petefi Šandora 15, Novi Sad|021/433-958|dunja.ilic@mailinator.com|RA2/2019|01.07.2019|1|S|0.0|
-Lazar|Đorđević|03.12.2000|Josip Broz Tito 13, Subotica|024/333-559|lazar.djordjevic@mailinator.com|RA4/2019|06.07.2019|1|S|0.0|
-Sara|Pavlović|03.12.1999|Vojvode Mišića 23, Šabac|015/313-061|sara.pavlovic@mailinator.com|RA3/2018|01.07.2018|2|B|0.0|
-Vuk|Marković|03.12.1999|Temerinska 133, Novi Sad|021/351-091|vuk.markovic@mailinator.com|RA15/2018|11.07.2018|2|B|0.0|
-Teodora|Popović|03.12.1998|Surepova 15, Šabac|015/324-500|teodora.popovic@mailinator.com|RA133/2017|03.07.2017|2|S|0.0|
-Filip|Stojanović|03.12.1998|Francuska 113, Beograd|011/2333-900|filip.stojanovic@mailinator.com|RA122/2017|02.07.2017|2|S|0.0|
-Ana|Živković|03.12.1998|Kralja Petra 20, Novi Sad|021/231-114|ana.zivkovic@mailinator.com|RA201/2017|04.07.2017|2|S|0.0|
-Viktor|Janković|03.12.1998|Gogoljeva 3, Novi Sad|021/135-463|viktor.jankovic@mailinator.com|RA1/2017|01.07.2017|3|B|0.0|
-Petra|Todorović|03.12.1998|Njegoševa 2, Novi Sad|021/903-463|petra.todorovic@mailinator.com|RA5/2017|12.07.2017|3|B|0.0|
-Andrej|Stanković|03.12.1998|Radoja Domanovića 5, Novi Sad|021/731-067|andrej.stankovic@mailinator.com|RA33/2017|19.07.2017|3|B|0.0|
-Mila|Ristić|03.12.1997|Vojvode Stepe 183, Beograd|011/4333-800|mila.ristic@mailinator.com|RA152/2016|15.07.2016|3|S|0.0|
-Pavle|Kostić|03.12.1997|Crnotravska 13, Beograd|011/3130-007|pavle.kostic@mailinator.com|RA104/2016|06.07.2016|3|S|0.0|
-Lena|Kovačević|03.12.1997|Bulevar Oslobođenja 143, Novi Sad|021/5333-801|lena.kovacevic@mailinator.com|RA1/2016|01.07.2016|4|B|0.0|
-Filip|Živković|03.12.1997|1300 Kaplara, Šabac|015/333-500|filip.zivkovic@mailinator.com|RA5/2016|21.07.2016|4|B|0.0|
-Tara|Dmiitrijević|03.12.1996|Milovana Glišića, Valjevo|014/303-007|tara.dimitrijevic@mailinator.com|RA33/2015|23.07.2015|4|S|0.0|
-Vasilije|Micić|03.12.1996|Vuka Karadžića, Loznica|015/101-909|vasilije.micic@mailinator.com|RA102/2015|04.07.2015|4|S|0.0|
-Lenka|Jović|03.12.1997|Bulevar Mihajla Pupina, Novi Sad|021/431-500|lenka.jovic@mailinator.com|RA244/2016|07.07.2016|4|S|0.0|
-Dad|Dad|12.04.2018|Bla 4,Novi Sad|023/435-345|ufehuh@gmail.com|RA20/2017|10.01.2018|2|B|9.0|
+Luka|Jovanović|01.01.2000|Karađorđeva 83, Novi Sad|021/333-555|luka.jovanovic@mailinator.com|RA1/2019|01.07.2019|1|B|9.33|
+Sofija|Petrović|16.05.2000|Miloša Pocerca 55, Šabac|015/343-356|sofija.petrovic@mailinator.com|RA5/2019|11.07.2019|1|B|8.25|
+Stefan|Nikolić|18.03.2000|Knez Mihajlova 16, Beograd|011/9234-857|stefan.nikolic@mailinator.com|RA3/2019|03.07.2019|1|B|7.83|
+Dunja|Ilić|11.11.2000|Petefi Šandora 15, Novi Sad|021/433-958|dunja.ilic@mailinator.com|RA2/2019|01.07.2019|1|S|6.33|
+Lazar|Đorđević|03.12.2000|Josip Broz Tito 13, Subotica|024/333-559|lazar.djordjevic@mailinator.com|RA4/2019|06.07.2019|1|S|7.27|
+Sara|Pavlović|03.12.1999|Vojvode Mišića 23, Šabac|015/313-061|sara.pavlovic@mailinator.com|RA3/2018|01.07.2018|2|B|10.0|
+Vuk|Marković|03.12.1999|Temerinska 133, Novi Sad|021/351-091|vuk.markovic@mailinator.com|RA15/2018|11.07.2018|2|B|9.53|
+Teodora|Popović|03.12.1998|Surepova 15, Šabac|015/324-500|teodora.popovic@mailinator.com|RA133/2017|03.07.2017|2|S|8.88|
+Filip|Stojanović|03.12.1998|Francuska 113, Beograd|011/2333-900|filip.stojanovic@mailinator.com|RA122/2017|02.07.2017|2|S|7.45|
+Ana|Živković|03.12.1998|Kralja Petra 20, Novi Sad|021/231-114|ana.zivkovic@mailinator.com|RA201/2017|04.07.2017|2|S|8.33|
+Viktor|Janković|03.12.1998|Gogoljeva 3, Novi Sad|021/135-463|viktor.jankovic@mailinator.com|RA1/2017|01.07.2017|3|B|7.34|
+Petra|Todorović|03.12.1998|Njegoševa 2, Novi Sad|021/903-463|petra.todorovic@mailinator.com|RA5/2017|12.07.2017|3|B|9.78|
+Andrej|Stanković|03.12.1998|Radoja Domanovića 5, Novi Sad|021/731-067|andrej.stankovic@mailinator.com|RA33/2017|19.07.2017|3|B|7.44|
+Mila|Ristić|03.12.1997|Vojvode Stepe 183, Beograd|011/4333-800|mila.ristic@mailinator.com|RA152/2016|15.07.2016|3|S|7.77|
+Pavle|Kostić|03.12.1997|Crnotravska 13, Beograd|011/3130-007|pavle.kostic@mailinator.com|RA104/2016|06.07.2016|3|S|6.93|
+Lena|Kovačević|03.12.1997|Bulevar Oslobođenja 143, Novi Sad|021/5333-801|lena.kovacevic@mailinator.com|RA1/2016|01.07.2016|4|B|9.72|
+Filip|Živković|03.12.1997|1300 Kaplara, Šabac|015/333-500|filip.zivkovic@mailinator.com|RA5/2016|21.07.2016|4|B|9.63|
+Tara|Dimitrijević|03.12.1996|Milovana Glišića, Valjevo|014/303-007|tara.dimitrijevic@mailinator.com|RA33/2015|23.07.2015|4|S|8.23|
+Vasilije|Micić|03.12.1996|Vuka Karadžića, Loznica|015/101-909|vasilije.micic@mailinator.com|RA102/2015|04.07.2015|4|S|7.22|
+Lenka|Jović|03.12.1997|Bulevar Mihajla Pupina, Novi Sad|021/431-500|lenka.jovic@mailinator.com|RA244/2016|07.07.2016|4|S|8.25|
+Radovan|Župunski|13.08.1998|Slobodana Bajića 17,Novi Sad|023/435-345|rzupunski@gmail.com|RA20/2017|10.07.2017|3|B|9.41|
+Aleksandar|Ignjatijević|19.04.1998|Miše Dimitrijevića 2c, Novi Sad|021/540-974|aleksandar.ignjatijevic@outlook.com|RA11/2017|05.07.2017|3|B|9.53|

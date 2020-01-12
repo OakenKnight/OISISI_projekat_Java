@@ -287,11 +287,15 @@ public class EditStudFrame extends JDialog{
 					String [] datum2 = datumUpisaPolje.getText().split("\\.");
 					LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
 					LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
+					 if(lc1.isAfter(lc2)) {
+						JOptionPane.showMessageDialog(null, "Datum upisa je pre datuma rodjenja!!!","",JOptionPane.ERROR_MESSAGE);
+					 }else {
+						 StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), lc1, adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), lc2,god, stats, Double.parseDouble(prosekPolje.getText()));
+							
+							setVisible(false);
+							dispose(); 
+					 }
 					
-					StudentiController.getInstance().editStudent(imePolje.getText(), prezimePolje.getText(), lc1, adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(), lc2,god, stats, Double.parseDouble(prosekPolje.getText()));
-					
-					setVisible(false);
-					dispose();
 				}
 				
 
