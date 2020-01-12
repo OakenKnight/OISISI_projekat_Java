@@ -55,8 +55,12 @@ public class AddStudentFrame extends JDialog{
 		Dimension screenSize=kit.getScreenSize();
 		int screenHeight=screenSize.height;
 		int screenWidth=screenSize.width;
+		if(3*screenHeight/7 < 460 || 2*screenWidth/10 < 350){
+			setSize(400, 460);
+		}else {
+			setSize(2*screenWidth/10,3*screenHeight/7);
+		}
 		
-		setSize(2*screenWidth/9,3*screenHeight/8);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setTitle("Dodavanje studenta");
@@ -365,7 +369,7 @@ public class AddStudentFrame extends JDialog{
 		
 		this.add(donjiPanel,BorderLayout.SOUTH);
 
-		setSize(400, 600);
+		
 		setVisible(true);
 		
 	}

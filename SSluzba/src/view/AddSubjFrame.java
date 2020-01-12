@@ -60,7 +60,13 @@ public class AddSubjFrame extends JDialog{
 		int screenHeight=screenSize.height;
 		int screenWidth=screenSize.width;
 		
-		setSize(2*screenWidth/7,3*screenHeight/10);
+		if(3*screenHeight/7 < 320 || 2*screenWidth/10 < 545){
+			setSize(550,324);
+		}else {
+			setSize(2*screenWidth/7,3*screenHeight/10);
+		}
+		
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		

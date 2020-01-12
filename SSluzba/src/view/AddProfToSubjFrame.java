@@ -33,7 +33,12 @@ public class AddProfToSubjFrame extends JDialog{
 			int screenHeight=screenSize.height;
 			int screenWidth=screenSize.width;
 			setModal(true);
-			setSize(2*screenWidth/7,3*screenHeight/14);
+			
+			if(3*screenHeight/7 < 160 || 2*screenWidth/10 < 545){
+				setSize(550,162);
+			}else {
+				setSize(2*screenWidth/7,3*screenHeight/20);
+			}
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setLocationRelativeTo(null);
 			setTitle("Dodavanje profesora na predmet");

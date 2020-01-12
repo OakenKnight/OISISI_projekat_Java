@@ -22,7 +22,7 @@ public class AboutFrame extends JFrame{
 		donjiPanel.setPreferredSize(new Dimension(100,23));
 		TextArea uputstvo = new TextArea();
 		//ScrollPane sc = new ScrollPane();
-		uputstvo.setText("Verzija 1.1\nPoslednje izmene: 05.01.2020.\nAutori aplikacije:\nIgnjatijevic Aleksandar i Zupunski Radovan\n\n"
+		uputstvo.setText("Verzija 1.1\nPoslednje izmene: 12.01.2020.\nAutori aplikacije:\nIgnjatijevic Aleksandar i Zupunski Radovan\n\n"
 				+ "Aplikacija 'Studentska sluzba' namenjena je evidenciji informacija o studentima, profesorima i predmetima. \n"
 				+ "Pocetni interfejs aplikacije raspolaze sa tri taba i izborom nekog od tabova dolazi se do informacija koje\n"
 				+ "su vezane za odabrani entitet. Svaki od tabova raspolaze sa odredjenim akcijama kao sto su dodavanje novog\n"
@@ -36,7 +36,7 @@ public class AboutFrame extends JFrame{
 				+ "Zavrsio je osnovnu skolu Jovan Jovanovic Zmaj u Martincima 2013. godine i srednju medicinsku skolu Draginja Niksic u\n"
 				+ "Sremskoj Mitrovici 2017. godine.");
 		
-		uputstvo.setEnabled(false);
+		uputstvo.setEditable(false);
 		
 		
 		

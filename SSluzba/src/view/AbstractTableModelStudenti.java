@@ -40,8 +40,12 @@ public class AbstractTableModelStudenti extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		if(columnIndex < 11)
 			return BazaStudenata.getInstance().getValueAt(rowIndex, columnIndex);
-		
+		else {
+			JButton btn = new JButton();
+			return btn;
+		}
 	}
 
 	

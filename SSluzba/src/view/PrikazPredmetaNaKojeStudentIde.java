@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,16 @@ import model.Student;
 
 public class PrikazPredmetaNaKojeStudentIde extends JFrame{
 	public PrikazPredmetaNaKojeStudentIde() {
-		setSize(400, 300);
+		Toolkit kit=Toolkit.getDefaultToolkit();
+		Dimension screenSize=kit.getScreenSize();
+		int screenHeight=screenSize.height;
+		int screenWidth=screenSize.width;
+		if(3*screenHeight/7 < 294 || 2*screenWidth/10 < 349){
+			setSize(350,300);
+		}else {
+			setSize(2*screenWidth/11,3*screenHeight/11);
+		}
+
 		setLocationRelativeTo(null);
 
 		setTitle("Spisak predmeta");

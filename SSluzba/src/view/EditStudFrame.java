@@ -55,7 +55,11 @@ public class EditStudFrame extends JDialog{
 		int screenHeight=screenSize.height;
 		int screenWidth=screenSize.width;
 			
-		setSize(2*screenWidth/9,3*screenHeight/8);
+		if(3*screenHeight/7 < 460 || 2*screenWidth/10 < 350){
+			setSize(400, 460);
+		}else {
+			setSize(2*screenWidth/10,3*screenHeight/7);
+		}
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setTitle("Dodavanje studenta");
