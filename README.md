@@ -2,7 +2,7 @@
 Aplikacije je implementirana za potrebe referenata studentske službe uz oslonac na programski jezik Java i biblioteku za razvoj grafičke korisničke sprege (engl. interface) Swing. 
 ## Uputstvo za korišćenje:
 Upustvu za korišćenje aplikacije se može pristupiti klikom na Help iz Help padajućeg menija (Help->Help)
-# Podela funkcionalosti prilikom izrade:
+## Podela funkcionalosti prilikom izrade:
 Student 1
 1. #dodavanje_studenta
 2. #izmena_studenta
