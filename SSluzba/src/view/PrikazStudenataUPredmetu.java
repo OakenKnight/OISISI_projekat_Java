@@ -30,7 +30,8 @@ public class PrikazStudenataUPredmetu extends JFrame{
 	
 	
 	public PrikazStudenataUPredmetu() {
-		setLocation(800, 300);
+		setSize(400, 300);
+		setLocationRelativeTo(null);
 
 		setTitle("Spisak studenta");
 		JPanel donjiPanel = new JPanel(new FlowLayout());
@@ -85,6 +86,7 @@ public class PrikazStudenataUPredmetu extends JFrame{
 								if(p.getBrIndeksaStudenata().size() == 1) {
 									p.getBrIndeksaStudenata().add(new Student());
 								}
+								stud.getPredmeti().remove(p);
 								p.getBrIndeksaStudenata().remove(stud);
 								tx.removeElement(stud.getBrIndex());
 								tx.addElement("nepoznato");
@@ -111,7 +113,6 @@ public class PrikazStudenataUPredmetu extends JFrame{
 		struktura.setPreferredSize(new Dimension(50,50));
 		this.add(scrollPane,BorderLayout.CENTER);
 		this.add(struktura,BorderLayout.SOUTH);
-		setSize(400, 300);
 		setVisible(true);
 	}
 }

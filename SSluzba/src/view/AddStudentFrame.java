@@ -218,6 +218,10 @@ public class AddStudentFrame extends JDialog{
 						postoji = true;
 					}
 				}
+				String [] datum1 = datumRodjenjaPolje.getText().split("\\.");
+				String [] datum2 = datumUpisaPolje.getText().split("\\.");
+				LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
+				LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
 				
 				if(imePolje.getText().equals("") || prezimePolje.getText().equals("") || datumRodjenjaPolje.getText().equals("") || adresaPolje.getText().equals("") || telefonPolje.getText().equals("")
 						|| indexPolje.getText().equals("")  || datumUpisaPolje.getText().equals("") || emailPolje.getText().equals("") || prosekPolje.getText().equals("") ) {
@@ -243,6 +247,8 @@ public class AddStudentFrame extends JDialog{
 					JOptionPane.showMessageDialog(null, "Prosek nije unesen kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(postoji){
 					JOptionPane.showMessageDialog(null, "Vec postoji Student sa unetim brojem indeksa!!!","",JOptionPane.ERROR_MESSAGE);
+				}else if(lc1.isAfter(lc2)) {
+					JOptionPane.showMessageDialog(null, "Datum upisa je pre datuma rodjenja!!!","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					//potvrda.setEnabled(true);
 					if(budzet.isSelected()) {
@@ -261,10 +267,7 @@ public class AddStudentFrame extends JDialog{
 					}else {
 						god=4;
 					}
-					String [] datum1 = datumRodjenjaPolje.getText().split("\\.");
-					String [] datum2 = datumUpisaPolje.getText().split("\\.");
-					LocalDate lc1 = LocalDate.of(Integer.parseInt(datum1[2]), Integer.parseInt(datum1[1]), Integer.parseInt(datum1[0]));
-					LocalDate lc2 = LocalDate.of(Integer.parseInt(datum2[2]), Integer.parseInt(datum2[1]), Integer.parseInt(datum2[0]));
+
 					StudentiController.getInstance().addStudent(imePolje.getText(), prezimePolje.getText(),lc1, adresaPolje.getText(), telefonPolje.getText(), emailPolje.getText(),indexPolje.getText(),lc2,god, stats, Double.parseDouble(prosekPolje.getText()));
 					
 					setVisible(false);

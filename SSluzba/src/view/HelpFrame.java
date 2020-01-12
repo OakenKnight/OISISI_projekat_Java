@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 
 public class HelpFrame extends JFrame{
 	public HelpFrame (){
-		setLocation(800, 300);
+		setLocationRelativeTo(null);
 		setTitle("Uputstvo");
 		
 		
@@ -63,6 +63,7 @@ public class HelpFrame extends JFrame{
 		this.add(uputstvo,BorderLayout.CENTER);
 		this.add(struktura,BorderLayout.SOUTH);
 		setSize(820, 500);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }

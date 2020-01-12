@@ -122,7 +122,7 @@ public class BazaProfesori {
 		return this.profesori.get(rowIndex);
 	}
 
-	public String getValAt(int row, int col) {
+	public Object getValAt(int row, int col) {
 		Profesor profesori=this.profesori.get(row);
 		switch(col) {
 		case 0:
@@ -130,7 +130,7 @@ public class BazaProfesori {
 		case 1:
 			return profesori.getPrezime();
 		case 2:
-			return profesori.getDatumRodjenja().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+			return profesori.getDatumRodjenja();//.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 		case 3:
 			return profesori.getAdresaStanovanja();
 		case 4:

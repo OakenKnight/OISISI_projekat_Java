@@ -247,7 +247,7 @@ public class AddProfFrame extends JDialog{
 				if(!text.isEmpty()) {
 					
 
-					String regexdatum="^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$";
+					String regexdatum="^\\d{2,2}\\.\\d{2,2}\\.\\d{4}$";
 					
 					if(!text.matches(regexdatum)) {
 						return false;

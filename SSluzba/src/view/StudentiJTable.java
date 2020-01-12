@@ -40,6 +40,7 @@ public class StudentiJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelStudenti());
+		new ButtonPredmeti(this, 11);
 		tabela=this;
 		model=this.getModel();
 		sort();

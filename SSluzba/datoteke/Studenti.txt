@@ -18,4 +18,4 @@ Filip|Živković|03.12.1997|1300 Kaplara, Šabac|015/333-500|filip.zivkovic@mail
 Tara|Dmiitrijević|03.12.1996|Milovana Glišića, Valjevo|014/303-007|tara.dimitrijevic@mailinator.com|RA33/2015|23.07.2015|4|S|0.0|
 Vasilije|Micić|03.12.1996|Vuka Karadžića, Loznica|015/101-909|vasilije.micic@mailinator.com|RA102/2015|04.07.2015|4|S|0.0|
 Lenka|Jović|03.12.1997|Bulevar Mihajla Pupina, Novi Sad|021/431-500|lenka.jovic@mailinator.com|RA244/2016|07.07.2016|4|S|0.0|
-
+Dad|Dad|12.04.2018|Bla 4,Novi Sad|023/435-345|ufehuh@gmail.com|RA20/2017|10.01.2018|2|B|9.0|

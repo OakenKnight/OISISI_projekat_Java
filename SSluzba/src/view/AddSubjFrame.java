@@ -250,9 +250,7 @@ public class AddSubjFrame extends JDialog{
 		gbBtnCancel.insets = new Insets(20, 10, 0, 0);
 		unosPanel.add(cancelBtn, gbBtnCancel);
 
-		unosPredmeta.add(unosPanel, BorderLayout.CENTER);
-		unosPredmeta.add(donjiPanel, BorderLayout.SOUTH);
-
+		
 
 			add(unosPanel,BorderLayout.CENTER);
 			add(donjiPanel,BorderLayout.SOUTH);

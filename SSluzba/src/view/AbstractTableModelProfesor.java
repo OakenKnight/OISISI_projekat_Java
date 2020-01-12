@@ -24,6 +24,17 @@ public class AbstractTableModelProfesor extends AbstractTableModel{
 		return BazaProfesori.getInstance().getValAt(arg0, arg1);
 	}
 	
+	@Override
+	public Class<?> getColumnClass(int c){
+		if(this.getRowCount()!=0) {
+			
+			return this.getValueAt(0, c).getClass();
+		}else {
+			
+			return Integer.class;
+		}
+	}
+	
 	public String getColumnName(int column) {
 		return BazaProfesori.getInstance().getColumnName(column);
 	}

@@ -44,6 +44,7 @@ public class BazaStudenata {
 		this.kolone.add("GOD. STUDIJA");
 		this.kolone.add("STATUS");
 		this.kolone.add("PROSEK");
+		this.kolone.add("PREDMETI");
 		
 		initStudente();
 
@@ -107,7 +108,7 @@ public class BazaStudenata {
 
 	
 	public int getColumnCount() {
-		return 11;
+		return 12;
 	}
 	
 	public String getColumnName(int index) {

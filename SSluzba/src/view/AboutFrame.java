@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.TextArea;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,10 +16,7 @@ import javax.swing.JPanel;
 
 public class AboutFrame extends JFrame{
 	public AboutFrame() {
-		setLocation(800, 300);
 		setTitle("O aplikaciji");
-		
-		
 		JPanel donjiPanel = new JPanel(new FlowLayout());
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
@@ -63,6 +61,7 @@ public class AboutFrame extends JFrame{
 		this.add(uputstvo,BorderLayout.CENTER);
 		this.add(struktura,BorderLayout.SOUTH);
 		setSize(820, 500);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }
