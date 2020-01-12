@@ -3,7 +3,7 @@ Aplikacije je implementirana za potrebe referenata studentske službe uz oslonac
 ## Uputstvo za korišćenje:
 Upustvu za korišćenje aplikacije se može pristupiti klikom na Help iz Help padajućeg menija (Help->Help)
 # Podela funkcionalosti prilikom izrade:
-## Student 1
+Student 1
 1. #dodavanje_studenta
 2. #izmena_studenta
 3. #brisanje_studenta
@@ -19,7 +19,7 @@ Upustvu za korišćenje aplikacije se može pristupiti klikom na Help iz Help pa
 13. #status_bar
 
 
-## Student 2
+Student 2
 1. #dodavanje_predmeta
 2. #izmena_predmeta
 3. #brisanje_predmeta
