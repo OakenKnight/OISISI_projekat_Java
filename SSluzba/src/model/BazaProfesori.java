@@ -42,7 +42,7 @@ public class BazaProfesori {
 		this.kolone.add("BLK");
 		this.kolone.add("TITULA");
 		this.kolone.add("ZVANJE");
-
+		this.kolone.add("PREDMETI");
 		
 		initProfesor();
 
@@ -111,7 +111,7 @@ public class BazaProfesori {
 
 	
 	public int getColumnCount() {
-		return 10;
+		return 11;
 	}
 	
 	public String getColumnName(int index) {

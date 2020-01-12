@@ -15,18 +15,16 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 
-import model.BazaPredmeta;
-import model.BazaStudenata;
+import model.BazaProfesori;
 import model.Predmet;
-import model.Student;
+import model.Profesor;
 
-public class PrikazPredmetaNaKojeStudentIde extends JDialog{
-	public PrikazPredmetaNaKojeStudentIde() {
+public class PrikazPredmetaNaProfesoru extends JDialog{
+	public PrikazPredmetaNaProfesoru() {
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension screenSize=kit.getScreenSize();
 		int screenHeight=screenSize.height;
@@ -36,17 +34,15 @@ public class PrikazPredmetaNaKojeStudentIde extends JDialog{
 		}else {
 			setSize(2*screenWidth/11,3*screenHeight/11);
 		}
-
 		setLocationRelativeTo(null);
 		setModal(true);
 		setTitle("Spisak predmeta");
 		JPanel donjiPanel = new JPanel(new FlowLayout());
 		donjiPanel.setBackground(Color.DARK_GRAY);
 		donjiPanel.setPreferredSize(new Dimension(100,23));
-		DefaultListModel<String> tx = new DefaultListModel<String>();
-		
+		DefaultListModel<String> tx = new DefaultListModel<String>(); 
 
-		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().selektovanRed));
+		Profesor st = new Profesor(BazaProfesori.getInstance().getRow(ProfesoriJTable.getInstance().getSelektovanRed()));
 		int i = 0;
 		for(Predmet temp : st.getPredmeti()) {
 			tx.add(i++,temp.getSifra_predmeta());

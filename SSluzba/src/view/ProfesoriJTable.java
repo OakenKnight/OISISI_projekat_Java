@@ -38,6 +38,7 @@ public class ProfesoriJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesor());
+		new ButtonPredmetiProfesora(this,10);
 		tabela=this;
 		model=this.getModel();
 		sort();
@@ -51,7 +52,6 @@ public class ProfesoriJTable extends JTable{
 			}
 		});
 	}
-	//ovde treba isto da se uradi na ostali,m
 	public int getSelektovanRed() {
 		if(tabela.getSelectedRow()!=-1)
 		return tabela.convertRowIndexToModel(tabela.getSelectedRow());
@@ -61,8 +61,8 @@ public class ProfesoriJTable extends JTable{
 		
 		@Override
 		public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-			Component c = super.prepareRenderer(renderer, row, column);
 			selektovanRed = this.getSelectedRow();
+			Component c = super.prepareRenderer(renderer, row, column);
 			if (isRowSelected(row)) {
 				c.setBackground(Color.LIGHT_GRAY);
 			} else {
