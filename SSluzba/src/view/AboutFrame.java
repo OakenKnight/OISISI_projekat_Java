@@ -44,11 +44,10 @@ public class AboutFrame extends JFrame{
 				+ "Kada koristite naše usluge, možda ćete morati da unesete lične podatke. \n"
 				+ "Pružanje ovih informacije je dobrovoljno. Vaši lični podaci će se koristiti samo u\n "
 				+ "skladu sa Srpskim zakonima o zaštiti podataka.\n"
-				+ "Za sve informacije o indikacijama, merama opreza i nezeljenim \n dejstvima prilikom upotrebe"
-				+ " aplikacije, obratite se kreatorima (Radovanu i Aleksandru) \n ili git konsultantu "
-				+ "Jovanu Ivosevicu, koji je 420 puta morao kreatorima da objasnjava kako se desio konflikt\n"
-				+ " i zasto se otvorio Vim i kako ga ugasiti. \n"
-				+ "Uzivajte :)");
+				+ "Za sve informacije o indikacijama, merama opreza i nezeljenim \n "
+				+ "dejstvima prilikom upotrebe aplikacije, obratite se kreatorima aplikacije \n"
+				+ "(Radovanu i Aleksandru) \n"
+				+ "Uzivajte");
 		
 		uputstvo.setEditable(false);
 		
