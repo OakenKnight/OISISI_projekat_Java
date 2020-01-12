@@ -43,10 +43,10 @@ public class ButtonPredmetiProfesora extends AbstractCellEditor implements Table
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(PredmetiJTable.getInstance().getSelectedColumn() == 10) {        
+		if(ProfesoriJTable.getInstance().getSelectedColumn() == 10) {        
 			PrikazPredmetaNaProfesoru p = new PrikazPredmetaNaProfesoru(); 
-			p.setVisible(true);
-			System.out.println("aaaaaaaaaa");
+			//p.setVisible(true);
+			//System.out.println("aaaaaaaaaa");
 		}
 	}
 

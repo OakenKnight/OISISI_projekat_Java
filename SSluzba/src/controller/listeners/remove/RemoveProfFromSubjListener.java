@@ -20,11 +20,14 @@ public class RemoveProfFromSubjListener implements MouseListener {
 			
 			if(option == JOptionPane.YES_OPTION) {
 				Predmet sub=new Predmet(BazaPredmeta.getInstanceBazaPredmeta().getRow(PredmetiJTable.getInstance().getSelektovanRed()));
+				if(sub.getPredavac().equals("")) {
+					JOptionPane.showMessageDialog(null, "Predmet nema profesora, nemoguce obrisati profesora!","",JOptionPane.ERROR_MESSAGE);
+				}else {
 				String brojLicneKarte=BazaPredmeta.getInstanceBazaPredmeta().returnBlkFromPredavac(sub);
 				System.out.println(brojLicneKarte);
 
 				PredmetController.getInstance().removeProfFromSubj(brojLicneKarte, sub);
-			
+				}
 			}
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Nije selektovan predmet!","",JOptionPane.ERROR_MESSAGE);

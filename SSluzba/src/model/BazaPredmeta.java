@@ -115,7 +115,7 @@ public class BazaPredmeta {
 		
 		return this.predmeti.get(rowIndex);
 	}
-	public String getValAt(int row, int col) {
+	public Object getValAt(int row, int col) {
 		Predmet predmet=this.predmeti.get(row);
 		switch(col) {
 		case 0:
@@ -128,6 +128,7 @@ public class BazaPredmeta {
 			return predmet.getGodina();
 		case 4:
 			return predmet.getPredavac();
+		
 		default:
 			return null;
 		}
@@ -344,8 +345,7 @@ public class BazaPredmeta {
 	public void deleteProfFromSubj(String blk, Predmet p) {
 		Profesor profa=BazaProfesori.getInstance().getProfHavingBlk(blk);
 		if(profa==null){
-			JOptionPane.showMessageDialog(null, "Predmet nema profesora, nemoguce obrisati profesora!","",JOptionPane.ERROR_MESSAGE);
- 
+			//JOptionPane.showMessageDialog(null, "Predmet nema profesora, nemoguce obrisati profesora!","",JOptionPane.ERROR_MESSAGE);
 		}else {
 			ArrayList<Predmet> predmeti1=profa.getPredmeti();
 			int idx=-1;

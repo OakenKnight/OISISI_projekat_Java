@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -26,13 +27,13 @@ import model.BazaStudenata;
 import model.Predmet;
 import model.Student;
 
-public class PrikazStudenataUPredmetu extends JFrame{
+public class PrikazStudenataUPredmetu extends JDialog{
 	
 	
 	public PrikazStudenataUPredmetu() {
 		setSize(400, 300);
 		setLocationRelativeTo(null);
-
+		setModal(true);
 		setTitle("Spisak studenta");
 		JPanel donjiPanel = new JPanel(new FlowLayout());
 		donjiPanel.setBackground(Color.DARK_GRAY);

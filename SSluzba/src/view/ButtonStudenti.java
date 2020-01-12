@@ -63,7 +63,7 @@ public class ButtonStudenti extends AbstractCellEditor implements TableCellEdito
 	public void mouseClicked(MouseEvent arg0) {
 		if(PredmetiJTable.getInstance().getSelectedColumn() == 5) {
 			PrikazStudenataUPredmetu p = new PrikazStudenataUPredmetu();
-			p.setVisible(true);
+			//p.setVisible(true);
 		}
 	}
 
