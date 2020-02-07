@@ -200,11 +200,11 @@ public class EditProfFrame extends JDialog{
 		potvrda.addActionListener(new ActionListener() {
 			
 			
-			String imeReg="[A-Z][a-z]+";
-			String adresaReg="[a-zA-Z ]*[0-9][a-z]*";
-			String telReg="[0-9]+";
-			String emailReg="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]+";
-			//String kancReg="[0-9]+[a-zA-Z]*";
+			String imeReg="[A-Ž][a-ž]+";
+			String adresaReg="[a-žA-Ž0-9 ]*[,][ a-žA-Ž]+";
+			String telReg="[0-9]+/[0-9]+[-][0-9]+";
+			String emailReg="[a-zA-Z0-9.]+@[a-zA-Z]+[.][a-zA-Z]+";
+			String kancReg="[a-žA-Ž0-9, ]+";
 			String blkReg="[0-9]+";
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -224,6 +224,8 @@ public class EditProfFrame extends JDialog{
 					JOptionPane.showMessageDialog(null, "Telefon nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!emailTF.getText().matches(emailReg)) {
 					JOptionPane.showMessageDialog(null, "Email nije unet kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(!kancelarijaTF.getText().matches(kancReg)) {
+					JOptionPane.showMessageDialog(null, "Kancelarija nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(!blkTF.getText().matches(blkReg)){
 					JOptionPane.showMessageDialog(null, "BLK nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else {

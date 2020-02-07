@@ -123,7 +123,7 @@ public class AddSubjFrame extends JDialog{
 			public void actionPerformed(ActionEvent arg0) {
 				if(spTF.getText().equals("") || npTF.getText().equals("")) {
 				  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
-				}else if(spTF.getText().matches(sifraReg)) {
+				}else if(!spTF.getText().matches(sifraReg)) {
 					JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
 				} else if(npTF.getText().matches(regex1)==false) {
 					JOptionPane.showMessageDialog(null,"Nije uneto dobar naziv predmeta","",JOptionPane.ERROR_MESSAGE);

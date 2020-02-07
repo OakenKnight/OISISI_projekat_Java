@@ -2,5 +2,7 @@ Aleksa|Petković|15.01.1965|Temerinska 15, Novi Sad|021/334-990|aleksa.petkovic@
 Jana|Lazarević|25.02.1963|Jovana Cvijića 26, Novi Sad|021/435-891|jana.lazarevic@mailinator.com|Dositeja Obradovića 6, Novi Sad, Nastavni blok 206|008431903|PhD|Redovni profesor|DM881#
 Nađa|Aleksić|23.03.1973|Gundulićeva 75, Novi Sad|021/730-172|nadja.aleksic@mailinator.com|Dositeja Obradovića 6, Novi Sad, NTP 307|005671007|PhD|Vanredni profesor|PP007#
 Đorđe|Spasojević|24.08.1978|Šekspirova 44, Novi Sad|021/514-893|djordje.spasojevic@mailinator.com|Dositeja Obradovića 6, Novi Sad, MI 118|009999331|PhD|Vanredni profesor|RVP33#
-Elena|Milenković|08.11.1985|Tolstojeva 52, Novi Sad|021/834-901|elena.milenkovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, Nastavni blok 217|003330976|PhD|Docent|JSD91#
+Elena|Milenković|08.11.1985|Tolstojeva 52, Novi Sad|021/834-901|elena.milenkovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, Nastavni blok 217|003330976|PhD|Docent|#
 Teodor|Mladenović|14.12.1983|Jovana Subotića 33, Novi Sad|021/441-007|teodor.mladenovic@mailinator.com|Dositeja Obradovića 6, Novi Sad, NTP M35|007441998|PhD|Docent|#
+Milan|Vidakovic|12.12.1968|Seljackih Buna 26, Novi Sad|021/124-124|minja@gmail.com|toranj 88|123456789|PhD|Redovni profesor|#
+Rade|Doroslovacki|06.06.1966|Temerinska 15, Novi Sad|021/541-124|doros.rade@gmail.com|Dositeja Obradovica 5, Novi Sad|012345678|BSc|Saradnik u nastavi|#

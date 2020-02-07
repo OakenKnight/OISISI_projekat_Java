@@ -1,5 +1,6 @@
 OP301|Osnove programiranja|Zimski|Prva godina|Aleksa Petković|RA1/2019#RA5/2019#RA3/2019#RA2/2019
 DM881|Diskretna matematika|Zimski|Druga godina|Jana Lazarević|RA3/2018#RA15/2018#RA133/2017#RA122/2017
-PP007|Paralelno programiranje|Zimski|Treca godina|Nađa Aleksić|RA1/2017#RA5/2017#RA33/2017#RA152/2016#RA11/2017#RA20/2017
+PP007|Paralelno programiranje|Zimski|Treca godina|Nađa Aleksić|RA1/2017#RA5/2017#RA33/2017#RA152/2016
 RVP33|Računarstvo visokih performansi|Zimski|Cetvrta godina|Đorđe Spasojević|RA1/2016#RA5/2016#RA33/2015#RA102/2015
-JSD91|Jezici specifični za domen|Letnji|Cetvrta godina|Elena Milenković|nepoznato
+JSD91|Jezici specifični za domen|Letnji|Prva godina||nepoznato
+IYHBV|SPPURV|Letnji|Druga godina||nepoznato

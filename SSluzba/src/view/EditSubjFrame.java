@@ -125,7 +125,6 @@ public class EditSubjFrame extends JDialog{
 			okBtn.setToolTipText("Potvrdi");
 			okBtn.addActionListener(new ActionListener() {
 
-			String sifraReg="[a-žA-Ž0-9]+";
 			String regex1="[a-žA-Ž ]*[0-9]*";
 			String blkReg="[0-9]+";
 			
@@ -136,13 +135,8 @@ public class EditSubjFrame extends JDialog{
 				public void actionPerformed(ActionEvent arg0) {
 					if(spTF.getText().equals("") || npTF.getText().equals("")) {
 					  JOptionPane.showMessageDialog(null,"Nisu unesena sva polja","",JOptionPane.ERROR_MESSAGE);	 
-					}else if(spTF.getText().matches(sifraReg)) {
-						JOptionPane.showMessageDialog(null,"Nije uneta dobro sifra predmeta","",JOptionPane.ERROR_MESSAGE);					
-					} else if(npTF.getText().matches(regex1)==false) {
+					}else if(npTF.getText().matches(regex1)==false) {
 						JOptionPane.showMessageDialog(null,"Nije unet dobro naziv predmeta","",JOptionPane.ERROR_MESSAGE);
-					}else if(!profesorTF.getText().isEmpty()) {
-						if(!profesorTF.getText().matches(blkReg))
-						JOptionPane.showMessageDialog(null,"Nije unet dobro blk profesora","",JOptionPane.ERROR_MESSAGE);
 					}else {
 						
 						semestar=(String)semestarCB.getSelectedItem();
